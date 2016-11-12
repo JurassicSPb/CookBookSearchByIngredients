@@ -7,8 +7,9 @@
     <ImageView
         android:id="@+id/imagepart"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent"/>
+        android:layout_height="80dp"
+        android:background="@android:color/white"
+        />
 
     <!--красивые шрифты Roboto подключить-->
     <TextView

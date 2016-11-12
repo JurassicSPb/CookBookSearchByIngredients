@@ -25,7 +25,7 @@ import java.util.List;
 public class MeatFragment extends Fragment{
     private IngredientDatabase ingredientDB;
     private List<Ingredient> ingredients;
-    private int [] image = {R.drawable.circle, R.drawable.circle};
+    private int [] image = {R.drawable.ic_circle, R.drawable.ic_circle};
     private OnListItemClickListener clickListener = (v, position) -> {
     };
     private GridView gridview;
