@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,15 +14,17 @@ import java.util.List;
  * Created by Мария on 06.11.2016.
  */
 
-public class ImageTextAdapter extends BaseAdapter{
+public class GridviewImageTextAdapter extends BaseAdapter{
     private Context mContext;
     private final List <Ingredient> ingredientAdapter;
     private final int[] image;
+    private OnListItemClickListener clickListener;
 
-    public ImageTextAdapter(Context c, List <Ingredient> ingredientAdapter ,int[] image ) {
+    public GridviewImageTextAdapter(Context c, List <Ingredient> ingredientAdapter , int[] image, OnListItemClickListener clickListener ) {
         mContext = c;
         this.image = image;
         this.ingredientAdapter = ingredientAdapter;
+        this.clickListener = clickListener;
     }
     @Override
     public int getCount() {

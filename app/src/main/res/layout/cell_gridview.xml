@@ -10,11 +10,13 @@
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"/>
 
+    <!--красивые шрифты Roboto подключить-->
     <TextView
         android:id="@+id/textpart"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:background="@android:color/holo_blue_bright"/>
+        android:background="@color/colorHeadline"
+        />
 
 </LinearLayout>
