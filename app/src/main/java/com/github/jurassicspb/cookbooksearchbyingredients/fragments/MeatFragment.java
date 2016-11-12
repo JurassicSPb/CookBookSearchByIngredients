@@ -9,8 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
-import com.github.jurassicspb.cookbooksearchbyingredients.GridviewImageTextAdapter;
-import com.github.jurassicspb.cookbooksearchbyingredients.IngedientTablayoutActivity;
+import com.github.jurassicspb.cookbooksearchbyingredients.GridViewImageTextAdapter;
 import com.github.jurassicspb.cookbooksearchbyingredients.Ingredient;
 import com.github.jurassicspb.cookbooksearchbyingredients.OnListItemClickListener;
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
@@ -36,16 +35,15 @@ public class MeatFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ingredientDB = new IngredientDatabase();
-//        createIngredients();
+        if (ingredients ==null){
+            createIngredients();
+        }
+        else {performIngredients();}
 //        delete();
-//        if (ingredient.getCategory().equals("мясо")){
-//            performIngredients();
-//        }
-        performIngredients();
 
         View view = inflater.inflate(R.layout.gridview_list, container, false);
         gridview = (GridView) view.findViewById(R.id.gridview);
-        gridview.setAdapter(new GridviewImageTextAdapter(getActivity(), ingredients, image, clickListener));
+        gridview.setAdapter(new GridViewImageTextAdapter(getActivity(), ingredients, image, clickListener));
 
         gridview.setOnTouchListener((v, event) -> {
             if(event.getAction() == MotionEvent.ACTION_MOVE){

@@ -14,13 +14,13 @@ import java.util.List;
  * Created by Мария on 06.11.2016.
  */
 
-public class GridviewImageTextAdapter extends BaseAdapter{
+public class GridViewImageTextAdapter extends BaseAdapter{
     private Context mContext;
     private final List <Ingredient> ingredientAdapter;
     private final int[] image;
     private OnListItemClickListener clickListener;
 
-    public GridviewImageTextAdapter(Context c, List <Ingredient> ingredientAdapter , int[] image, OnListItemClickListener clickListener ) {
+    public GridViewImageTextAdapter(Context c, List <Ingredient> ingredientAdapter , int[] image, OnListItemClickListener clickListener ) {
         mContext = c;
         this.image = image;
         this.ingredientAdapter = ingredientAdapter;
