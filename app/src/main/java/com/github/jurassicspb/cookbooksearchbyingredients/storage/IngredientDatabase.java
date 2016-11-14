@@ -7,7 +7,6 @@ import java.util.List;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmConfiguration;
-import io.realm.RealmResults;
 import io.realm.Sort;
 
 /**
@@ -22,7 +21,9 @@ public class IngredientDatabase {
         RealmConfiguration configuration = new RealmConfiguration.Builder()
                 .name("ingredient_db")
                 .build();
+//               Realm.deleteRealm(configuration);
         realm = Realm.getInstance(configuration);
+
     }
     public void copyOrUpdate(List <Ingredient> ingredient) {
         realm.beginTransaction();
@@ -34,6 +35,7 @@ public class IngredientDatabase {
         realm.deleteAll();
         realm.commitTransaction();
     }
+
     public List<Ingredient> getAll() {
         return realm.where(Ingredient.class).findAllSorted("id", Sort.ASCENDING);
     }

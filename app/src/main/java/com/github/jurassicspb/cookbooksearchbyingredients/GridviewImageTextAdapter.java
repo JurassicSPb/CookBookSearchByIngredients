@@ -18,13 +18,11 @@ public class GridviewImageTextAdapter extends BaseAdapter{
     private Context mContext;
     private final List <Ingredient> ingredientAdapter;
     private final int[] image;
-    private OnListItemClickListener clickListener;
 
-    public GridviewImageTextAdapter(Context c, List <Ingredient> ingredientAdapter , int[] image, OnListItemClickListener clickListener ) {
+    public GridviewImageTextAdapter(Context c, List <Ingredient> ingredientAdapter, int[] image) {
         mContext = c;
         this.image = image;
         this.ingredientAdapter = ingredientAdapter;
-        this.clickListener = clickListener;
     }
     @Override
     public int getCount() {
@@ -57,6 +55,7 @@ public class GridviewImageTextAdapter extends BaseAdapter{
             ImageView imageView = (ImageView) grid.findViewById(R.id.imagepart);
             textView.setText(ingredientAdapter.get(position).getIngredient());
             imageView.setImageResource(image[position]);
+
         } else {
             grid = (View) convertView;
         }

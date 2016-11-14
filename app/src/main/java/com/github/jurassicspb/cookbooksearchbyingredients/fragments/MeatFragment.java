@@ -7,16 +7,19 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.GridView;
+
 
 import com.github.jurassicspb.cookbooksearchbyingredients.GridviewImageTextAdapter;
 import com.github.jurassicspb.cookbooksearchbyingredients.Ingredient;
-import com.github.jurassicspb.cookbooksearchbyingredients.OnListItemClickListener;
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.realm.Realm;
 
 /**
  * Created by Мария on 12.11.2016.
@@ -26,8 +29,6 @@ public class MeatFragment extends Fragment{
     private IngredientDatabase ingredientDB;
     private List<Ingredient> ingredients;
     private int [] image = {R.drawable.ic_circle, R.drawable.ic_circle};
-    private OnListItemClickListener clickListener = (v, position) -> {
-    };
     private GridView gridview;
     private Ingredient ingredient;
 
@@ -35,13 +36,15 @@ public class MeatFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ingredientDB = new IngredientDatabase();
-            createIngredients();
+//        ingredientDB.close();
+
+//            createIngredients();
             performIngredients();
 //            delete();
 
         View view = inflater.inflate(R.layout.gridview_list, container, false);
         gridview = (GridView) view.findViewById(R.id.gridview);
-        gridview.setAdapter(new GridviewImageTextAdapter(getActivity(), ingredients, image, clickListener));
+        gridview.setAdapter(new GridviewImageTextAdapter(getActivity(), ingredients, image));
 
         gridview.setOnTouchListener((v, event) -> {
             if(event.getAction() == MotionEvent.ACTION_MOVE){

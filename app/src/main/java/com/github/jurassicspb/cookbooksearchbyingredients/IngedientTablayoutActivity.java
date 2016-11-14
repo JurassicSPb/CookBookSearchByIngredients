@@ -6,19 +6,17 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.fragments.FishFragment;
 import com.github.jurassicspb.cookbooksearchbyingredients.fragments.MeatFragment;
-import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Мария on 12.11.2016.
  */
 
-public class IngedientTablayoutActivity extends AppCompatActivity{
+public class IngedientTablayoutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,6 +25,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity{
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -42,5 +41,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity{
 
         pager.setAdapter(adapter);
         tabLayout.setupWithViewPager(pager);
+
     }
 }
