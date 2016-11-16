@@ -31,6 +31,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
     public int getCount() {
         return fragments.size();
     }
+
     public void addFragment(Fragment fragment, String title){
         fragments.add(fragment);
         titles.add(title);

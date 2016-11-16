@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Мария on 06.11.2016.
@@ -34,6 +35,9 @@ public class GridviewImageTextAdapter extends BaseAdapter{
     public Object getItem(int position) {
         // TODO Auto-generated method stub
         return ingredientAdapter.get(position);
+    }
+    public Object getIngredientName (int position){
+        return ingredientAdapter.get(position).getIngredient();
     }
 
     @Override
