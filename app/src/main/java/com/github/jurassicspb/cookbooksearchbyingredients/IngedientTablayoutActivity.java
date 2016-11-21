@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import com.github.jurassicspb.cookbooksearchbyingredients.fragments.IngredientFragment;
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -58,9 +59,12 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
 
         for (int i=0; i<categories.size(); i++){
             IngredientFragment m = new IngredientFragment();
+            ArrayList<String> names = new ArrayList<>();
+            names.add(0, "Мясо");
+            names.add(1, "Рыба");
             ingredients = ingredientDB.getCategory(Integer.valueOf(categories.get(i)));
             m.setIngrbycategory(ingredients);
-            adapter.addFragment(m, categories.get(i));
+            adapter.addFragment(m, names.get(i));
         }
 
         pager.setAdapter(adapter);
@@ -74,8 +78,13 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         newIngredient.add(new Ingredient("1.1", 1, "сельдь"));
         newIngredient.add(new Ingredient("1.2", 1, "щука"));
         ingredientDB.copyOrUpdate(newIngredient);
-
     }
+//    private void createCategoryTables(){
+//        ArrayList<CategoryTable> categoryTables = new ArrayList<>();
+//        categoryTables.add(new CategoryTable(0, "Мясо"));
+//        ingredientDB.copyOrUpdateCategoryTable(categoryTables);
+//    }
+
     private void performIngredients(){
         ingredients = ingredientDB.getAll();
     }

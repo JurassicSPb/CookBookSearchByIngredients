@@ -1,5 +1,6 @@
 package com.github.jurassicspb.cookbooksearchbyingredients.storage;
 
+import com.github.jurassicspb.cookbooksearchbyingredients.CategoryTable;
 import com.github.jurassicspb.cookbooksearchbyingredients.Ingredient;
 import java.util.List;
 import io.realm.Realm;
@@ -13,7 +14,6 @@ import io.realm.Sort;
 
 public class IngredientDatabase {
     private Realm realm;
-
 
     public IngredientDatabase() {
         RealmConfiguration configuration = new RealmConfiguration.Builder()
