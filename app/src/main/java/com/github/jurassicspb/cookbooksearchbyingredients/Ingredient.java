@@ -1,6 +1,5 @@
 package com.github.jurassicspb.cookbooksearchbyingredients;
 
-import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -11,12 +10,12 @@ import io.realm.annotations.PrimaryKey;
 public class Ingredient extends RealmObject{
     @PrimaryKey
     private String id;
-    private String category;
+    private int category;
     private String ingredient;
 
     public Ingredient() {}
 
-    public Ingredient(String id, String category, String ingredient){
+    public Ingredient(String id, int category, String ingredient){
         this.id=id;
         this.category=category;
         this.ingredient=ingredient;
@@ -26,7 +25,7 @@ public class Ingredient extends RealmObject{
         return id;
     }
 
-    public String getCategory() {
+    public int getCategory() {
         return category;
     }
 
@@ -38,7 +37,7 @@ public class Ingredient extends RealmObject{
         this.id = id;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(int category) {
         this.category = category;
     }
 

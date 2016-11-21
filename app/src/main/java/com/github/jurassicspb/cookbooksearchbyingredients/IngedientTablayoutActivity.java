@@ -6,17 +6,25 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
 
-import com.github.jurassicspb.cookbooksearchbyingredients.fragments.FishFragment;
-import com.github.jurassicspb.cookbooksearchbyingredients.fragments.MeatFragment;
+import com.github.jurassicspb.cookbooksearchbyingredients.fragments.IngredientFragment;
+import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
+
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+
 /**
  * Created by Мария on 12.11.2016.
  */
 
 public class IngedientTablayoutActivity extends AppCompatActivity {
+    private IngredientDatabase ingredientDB;
+    private List<Ingredient> ingredients;
+    private List<CategoryTable> categoryTables;
+    private ArrayList<String> categories = new ArrayList<>();
+    private LinkedHashSet<String> set;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,11 +45,49 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(new MeatFragment(), "Мясо");
-        adapter.addFragment(new FishFragment(), "Рыба");
+        ingredientDB = new IngredientDatabase();
+//        createIngredients();
+        performIngredients();
+
+        for (int i = 0; i<ingredients.size(); i++) {
+            categories.add(String.valueOf(ingredients.get(i).getCategory()));
+        }
+        set = new LinkedHashSet<>(categories);
+        categories.clear();
+        categories.addAll(set);
+
+        for (int i=0; i<categories.size(); i++){
+            IngredientFragment m = new IngredientFragment();
+            ingredients = ingredientDB.getCategory(Integer.valueOf(categories.get(i)));
+            m.setIngrbycategory(ingredients);
+            adapter.addFragment(m, categories.get(i));
+        }
 
         pager.setAdapter(adapter);
         tabLayout.setupWithViewPager(pager);
 
+    }
+    private void createIngredients(){
+        ArrayList<Ingredient> newIngredient = new ArrayList<>();
+        newIngredient.add(new Ingredient("0.1", 0, "говядина"));
+        newIngredient.add(new Ingredient("0.2", 0, "свинина"));
+        newIngredient.add(new Ingredient("1.1", 1, "сельдь"));
+        newIngredient.add(new Ingredient("1.2", 1, "щука"));
+        ingredientDB.copyOrUpdate(newIngredient);
+
+    }
+    private void performIngredients(){
+        ingredients = ingredientDB.getAll();
+    }
+
+    public void delete(){
+        ArrayList <Ingredient> newIngredient = new ArrayList<>();
+        ingredientDB.delete(newIngredient);
+    }
+
+    @Override
+    protected void onDestroy() {
+        ingredientDB.close();
+        super.onDestroy();
     }
 }
