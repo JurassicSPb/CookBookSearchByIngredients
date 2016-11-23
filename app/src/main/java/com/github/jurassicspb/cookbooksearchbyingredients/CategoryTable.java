@@ -1,12 +1,13 @@
 package com.github.jurassicspb.cookbooksearchbyingredients;
 
+import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by Мария on 21.11.2016.
  */
 
-public class CategoryTable {
+public class CategoryTable extends RealmObject{
     @PrimaryKey
     private int num;
     private String name;

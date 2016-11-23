@@ -28,11 +28,11 @@ public class IngredientDatabase {
         realm.copyToRealmOrUpdate(ingredient);
         realm.commitTransaction();
     }
-//    public void copyOrUpdateCategoryTable(List <CategoryTable> categoryTable) {
-//        realm.beginTransaction();
-//        realm.copyToRealmOrUpdate(categoryTable);
-//        realm.commitTransaction();
-//    }
+    public void copyOrUpdateCategoryTable(List <CategoryTable> categoryTable) {
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(categoryTable);
+        realm.commitTransaction();
+    }
     public void delete (List <Ingredient> ingredient) {
         realm.beginTransaction();
         realm.deleteAll();
@@ -41,6 +41,9 @@ public class IngredientDatabase {
 
     public List<Ingredient> getAll() {
         return realm.where(Ingredient.class).findAllSorted("id", Sort.ASCENDING);
+    }
+    public List<CategoryTable> getAllCategoryTables() {
+        return realm.where(CategoryTable.class).findAllSorted("num", Sort.ASCENDING);
     }
 
     public List<Ingredient>getCategory(int i){

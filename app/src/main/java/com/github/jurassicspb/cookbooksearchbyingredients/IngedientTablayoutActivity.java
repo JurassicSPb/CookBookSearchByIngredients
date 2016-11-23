@@ -23,9 +23,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
     private IngredientDatabase ingredientDB;
     private List<Ingredient> ingredients;
     private List<CategoryTable> categoryTables;
-    private ArrayList<String> categories = new ArrayList<>();
-    private LinkedHashSet<String> set;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,24 +44,16 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         ingredientDB = new IngredientDatabase();
-//        createIngredients();
+//      createIngredients();
         performIngredients();
 
-        for (int i = 0; i<ingredients.size(); i++) {
-            categories.add(String.valueOf(ingredients.get(i).getCategory()));
-        }
-        set = new LinkedHashSet<>(categories);
-        categories.clear();
-        categories.addAll(set);
-
-        for (int i=0; i<categories.size(); i++){
+//      createCategoryTables();
+        performCategoryTables();
+        for (int i=0; i<categoryTables.size(); i++){
             IngredientFragment m = new IngredientFragment();
-            ArrayList<String> names = new ArrayList<>();
-            names.add(0, "Мясо");
-            names.add(1, "Рыба");
-            ingredients = ingredientDB.getCategory(Integer.valueOf(categories.get(i)));
+            ingredients = ingredientDB.getCategory(categoryTables.get(i).getNum());
             m.setIngrbycategory(ingredients);
-            adapter.addFragment(m, names.get(i));
+            adapter.addFragment(m, categoryTables.get(i).getName());
         }
 
         pager.setAdapter(adapter);
@@ -79,14 +68,19 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         newIngredient.add(new Ingredient("1.2", 1, "щука"));
         ingredientDB.copyOrUpdate(newIngredient);
     }
-//    private void createCategoryTables(){
-//        ArrayList<CategoryTable> categoryTables = new ArrayList<>();
-//        categoryTables.add(new CategoryTable(0, "Мясо"));
-//        ingredientDB.copyOrUpdateCategoryTable(categoryTables);
-//    }
 
     private void performIngredients(){
         ingredients = ingredientDB.getAll();
+    }
+
+    private void createCategoryTables(){
+        ArrayList<CategoryTable> categoryTables = new ArrayList<>();
+        categoryTables.add(new CategoryTable(0, "Мясо"));
+        categoryTables.add(new CategoryTable(1, "Рыба"));
+        ingredientDB.copyOrUpdateCategoryTable(categoryTables);
+    }
+    private void performCategoryTables(){
+        categoryTables = ingredientDB.getAllCategoryTables();
     }
 
     public void delete(){

@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.github.jurassicspb.cookbooksearchbyingredients.GridviewImageTextAdapter;
 import com.github.jurassicspb.cookbooksearchbyingredients.Ingredient;
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
+import com.github.jurassicspb.cookbooksearchbyingredients.SelectedIngredient;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,9 +27,7 @@ public class IngredientFragment extends Fragment{
     private List<Ingredient> ingredients;
     private int [] image = {R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle};
     private GridView gridview;
-    private ArrayList <String> selectedIngredients = new ArrayList<>();
     private GridviewImageTextAdapter gita;
-    private int count=0;
 
     @Nullable
     @Override
@@ -48,17 +48,17 @@ public class IngredientFragment extends Fragment{
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedIngredient = ingredients.get(position).getIngredient();
-                int ingredientPosition = selectedIngredients.indexOf(selectedIngredient);
+                String selected = ingredients.get(position).getIngredient();
+                int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(selected);
                 if (ingredientPosition==-1){
-                    selectedIngredients.add(selectedIngredient);
-                    count = count + 1;
+                        SelectedIngredient.addCount();
+                        SelectedIngredient.addSelectedIngredient(selected);
                 }
                 else {
-                    selectedIngredients.remove(ingredientPosition);
-                    count = count - 1;
+                    SelectedIngredient.removeCount();
+                    SelectedIngredient.removeSelectedIngredient(selected);
                 }
-                    Toast.makeText(getActivity(), "Ингредиенты: " + selectedIngredients + " " + count, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Ингредиенты: " + SelectedIngredient.getSelectedIngredient() + SelectedIngredient.showCount() + " ", Toast.LENGTH_SHORT).show();
                 }
         });
         return view;
