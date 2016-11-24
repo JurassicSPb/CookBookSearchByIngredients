@@ -1,5 +1,6 @@
 package com.github.jurassicspb.cookbooksearchbyingredients.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,13 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.Toast;
 import com.github.jurassicspb.cookbooksearchbyingredients.GridviewImageTextAdapter;
+import com.github.jurassicspb.cookbooksearchbyingredients.IngedientTablayoutActivity;
 import com.github.jurassicspb.cookbooksearchbyingredients.Ingredient;
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
 import com.github.jurassicspb.cookbooksearchbyingredients.SelectedIngredient;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -50,15 +51,21 @@ public class IngredientFragment extends Fragment{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selected = ingredients.get(position).getIngredient();
                 int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(selected);
-                if (ingredientPosition==-1){
-                        SelectedIngredient.addCount();
-                        SelectedIngredient.addSelectedIngredient(selected);
+                if (ingredientPosition==-1) {
+                    SelectedIngredient.addCount();
+                    SelectedIngredient.addSelectedIngredient(selected);
+                    (view.findViewById(R.id.imagepart)).setBackgroundColor(Color.CYAN);
                 }
                 else {
                     SelectedIngredient.removeCount();
                     SelectedIngredient.removeSelectedIngredient(selected);
+                    (view.findViewById(R.id.imagepart)).setBackgroundColor(Color.WHITE);
                 }
+                    ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle("Выбрано: " + SelectedIngredient.showCount());
                     Toast.makeText(getActivity(), "Ингредиенты: " + SelectedIngredient.getSelectedIngredient() + SelectedIngredient.showCount() + " ", Toast.LENGTH_SHORT).show();
+                if (SelectedIngredient.showCount()==0){
+                    ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle("Список ингредиентов");
+                    }
                 }
         });
         return view;
