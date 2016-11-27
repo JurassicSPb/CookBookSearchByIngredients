@@ -30,5 +30,6 @@ public class SelectedIngredient {
     public static int showCount(){
         return count;
     }
+    public static int resetCount() { return count=0;}
 
 }

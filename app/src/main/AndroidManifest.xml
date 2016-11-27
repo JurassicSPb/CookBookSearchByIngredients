@@ -9,6 +9,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".IngredientDetailActivity">
+
+        </activity>
+
         <activity android:name=".IngedientTablayoutActivity"
             android:configChanges="orientation|screenSize">
             <intent-filter>
