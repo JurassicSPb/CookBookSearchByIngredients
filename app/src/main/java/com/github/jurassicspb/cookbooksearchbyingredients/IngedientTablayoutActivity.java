@@ -43,10 +43,10 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         ingredientDB = new IngredientDatabase();
-//      createIngredients();
+//        createIngredients();
         performIngredients();
 
-//      createCategoryTables();
+//        createCategoryTables();
         performCategoryTables();
         for (int i=0; i<categoryTables.size(); i++){
             IngredientFragment m = new IngredientFragment();
