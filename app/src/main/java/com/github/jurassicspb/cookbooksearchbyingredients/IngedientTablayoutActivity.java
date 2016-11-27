@@ -67,7 +67,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent(this, IngredientDetailActivity.class);
-        intent.putExtra("selected_ingr", SelectedIngredient.getSelectedIngredient());
+//        intent.putExtra("selected_ingr", SelectedIngredient.getSelectedIngredient());
         startActivity(intent);
         return super.onOptionsItemSelected(item);
     }

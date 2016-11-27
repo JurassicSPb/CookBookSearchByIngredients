@@ -1,13 +1,11 @@
 package com.github.jurassicspb.cookbooksearchbyingredients;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 
 /**
  * Created by Мария on 27.11.2016.
@@ -15,11 +13,8 @@ import java.util.ArrayList;
 
 public class IngredientDetailAdapter extends RecyclerView.Adapter<IngredientDetailAdapter.ViewHolder> {
     private OnListItemClickListener clickListener;
-    private ArrayList<String> newSelectedIngredient;
 
-    public IngredientDetailAdapter(ArrayList<String> newSelectedIngredient) {
-        this.newSelectedIngredient=newSelectedIngredient;
-    }
+    public IngredientDetailAdapter() {}
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -29,13 +24,11 @@ public class IngredientDetailAdapter extends RecyclerView.Adapter<IngredientDeta
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Log.d(IngredientDetailAdapter.class.getSimpleName(), "buybuy" + newSelectedIngredient);
-        holder.detailIngredient.setText(newSelectedIngredient.get(position));
+        holder.detailIngredient.setText(SelectedIngredient.getSelectedIngredient().get(position));
     }
 
     @Override
     public int getItemCount() {
-        Log.d(IngredientDetailAdapter.class.getSimpleName(), "Hihihi" + SelectedIngredient.getSelectedIngredient().size());
         return SelectedIngredient.getSelectedIngredient().size();
     }
 
