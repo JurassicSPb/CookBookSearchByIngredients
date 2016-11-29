@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,7 +27,10 @@ import java.util.List;
 
 public class IngredientFragment extends Fragment{
     private List<Ingredient> ingredients;
-    private int [] image = {R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle};
+    private int [] image = {R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle,
+            R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle,
+            R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle,
+            R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle};
     private GridView gridview;
     private GridviewImageTextAdapter gita;
 
@@ -39,12 +43,15 @@ public class IngredientFragment extends Fragment{
         gita = new GridviewImageTextAdapter(getActivity(), getIngrbycategory(), image);
         gridview.setAdapter(gita);
 
-        gridview.setOnTouchListener((v, event) -> {
-            if(event.getAction() == MotionEvent.ACTION_MOVE){
-                return true;
-            }
-            return false;
-        });
+//        gridview.setOnTouchListener(new View.OnTouchListener(){
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                if(event.getAction() == MotionEvent.ACTION_MOVE){
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -52,9 +59,16 @@ public class IngredientFragment extends Fragment{
                 String selected = ingredients.get(position).getIngredient();
                 int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(selected);
                 if (ingredientPosition==-1) {
-                    SelectedIngredient.addCount();
-                    SelectedIngredient.addSelectedIngredient(selected);
-                    (view.findViewById(R.id.imagepart)).setBackgroundColor(Color.CYAN);
+                    if (SelectedIngredient.showCount()<10) {
+                        SelectedIngredient.addCount();
+                        SelectedIngredient.addSelectedIngredient(selected);
+                        (view.findViewById(R.id.imagepart)).setBackgroundColor(Color.CYAN);
+                    }
+                    else if (SelectedIngredient.showCount()>=10){
+                        Toast toast = Toast.makeText(getActivity(), "Выберите не более 10 ингредиентов",Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
                 }
                 else {
                     SelectedIngredient.removeCount();
@@ -62,7 +76,6 @@ public class IngredientFragment extends Fragment{
                     (view.findViewById(R.id.imagepart)).setBackgroundColor(Color.WHITE);
                 }
                     ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle("Выбрано: " + SelectedIngredient.showCount());
-                    Toast.makeText(getActivity(), "Ингредиенты: " + SelectedIngredient.getSelectedIngredient() + SelectedIngredient.showCount() + " ", Toast.LENGTH_SHORT).show();
                 if (SelectedIngredient.showCount()==0){
                     ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle("Список ингредиентов");
                     }
