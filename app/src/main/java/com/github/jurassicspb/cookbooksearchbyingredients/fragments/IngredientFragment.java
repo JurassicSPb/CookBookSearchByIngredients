@@ -43,16 +43,6 @@ public class IngredientFragment extends Fragment{
         gita = new GridviewImageTextAdapter(getActivity(), getIngrbycategory(), image);
         gridview.setAdapter(gita);
 
-//        gridview.setOnTouchListener(new View.OnTouchListener(){
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                if(event.getAction() == MotionEvent.ACTION_MOVE){
-//                    return true;
-//                }
-//                return false;
-//            }
-//        });
-
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -63,8 +53,9 @@ public class IngredientFragment extends Fragment{
                         SelectedIngredient.addCount();
                         SelectedIngredient.addSelectedIngredient(selected);
                         (view.findViewById(R.id.imagepart)).setBackgroundColor(Color.CYAN);
+
                     }
-                    else if (SelectedIngredient.showCount()>=10){
+                    else if (SelectedIngredient.showCount()==10){
                         Toast toast = Toast.makeText(getActivity(), "Выберите не более 10 ингредиентов",Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
@@ -87,6 +78,7 @@ public class IngredientFragment extends Fragment{
     public void setIngrbycategory(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
+
     public List<Ingredient> getIngrbycategory() {
         return ingredients;
     }
