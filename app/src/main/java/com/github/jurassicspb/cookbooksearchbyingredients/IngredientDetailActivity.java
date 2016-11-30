@@ -46,7 +46,7 @@ public class IngredientDetailActivity extends AppCompatActivity {
         inflater.inflate(R.menu.toolbar_buttons_second_activity, menu);
         return super.onPrepareOptionsMenu(menu);
     }
-    
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
