@@ -42,6 +42,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        pager.setOffscreenPageLimit(7);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         ingredientDB = new IngredientDatabase();
@@ -63,21 +64,29 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.next_button, menu);
+        getMenuInflater().inflate(R.menu.toolbar_buttons, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (SelectedIngredient.showCount()==0){
-            Toast toast = Toast.makeText(this, "Выберите хотя бы один ингредиент",Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.CENTER, 0, 0);
-            toast.show();
-        }
-        else {
-            Intent intent = new Intent(this, IngredientDetailActivity.class);
-//        intent.putExtra("selected_ingr", SelectedIngredient.getSelectedIngredient());
-            startActivity(intent);
+        switch (item.getItemId()) {
+            case R.id.item1:
+            if (SelectedIngredient.showCount() == 0) {
+                Toast toast = Toast.makeText(this, "Выберите хотя бы один ингредиент", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            } else {
+                Intent intent = new Intent(this, IngredientDetailActivity.class);
+                startActivity(intent);
+            }
+                break;
+            case R.id.item2:
+                Intent intent = new Intent(this,IngedientTablayoutActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }

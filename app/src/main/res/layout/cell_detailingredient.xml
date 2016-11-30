@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="wrap_content"
     android:padding="16dp">
 
     <TextView
@@ -12,6 +12,10 @@
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:textSize="30sp"
-        tools:text="Ingredient"
-        />
+        tools:text="Ingredient" />
+    <TextView
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/colorPrimaryDark"/>
 </LinearLayout>

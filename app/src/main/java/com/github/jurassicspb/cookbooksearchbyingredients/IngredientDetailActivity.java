@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -21,7 +22,6 @@ public class IngredientDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        ArrayList<String> newSelectedIngredient = (ArrayList<String>) getIntent().getSerializableExtra("selected_ingr");
         setContentView(R.layout.ingredientdetail_recyclerview);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -38,12 +38,15 @@ public class IngredientDetailActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.next_button, menu);
-        return true;
-    }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.clear();
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar_buttons_second_activity, menu);
+        return super.onPrepareOptionsMenu(menu);
+    }
+    
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();

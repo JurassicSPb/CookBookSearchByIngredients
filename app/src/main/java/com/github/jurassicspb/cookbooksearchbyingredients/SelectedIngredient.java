@@ -21,6 +21,7 @@ public class SelectedIngredient {
     public static void removeSelectedIngredient (String selected){
         selectedIngredient.remove(selected);
     }
+
     public static int addCount (){
         return count = count+1;
     }

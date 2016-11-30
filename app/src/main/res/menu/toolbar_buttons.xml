@@ -3,6 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <item
     android:id="@+id/item1"
+    android:orderInCategory="1"
+    android:title=""
     android:icon="@drawable/ic_next_button"
     app:showAsAction="always"/>
+    <item
+        android:id="@+id/item2"
+        android:orderInCategory="0"
+        android:title=""
+        android:icon="@drawable/ic_cancel"
+        app:showAsAction="always" />
 </menu>
