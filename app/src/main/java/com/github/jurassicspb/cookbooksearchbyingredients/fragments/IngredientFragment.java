@@ -12,6 +12,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,11 +34,10 @@ import java.util.List;
 
 public class IngredientFragment extends Fragment{
     private List<Ingredient> ingredients;
-    private int [] image = {R.drawable.beef, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle,
-            R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle,
-            R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle,
-            R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle};
+    private int [] image;
     private GridView gridview;
+    private EditText searchEditText;
+    private Button searchClearButton;
     private GridviewImageTextAdapter gita;
 
     @Nullable
@@ -45,9 +46,14 @@ public class IngredientFragment extends Fragment{
         View view = inflater.inflate(R.layout.gridview_list, container, false);
         gridview = (GridView) view.findViewById(R.id.gridview);
 
-        gita = new GridviewImageTextAdapter(getActivity(), getIngrbycategory(), image);
+        gita = new GridviewImageTextAdapter(getActivity(), getIngrbycategory(), getImage());
         gridview.setAdapter(gita);
 
+        searchEditText = (EditText) view.findViewById(R.id.search);
+        searchClearButton = (Button) view.findViewById(R.id.search_button);
+
+        searchClearButton.setOnClickListener(v -> searchEditText.setText(""));
+        
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -88,4 +94,12 @@ public class IngredientFragment extends Fragment{
     public List<Ingredient> getIngrbycategory() {
         return ingredients;
     }
+
+    public void setImage (int [] image){
+        this.image=image;
+    }
+    public int [] getImage(){
+        return image;
+    }
+
 }

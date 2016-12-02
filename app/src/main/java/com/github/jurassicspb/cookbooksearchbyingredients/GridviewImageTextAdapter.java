@@ -41,26 +41,39 @@ public class GridviewImageTextAdapter extends BaseAdapter{
         // TODO Auto-generated method stub
         return position;
     }
+    public class ViewHolder{
+        TextView textView;
+        ImageView imageView;
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
-        View grid;
+//        View grid;
+        ViewHolder holder;
         LayoutInflater inflater = (LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if (convertView == null) {
-            grid = new View(mContext);
-            grid = inflater.inflate(R.layout.cell_gridview, null);
-            TextView textView = (TextView) grid.findViewById(R.id.textpart);
-            ImageView imageView = (ImageView) grid.findViewById(R.id.imagepart);
-            textView.setText(ingredientAdapter.get(position).getIngredient());
-            imageView.setImageResource(image[position]);
-
+            holder = new ViewHolder();
+            convertView = inflater.inflate(R.layout.cell_gridview, null);
+            holder.textView = (TextView) convertView.findViewById(R.id.textpart);
+            holder.imageView = (ImageView) convertView.findViewById(R.id.imagepart);
+            convertView.setTag(holder);
+//            grid = new View(mContext);
+//            grid = inflater.inflate(R.layout.cell_gridview, null);
+//            TextView textView = (TextView) grid.findViewById(R.id.textpart);
+//            ImageView imageView = (ImageView) grid.findViewById(R.id.imagepart);
+//            textView.setText(ingredientAdapter.get(position).getIngredient());
+//            imageView.setImageResource(image[position]);
         } else {
-            grid = (View) convertView;
+            holder = (ViewHolder) convertView.getTag();
+//            grid = (View) convertView;
         }
-
-        return grid;
+            holder.textView.setText(ingredientAdapter.get(position).getIngredient());
+            holder.imageView.setImageResource(image[position]);
+            return convertView;
+//        return grid;
     }
 
 }

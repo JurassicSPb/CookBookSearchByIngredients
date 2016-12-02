@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,6 +30,15 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
     private IngredientDatabase ingredientDB;
     private List<Ingredient> ingredients;
     private List<CategoryTable> categoryTables;
+    private int [] imageMeat = {R.drawable.beef, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle,
+            R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle};
+    private int [] imageFish = {R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle};
+    private int [] imageBird = {R.drawable.chicken, R.drawable.ic_circle};
+    private int [] imageMilk = {R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle};
+    private int [] imageVegetable = {R.drawable.ic_circle};
+    private int [] imageFruit = {R.drawable.ic_circle, R.drawable.ic_circle};
+    private int [] imageCereal = {R.drawable.ic_circle, R.drawable.ic_circle};
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,7 +69,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         } catch (IllegalAccessException e) {
         }
 
-
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
         pager.setOffscreenPageLimit(7);
@@ -74,7 +83,29 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         for (int i=0; i<categoryTables.size(); i++){
             IngredientFragment m = new IngredientFragment();
             ingredients = ingredientDB.getCategory(categoryTables.get(i).getNum());
+            if (categoryTables.get(i).getNum()==0){
+                m.setImage(imageMeat);
+            }
+            else if (categoryTables.get(i).getNum()==1){
+                m.setImage(imageFish);
+            }
+            else if (categoryTables.get(i).getNum()==2){
+                m.setImage(imageBird);
+            }
+            else if (categoryTables.get(i).getNum()==3){
+                m.setImage(imageMilk);
+            }
+            else if (categoryTables.get(i).getNum()==4){
+                m.setImage(imageVegetable);
+            }
+            else if (categoryTables.get(i).getNum()==5){
+                m.setImage(imageFruit);
+            }
+            else if (categoryTables.get(i).getNum()==6){
+                m.setImage(imageCereal);
+            }
             m.setIngrbycategory(ingredients);
+
             adapter.addFragment(m, categoryTables.get(i).getName());
         }
 
