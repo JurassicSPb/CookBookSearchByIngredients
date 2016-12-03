@@ -17,11 +17,9 @@ import java.util.List;
 public class GridviewImageTextAdapter extends BaseAdapter{
     private Context mContext;
     private final List <Ingredient> ingredientAdapter;
-    private final int[] image;
 
-    public GridviewImageTextAdapter(Context c, List <Ingredient> ingredientAdapter, int[] image) {
+    public GridviewImageTextAdapter(Context c, List <Ingredient> ingredientAdapter) {
         mContext = c;
-        this.image = image;
         this.ingredientAdapter = ingredientAdapter;
     }
     @Override
@@ -70,9 +68,9 @@ public class GridviewImageTextAdapter extends BaseAdapter{
             holder = (ViewHolder) convertView.getTag();
 //            grid = (View) convertView;
         }
-            holder.textView.setText(ingredientAdapter.get(position).getIngredient());
-            holder.imageView.setImageResource(image[position]);
-            return convertView;
+        holder.textView.setText(ingredientAdapter.get(position).getIngredient());
+        holder.imageView.setImageResource(ingredientAdapter.get(position).getImage());
+        return convertView;
 //        return grid;
     }
 

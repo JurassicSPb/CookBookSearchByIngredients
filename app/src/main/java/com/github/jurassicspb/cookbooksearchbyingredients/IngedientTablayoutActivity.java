@@ -30,15 +30,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
     private IngredientDatabase ingredientDB;
     private List<Ingredient> ingredients;
     private List<CategoryTable> categoryTables;
-    private int [] imageMeat = {R.drawable.beef, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle,
-            R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle};
-    private int [] imageFish = {R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle};
-    private int [] imageBird = {R.drawable.chicken, R.drawable.ic_circle};
-    private int [] imageMilk = {R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle, R.drawable.ic_circle};
-    private int [] imageVegetable = {R.drawable.ic_circle};
-    private int [] imageFruit = {R.drawable.ic_circle, R.drawable.ic_circle};
-    private int [] imageCereal = {R.drawable.ic_circle, R.drawable.ic_circle};
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -83,27 +74,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         for (int i=0; i<categoryTables.size(); i++){
             IngredientFragment m = new IngredientFragment();
             ingredients = ingredientDB.getCategory(categoryTables.get(i).getNum());
-            if (categoryTables.get(i).getNum()==0){
-                m.setImage(imageMeat);
-            }
-            else if (categoryTables.get(i).getNum()==1){
-                m.setImage(imageFish);
-            }
-            else if (categoryTables.get(i).getNum()==2){
-                m.setImage(imageBird);
-            }
-            else if (categoryTables.get(i).getNum()==3){
-                m.setImage(imageMilk);
-            }
-            else if (categoryTables.get(i).getNum()==4){
-                m.setImage(imageVegetable);
-            }
-            else if (categoryTables.get(i).getNum()==5){
-                m.setImage(imageFruit);
-            }
-            else if (categoryTables.get(i).getNum()==6){
-                m.setImage(imageCereal);
-            }
             m.setIngrbycategory(ingredients);
 
             adapter.addFragment(m, categoryTables.get(i).getName());
@@ -123,14 +93,14 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.item1:
-            if (SelectedIngredient.showCount() == 0) {
-                Toast toast = Toast.makeText(this, "Выберите хотя бы один ингредиент", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                toast.show();
-            } else {
-                Intent intent = new Intent(this, IngredientDetailActivity.class);
-                startActivity(intent);
-            }
+                if (SelectedIngredient.showCount() == 0) {
+                    Toast toast = Toast.makeText(this, "Выберите хотя бы один ингредиент", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                } else {
+                    Intent intent = new Intent(this, IngredientDetailActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.item2:
                 Intent intent = new Intent(this,IngedientTablayoutActivity.class);
@@ -144,36 +114,35 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
 
     private void createIngredients(){
         ArrayList<Ingredient> newIngredient = new ArrayList<>();
-        newIngredient.add(new Ingredient("0.1", 0, "говядина"));
-        newIngredient.add(new Ingredient("0.2", 0, "свинина"));
-        newIngredient.add(new Ingredient("0.3", 0, "баранина"));
-        newIngredient.add(new Ingredient("0.4", 0, "телятина"));
-        newIngredient.add(new Ingredient("0.5", 0, "фарш из годядины"));
-        newIngredient.add(new Ingredient("0.6", 0, "фарш из свинины"));
-        newIngredient.add(new Ingredient("0.7", 0, "фарш из баранины"));
-        newIngredient.add(new Ingredient("0.8", 0, "фарш из телятины"));
+        newIngredient.add(new Ingredient("0.1", 0, "говядина", R.drawable.beef));
+        newIngredient.add(new Ingredient("0.2", 0, "свинина", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("0.3", 0, "баранина", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("0.4", 0, "телятина", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("0.5", 0, "фарш из годядины", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("0.6", 0, "фарш из свинины", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("0.7", 0, "фарш из баранины", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("0.8", 0, "фарш из телятины", R.drawable.ic_circle));
 
 
-        newIngredient.add(new Ingredient("1.1", 1, "сельдь"));
-        newIngredient.add(new Ingredient("1.2", 1, "карась"));
-        newIngredient.add(new Ingredient("1.2", 1, "окунь"));
+        newIngredient.add(new Ingredient("1.1", 1, "сельдь", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("1.2", 1, "карась", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("1.2", 1, "окунь", R.drawable.ic_circle));
 
-        newIngredient.add(new Ingredient("2.1", 2, "курица"));
-        newIngredient.add(new Ingredient("2.2", 2, "индейка"));
+        newIngredient.add(new Ingredient("2.1", 2, "курица", R.drawable.chicken));
+        newIngredient.add(new Ingredient("2.2", 2, "индейка", R.drawable.ic_circle));
 
-        newIngredient.add(new Ingredient("3.1", 3, "молоко"));
-        newIngredient.add(new Ingredient("3.2", 3, "сметана"));
-        newIngredient.add(new Ingredient("3.3", 3, "творог"));
-        newIngredient.add(new Ingredient("3.4", 3, "сливки"));
+        newIngredient.add(new Ingredient("3.1", 3, "молоко", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("3.2", 3, "сметана", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("3.3", 3, "творог", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("3.4", 3, "сливки", R.drawable.ic_circle));
 
-        newIngredient.add(new Ingredient("4.1", 4, "огурец"));
+        newIngredient.add(new Ingredient("4.1", 4, "огурец", R.drawable.ic_circle));
 
-        newIngredient.add(new Ingredient("5.1", 5, "яблоко"));
-        newIngredient.add(new Ingredient("5.2", 5, "груша"));
+        newIngredient.add(new Ingredient("5.1", 5, "яблоко", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("5.2", 5, "груша", R.drawable.ic_circle));
 
-        newIngredient.add(new Ingredient("6.1", 6, "рис"));
-        newIngredient.add(new Ingredient("6.1", 6, "греча"));
-
+        newIngredient.add(new Ingredient("6.1", 6, "рис", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("6.1", 6, "греча", R.drawable.ic_circle));
 
         ingredientDB.copyOrUpdate(newIngredient);
     }

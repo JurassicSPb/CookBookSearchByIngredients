@@ -12,13 +12,15 @@ public class Ingredient extends RealmObject{
     private String id;
     private int category;
     private String ingredient;
+    private int image;
 
     public Ingredient() {}
 
-    public Ingredient(String id, int category, String ingredient){
+    public Ingredient(String id, int category, String ingredient, int image){
         this.id=id;
         this.category=category;
         this.ingredient=ingredient;
+        this.image=image;
     }
 
     public String getId() {
@@ -33,6 +35,8 @@ public class Ingredient extends RealmObject{
         return ingredient;
     }
 
+    public int getImage() {return image;}
+
     public void setId(String id) {
         this.id = id;
     }
@@ -43,5 +47,9 @@ public class Ingredient extends RealmObject{
 
     public void setIngredient(String ingredient) {
         this.ingredient = ingredient;
+    }
+
+    public void setImage(int category) {
+        this.image = image;
     }
 }

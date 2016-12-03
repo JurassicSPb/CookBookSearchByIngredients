@@ -2,20 +2,16 @@ package com.github.jurassicspb.cookbooksearchbyingredients.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.github.jurassicspb.cookbooksearchbyingredients.GridviewImageTextAdapter;
@@ -23,8 +19,6 @@ import com.github.jurassicspb.cookbooksearchbyingredients.IngedientTablayoutActi
 import com.github.jurassicspb.cookbooksearchbyingredients.Ingredient;
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
 import com.github.jurassicspb.cookbooksearchbyingredients.SelectedIngredient;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -46,14 +40,14 @@ public class IngredientFragment extends Fragment{
         View view = inflater.inflate(R.layout.gridview_list, container, false);
         gridview = (GridView) view.findViewById(R.id.gridview);
 
-        gita = new GridviewImageTextAdapter(getActivity(), getIngrbycategory(), getImage());
+        gita = new GridviewImageTextAdapter(getActivity(), getIngrbycategory());
         gridview.setAdapter(gita);
 
         searchEditText = (EditText) view.findViewById(R.id.search);
         searchClearButton = (Button) view.findViewById(R.id.search_button);
 
         searchClearButton.setOnClickListener(v -> searchEditText.setText(""));
-        
+
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -78,11 +72,11 @@ public class IngredientFragment extends Fragment{
                     SelectedIngredient.removeSelectedIngredient(selected);
                     (view.findViewById(R.id.textpart)).setBackgroundResource(R.color.colorHeadline);
                 }
-                    ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle("Выбрано: " + SelectedIngredient.showCount());
+                ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle("Выбрано: " + SelectedIngredient.showCount());
                 if (SelectedIngredient.showCount()==0){
                     ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle("Список ингредиентов");
-                    }
                 }
+            }
         });
         return view;
     }
