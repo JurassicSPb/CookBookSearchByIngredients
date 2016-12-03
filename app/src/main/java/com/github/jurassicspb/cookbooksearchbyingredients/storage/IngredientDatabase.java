@@ -21,7 +21,6 @@ public class IngredientDatabase {
                 .build();
 //               Realm.deleteRealm(configuration);
         realm = Realm.getInstance(configuration);
-
     }
     public void copyOrUpdate(List <Ingredient> ingredient) {
         realm.beginTransaction();

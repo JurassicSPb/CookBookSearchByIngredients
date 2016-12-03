@@ -8,7 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +16,7 @@ import android.widget.Toast;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.fragments.IngredientFragment;
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
+import com.github.jurassicspb.cookbooksearchbyingredients.storage.MyPreferences;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -30,10 +30,14 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
     private IngredientDatabase ingredientDB;
     private List<Ingredient> ingredients;
     private List<CategoryTable> categoryTables;
+    MyPreferences preferences;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        preferences = new MyPreferences(this);
+//        preferences.clearPrefs();
+
         setContentView(R.layout.tablayout_with_viewpager);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -66,11 +70,16 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         ingredientDB = new IngredientDatabase();
-//        createIngredients();
-        performIngredients();
 
-//        createCategoryTables();
+        if (preferences.getFlag()) {
+            createIngredients();
+            createCategoryTables();
+            preferences.setFlag(false);
+        }
         performCategoryTables();
+        performIngredients();
+        //        delete();
+
         for (int i=0; i<categoryTables.size(); i++){
             IngredientFragment m = new IngredientFragment();
             ingredients = ingredientDB.getCategory(categoryTables.get(i).getNum());
@@ -122,7 +131,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         newIngredient.add(new Ingredient("0.6", 0, "фарш из свинины", R.drawable.ic_circle));
         newIngredient.add(new Ingredient("0.7", 0, "фарш из баранины", R.drawable.ic_circle));
         newIngredient.add(new Ingredient("0.8", 0, "фарш из телятины", R.drawable.ic_circle));
-
 
         newIngredient.add(new Ingredient("1.1", 1, "сельдь", R.drawable.ic_circle));
         newIngredient.add(new Ingredient("1.2", 1, "карась", R.drawable.ic_circle));

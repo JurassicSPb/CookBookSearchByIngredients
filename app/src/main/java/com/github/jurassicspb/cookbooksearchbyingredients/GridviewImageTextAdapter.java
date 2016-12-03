@@ -1,6 +1,7 @@
 package com.github.jurassicspb.cookbooksearchbyingredients;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,6 +71,7 @@ public class GridviewImageTextAdapter extends BaseAdapter{
         }
         holder.textView.setText(ingredientAdapter.get(position).getIngredient());
         holder.imageView.setImageResource(ingredientAdapter.get(position).getImage());
+        Log.d(GridviewImageTextAdapter.class.getSimpleName(), "here" + ingredientAdapter.get(position).getImage());
         return convertView;
 //        return grid;
     }

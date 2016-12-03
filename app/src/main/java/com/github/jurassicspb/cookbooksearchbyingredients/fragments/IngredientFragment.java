@@ -28,7 +28,6 @@ import java.util.List;
 
 public class IngredientFragment extends Fragment{
     private List<Ingredient> ingredients;
-    private int [] image;
     private GridView gridview;
     private EditText searchEditText;
     private Button searchClearButton;
@@ -87,13 +86,6 @@ public class IngredientFragment extends Fragment{
 
     public List<Ingredient> getIngrbycategory() {
         return ingredients;
-    }
-
-    public void setImage (int [] image){
-        this.image=image;
-    }
-    public int [] getImage(){
-        return image;
     }
 
 }
