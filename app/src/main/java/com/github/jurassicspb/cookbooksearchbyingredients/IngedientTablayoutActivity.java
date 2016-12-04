@@ -83,7 +83,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         for (int i=0; i<categoryTables.size(); i++){
             IngredientFragment m = new IngredientFragment();
             ingredients = ingredientDB.getCategory(categoryTables.get(i).getNum());
-            m.setIngrbycategory(ingredients);
+            m.setIngrbycategory(ingredientDB.copyFromRealm(ingredients));
 
             adapter.addFragment(m, categoryTables.get(i).getName());
         }

@@ -1,5 +1,7 @@
 package com.github.jurassicspb.cookbooksearchbyingredients.storage;
 
+import android.text.Layout;
+
 import com.github.jurassicspb.cookbooksearchbyingredients.CategoryTable;
 import com.github.jurassicspb.cookbooksearchbyingredients.Ingredient;
 import java.util.List;
@@ -26,6 +28,12 @@ public class IngredientDatabase {
         realm.beginTransaction();
         realm.copyToRealmOrUpdate(ingredient);
         realm.commitTransaction();
+    }
+    public List<Ingredient> copyFromRealm(List <Ingredient> ingredient){
+        realm.beginTransaction();
+        List <Ingredient> newingr = realm.copyFromRealm(ingredient);
+        realm.commitTransaction();
+        return newingr;
     }
     public void copyOrUpdateCategoryTable(List <CategoryTable> categoryTable) {
         realm.beginTransaction();

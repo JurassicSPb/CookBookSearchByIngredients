@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,13 +47,29 @@ public class IngredientFragment extends Fragment{
         searchEditText = (EditText) view.findViewById(R.id.search);
         searchClearButton = (Button) view.findViewById(R.id.search_button);
 
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                gita.getFilter().filter(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         searchClearButton.setOnClickListener(v -> searchEditText.setText(""));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selected = ingredients.get(position).getIngredient();
-
                 int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(selected);
                 if (ingredientPosition==-1) {
                     if (SelectedIngredient.showCount()<10) {
