@@ -3,6 +3,8 @@ package com.github.jurassicspb.cookbooksearchbyingredients.storage;
 import com.github.jurassicspb.cookbooksearchbyingredients.CategoryTable;
 import com.github.jurassicspb.cookbooksearchbyingredients.Ingredient;
 import com.github.jurassicspb.cookbooksearchbyingredients.Recipe;
+import com.github.jurassicspb.cookbooksearchbyingredients.SelectedIngredient;
+
 import java.util.List;
 
 import io.realm.Case;
@@ -62,7 +64,8 @@ public class IngredientDatabase {
     public List<Ingredient>getCategory(int i){
         return realm.where(Ingredient.class).equalTo("category", i).findAllSorted("id", Sort.ASCENDING);
     }
-    public List <Recipe>getRecipe(String selected){
+    public List <Recipe>getRecipe(int i){
+        String selected = SelectedIngredient.getSelectedIngredient().get(i);
         return realm.where(Recipe.class).contains("ingredient", selected, Case.INSENSITIVE).findAll();
     }
     public List<Recipe> getAllRecipes() {

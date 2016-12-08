@@ -36,7 +36,7 @@ public class RecipeListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         recipeDB = new IngredientDatabase();
         preferences = new MyPreferences(this);
-//        preferences.clearPrefs();
+        preferences.clearPrefs();
 
         setContentView(R.layout.recipelist_recyclerview);
 
@@ -45,8 +45,8 @@ public class RecipeListActivity extends AppCompatActivity {
             preferences.setFlagRecipe(false);
             Log.d(RecipeListActivity.class.getSimpleName(), "hello");
         }
-//        performRecipes();
-        performAll();
+        performRecipes();
+//        performAll();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
@@ -62,12 +62,13 @@ public class RecipeListActivity extends AppCompatActivity {
 
     }
     private void performRecipes(){
-//        for (int i=0; i<SelectedIngredient.getSelectedIngredient().size();i++) {
+        for (int i=0; i<SelectedIngredient.getSelectedIngredient().size();i++) {
 //            String sel = SelectedIngredient.getSelectedIngredient().get(i);
 //            Log.d(RecipeListActivity.class.getSimpleName(), "selsel" + sel);
-            recipes = recipeDB.getRecipe("говядина");
-//            Log.d(RecipeListActivity.class.getSimpleName(), "buybuy" + recipes);
-//        }
+
+            recipes = recipeDB.getRecipe(i);
+            Log.d(RecipeListActivity.class.getSimpleName(), "buybuy" + recipes);
+        }
     }
     private void performAll(){
         recipes = recipeDB.getAllRecipes();
@@ -88,7 +89,7 @@ public class RecipeListActivity extends AppCompatActivity {
                 "Чеснок — 2 зубчика\n" +
                 "Специи: соль, перец черный молотый, лавровый лист, зелень (укроп, петрушка, базилик).\n",
                 "1. Первым делом нужно сварить бульон. Для этого говядину на кости промыть под проточной водой, положить ее в кастрюлю и залить холодной водой. Можно добавить 1 чайную ложку соли. Довести до кипения и убавить огонь до минимума. Борщ нужно готовить на медленном огне, тогда овощи в нем не разварятся и не превратятся в кашу. Говядина варится около 1 часа. Готовность мяса можно проверить по тому, насколько легко оно отделяется от кости. \n"
-                , "https://drive.google.com/open?id=0B0e6uiJx0316Qy0xNE45dlByX1k"));
+                , "https://4.downloader.disk.yandex.ru/disk/fbd70e6bbfa574f00b0b096998e7d17339ccd5237b4084ed3e0e128b464c9b38/5849fb7d/TG2GetQi-fDXK7Q4RQ8h5gjTPfFuOneZpAoeS48IjKpyTdDXe-ka7ARqIC_3hbu13qDM1iQIsREuiIY0zniFrg%3D%3D?uid=0&filename=103676899_borsch.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&fsize=66577&hid=765620d0c340727a10828372273c14a5&media_type=image&tknv=v2&etag=c8b2375a27de5d6b07b8126e1d114647"));
         recipeDB.copyOrUpdateRecipe(newRecipe);
     }
     @Override
