@@ -1,5 +1,6 @@
 package com.github.jurassicspb.cookbooksearchbyingredients;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -49,7 +50,8 @@ public class IngredientDetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, RecipeListActivity.class);
+        startActivity(intent);
         return super.onOptionsItemSelected(item);
     }
 }

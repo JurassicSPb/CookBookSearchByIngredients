@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -84,7 +85,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
             IngredientFragment m = new IngredientFragment();
             ingredients = ingredientDB.getCategory(categoryTables.get(i).getNum());
             m.setIngrbycategory(ingredientDB.copyFromRealm(ingredients));
-
             adapter.addFragment(m, categoryTables.get(i).getName());
         }
 
@@ -127,7 +127,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         newIngredient.add(new Ingredient("0.2", 0, "свинина", R.drawable.ic_circle));
         newIngredient.add(new Ingredient("0.3", 0, "баранина", R.drawable.ic_circle));
         newIngredient.add(new Ingredient("0.4", 0, "телятина", R.drawable.ic_circle));
-        newIngredient.add(new Ingredient("0.5", 0, "фарш из годядины", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("0.5", 0, "фарш из говядины", R.drawable.ic_circle));
         newIngredient.add(new Ingredient("0.6", 0, "фарш из свинины", R.drawable.ic_circle));
         newIngredient.add(new Ingredient("0.7", 0, "фарш из баранины", R.drawable.ic_circle));
         newIngredient.add(new Ingredient("0.8", 0, "фарш из телятины", R.drawable.ic_circle));

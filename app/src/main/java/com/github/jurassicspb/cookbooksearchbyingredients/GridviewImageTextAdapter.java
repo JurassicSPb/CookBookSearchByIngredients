@@ -1,6 +1,7 @@
 package com.github.jurassicspb.cookbooksearchbyingredients;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,7 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
     }
 
     @Override
-    public Object getItem(int position) {
+    public Ingredient getItem(int position) {
         // TODO Auto-generated method stub
         return ingredientAdapter.get(position);
     }
