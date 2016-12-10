@@ -5,12 +5,14 @@ import com.github.jurassicspb.cookbooksearchbyingredients.Ingredient;
 import com.github.jurassicspb.cookbooksearchbyingredients.Recipe;
 import com.github.jurassicspb.cookbooksearchbyingredients.SelectedIngredient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Case;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmConfiguration;
+import io.realm.RealmQuery;
 import io.realm.Sort;
 
 /**
@@ -64,9 +66,13 @@ public class IngredientDatabase {
     public List<Ingredient>getCategory(int i){
         return realm.where(Ingredient.class).equalTo("category", i).findAllSorted("id", Sort.ASCENDING);
     }
-    public List <Recipe>getRecipe(int i){
-        String selected = SelectedIngredient.getSelectedIngredient().get(i);
-        return realm.where(Recipe.class).contains("ingredient", selected, Case.INSENSITIVE).findAll();
+    public List <Recipe> getRecipe(ArrayList<String> selected){
+        RealmQuery <Recipe> query = realm.where(Recipe.class);
+        query.contains("ingredient", selected.get(0), Case.INSENSITIVE);
+        for (int i=1; i<selected.size(); i++){
+            query.or().contains("ingredient", selected.get(i), Case.INSENSITIVE);
+        }
+        return query.findAll();
     }
     public List<Recipe> getAllRecipes() {
         return realm.where(Recipe.class).findAll();

@@ -62,14 +62,9 @@ public class RecipeListActivity extends AppCompatActivity {
 
     }
     private void performRecipes(){
-        for (int i=0; i<SelectedIngredient.getSelectedIngredient().size();i++) {
-//            String sel = SelectedIngredient.getSelectedIngredient().get(i);
-//            Log.d(RecipeListActivity.class.getSimpleName(), "selsel" + sel);
-
-            recipes = recipeDB.getRecipe(i);
+            recipes = recipeDB.getRecipe(SelectedIngredient.getSelectedIngredient());
             Log.d(RecipeListActivity.class.getSimpleName(), "buybuy" + recipes);
         }
-    }
     private void performAll(){
         recipes = recipeDB.getAllRecipes();
     }
