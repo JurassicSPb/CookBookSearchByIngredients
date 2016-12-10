@@ -74,6 +74,12 @@ public class IngredientDatabase {
         }
         return query.findAll();
     }
+    public List<Recipe> copyFromRealmRecipe(List <Recipe> recipes) {
+        realm.beginTransaction();
+        List<Recipe> newRecipe = realm.copyFromRealm(recipes);
+        realm.commitTransaction();
+        return newRecipe;
+    }
     public List<Recipe> getAllRecipes() {
         return realm.where(Recipe.class).findAll();
     }

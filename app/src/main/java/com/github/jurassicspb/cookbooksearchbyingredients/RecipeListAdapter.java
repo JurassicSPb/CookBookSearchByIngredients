@@ -36,7 +36,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         String url = recipes.get(position).getImage();
-        Log.d(RecipeListAdapter.class.getSimpleName(), "aaaaaaa" + url);
+        Log.d(RecipeListAdapter.class.getSimpleName(), "aaaaaaa" + position);
         Context context = holder.photoSmall.getContext();
         Picasso.with(context)
                 .load(url)

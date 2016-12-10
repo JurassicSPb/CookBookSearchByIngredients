@@ -13,6 +13,7 @@ public class Recipe extends RealmObject{
     private String ingredient;
     private String description;
     private String image;
+    private String count;
 
     public Recipe() {}
 
@@ -55,4 +56,11 @@ public class Recipe extends RealmObject{
         this.image = image;
     }
 
+    public String getCount() {
+        return count;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
+    }
 }

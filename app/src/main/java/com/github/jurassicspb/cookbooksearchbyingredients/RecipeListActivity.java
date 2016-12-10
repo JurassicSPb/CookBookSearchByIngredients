@@ -13,6 +13,8 @@ import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientData
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.MyPreferences;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -45,8 +47,6 @@ public class RecipeListActivity extends AppCompatActivity {
             preferences.setFlagRecipe(false);
             Log.d(RecipeListActivity.class.getSimpleName(), "hello");
         }
-        performRecipes();
-//        performAll();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
@@ -57,34 +57,76 @@ public class RecipeListActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new RecipeListAdapter(recipes, clickListener);
+        Log.d(RecipeListActivity.class.getSimpleName(), "kakkak " + performRecipes());
+        adapter = new RecipeListAdapter(performRecipes(), clickListener);
         recyclerView.setAdapter(adapter);
 
     }
-    private void performRecipes(){
-            recipes = recipeDB.getRecipe(SelectedIngredient.getSelectedIngredient());
-            Log.d(RecipeListActivity.class.getSimpleName(), "buybuy" + recipes);
+    private List<Recipe> performRecipes() {
+        recipes = recipeDB.getRecipe(SelectedIngredient.getSelectedIngredient());
+        List<Recipe> newRecipes = recipeDB.copyFromRealmRecipe(recipes);
+        int count;
+        for (int i = 0; i < newRecipes.size(); i++) {
+            count = 0;
+            for (int k = 0; k < SelectedIngredient.getSelectedIngredient().size(); k++) {
+                if (newRecipes.get(i).getIngredient().contains(SelectedIngredient.getSelectedIngredient().get(k))) {
+                    count++;
+                }
+            }
+            newRecipes.get(i).setCount(String.valueOf(count));
         }
-    private void performAll(){
-        recipes = recipeDB.getAllRecipes();
+        Comparator<Recipe> compare = (name1, name2) -> name2.getCount().compareTo(name1.getCount());
+        Collections.sort(newRecipes, compare);
+        Log.d(RecipeListActivity.class.getSimpleName(), "pukpuk " + newRecipes);
+        return newRecipes;
     }
-
     private void createRecipes(){
         ArrayList<Recipe> newRecipe = new ArrayList<>();
         newRecipe.add(new Recipe("Борщ классический"
-                ,"На 3 литра воды:\n" +
+                ,
+                "На 3 литра воды:\n" +
+                "Свинина\n" +
                 "Говядина на кости — 700-800 грамм\n" +
                 "Капуста свежая — 300 грамм\n" +
                 "Картофель — 2-3 средних картофелины (200-300 грамм)\n" +
                 "Свекла — 2 маленьких или 1 средняя (100-150 грамм)\n" +
                 "Морковь — 1  штука среднего размера (75-100 грамм)\n" +
                 "Лук репчатый — 1 луковица среднего размера (75-100 грамм)\n" +
-                "Томатная паста  — 1 ст. ложка, или 1 небольшой помидор\n" +
                 "Масло растительное для обжарки\n" +
                 "Чеснок — 2 зубчика\n" +
-                "Специи: соль, перец черный молотый, лавровый лист, зелень (укроп, петрушка, базилик).\n",
+                "Специи: соль, перец черный молотый, лавровый лист, зелень (укроп, петрушка, базилик).\n"
+                ,
                 "1. Первым делом нужно сварить бульон. Для этого говядину на кости промыть под проточной водой, положить ее в кастрюлю и залить холодной водой. Можно добавить 1 чайную ложку соли. Довести до кипения и убавить огонь до минимума. Борщ нужно готовить на медленном огне, тогда овощи в нем не разварятся и не превратятся в кашу. Говядина варится около 1 часа. Готовность мяса можно проверить по тому, насколько легко оно отделяется от кости. \n"
-                , "https://4.downloader.disk.yandex.ru/disk/fbd70e6bbfa574f00b0b096998e7d17339ccd5237b4084ed3e0e128b464c9b38/5849fb7d/TG2GetQi-fDXK7Q4RQ8h5gjTPfFuOneZpAoeS48IjKpyTdDXe-ka7ARqIC_3hbu13qDM1iQIsREuiIY0zniFrg%3D%3D?uid=0&filename=103676899_borsch.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&fsize=66577&hid=765620d0c340727a10828372273c14a5&media_type=image&tknv=v2&etag=c8b2375a27de5d6b07b8126e1d114647"));
+                ,
+                "http://sovetexpert.com/wp-content/uploads/2015/05/103676899_large_borsch-302x250.jpg"));
+        newRecipe.add(new Recipe("Cельдь под шубой"
+                ,
+                "Говядина\n" +
+                "Свинина\n" +
+                "Огурец\n" +
+                "Сельдь, 400 г (филе соленое)\n" +
+                "Майонез, 200 мл\n" +
+                "Томатная паста  — 1 ст. ложка, или 1 небольшой помидор\n" +
+                "Картофель, 3 клубня вареных\n" +
+                "Морковь, 2 вареных\n" +
+                "Свекла, 1 вареная/запеченная крупная\n" +
+                "Луковица, 1 шт."
+                ,
+                "Филе сельди тщательно осмотреть на предмет наличия косточек, удалить таковые, мелко нарезать филе кубиком.\n" +
+                "Отваренные в мундирах овощи (30мин, свекла, возможно – дольше) остудить, затем очистить."
+                ,
+                "http://foodandhealth.ru/wp-content/uploads/2016/07/seld-pod-shuboy-300x300.jpg"
+                ));
+        newRecipe.add(new Recipe("Голубцы"
+                ,
+                "Говядина\n" +
+                "Свинина\n" +
+                "Огурец\n"
+                ,
+                "blah-blah"
+                ,
+                "http://www.1001eda.com/wp-content/uploads/2013/10/410_11_10_2013_4072.jpg"
+                ));
         recipeDB.copyOrUpdateRecipe(newRecipe);
     }
     @Override
