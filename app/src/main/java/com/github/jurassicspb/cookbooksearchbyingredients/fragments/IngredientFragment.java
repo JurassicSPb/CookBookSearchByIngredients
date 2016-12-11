@@ -74,10 +74,11 @@ public class IngredientFragment extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView tv = (TextView) view.findViewById(R.id.textpart);
+                String selectedToString = getString(R.string.selected);
 //                String sel = tv.getText().toString();
 //                String sel = ingredients.get(position).getIngredient();
                 Ingredient item = gita.getItem(position);
-                String selected = item.getIngredient();
+                String sel = item.getIngredient();
 //                for (int i=0; i<10; i++){
 //                    if (position==i){
 //                        parent.getChildAt(i).setBackgroundColor(Color.CYAN);
@@ -85,29 +86,28 @@ public class IngredientFragment extends Fragment{
 //                }
 
 //                Log.d(IngredientFragment.class.getSimpleName(), "here" + selected);
-                int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(selected);
+                int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
                 if (ingredientPosition==-1) {
                     if (SelectedIngredient.showCount()<10) {
                         SelectedIngredient.addCount();
-                        SelectedIngredient.addSelectedIngredient(selected);
-//                        TextView tv = (TextView) view.findViewById(R.id.textpart);
+                        SelectedIngredient.addSelectedIngredient(sel);
                         tv.setBackgroundColor(Color.GREEN);
 
                     }
                     else if (SelectedIngredient.showCount()==10){
-                        Toast toast = Toast.makeText(getActivity(), "Выберите не более 10 ингредиентов",Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getActivity(), R.string.no_more_than_10,Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                     }
                 }
                 else {
                     SelectedIngredient.removeCount();
-                    SelectedIngredient.removeSelectedIngredient(selected);
+                    SelectedIngredient.removeSelectedIngredient(sel);
                     (view.findViewById(R.id.textpart)).setBackgroundResource(R.color.colorHeadline);
                 }
-                ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle("Выбрано: " + SelectedIngredient.showCount());
+                ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(selectedToString+": " + SelectedIngredient.showCount());
                 if (SelectedIngredient.showCount()==0){
-                    ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle("Список ингредиентов");
+                    ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
                 }
             }
         });

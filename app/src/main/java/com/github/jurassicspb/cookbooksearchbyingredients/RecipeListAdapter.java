@@ -35,9 +35,13 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+
+        Context cont = holder.recipeName.getContext();
+        String matchingIngr = cont.getResources().getString(R.string.count_of_matching_ingredients);
+
         String url = recipes.get(position).getImage();
-        Log.d(RecipeListAdapter.class.getSimpleName(), "aaaaaaa" + position);
         Context context = holder.photoSmall.getContext();
+
         Picasso.with(context)
                 .load(url)
                 .fit()
@@ -45,7 +49,8 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
                 .placeholder(R.drawable.ic_placeholder)
                 .error(R.drawable.ic_error)
                 .into(holder.photoSmall);
-        holder.recipeName.setText(recipes.get(position).getName());
+        holder.recipeName.setText(recipes.get(position).getName() + "\n" + matchingIngr
+                + recipes.get(position).getCount());
     }
 
     @Override

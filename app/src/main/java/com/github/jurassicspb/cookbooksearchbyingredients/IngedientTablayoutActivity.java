@@ -8,7 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +21,7 @@ import com.github.jurassicspb.cookbooksearchbyingredients.storage.MyPreferences;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Мария on 12.11.2016.
@@ -48,7 +48,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
-        getSupportActionBar().setTitle("Список ингредиентов");
+        getSupportActionBar().setTitle(R.string.ingredient_list);
         try {
             Field f = toolbar.getClass().getDeclaredField("mTitleTextView");
             f.setAccessible(true);
@@ -60,7 +60,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
             toolbarTextView.setSingleLine(true);
             toolbarTextView.setSelected(true);
             toolbarTextView.setMarqueeRepeatLimit(2);
-            toolbarTextView.setText("Список ингредиентов");
+            toolbarTextView.setText(R.string.ingredient_list);
         } catch (NoSuchFieldException e) {
         } catch (IllegalAccessException e) {
         }
@@ -73,13 +73,19 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         ingredientDB = new IngredientDatabase();
 
         if (preferences.getFlag()) {
-            createIngredients();
-            createCategoryTables();
+            if (Locale.getDefault().getLanguage().equals("ru")) {
+                createIngredientsRU();
+                createCategoryTablesRU();
+            }
+            else {
+                createIngredientsENG();
+                createCategoryTablesENG();
+            }
             preferences.setFlag(false);
         }
+//        delete();
         performCategoryTables();
         performIngredients();
-        //        delete();
 
         for (int i=0; i<categoryTables.size(); i++){
             IngredientFragment m = new IngredientFragment();
@@ -103,7 +109,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.item1:
                 if (SelectedIngredient.showCount() == 0) {
-                    Toast toast = Toast.makeText(this, "Выберите хотя бы один ингредиент", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(this, R.string.select_one, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 } else {
@@ -121,7 +127,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void createIngredients(){
+    private void createIngredientsRU(){
         ArrayList<Ingredient> newIngredient = new ArrayList<>();
         newIngredient.add(new Ingredient("0.1", 0, "Говядина", R.drawable.beef));
         newIngredient.add(new Ingredient("0.2", 0, "Свинина", R.drawable.ic_circle));
@@ -155,12 +161,18 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
 
         ingredientDB.copyOrUpdate(newIngredient);
     }
+    private void createIngredientsENG(){
+        ArrayList<Ingredient> newIngredient = new ArrayList<>();
+        newIngredient.add(new Ingredient("0.1", 0, "Beef", R.drawable.beef));
+        newIngredient.add(new Ingredient("0.2", 0, "Pork", R.drawable.ic_circle));
+        ingredientDB.copyOrUpdate(newIngredient);
+    }
 
     private void performIngredients(){
         ingredients = ingredientDB.getAll();
     }
 
-    private void createCategoryTables(){
+    private void createCategoryTablesRU(){
         ArrayList<CategoryTable> categoryTables = new ArrayList<>();
         categoryTables.add(new CategoryTable(0, "Мясо"));
         categoryTables.add(new CategoryTable(1, "Рыба"));
@@ -171,6 +183,18 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         categoryTables.add(new CategoryTable(6, "Крупы"));
         ingredientDB.copyOrUpdateCategoryTable(categoryTables);
     }
+    private void createCategoryTablesENG(){
+        ArrayList<CategoryTable> categoryTables = new ArrayList<>();
+        categoryTables.add(new CategoryTable(0, "Meat"));
+        categoryTables.add(new CategoryTable(1, "Fish"));
+        categoryTables.add(new CategoryTable(2, "Bird"));
+        categoryTables.add(new CategoryTable(3, "Milk"));
+        categoryTables.add(new CategoryTable(4, "Vegetables"));
+        categoryTables.add(new CategoryTable(5, "Fruits"));
+        categoryTables.add(new CategoryTable(6, "Cereal"));
+        ingredientDB.copyOrUpdateCategoryTable(categoryTables);
+    }
+
     private void performCategoryTables(){
         categoryTables = ingredientDB.getAllCategoryTables();
     }

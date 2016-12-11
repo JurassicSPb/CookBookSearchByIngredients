@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Мария on 07.12.2016.
@@ -38,12 +39,17 @@ public class RecipeListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         recipeDB = new IngredientDatabase();
         preferences = new MyPreferences(this);
-        preferences.clearPrefs();
+//        preferences.clearPrefs();
 
         setContentView(R.layout.recipelist_recyclerview);
 
         if (preferences.getFlagRecipes()) {
-            createRecipes();
+            if (Locale.getDefault().getLanguage().equals("ru")) {
+                createRecipesRU();
+            }
+            else {
+                createRecipesENG();
+            }
             preferences.setFlagRecipe(false);
             Log.d(RecipeListActivity.class.getSimpleName(), "hello");
         }
@@ -54,10 +60,10 @@ public class RecipeListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
+        getSupportActionBar().setTitle("");
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        Log.d(RecipeListActivity.class.getSimpleName(), "kakkak " + performRecipes());
         adapter = new RecipeListAdapter(performRecipes(), clickListener);
         recyclerView.setAdapter(adapter);
 
@@ -77,10 +83,9 @@ public class RecipeListActivity extends AppCompatActivity {
         }
         Comparator<Recipe> compare = (name1, name2) -> name2.getCount().compareTo(name1.getCount());
         Collections.sort(newRecipes, compare);
-        Log.d(RecipeListActivity.class.getSimpleName(), "pukpuk " + newRecipes);
         return newRecipes;
     }
-    private void createRecipes(){
+    private void createRecipesRU(){
         ArrayList<Recipe> newRecipe = new ArrayList<>();
         newRecipe.add(new Recipe("Борщ классический"
                 ,
@@ -127,6 +132,19 @@ public class RecipeListActivity extends AppCompatActivity {
                 ,
                 "http://www.1001eda.com/wp-content/uploads/2013/10/410_11_10_2013_4072.jpg"
                 ));
+        recipeDB.copyOrUpdateRecipe(newRecipe);
+    }
+    private void createRecipesENG(){
+        ArrayList<Recipe> newRecipe = new ArrayList<>();
+        newRecipe.add(new Recipe("Borscht"
+                ,
+                "Beef\n"+
+                "Pork\n"
+                ,
+                "hey-hey"
+                ,
+                "http://sovetexpert.com/wp-content/uploads/2015/05/103676899_large_borsch-302x250.jpg"
+        ));
         recipeDB.copyOrUpdateRecipe(newRecipe);
     }
     @Override
