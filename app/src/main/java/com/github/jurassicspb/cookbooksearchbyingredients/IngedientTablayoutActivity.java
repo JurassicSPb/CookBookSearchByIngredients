@@ -37,7 +37,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         preferences = new MyPreferences(this);
-//        preferences.clearPrefs();
+        preferences.clearPrefs();
 
         setContentView(R.layout.tablayout_with_viewpager);
 

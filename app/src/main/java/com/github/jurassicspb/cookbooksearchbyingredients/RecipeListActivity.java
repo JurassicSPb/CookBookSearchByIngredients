@@ -39,7 +39,7 @@ public class RecipeListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         recipeDB = new IngredientDatabase();
         preferences = new MyPreferences(this);
-//        preferences.clearPrefs();
+        preferences.clearPrefs();
 
         setContentView(R.layout.recipelist_recyclerview);
 
@@ -103,6 +103,11 @@ public class RecipeListActivity extends AppCompatActivity {
                 ,
                 "1. Первым делом нужно сварить бульон. Для этого говядину на кости промыть под проточной водой, положить ее в кастрюлю и залить холодной водой. Можно добавить 1 чайную ложку соли. Довести до кипения и убавить огонь до минимума. Борщ нужно готовить на медленном огне, тогда овощи в нем не разварятся и не превратятся в кашу. Говядина варится около 1 часа. Готовность мяса можно проверить по тому, насколько легко оно отделяется от кости. \n"
                 ,
+                "белки 100\n" +
+                "жиры 50\n"+
+                "углеводы 20\n"+
+                "Калорийность 200ккал"
+                ,
                 "http://sovetexpert.com/wp-content/uploads/2015/05/103676899_large_borsch-302x250.jpg"));
         newRecipe.add(new Recipe("Cельдь под шубой"
                 ,
@@ -120,6 +125,8 @@ public class RecipeListActivity extends AppCompatActivity {
                 "Филе сельди тщательно осмотреть на предмет наличия косточек, удалить таковые, мелко нарезать филе кубиком.\n" +
                 "Отваренные в мундирах овощи (30мин, свекла, возможно – дольше) остудить, затем очистить."
                 ,
+                "120"
+                ,
                 "http://foodandhealth.ru/wp-content/uploads/2016/07/seld-pod-shuboy-300x300.jpg"
                 ));
         newRecipe.add(new Recipe("Голубцы"
@@ -129,6 +136,8 @@ public class RecipeListActivity extends AppCompatActivity {
                 "Огурец\n"
                 ,
                 "blah-blah"
+                ,
+                "125"
                 ,
                 "http://www.1001eda.com/wp-content/uploads/2013/10/410_11_10_2013_4072.jpg"
                 ));
@@ -142,6 +151,8 @@ public class RecipeListActivity extends AppCompatActivity {
                 "Pork\n"
                 ,
                 "hey-hey"
+                ,
+                ""
                 ,
                 "http://sovetexpert.com/wp-content/uploads/2015/05/103676899_large_borsch-302x250.jpg"
         ));

@@ -14,13 +14,15 @@ public class Recipe extends RealmObject{
     private String description;
     private String image;
     private String count;
+    private String calories;
 
     public Recipe() {}
 
-        public Recipe(String name, String ingredient, String description, String image) {
+        public Recipe(String name, String ingredient, String description, String calories, String image) {
             this.name = name;
             this.ingredient = ingredient;
             this.description=description;
+            this.calories=calories;
             this.image = image;
     }
 
@@ -62,5 +64,13 @@ public class Recipe extends RealmObject{
 
     public void setCount(String count) {
         this.count = count;
+    }
+
+    public String getCalories() {
+        return calories;
+    }
+
+    public void setCalories(String calories) {
+        this.calories = calories;
     }
 }

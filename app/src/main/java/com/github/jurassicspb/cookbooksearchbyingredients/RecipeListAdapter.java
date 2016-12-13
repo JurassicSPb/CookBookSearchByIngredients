@@ -49,7 +49,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
                 .placeholder(R.drawable.ic_placeholder)
                 .error(R.drawable.ic_error)
                 .into(holder.photoSmall);
-        holder.recipeName.setText(recipes.get(position).getName() + "\n" + matchingIngr
+        holder.recipeName.setText(recipes.get(position).getName() + "\n" + matchingIngr + " "
                 + recipes.get(position).getCount());
     }
 
