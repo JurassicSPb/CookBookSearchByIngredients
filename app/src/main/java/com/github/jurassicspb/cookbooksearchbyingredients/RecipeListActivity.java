@@ -124,7 +124,7 @@ public class RecipeListActivity extends AppCompatActivity {
                 "углеводы 20\n"+
                 "Калорийность 200ккал"
                 ,
-                "http://sovetexpert.com/wp-content/uploads/2015/05/103676899_large_borsch-302x250.jpg"));
+                "https://drive.google.com/file/d/0B0e6uiJx0316WjhLYzk4cHZJc2s/view?usp=drivesdk]103676899_borsch.jpg"));
         newRecipe.add(new Recipe("Cельдь под шубой"
                 ,
                 "Говядина\n" +
@@ -143,19 +143,19 @@ public class RecipeListActivity extends AppCompatActivity {
                 ,
                 "120"
                 ,
-                "http://foodandhealth.ru/wp-content/uploads/2016/07/seld-pod-shuboy-300x300.jpg"
+                "https://drive.google.com/file/d/0B0e6uiJx0316UXdDYzBTT2hCM2M/view?usp=drivesdk]seld-pod-shuboy-300x300.jpg"
                 ));
         newRecipe.add(new Recipe("Голубцы"
                 ,
                 "Говядина\n" +
                 "Свинина\n" +
-                "Огурец\n"
+                "Огурец"
                 ,
                 "blah-blah"
                 ,
                 "125"
                 ,
-                "http://www.1001eda.com/wp-content/uploads/2013/10/410_11_10_2013_4072.jpg"
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
                 ));
         recipeDB.copyOrUpdateRecipe(newRecipe);
     }
@@ -164,13 +164,13 @@ public class RecipeListActivity extends AppCompatActivity {
         newRecipe.add(new Recipe("Borscht"
                 ,
                 "Beef\n"+
-                "Pork\n"
+                "Pork"
                 ,
                 "hey-hey"
                 ,
                 ""
                 ,
-                "http://sovetexpert.com/wp-content/uploads/2015/05/103676899_large_borsch-302x250.jpg"
+                "https://drive.google.com/file/d/0B0e6uiJx0316WjhLYzk4cHZJc2s/view?usp=drivesdk]103676899_borsch.jpg"
         ));
         recipeDB.copyOrUpdateRecipe(newRecipe);
     }
