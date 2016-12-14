@@ -1,5 +1,6 @@
 package com.github.jurassicspb.cookbooksearchbyingredients;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +8,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.MyPreferences;
@@ -31,6 +34,19 @@ public class RecipeListActivity extends AppCompatActivity {
     private OnListItemClickListener clickListener = new OnListItemClickListener() {
         @Override
         public void onClick(View v, int position) {
+            String name = adapter.getRecipe(position).getName();
+            String photo = adapter.getRecipe(position).getImage();
+            String ingredients = adapter.getRecipe(position).getIngredient();
+            String description = adapter.getRecipe(position).getDescription();
+            String calories = adapter.getRecipe(position).getCalories();
+
+            Intent intent = new Intent(RecipeListActivity.this, RecipeDetailActivity.class);
+            intent.putExtra("name", name);
+            intent.putExtra("photo", photo);
+            intent.putExtra("ingredients", ingredients);
+            intent.putExtra("description", description);
+            intent.putExtra("calories", calories);
+            startActivity(intent);
 
         }
     };
@@ -39,7 +55,7 @@ public class RecipeListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         recipeDB = new IngredientDatabase();
         preferences = new MyPreferences(this);
-        preferences.clearPrefs();
+//        preferences.clearPrefs();
 
         setContentView(R.layout.recipelist_recyclerview);
 

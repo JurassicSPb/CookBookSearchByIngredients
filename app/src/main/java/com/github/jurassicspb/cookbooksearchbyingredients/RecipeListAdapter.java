@@ -70,6 +70,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
             super(itemView);
             photoSmall = (ImageView) itemView.findViewById(R.id.photo);
             recipeName = (TextView) itemView.findViewById(R.id.recipe_name);
+            itemView.setOnClickListener(this);
         }
 
         @Override
