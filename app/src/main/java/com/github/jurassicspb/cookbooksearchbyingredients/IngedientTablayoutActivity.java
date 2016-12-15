@@ -2,9 +2,14 @@ package com.github.jurassicspb.cookbooksearchbyingredients;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -27,11 +32,12 @@ import java.util.Locale;
  * Created by Мария on 12.11.2016.
  */
 
-public class IngedientTablayoutActivity extends AppCompatActivity {
+public class IngedientTablayoutActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private IngredientDatabase ingredientDB;
     private List<Ingredient> ingredients;
     private List<CategoryTable> categoryTables;
     MyPreferences preferences;
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,12 +48,10 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         setContentView(R.layout.tablayout_with_viewpager);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        toolbar.setNavigationOnClickListener(v -> onBackPressed());
         getSupportActionBar().setTitle(R.string.ingredient_list);
         try {
             Field f = toolbar.getClass().getDeclaredField("mTitleTextView");
@@ -69,8 +73,16 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
         pager.setOffscreenPageLimit(7);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        assert navigationView != null;
+        navigationView.setNavigationItemSelectedListener(this);
 
-        ingredientDB = new IngredientDatabase();
+                ingredientDB = new IngredientDatabase();
 
         if (preferences.getFlag()) {
             if (Locale.getDefault().getLanguage().equals("ru")) {
@@ -98,6 +110,14 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(pager);
 
     }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_buttons, menu);
@@ -203,7 +223,15 @@ public class IngedientTablayoutActivity extends AppCompatActivity {
         ArrayList <Ingredient> newIngredient = new ArrayList<>();
         ingredientDB.delete(newIngredient);
     }
-
+    @Override
+    public void onBackPressed() {
+        assert drawer != null;
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
     @Override
     protected void onDestroy() {
         SelectedIngredient.getSelectedIngredient().clear();
