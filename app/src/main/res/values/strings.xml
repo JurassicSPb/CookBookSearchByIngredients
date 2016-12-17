@@ -1,14 +1,16 @@
 <resources>
     <string name="app_name">CookBookSearchByIngredients</string>
     <string name="search">Search</string>
-    <string name="ingredient_list">Ingredient List</string>
+    <string name="ingredient_list">Ingredient list</string>
     <string name="select_one">Select at least one ingredient</string>
     <string name="selected">Selected</string>
     <string name="no_more_than_10">Select no more than 10 ingredients</string>
-    <string name="count_of_matching_ingredients">Count Of Matching Ingredients: </string>
+    <string name="count_of_matching_ingredients">Count of matching ingredients: </string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
-
-
-
+    <string name="drawer_menu_favorites">Favorites</string>
+    <string name="drawer_menu_full_list">Full list</string>
+    <string name="drawer_menu_exit">Exit</string>
+    <string name="toast_favorites">Added to Favorites</string>
+    <string name="toast_favorites_remove">Removed from Favorites</string>
 </resources>

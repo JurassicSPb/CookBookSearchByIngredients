@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 public class MyPreferences {
     private static final String KEY_REALM_FLAG = "key_realm_flag";
     private static final String KEY_REALM_FLAG_RECIPES = "key_realm_flag_recipes";
+
     private SharedPreferences preferences;
 
     public MyPreferences(Context context) {

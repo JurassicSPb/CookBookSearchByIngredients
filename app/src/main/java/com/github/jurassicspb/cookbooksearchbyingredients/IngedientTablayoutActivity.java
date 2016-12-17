@@ -113,7 +113,10 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
+        int id = item.getItemId();
+        if (id==R.id.fr3) {
+            finish();
+        }
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
