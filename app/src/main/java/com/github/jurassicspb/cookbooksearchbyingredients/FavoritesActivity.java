@@ -7,17 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
-import com.github.jurassicspb.cookbooksearchbyingredients.storage.MyPreferences;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by Мария on 27.12.2016.

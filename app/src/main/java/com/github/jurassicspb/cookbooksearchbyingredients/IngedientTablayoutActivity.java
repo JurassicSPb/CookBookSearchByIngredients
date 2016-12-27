@@ -118,6 +118,10 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             Intent intent = new Intent(this,FavoritesActivity.class);
             startActivity(intent);
         }
+        if (id==R.id.fr2) {
+            Intent intent = new Intent(this, FullListActivity.class);
+            startActivity(intent);
+        }
         if (id==R.id.fr3) {
             finish();
         }

@@ -157,6 +157,330 @@ public class RecipeListActivity extends AppCompatActivity {
                 ,
                 "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
                 ));
+        newRecipe.add(new Recipe("цымцм"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("ммм"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("цуацуацу"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("ваиукпи"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("вйцвйцмйп"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("икенео"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("ваивиу"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("цйукцук"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("ывмывмывмывмывмывм"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("йцвйцвйцвйцв"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("ссцсцфсфс"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("ывмывмсцы"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("ккуп"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("мыы"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("йцвйвйвйцв"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("рпукупупцукп"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("ывц"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("фсысйфцвайвай"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("фвйц"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("йцвйцвйц"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("фысфцв"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("цукцуацу"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("ясячс"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("йайцайц"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("йцайцйца"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("ыаывыва"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
+        newRecipe.add(new Recipe("цуа"
+                ,
+                "Говядина\n" +
+                        "Свинина\n" +
+                        "Огурец"
+                ,
+                "blah-blah"
+                ,
+                "125"
+                ,
+                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
+        ));
         recipeDB.copyOrUpdateRecipe(newRecipe);
     }
     private void createRecipesENG(){
