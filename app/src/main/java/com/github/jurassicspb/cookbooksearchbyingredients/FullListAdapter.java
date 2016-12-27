@@ -9,17 +9,24 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class FullListAdapter extends RecyclerView.Adapter<FullListAdapter.ViewHolder>{
+public class FullListAdapter extends RecyclerView.Adapter<FullListAdapter.ViewHolder> implements Filterable{
     private List<Recipe> recipes;
+    private List<Recipe> recipesFiltered;
+    private ValueFilter valueFilter;
     private OnListItemClickListener clickListener;
 
     public FullListAdapter (List <Recipe> recipes, OnListItemClickListener clickListener){
         this.recipes=recipes;
+        recipesFiltered=recipes;
         this.clickListener=clickListener;
     }
 
@@ -68,6 +75,44 @@ public class FullListAdapter extends RecyclerView.Adapter<FullListAdapter.ViewHo
         @Override
         public void onClick(View v) {
             clickListener.onClick(v, getAdapterPosition());
+        }
+    }
+    @Override
+    public Filter getFilter() {
+
+        if (valueFilter == null) {
+
+            valueFilter = new ValueFilter();
+        }
+
+        return valueFilter;
+    }
+
+    private class ValueFilter extends Filter {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults results = new FilterResults();
+            if (constraint != null && constraint.length() > 0) {
+                ArrayList<Recipe> filterList = new ArrayList<>();
+                for (int i = 0; i < recipesFiltered.size(); i++) {
+                    if (recipesFiltered.get(i).getIngredient().toUpperCase()
+                            .contains(constraint.toString().toUpperCase())) {
+                        filterList.add(recipesFiltered.get(i));
+                    }
+                }
+                results.count = filterList.size();
+                results.values = filterList;
+            } else {
+                results.count = recipesFiltered.size();
+                results.values = recipesFiltered;
+            }
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            recipes=(ArrayList<Recipe>) results.values;
+            notifyDataSetChanged();
         }
     }
 }
