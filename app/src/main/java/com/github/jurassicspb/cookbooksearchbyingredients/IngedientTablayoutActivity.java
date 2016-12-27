@@ -114,6 +114,10 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
+        if (id==R.id.fr1) {
+            Intent intent = new Intent(this,FavoritesActivity.class);
+            startActivity(intent);
+        }
         if (id==R.id.fr3) {
             finish();
         }

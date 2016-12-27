@@ -48,6 +48,7 @@ public class IngredientDatabase {
     public List<Favorites> getAllFavorites() {
         return realm.where(Favorites.class).findAll();
     }
+
     public List <Favorites> getFavorite (String fav){
         return realm.where(Favorites.class).equalTo("name", fav, Case.INSENSITIVE).findAll();
     }

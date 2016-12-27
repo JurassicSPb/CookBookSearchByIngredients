@@ -12,33 +12,29 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-
 /**
- * Created by Мария on 07.12.2016.
+ * Created by Мария on 27.12.2016.
  */
 
-public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.ViewHolder>{
-    private List <Recipe> recipes;
+public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.ViewHolder>{
+    private List<Favorites> favorites;
     private OnListItemClickListener clickListener;
 
-    public RecipeListAdapter (List <Recipe> recipes, OnListItemClickListener clickListener){
-        this.recipes=recipes;
+    public FavoritesAdapter (List <Favorites> favorites, OnListItemClickListener clickListener){
+        this.favorites=favorites;
         this.clickListener=clickListener;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_recipelist, parent, false);
-        return new ViewHolder(v);
+    public FavoritesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_favorites, parent, false);
+        return new FavoritesAdapter.ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(FavoritesAdapter.ViewHolder holder, int position) {
 
-        Context cont = holder.recipeName.getContext();
-        String matchingIngr = cont.getResources().getString(R.string.count_of_matching_ingredients);
-
-        String url = recipes.get(position).getImage();
+        String url = favorites.get(position).getImage();
         Context context = holder.photoSmall.getContext();
 
         Picasso.with(context)
@@ -48,17 +44,17 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
                 .placeholder(R.drawable.ic_placeholder)
                 .error(R.drawable.ic_error)
                 .into(holder.photoSmall);
-        holder.recipeName.setText(recipes.get(position).getName() + "\n" + matchingIngr + " "
-                + recipes.get(position).getCount());
+
+        holder.recipeName.setText(favorites.get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return recipes.size();
+        return favorites.size();
     }
 
-    public Recipe getRecipe(int position) {
-        return recipes.get(position);
+    public Favorites getRecipe (int position) {
+        return favorites.get(position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{

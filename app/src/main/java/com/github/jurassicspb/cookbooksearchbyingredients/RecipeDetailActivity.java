@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -128,6 +127,8 @@ public class RecipeDetailActivity extends AppCompatActivity{
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 }
+//                favorites = favoritesDB.getAllFavorites();
+//                Log.d(RecipeDetailActivity.class.getSimpleName(), "hihihi " + favorites);
                 break;
         }
         return super.onOptionsItemSelected(item);
