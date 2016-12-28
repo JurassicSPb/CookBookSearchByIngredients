@@ -75,6 +75,11 @@ public class IngredientDatabase {
         realm.deleteAll();
         realm.commitTransaction();
     }
+    public void deleteRecipes (List <Recipe> recipe) {
+        realm.beginTransaction();
+        realm.deleteAll();
+        realm.commitTransaction();
+    }
 
     public List<Ingredient> getAll() {
         return realm.where(Ingredient.class).findAllSorted("id", Sort.ASCENDING);
@@ -97,6 +102,13 @@ public class IngredientDatabase {
     public List<Recipe> copyFromRealmRecipe(List <Recipe> recipes) {
         realm.beginTransaction();
         List<Recipe> newRecipe = realm.copyFromRealm(recipes);
+        realm.commitTransaction();
+        return newRecipe;
+    }
+    public List<Recipe> copyFromRealmRecipeSorted() {
+        realm.beginTransaction();
+        RealmResults <Recipe> results = realm.where(Recipe.class).findAllSorted("name", Sort.ASCENDING);
+        List<Recipe> newRecipe = realm.copyFromRealm(results);
         realm.commitTransaction();
         return newRecipe;
     }

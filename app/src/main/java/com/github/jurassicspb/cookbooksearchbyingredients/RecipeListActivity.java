@@ -8,9 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.Toast;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.MyPreferences;
@@ -55,6 +53,7 @@ public class RecipeListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         recipeDB = new IngredientDatabase();
         preferences = new MyPreferences(this);
+//        delete();
 //        preferences.clearPrefs();
 
         setContentView(R.layout.recipelist_recyclerview);
@@ -101,6 +100,12 @@ public class RecipeListActivity extends AppCompatActivity {
         Collections.sort(newRecipes, compare);
         return newRecipes;
     }
+
+    public void delete(){
+        ArrayList <Recipe> newRecipe = new ArrayList<>();
+        recipeDB.deleteRecipes(newRecipe);
+    }
+
     private void createRecipesRU(){
         ArrayList<Recipe> newRecipe = new ArrayList<>();
         newRecipe.add(new Recipe("Борщ классический"
@@ -125,7 +130,7 @@ public class RecipeListActivity extends AppCompatActivity {
                 "Калорийность 200ккал"
                 ,
                 "https://drive.google.com/file/d/0B0e6uiJx0316WjhLYzk4cHZJc2s/view?usp=drivesdk]103676899_borsch.jpg"));
-        newRecipe.add(new Recipe("Cельдь под шубой"
+        newRecipe.add(new Recipe("Сельдь под шубой"
                 ,
                 "Говядина\n" +
                 "Свинина\n" +

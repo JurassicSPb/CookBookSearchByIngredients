@@ -95,7 +95,7 @@ public class FullListAdapter extends RecyclerView.Adapter<FullListAdapter.ViewHo
             if (constraint != null && constraint.length() > 0) {
                 ArrayList<Recipe> filterList = new ArrayList<>();
                 for (int i = 0; i < recipesFiltered.size(); i++) {
-                    if (recipesFiltered.get(i).getIngredient().toUpperCase()
+                    if (recipesFiltered.get(i).getName().toUpperCase()
                             .contains(constraint.toString().toUpperCase())) {
                         filterList.add(recipesFiltered.get(i));
                     }
