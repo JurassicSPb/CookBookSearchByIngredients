@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/grp1" >
+    <item
+        android:id="@+id/fr1"
+        android:icon="@drawable/ic_action_name"
+        android:title="@string/drawer_menu_favorites" />
+
+    <item
+        android:id="@+id/fr2"
+        android:icon="@android:drawable/ic_menu_view"
+        android:title="@string/drawer_menu_full_list" />
+    </group>
+
+    <group android:id="@+id/grp2">
+        <item
+            android:id="@+id/fr3"
+            android:icon="@android:drawable/ic_menu_close_clear_cancel"
+            android:title="@string/drawer_menu_exit" />
+    </group>
+
+
+</menu>
