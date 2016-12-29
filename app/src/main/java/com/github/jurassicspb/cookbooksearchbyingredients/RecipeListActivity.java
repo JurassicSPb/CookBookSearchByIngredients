@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
@@ -59,8 +58,8 @@ public class RecipeListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         recipeDB = new IngredientDatabase();
         preferences = new MyPreferences(this);
-//        delete();
-        preferences.clearPrefs();
+//        deleteRecipe();
+//        preferences.clearPrefs();
 
         setContentView(R.layout.recipelist_recyclerview);
 
@@ -72,7 +71,6 @@ public class RecipeListActivity extends AppCompatActivity {
                 createRecipes("eng");
             }
             preferences.setFlagRecipe(false);
-            Log.d(RecipeListActivity.class.getSimpleName(), "hello");
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -107,432 +105,40 @@ public class RecipeListActivity extends AppCompatActivity {
         return newRecipes;
     }
 
-    public void delete(){
+    public void deleteRecipe(){
         ArrayList <Recipe> newRecipe = new ArrayList<>();
         recipeDB.deleteRecipes(newRecipe);
     }
 
-    private void createRecipes(String language){
+    private void createRecipes(String language) {
         ArrayList<Recipe> newRecipe = new ArrayList<>();
         AssetManager am = getApplicationContext().getAssets();
-
         try {
-            String fileList [] = am.list(language);
-            Log.d(RecipeListActivity.class.getSimpleName(), "herehere"+ fileList.length);
-                for (int i=0; i<fileList.length; i++){
-                    InputStream is = am.open(language+"/"+fileList[i]);
-                    Log.d(RecipeListActivity.class.getSimpleName(), "cccccc"+ fileList[i]);
-                    int size = is.available();
-                    byte [] buffer = new byte[size];
-                    is.read(buffer);
-                    is.close();
-                    String json = new String(buffer, "UTF-8");
-                    Log.d(RecipeListActivity.class.getSimpleName(), "bbbbb"+ json);
-                    try {
-                        JSONObject obj = new JSONObject(json);
-                        String name = obj.getString("name");
-                        String ingredients = obj.getString("ingredients");
-                        String description = obj.getString("description");
-                        String calories = obj.getString("calories");
-                        String image = obj.getString("image");
-                        newRecipe.add(new Recipe(name, ingredients, description, calories, image));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+            String fileList[] = am.list(language);
+            for (int i = 0; i < fileList.length; i++) {
+                InputStream is = am.open(language + "/" + fileList[i]);
+                int size = is.available();
+                byte[] buffer = new byte[size];
+                is.read(buffer);
+                is.close();
+                String json = new String(buffer, "UTF-8");
+                try {
+                    JSONObject obj = new JSONObject(json);
+                    String name = obj.getString("name");
+                    String ingredients = obj.getString("ingredients");
+                    String description = obj.getString("description");
+                    String calories = obj.getString("calories");
+                    String image = obj.getString("image");
+                    newRecipe.add(new Recipe(name, ingredients, description, calories, image));
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+            }
         } catch (IOException e) {
             e.printStackTrace();
-    }
-        recipeDB.copyOrUpdateRecipe(newRecipe);
-//        try {
-//            BufferedReader reader = new BufferedReader(new InputStreamReader(this.getAssets().open("borscht.txt")));
-//                while ((line = reader.readLine()) != null) {
-//                    String[] information = line.split("~");
-//                    String name = information[0];
-//                    Log.d(RecipeListActivity.class.getSimpleName(), "herehere" + name);
-//                    String ingredients = information[1];
-//                    String description = information[2];
-//                    String calories = information[3];
-//                    String image = information[4];
-//                    newRecipe.add(new Recipe(name, ingredients, description, calories, image));
-//                }
-//
-//                reader.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        newRecipe.add(new Recipe("Сельдь под шубой"
-//                ,
-//                "Говядина\n" +
-//                "Свинина\n" +
-//                "Огурец\n" +
-//                "Сельдь, 400 г (филе соленое)\n" +
-//                "Майонез, 200 мл\n" +
-//                "Томатная паста  — 1 ст. ложка, или 1 небольшой помидор\n" +
-//                "Картофель, 3 клубня вареных\n" +
-//                "Морковь, 2 вареных\n" +
-//                "Свекла, 1 вареная/запеченная крупная\n" +
-//                "Луковица, 1 шт."
-//                ,
-//                "Филе сельди тщательно осмотреть на предмет наличия косточек, удалить таковые, мелко нарезать филе кубиком.\n" +
-//                "Отваренные в мундирах овощи (30мин, свекла, возможно – дольше) остудить, затем очистить."
-//                ,
-//                "120"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316UXdDYzBTT2hCM2M/view?usp=drivesdk]seld-pod-shuboy-300x300.jpg"
-//                ));
-//        newRecipe.add(new Recipe("Голубцы"
-//                ,
-//                "Говядина\n" +
-//                "Свинина\n" +
-//                "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//                ));
-//        newRecipe.add(new Recipe("цымцм"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("ммм"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("цуацуацу"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("ваиукпи"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("вйцвйцмйп"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("икенео"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("ваивиу"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("цйукцук"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("ывмывмывмывмывмывм"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("йцвйцвйцвйцв"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("ссцсцфсфс"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("ывмывмсцы"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("ккуп"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("мыы"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("йцвйвйвйцв"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("рпукупупцукп"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("ывц"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("фсысйфцвайвай"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("фвйц"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("йцвйцвйц"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("фысфцв"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("цукцуацу"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("ясячс"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("йайцайц"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("йцайцйца"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("ыаывыва"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
-//        newRecipe.add(new Recipe("цуа"
-//                ,
-//                "Говядина\n" +
-//                        "Свинина\n" +
-//                        "Огурец"
-//                ,
-//                "blah-blah"
-//                ,
-//                "125"
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316enc0djJXZkw0Zms/view?usp=drivesdk]410_11_10_2013_4072.jpg"
-//        ));
         }
-//    private void createRecipesENG(){
-//        ArrayList<Recipe> newRecipe = new ArrayList<>();
-//        newRecipe.add(new Recipe("Borscht"
-//                ,
-//                "Beef\n"+
-//                "Pork"
-//                ,
-//                "hey-hey"
-//                ,
-//                ""
-//                ,
-//                "https://drive.google.com/file/d/0B0e6uiJx0316WjhLYzk4cHZJc2s/view?usp=drivesdk]103676899_borsch.jpg"
-//        ));
-//        recipeDB.copyOrUpdateRecipe(newRecipe);
-//    }
+        recipeDB.copyOrUpdateRecipe(newRecipe);
+    }
     @Override
     protected void onDestroy() {
         recipeDB.close();
