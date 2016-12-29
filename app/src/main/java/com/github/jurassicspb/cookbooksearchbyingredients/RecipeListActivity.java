@@ -60,7 +60,7 @@ public class RecipeListActivity extends AppCompatActivity {
         recipeDB = new IngredientDatabase();
         preferences = new MyPreferences(this);
 //        delete();
-//        preferences.clearPrefs();
+        preferences.clearPrefs();
 
         setContentView(R.layout.recipelist_recyclerview);
 
@@ -120,7 +120,7 @@ public class RecipeListActivity extends AppCompatActivity {
             String fileList [] = am.list(language);
             Log.d(RecipeListActivity.class.getSimpleName(), "herehere"+ fileList.length);
                 for (int i=0; i<fileList.length; i++){
-                    InputStream is = am.open(fileList[i]);
+                    InputStream is = am.open(language+"/"+fileList[i]);
                     Log.d(RecipeListActivity.class.getSimpleName(), "cccccc"+ fileList[i]);
                     int size = is.available();
                     byte [] buffer = new byte[size];
