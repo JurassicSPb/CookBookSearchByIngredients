@@ -14,4 +14,5 @@
     <string name="toast_favorites">Added to Favorites</string>
     <string name="toast_favorites_remove">Removed from Favorites</string>
     <string name="full_list">Full list of recipes</string>
+    <string name="recipe_list">List of recipes</string>
 </resources>

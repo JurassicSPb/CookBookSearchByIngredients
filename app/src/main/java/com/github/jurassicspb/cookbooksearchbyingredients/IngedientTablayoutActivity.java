@@ -1,6 +1,7 @@
 package com.github.jurassicspb.cookbooksearchbyingredients;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,6 +24,11 @@ import com.github.jurassicspb.cookbooksearchbyingredients.fragments.IngredientFr
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.MyPreferences;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -82,20 +88,23 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         assert navigationView != null;
         navigationView.setNavigationItemSelectedListener(this);
 
-                ingredientDB = new IngredientDatabase();
+        ingredientDB = new IngredientDatabase();
+    //        delete();
+    //        deleteRecipe();
 
         if (preferences.getFlag()) {
             if (Locale.getDefault().getLanguage().equals("ru")) {
                 createIngredientsRU();
                 createCategoryTablesRU();
+                createRecipes("rus");
             }
             else {
                 createIngredientsENG();
                 createCategoryTablesENG();
+                createRecipes("eng");
             }
             preferences.setFlag(false);
         }
-//        delete();
         performCategoryTables();
         performIngredients();
 
@@ -233,6 +242,40 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     public void delete(){
         ArrayList <Ingredient> newIngredient = new ArrayList<>();
         ingredientDB.delete(newIngredient);
+    }
+    public void deleteRecipe(){
+        ArrayList <Recipe> newRecipe = new ArrayList<>();
+        ingredientDB.deleteRecipes(newRecipe);
+    }
+
+    private void createRecipes(String language) {
+        ArrayList<Recipe> newRecipe = new ArrayList<>();
+        AssetManager am = getApplicationContext().getAssets();
+        try {
+            String fileList[] = am.list(language);
+            for (int i = 0; i < fileList.length; i++) {
+                InputStream is = am.open(language + "/" + fileList[i]);
+                int size = is.available();
+                byte[] buffer = new byte[size];
+                is.read(buffer);
+                is.close();
+                String json = new String(buffer, "UTF-8");
+                try {
+                    JSONObject obj = new JSONObject(json);
+                    String name = obj.getString("name");
+                    String ingredients = obj.getString("ingredients");
+                    String description = obj.getString("description");
+                    String calories = obj.getString("calories");
+                    String image = obj.getString("image");
+                    newRecipe.add(new Recipe(name, ingredients, description, calories, image));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ingredientDB.copyOrUpdateRecipe(newRecipe);
     }
     @Override
     public void onBackPressed() {
