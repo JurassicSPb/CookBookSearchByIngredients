@@ -80,7 +80,7 @@ public class RecipeListActivity extends AppCompatActivity {
         Collections.sort(newRecipes, compare);
         return newRecipes;
     }
-    
+
     @Override
     protected void onDestroy() {
         recipeDB.close();

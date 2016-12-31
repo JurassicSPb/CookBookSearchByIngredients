@@ -6,5 +6,8 @@
     <color name="colorHeadline">#FFE082</color>
     <color name="colorSearch">#FFECB3</color>
     <color name="colorIngredientsField">#0D47A1</color>
+    <color name="tabColor1">#FF8A65</color>
+    <color name="tabColor2">#FBE9E7</color>
+    <color name="tabDividerColor">#FFB74D</color>
 
 </resources>

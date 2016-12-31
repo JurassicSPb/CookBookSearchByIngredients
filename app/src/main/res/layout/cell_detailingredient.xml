@@ -13,7 +13,7 @@
         android:background="@android:color/white"
         android:textSize="30sp"
         tools:text="Ingredient" />
-    <TextView
+    <View
         android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="5dp"

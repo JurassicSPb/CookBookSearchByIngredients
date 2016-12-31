@@ -12,7 +12,14 @@
         android:title="@string/drawer_menu_full_list" />
     </group>
 
-    <group android:id="@+id/grp2">
+    <group android:id="@+id/grp2" >
+        <item
+            android:id="@+id/fr4"
+            android:icon="@drawable/ic_weights"
+            android:title="@string/weights" />
+    </group>
+
+    <group android:id="@+id/grp3">
         <item
             android:id="@+id/fr3"
             android:icon="@android:drawable/ic_menu_close_clear_cancel"
