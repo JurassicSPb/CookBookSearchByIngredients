@@ -24,5 +24,6 @@
     <string name="glass_100_ml">Glass 100 ml.</string>
     <string name="tablespoon">Table spoon</string>
     <string name="teaspoon">Tea spoon</string>
+    <string name="one_piece">1 piece in grams</string>
 
 </resources>
