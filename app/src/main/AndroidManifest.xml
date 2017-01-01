@@ -31,6 +31,10 @@
 
         </activity>
 
+        <activity android:name=".nav_drawer_extras.WeightsAndMeasures">
+
+        </activity>
+
 
         <activity android:name=".IngedientTablayoutActivity"
             android:configChanges="orientation|screenSize">

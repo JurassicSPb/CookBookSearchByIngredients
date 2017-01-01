@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.fragments.IngredientFragment;
+import com.github.jurassicspb.cookbooksearchbyingredients.nav_drawer_extras.WeightsAndMeasures;
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.MyPreferences;
 
@@ -133,6 +134,10 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         }
         if (id==R.id.fr3) {
             finish();
+        }
+        if (id==R.id.fr4){
+            Intent intent = new Intent(this, WeightsAndMeasures.class);
+            startActivity(intent);
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
