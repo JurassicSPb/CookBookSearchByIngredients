@@ -21,8 +21,6 @@ import com.github.jurassicspb.cookbooksearchbyingredients.IngedientTablayoutActi
 import com.github.jurassicspb.cookbooksearchbyingredients.Ingredient;
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
 import com.github.jurassicspb.cookbooksearchbyingredients.SelectedIngredient;
-
-import java.util.ArrayList;
 import java.util.List;
 
 

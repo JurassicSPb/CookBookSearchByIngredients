@@ -34,12 +34,12 @@ public class IngredientDetailAdapter extends RecyclerView.Adapter<IngredientDeta
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView detailIngredient;
-        TextView separator;
+        View separator;
 
         public ViewHolder(View itemView) {
             super(itemView);
             detailIngredient = (TextView) itemView.findViewById(R.id.detail_ingredient);
-            separator = (TextView) itemView.findViewById(R.id.separator);
+            separator = itemView.findViewById(R.id.separator);
         }
 
         @Override

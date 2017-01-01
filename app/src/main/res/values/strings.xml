@@ -26,4 +26,8 @@
     <string name="teaspoon">Tea spoon</string>
     <string name="one_piece">1 piece in grams</string>
 
+    <string name="apricot">Apricot</string>
+    <string name="orange">Orange</string>
+    <string name="shelled_peanut">Shelled peanuts</string>
+
 </resources>
