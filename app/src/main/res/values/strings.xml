@@ -15,7 +15,7 @@
     <string name="toast_favorites_remove">Removed from Favorites</string>
     <string name="full_list">Full list of recipes</string>
     <string name="recipe_list">List of recipes</string>
-    <string name="weights">Cooking weights and measures</string>
+    <string name="weights">Weights and measures</string>
 
     <!--Weights and measures strings -->
     <string name="products">Products</string>
