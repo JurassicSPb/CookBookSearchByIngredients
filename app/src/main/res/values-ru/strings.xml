@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">CookBookSearchByIngredients</string>
+    <string name="search">Поиск</string>
+    <string name="ingredient_list">Список ингредиентов</string>
+    <string name="select_one">Выберите хотя бы один ингредиент</string>
+    <string name="selected">Выбрано</string>
+    <string name="no_more_than_10">Выберите не более 10 ингредиентов</string>
+    <string name="count_of_matching_ingredients">Количество совпадающих ингредиентов: </string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+    <string name="drawer_menu_favorites">Избранное</string>
+    <string name="drawer_menu_full_list">Полный список</string>
+    <string name="drawer_menu_exit">Выход</string>
+    <string name="toast_favorites">Добавлено в Избранное</string>
+    <string name="toast_favorites_remove">Удалено из Избранного</string>
+    <string name="full_list">Полный список рецептов</string>
+    <string name="recipe_list">Список рецептов</string>
+    <string name="weights">Таблица мер и весов</string>
+
+    <!--Таблица мер и весов -->
+    <string name="products">Продукты</string>
+    <string name="weight_in_grams">Вес продуктов в граммах</string>
+
+</resources>

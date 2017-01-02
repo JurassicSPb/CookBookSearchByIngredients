@@ -234,7 +234,7 @@ public class WeightsAndMeasures extends AppCompatActivity{
 
     }
     public void createTitle(){
-        TableLayout tabLayout = (TableLayout) findViewById(R.id.tableLayout);
+        TableLayout tabLayout = (TableLayout) findViewById(R.id.tableLayoutTitle);
         int margin = getResources().getDimensionPixelSize(R.dimen.margin);
         TableRow rowTitle = new TableRow(this);
         rowTitle.setBackgroundResource(R.color.tabDivider);
