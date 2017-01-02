@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="headline_height">32dp</dimen>
+
+    <!--Weights and Measures-->
+    <dimen name="text_size">16sp</dimen>
+    <dimen name="text_size_medium">14sp</dimen>
+    <dimen name="text_size_small">13sp</dimen>
+    <dimen name="tv1_height">30dp</dimen>
+    <dimen name="tv1_width">82dp</dimen>
+    <dimen name="tv_body_width">48dp</dimen>
+    <dimen name="tv_body_height">52dp</dimen>
+    <dimen name="margin">1dp</dimen>
+    <dimen name="padding">2dp</dimen>
+
 </resources>
