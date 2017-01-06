@@ -18,7 +18,13 @@
     <string name="weights">Таблица мер и весов</string>
 
     <!--Таблица мер и весов -->
+
     <string name="products">Продукты</string>
     <string name="weight_in_grams">Вес продуктов в граммах</string>
+    <string name="glass_250_ml">Стакан 250 мл.</string>
+    <string name="glass_200_ml">Стакан 200 мл.</string>
+    <string name="table_spoon">Стол. ложка</string>
+    <string name="tea_spoon">Чайная ложк</string>
+    <string name="one_piece_in_grams">1 штука в грам.</string>
 
 </resources>
