@@ -29,7 +29,11 @@
     <string name="one_piece_in_grams">1 штука в грам.</string>
 
     <!--Время готовки-->
-    <string name="cereal_title">КАШИ</string>
-    <string name="cereal_body">Каши</string>
+    <string name="porridge_title">КАШИ</string>
+    <string name="porridge_body">Каша</string>
+    <string name="grain">Крупа</string>
+    <string name="liquid">Жид-ть</string>
+    <string name="time_to_boil">Время варки</string>
+
 
 </resources>

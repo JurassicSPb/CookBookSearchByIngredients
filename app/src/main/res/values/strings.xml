@@ -29,7 +29,10 @@
     <string name="one_piece_in_grams">1 piece in grams</string>
 
     <!--Cooking time-->
-    <string name="cereal_title">CEREAL</string>
-    <string name="cereal_body">Cereal</string>
+    <string name="porridge_title">Porridge</string>
+    <string name="porridge_body">Porridge</string>
+    <string name="grain">Grain</string>
+    <string name="liquid">Liquid</string>
+    <string name="time_to_boil">Time to boil</string>
 
 </resources>
