@@ -6,6 +6,8 @@
     <color name="colorHeadline">#FFE082</color>
     <color name="colorSearch">#FFECB3</color>
     <color name="colorIngredientsField">#0D47A1</color>
+
+    <!--Weights and measures-->
     <color name="tabDivider">#FFFFFF</color>
     <color name="tabFirstRow">#FFAB91</color>
     <color name="tabSecondRow">#E1F5FE</color>
@@ -13,5 +15,9 @@
     <color name="tabFourthRow">#E8F5E9</color>
     <color name="tabFifthRow">#FFEBEE</color>
     <color name="tabSixthRow">#F3E5F5</color>
+
+    <!--Cooking time-->
+    <color name="tabDividerRed">#E53935</color>
+    <color name="tabBackgroundWhite">#FFFFFF</color>
 
 </resources>

@@ -16,8 +16,10 @@
     <string name="full_list">Full list of recipes</string>
     <string name="recipe_list">List of recipes</string>
     <string name="weights">Weights and measures</string>
+    <string name="cooking_time">Cooking time</string>
 
-    <!--Weights and measures strings -->
+
+    <!--Weights and measures-->
     <string name="products">Products</string>
     <string name="weight_in_grams">Products weight in grams</string>
     <string name="glass_250_ml">Glass 250 ml.</string>
@@ -25,5 +27,9 @@
     <string name="table_spoon">Table spoon</string>
     <string name="tea_spoon">Tea spoon</string>
     <string name="one_piece_in_grams">1 piece in grams</string>
+
+    <!--Cooking time-->
+    <string name="cereal_title">CEREAL</string>
+    <string name="cereal_body">Cereal</string>
 
 </resources>

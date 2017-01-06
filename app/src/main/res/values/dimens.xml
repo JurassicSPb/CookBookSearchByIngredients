@@ -13,4 +13,12 @@
     <dimen name="margin">1dp</dimen>
     <dimen name="padding">2dp</dimen>
 
+    <!--Cooking time-->
+    <dimen name="margin_cooking_time_title">3dp</dimen>
+    <dimen name="margin_cooking_time_body">2dp</dimen>
+    <dimen name="tv1_cooking_time_height">44dp</dimen>
+    <dimen name="text_size_cooking_time_title">32sp</dimen>
+    <dimen name="text_size_cooking_time_body">24sp</dimen>
+    <dimen name="tv2_cooking_time_height">38dp</dimen>
+    <dimen name="tv2_cooking_time_width">50dp</dimen>
 </resources>

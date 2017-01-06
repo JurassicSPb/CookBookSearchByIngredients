@@ -17,6 +17,10 @@
             android:id="@+id/fr4"
             android:icon="@drawable/ic_weights"
             android:title="@string/weights" />
+        <item
+            android:id="@+id/fr5"
+            android:icon="@drawable/ic_timer"
+            android:title="@string/cooking_time" />
     </group>
 
     <group android:id="@+id/grp3">

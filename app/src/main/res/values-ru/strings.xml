@@ -16,6 +16,7 @@
     <string name="full_list">Полный список рецептов</string>
     <string name="recipe_list">Список рецептов</string>
     <string name="weights">Таблица мер и весов</string>
+    <string name="cooking_time">Время готовки</string>
 
     <!--Таблица мер и весов -->
 
@@ -26,5 +27,9 @@
     <string name="table_spoon">Стол. ложка</string>
     <string name="tea_spoon">Чайная ложк</string>
     <string name="one_piece_in_grams">1 штука в грам.</string>
+
+    <!--Время готовки-->
+    <string name="cereal_title">КАШИ</string>
+    <string name="cereal_body">Каши</string>
 
 </resources>

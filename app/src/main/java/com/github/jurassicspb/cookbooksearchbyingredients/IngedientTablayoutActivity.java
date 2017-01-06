@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.fragments.IngredientFragment;
+import com.github.jurassicspb.cookbooksearchbyingredients.nav_drawer_extras.CookingTime;
 import com.github.jurassicspb.cookbooksearchbyingredients.nav_drawer_extras.WeightsAndMeasures;
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.MyPreferences;
@@ -128,15 +129,19 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             Intent intent = new Intent(this,FavoritesActivity.class);
             startActivity(intent);
         }
-        if (id==R.id.fr2) {
+        else if (id==R.id.fr2) {
             Intent intent = new Intent(this, FullListActivity.class);
             startActivity(intent);
         }
-        if (id==R.id.fr3) {
+        else if (id==R.id.fr3) {
             finish();
         }
-        if (id==R.id.fr4){
+        else if (id==R.id.fr4){
             Intent intent = new Intent(this, WeightsAndMeasures.class);
+            startActivity(intent);
+        }
+        else if (id==R.id.fr5){
+            Intent intent = new Intent(this, CookingTime.class);
             startActivity(intent);
         }
         drawer.closeDrawer(GravityCompat.START);
