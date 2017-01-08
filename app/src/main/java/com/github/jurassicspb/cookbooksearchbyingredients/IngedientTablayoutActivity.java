@@ -2,6 +2,7 @@ package com.github.jurassicspb.cookbooksearchbyingredients;
 
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,6 +48,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     private List<CategoryTable> categoryTables;
     MyPreferences preferences;
     private DrawerLayout drawer;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,7 +80,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         } catch (IllegalAccessException e) {
         }
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
         pager.setOffscreenPageLimit(7);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -114,12 +117,23 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             IngredientFragment m = new IngredientFragment();
             ingredients = ingredientDB.getCategory(categoryTables.get(i).getNum());
             m.setIngrbycategory(ingredientDB.copyFromRealm(ingredients));
-            adapter.addFragment(m, categoryTables.get(i).getName());
+            adapter.addFragment(m, "");
         }
 
         pager.setAdapter(adapter);
         tabLayout.setupWithViewPager(pager);
+        customTabs();
 
+    }
+    public void customTabs(){
+        for (int i=0; i<categoryTables.size(); i++) {
+            TextView tabI = new TextView(this);
+            tabI.setTextColor(getResources().getColor(R.color.tabLayoutTextColor));
+            tabI.setText(categoryTables.get(i).getName());
+            tabI.setTypeface(Typeface.SANS_SERIF);
+            tabI.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.tabLayout_textsize));
+            tabLayout.getTabAt(i).setCustomView(tabI);
+        }
     }
 
     @Override

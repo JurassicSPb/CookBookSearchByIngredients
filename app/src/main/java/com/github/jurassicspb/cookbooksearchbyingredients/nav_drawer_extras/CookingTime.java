@@ -29,14 +29,14 @@ public class CookingTime extends AppCompatActivity{
             {"Овсяные хлопья", "1,5 стакана", "1 литр", "4 мин."},
             {"Перловая", "1 стакан", "3 стакана", "60 мин."},
             {"Пшеная", "1 стакан", "3 стакана", "45 мин."},
-            {"Пшеничная", "1 стакан", "3 стакана", "50 мин."},
+            {"Пшеничн.", "1 стакан", "3 стакана", "50 мин."},
             {"Рисовая", "1 стакан", "1,5-2 стакана", "15-20 мин."},
     };
     private String [][] porridgeENG = new String[][]{
             {""},
             {""},
             {"Boiled buckwheat", "1 glass", "2 glasses", "15-20 min."},
-            {"Cooked semolina", "1-2 tablespoons", "1 glass", "4 min."},
+            {"Cooked semolina", "1-2 tablesp.", "1 glass", "4 min."},
             {"Oatmeal", "1,5 glasses", "1 liter", "4 min."},
             {"Boiled pearl barley", "1 glass", "3 glasses", "60 min."},
             {"Millet porridge", "1 glass", "3 glasses", "45 min."},
@@ -76,7 +76,7 @@ public class CookingTime extends AppCompatActivity{
         tvParams1.width= ViewGroup.LayoutParams.MATCH_PARENT;
         tvParams1.setMargins(marginTitle, marginTitle, marginTitle, marginTitle);
         tvParams1.span=4;
-        tv1.setBackgroundResource(R.color.tabBackgroundWhite);
+        tv1.setBackgroundResource(R.color.tabTitlePorridge);
         tv1.setText(R.string.porridge_title);
         tv1.setGravity(Gravity.CENTER);
         tv1.setTextColor(getResources().getColor(R.color.tabDividerRed));
@@ -93,7 +93,7 @@ public class CookingTime extends AppCompatActivity{
         tvParams2.height=getResources().getDimensionPixelSize(R.dimen.tv2_cooking_time_height);
         tvParams2.width= getResources().getDimensionPixelSize(R.dimen.tv2_cooking_time_width);
         tvParams2.setMargins(marginBody, 0, marginBody, marginBody);
-        tv2.setBackgroundResource(R.color.tabBackgroundWhite);
+        tv2.setBackgroundResource(R.color.tabTitlePorridge);
         tv2.setText(R.string.porridge_body);
         tv2.setGravity(Gravity.CENTER);
         tv2.setTextColor(getResources().getColor(R.color.tabDividerRed));
@@ -106,7 +106,7 @@ public class CookingTime extends AppCompatActivity{
         tvParams3.height=ViewGroup.LayoutParams.MATCH_PARENT;
         tvParams3.width= getResources().getDimensionPixelSize(R.dimen.tv2_cooking_time_width);
         tvParams3.setMargins(0, 0, marginBody, marginBody);
-        tv3.setBackgroundResource(R.color.tabBackgroundWhite);
+        tv3.setBackgroundResource(R.color.tabTitlePorridge);
         tv3.setText(R.string.grain);
         tv3.setGravity(Gravity.CENTER);
         tv3.setTextColor(getResources().getColor(R.color.tabDividerRed));
@@ -115,7 +115,7 @@ public class CookingTime extends AppCompatActivity{
         row2.addView(tv3, tvParams3);
 
         TextView tv4 = new TextView(this);
-        tv4.setBackgroundResource(R.color.tabBackgroundWhite);
+        tv4.setBackgroundResource(R.color.tabTitlePorridge);
         tv4.setText(R.string.liquid);
         tv4.setGravity(Gravity.CENTER);
         tv4.setTextColor(getResources().getColor(R.color.tabDividerRed));
@@ -124,7 +124,7 @@ public class CookingTime extends AppCompatActivity{
         row2.addView(tv4, tvParams3);
 
         TextView tv5 = new TextView(this);
-        tv5.setBackgroundResource(R.color.tabBackgroundWhite);
+        tv5.setBackgroundResource(R.color.tabTitlePorridge);
         tv5.setText(R.string.time_to_boil);
         tv5.setGravity(Gravity.CENTER);
         tv5.setTextColor(getResources().getColor(R.color.tabDividerRed));
@@ -209,7 +209,5 @@ public class CookingTime extends AppCompatActivity{
 
             tableLayout.addView(row3, i);
         }
-
     }
-
 }

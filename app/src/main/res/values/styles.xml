@@ -10,4 +10,14 @@
         <item name = "windowNoTitle">true</item>
     </style>
 
+    <style name="ToolBarStyle.Event" parent="">
+        <item name="titleTextAppearance">@style/TextAppearance.Widget.Event.Toolbar.Title</item>
+    </style>
+
+    <style name="TextAppearance.Widget.Event.Toolbar.Title" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/toolbarTextColor</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/toolbar_textsize</item>
+    </style>
 </resources>

@@ -2,10 +2,12 @@
 <resources>
     <color name="colorPrimary">#FFD54F</color>
     <color name="colorPrimaryDark">#FFC107</color>
-    <color name="colorAccent">#2196F3</color>
+    <color name="colorAccent">#0D47A1</color>
     <color name="colorHeadline">#FFE082</color>
     <color name="colorSearch">#FFECB3</color>
     <color name="colorIngredientsField">#0D47A1</color>
+    <color name="tabLayoutTextColor">#0D47A1</color>
+    <color name="toolbarTextColor">#0D47A1</color>
 
     <!--Weights and measures-->
     <color name="tabDivider">#FFFFFF</color>
@@ -19,5 +21,6 @@
     <!--Cooking time-->
     <color name="tabDividerRed">#E53935</color>
     <color name="tabBackgroundWhite">#FFFFFF</color>
+    <color name="tabTitlePorridge">#FFF3E0</color>
 
 </resources>
