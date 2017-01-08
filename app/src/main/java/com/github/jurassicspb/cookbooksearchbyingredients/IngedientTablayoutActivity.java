@@ -15,10 +15,12 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,7 +61,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         setContentView(R.layout.tablayout_with_viewpager);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -91,7 +92,16 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         assert navigationView != null;
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
+
+        for (int i = 0; i < toolbar.getChildCount(); i++) {
+            if(toolbar.getChildAt(i) instanceof ImageButton){
+                toolbar.getChildAt(i).setScaleX(1.3f);
+                toolbar.getChildAt(i).setScaleY(1.3f);
+            }
+            Log.d(IngedientTablayoutActivity.class.getSimpleName(), "herehere" + toolbar.getChildAt(i));
+        }
 
         ingredientDB = new IngredientDatabase();
     //        delete();

@@ -2,12 +2,15 @@
 <resources>
     <color name="colorPrimary">#FFD54F</color>
     <color name="colorPrimaryDark">#FFC107</color>
-    <color name="colorAccent">#0D47A1</color>
+    <color name="colorAccent">#FF5722</color>
     <color name="colorHeadline">#FFE082</color>
     <color name="colorSearch">#FFECB3</color>
     <color name="colorIngredientsField">#0D47A1</color>
-    <color name="tabLayoutTextColor">#0D47A1</color>
-    <color name="toolbarTextColor">#0D47A1</color>
+    <color name="tabLayoutTextColor">#DD2C00</color>
+    <color name="toolbarTextColor">#DD2C00</color>
+    <color name="textColorHint">#9E9E9E</color>
+    <color name="textEditText">#212121</color>
+
 
     <!--Weights and measures-->
     <color name="tabDivider">#FFFFFF</color>

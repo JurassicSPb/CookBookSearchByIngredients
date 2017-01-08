@@ -14,9 +14,11 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:hint="@string/search"
+            android:textColorHint="@color/textColorHint"
             android:background="@color/colorSearch"
             android:textSize="20sp"
-            android:padding="8dp"
+            android:textColor="@color/textEditText"
+            android:padding="10dp"
             android:maxLength="25"
             android:maxLines="1"
             android:inputType="text"
@@ -25,10 +27,10 @@
             android:layout_marginLeft="8dp"/>
         <Button
             android:id="@+id/search_button"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="7.5dp"
+            android:layout_marginTop="7dp"
             android:layout_gravity="right"
             android:background="@drawable/ic_cross"
             />

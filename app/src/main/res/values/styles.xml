@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name = "windowActionBar">false</item>
         <item name = "windowNoTitle">true</item>
+        <item name="drawerArrowStyle">@style/MyDrawerArrowToggle</item>
     </style>
 
     <style name="ToolBarStyle.Event" parent="">
@@ -19,5 +20,9 @@
         <item name="android:textColor">@color/toolbarTextColor</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">@dimen/toolbar_textsize</item>
+    </style>
+
+    <style name="MyDrawerArrowToggle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/toolbarTextColor</item>
     </style>
 </resources>

@@ -1,6 +1,7 @@
 package com.github.jurassicspb.cookbooksearchbyingredients.fragments;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -46,6 +47,7 @@ public class IngredientFragment extends Fragment{
 
         searchEditText = (EditText) view.findViewById(R.id.search);
         searchClearButton = (Button) view.findViewById(R.id.search_button);
+        searchClearButton.setTypeface(Typeface.SANS_SERIF);
 
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override
