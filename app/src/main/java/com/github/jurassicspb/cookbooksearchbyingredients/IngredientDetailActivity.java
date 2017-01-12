@@ -10,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 /**
  * Created by Мария on 27.11.2016.
@@ -36,7 +38,6 @@ public class IngredientDetailActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new IngredientDetailAdapter();
         recyclerView.setAdapter(adapter);
-
     }
 
     @Override

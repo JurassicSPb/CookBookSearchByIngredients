@@ -40,6 +40,7 @@ public class IngredientFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.gridview_list, container, false);
+
         gridview = (GridView) view.findViewById(R.id.gridview);
 
         gita = new GridviewImageTextAdapter(getActivity(), getIngrbycategory());
@@ -58,7 +59,6 @@ public class IngredientFragment extends Fragment{
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 gita.getFilter().filter(s.toString());
-
             }
 
             @Override
@@ -78,11 +78,6 @@ public class IngredientFragment extends Fragment{
 //                String sel = ingredients.get(position).getIngredient();
                 Ingredient item = gita.getItem(position);
                 String sel = item.getIngredient();
-//                for (int i=0; i<10; i++){
-//                    if (position==i){
-//                        parent.getChildAt(i).setBackgroundColor(Color.CYAN);
-//                    }
-//                }
 
 //                Log.d(IngredientFragment.class.getSimpleName(), "here" + selected);
                 int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
@@ -112,7 +107,6 @@ public class IngredientFragment extends Fragment{
         });
         return view;
     }
-
     public void setIngrbycategory(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }

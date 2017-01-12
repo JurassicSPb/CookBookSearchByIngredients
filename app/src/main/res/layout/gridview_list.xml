@@ -49,5 +49,4 @@
         android:verticalSpacing="16dp"
         >
     </GridView>
-
 </LinearLayout>

@@ -13,10 +13,6 @@
         android:scaleType="centerCrop"
         />
 
-    <!--красивые шрифты Roboto подключить-->
-    <!--подгрузка картинок picasso squareup (для круглых картннок погуглить спецю класс в пикассо)
-    для динамического в recycler view в bind заносим много разных каринок для разных объектов рецептом Receipe receipe-->
-    <!--выделение элементов рамкой(drawable shape)-->
     <TextView
         android:id="@+id/textpart"
         android:layout_width="fill_parent"
@@ -24,7 +20,7 @@
         android:textSize="18sp"
         android:textAlignment="center"
         tools:text="Ingredient"
-        android:background="@color/colorHeadline"
+        android:background="@color/ingredientsTextColor"
         />
 
 </LinearLayout>

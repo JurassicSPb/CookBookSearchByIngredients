@@ -44,10 +44,10 @@ public class FavoritesActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.favorites_recyclerview);
+
         recipeDB = new IngredientDatabase();
         performFavorites();
-
-        setContentView(R.layout.favorites_recyclerview);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);

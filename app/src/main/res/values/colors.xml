@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFD54F</color>
-    <color name="colorPrimaryDark">#FFC107</color>
-    <color name="colorAccent">#FF5722</color>
-    <color name="colorHeadline">#FFE082</color>
+    <color name="colorPrimary">#FFA000</color>
+    <color name="colorPrimaryDark">#FF6F00</color>
+    <color name="colorAccent">#424242</color>
+    <color name="colorHeadline">#FFA000</color>
     <color name="colorSearch">#FFECB3</color>
     <color name="colorIngredientsField">#0D47A1</color>
-    <color name="tabLayoutTextColor">#DD2C00</color>
-    <color name="toolbarTextColor">#DD2C00</color>
+    <color name="tabLayoutTextColorSelected">#FFFFFF</color>
+    <color name="tabLayoutTextColorUnselected">#FFECB3</color>
+    <color name="toolbarTextColor">#FFFFFF</color>
+    <color name="ingredientsTextColor">#FFC400</color>
     <color name="textColorHint">#9E9E9E</color>
     <color name="textEditText">#212121</color>
+
 
 
     <!--Weights and measures-->

@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -15,8 +16,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -55,10 +54,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        preferences = new MyPreferences(this);
-//        preferences.clearPrefs();
 
         setContentView(R.layout.tablayout_with_viewpager);
+
+        preferences = new MyPreferences(this);
+        //        preferences.clearPrefs();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -100,12 +100,12 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
                 toolbar.getChildAt(i).setScaleX(1.3f);
                 toolbar.getChildAt(i).setScaleY(1.3f);
             }
-            Log.d(IngedientTablayoutActivity.class.getSimpleName(), "herehere" + toolbar.getChildAt(i));
         }
 
         ingredientDB = new IngredientDatabase();
     //        delete();
     //        deleteRecipe();
+
 
         if (preferences.getFlag()) {
             if (Locale.getDefault().getLanguage().equals("ru")) {
@@ -127,24 +127,26 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             IngredientFragment m = new IngredientFragment();
             ingredients = ingredientDB.getCategory(categoryTables.get(i).getNum());
             m.setIngrbycategory(ingredientDB.copyFromRealm(ingredients));
-            adapter.addFragment(m, "");
+            adapter.addFragment(m, categoryTables.get(i).getName());
         }
 
         pager.setAdapter(adapter);
         tabLayout.setupWithViewPager(pager);
-        customTabs();
-
+        tabLayout.setTabTextColors(
+                ContextCompat.getColor(this, R.color.tabLayoutTextColorUnselected),
+                ContextCompat.getColor(this, R.color.tabLayoutTextColorSelected)
+        );
     }
-    public void customTabs(){
-        for (int i=0; i<categoryTables.size(); i++) {
-            TextView tabI = new TextView(this);
-            tabI.setTextColor(getResources().getColor(R.color.tabLayoutTextColor));
-            tabI.setText(categoryTables.get(i).getName());
-            tabI.setTypeface(Typeface.SANS_SERIF);
-            tabI.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.tabLayout_textsize));
-            tabLayout.getTabAt(i).setCustomView(tabI);
-        }
-    }
+//    public void customTabs(){
+//        for (int i=0; i<categoryTables.size(); i++) {
+//            TextView tabI = new TextView(this);
+////            tabI.setTextColor(getResources().getColor(R.color.tabLayoutTextColor));
+//            tabI.setText(categoryTables.get(i).getName());
+//            tabI.setTypeface(Typeface.SANS_SERIF);
+//            tabI.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.tabLayout_textsize));
+//            tabLayout.getTabAt(i).setCustomView(tabI);
+//        }
+//    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
