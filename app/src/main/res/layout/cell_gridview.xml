@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/imagepart"
-        android:layout_width="fill_parent"
-        android:layout_height="100dp"
-        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
         android:scaleType="centerCrop"
         />
-
     <TextView
         android:id="@+id/textpart"
+        android:layout_gravity="bottom"
         android:layout_width="fill_parent"
-        android:layout_height="28dp"
+        android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:textAlignment="center"
+        android:gravity="center"
+        android:fontFamily="sans-serif"
         tools:text="Ingredient"
-        android:background="@color/ingredientsTextColor"
+        android:textColor="@android:color/white"
+        android:background="@color/ingredientsTextViewColor"
         />
-
-</LinearLayout>
+</FrameLayout>

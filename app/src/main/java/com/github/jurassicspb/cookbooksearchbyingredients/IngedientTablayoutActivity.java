@@ -2,7 +2,6 @@ package com.github.jurassicspb.cookbooksearchbyingredients;
 
 import android.content.Intent;
 import android.content.res.AssetManager;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -58,7 +57,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         setContentView(R.layout.tablayout_with_viewpager);
 
         preferences = new MyPreferences(this);
-        //        preferences.clearPrefs();
+                preferences.clearPrefs();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -103,7 +102,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         }
 
         ingredientDB = new IngredientDatabase();
-    //        delete();
+//            delete();
     //        deleteRecipe();
 
 
@@ -207,9 +206,9 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         ArrayList<Ingredient> newIngredient = new ArrayList<>();
         newIngredient.add(new Ingredient("0.1", 0, "Говядина", R.drawable.beef));
         newIngredient.add(new Ingredient("0.2", 0, "Свинина", R.drawable.ic_circle));
-        newIngredient.add(new Ingredient("0.3", 0, "Баранина", R.drawable.ic_circle));
-        newIngredient.add(new Ingredient("0.4", 0, "Телятина", R.drawable.ic_circle));
-        newIngredient.add(new Ingredient("0.5", 0, "Фарш из говядины", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("0.3", 0, "Фарш из говядины", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("0.4", 0, "Баранина", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("0.5", 0, "Телятина", R.drawable.ic_circle));
         newIngredient.add(new Ingredient("0.6", 0, "Фарш из свинины", R.drawable.ic_circle));
         newIngredient.add(new Ingredient("0.7", 0, "Фарш из баранины", R.drawable.ic_circle));
         newIngredient.add(new Ingredient("0.8", 0, "Фарш из телятины", R.drawable.ic_circle));

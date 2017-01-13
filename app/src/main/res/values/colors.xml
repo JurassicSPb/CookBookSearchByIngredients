@@ -6,12 +6,14 @@
     <color name="colorHeadline">#A52A2A</color>
     <color name="colorSearch">#FFDEAD</color>
     <color name="colorIngredientsField">#0D47A1</color>
-    <color name="tabLayoutTextColorSelected">#FFFFFF</color>
-    <color name="tabLayoutTextColorUnselected">#FAFAD2</color>
+    <color name="tabLayoutTextColorSelected">#FFC107</color>
+    <color name="tabLayoutTextColorUnselected">#FFFFFF</color>
     <color name="toolbarTextColor">#FFFFFF</color>
-    <color name="ingredientsTextColor">#FFC400</color>
+    <color name="ingredientsTextViewColor">#78000000</color>
     <color name="textColorHint">#BDBDBD</color>
     <color name="textEditText">#000000</color>
+    <color name="backgrondTabLayoutActivity">#FFECB3</color>
+
 
 
 

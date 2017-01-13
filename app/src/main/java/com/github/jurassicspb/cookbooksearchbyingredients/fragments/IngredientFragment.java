@@ -1,5 +1,6 @@
 package com.github.jurassicspb.cookbooksearchbyingredients.fragments;
 
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -97,7 +98,7 @@ public class IngredientFragment extends Fragment{
                 else {
                     SelectedIngredient.removeCount();
                     SelectedIngredient.removeSelectedIngredient(sel);
-                    (view.findViewById(R.id.textpart)).setBackgroundResource(R.color.ingredientsTextColor);
+                    (view.findViewById(R.id.textpart)).setBackgroundResource(R.color.ingredientsTextViewColor);
                 }
                 ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(selectedToString+": " + SelectedIngredient.showCount());
                 if (SelectedIngredient.showCount()==0){
