@@ -11,16 +11,21 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:dividerPadding="3dp"
-    android:showDividers="middle"
-    android:divider="@drawable/separator">
+    android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:dividerPadding="3dp"
+        android:showDividers="middle"
+        android:divider="@drawable/separator">
 
     <ImageView
         android:id="@+id/large_image"
@@ -74,6 +79,6 @@
         android:textSize="14sp"
         />
 
-
+    </LinearLayout>
 </LinearLayout>
 </ScrollView>

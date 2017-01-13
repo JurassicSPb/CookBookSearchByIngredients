@@ -2,7 +2,7 @@
 <resources>
     <dimen name="headline_height">32dp</dimen>
     <dimen name="tabLayout_textsize">21sp</dimen>
-    <dimen name="toolbar_textsize">21sp</dimen>
+    <dimen name="toolbar_textsize">20sp</dimen>
 
     <!--Weights and Measures-->
     <dimen name="text_size">16sp</dimen>

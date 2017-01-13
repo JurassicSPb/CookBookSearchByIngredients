@@ -43,7 +43,8 @@
             android:configChanges="orientation|screenSize">
         </activity>
 
-        <activity android:name=".LoadingScreenActivity">
+        <activity android:name=".LoadingScreenActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
