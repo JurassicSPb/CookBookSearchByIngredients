@@ -86,7 +86,8 @@ public class IngredientFragment extends Fragment{
                     if (SelectedIngredient.showCount()<10) {
                         SelectedIngredient.addCount();
                         SelectedIngredient.addSelectedIngredient(sel);
-                        tv.setBackgroundColor(Color.GREEN);
+                        tv.setTextColor(getResources().getColor(R.color.tabLayoutTextColorSelected));
+//                        tv.setBackgroundColor(Color.GREEN);
 
                     }
                     else if (SelectedIngredient.showCount()==10){
@@ -98,7 +99,8 @@ public class IngredientFragment extends Fragment{
                 else {
                     SelectedIngredient.removeCount();
                     SelectedIngredient.removeSelectedIngredient(sel);
-                    (view.findViewById(R.id.textpart)).setBackgroundResource(R.color.ingredientsTextViewColor);
+                    tv.setTextColor(Color.WHITE);
+//                    tv.setBackgroundResource(R.color.ingredientsTextViewColor);
                 }
                 ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(selectedToString+": " + SelectedIngredient.showCount());
                 if (SelectedIngredient.showCount()==0){
