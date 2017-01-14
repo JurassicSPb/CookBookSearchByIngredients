@@ -20,18 +20,5 @@ public class LoadingScreenActivity extends AppCompatActivity{
         Intent mainIntent = new Intent(LoadingScreenActivity.this,IngedientTablayoutActivity.class);
         startActivity(mainIntent);
         finish();
-
-//            setContentView(R.layout.loading_screen);
-//            progressBar = (ProgressBar) findViewById(R.id.progress_bar);
-//            progressBar.setVisibility(ProgressBar.VISIBLE);
-//
-//        new Handler().postDelayed(new Runnable(){
-//            @Override
-//            public void run() {
-//                Intent mainIntent = new Intent(LoadingScreenActivity.this,IngedientTablayoutActivity.class);
-//                startActivity(mainIntent);
-//                finish();
-//            }
-//        }, WAIT_TIME);
     }
 }

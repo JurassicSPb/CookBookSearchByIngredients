@@ -43,6 +43,10 @@
             android:configChanges="orientation|screenSize">
         </activity>
 
+        <activity android:name=".ProgressBarActivity">
+
+        </activity>
+
         <activity android:name=".LoadingScreenActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>

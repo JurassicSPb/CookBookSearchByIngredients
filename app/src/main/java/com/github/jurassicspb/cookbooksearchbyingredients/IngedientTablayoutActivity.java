@@ -3,6 +3,7 @@ package com.github.jurassicspb.cookbooksearchbyingredients;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -50,6 +51,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     MyPreferences preferences;
     private DrawerLayout drawer;
     private TabLayout tabLayout;
+    private Intent intent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -153,22 +155,28 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id==R.id.fr1) {
-            Intent intent = new Intent(this,FavoritesActivity.class);
+            intent = new Intent(this,FavoritesActivity.class);
             startActivity(intent);
         }
         else if (id==R.id.fr2) {
-            Intent intent = new Intent(this, FullListActivity.class);
+        new Handler().postDelayed(() -> {
+            intent = new Intent(IngedientTablayoutActivity.this,FullListActivity.class);
             startActivity(intent);
+        }, 3000);
+            new Handler().post(() -> {
+                intent = new Intent(IngedientTablayoutActivity.this,ProgressBarActivity.class);
+                startActivity(intent);
+            });
         }
         else if (id==R.id.fr3) {
             finish();
         }
         else if (id==R.id.fr4){
-            Intent intent = new Intent(this, WeightsAndMeasures.class);
+            intent = new Intent(this, WeightsAndMeasures.class);
             startActivity(intent);
         }
         else if (id==R.id.fr5){
-            Intent intent = new Intent(this, CookingTime.class);
+            intent = new Intent(this, CookingTime.class);
             startActivity(intent);
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -190,12 +198,12 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 } else {
-                    Intent intent = new Intent(this, IngredientDetailActivity.class);
+                    intent = new Intent(this, IngredientDetailActivity.class);
                     startActivity(intent);
                 }
                 break;
             case R.id.item2:
-                Intent intent = new Intent(this,IngedientTablayoutActivity.class);
+                intent = new Intent(this,IngedientTablayoutActivity.class);
                 startActivity(intent);
                 finish();
                 break;
