@@ -15,6 +15,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -57,7 +58,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         setContentView(R.layout.tablayout_with_viewpager);
 
         preferences = new MyPreferences(this);
-                preferences.clearPrefs();
+//                preferences.clearPrefs();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -118,6 +119,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
                 createRecipes("eng");
             }
             preferences.setFlag(false);
+            Log.d(IngedientTablayoutActivity.class.getSimpleName(),"herehere" + preferences.getFlag());
         }
         performCategoryTables();
         performIngredients();

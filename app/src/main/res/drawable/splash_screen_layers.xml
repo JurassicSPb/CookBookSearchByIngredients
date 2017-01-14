@@ -14,10 +14,17 @@
         </shape>
     </item>
 
-    <item>
+    <item
+        android:top="110dp">
         <bitmap
-            android:gravity="center"
-            android:src="@drawable/fridge_128"/>
+            android:gravity="top"
+            android:src="@drawable/fridge256"/>
+    </item>
+    <item
+        android:bottom="110dp">
+        <bitmap
+            android:gravity="bottom"
+            android:src="@drawable/splash"/>
     </item>
 
 </layer-list>

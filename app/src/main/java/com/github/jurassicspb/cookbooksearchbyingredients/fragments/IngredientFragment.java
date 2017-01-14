@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,6 +61,13 @@ public class IngredientFragment extends Fragment{
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 gita.getFilter().filter(s.toString());
+//                final int childcount = gridview.getChildCount();
+//                for (int i = 0; i < childcount; i++) {
+//                    View v = gridview.getChildAt(i);
+//                    Log.d(IngredientFragment.class.getSimpleName(), "herehere" + v);
+//                }
+
+
             }
 
             @Override
