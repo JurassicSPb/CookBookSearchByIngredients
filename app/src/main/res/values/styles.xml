@@ -26,10 +26,6 @@
         <item name="color">@color/toolbarTextColor</item>
     </style>
 
-    <!--<style name="CircularProgress" parent="Theme.AppCompat.Light">-->
-        <!--<item name="colorAccent">@android:color/holo_green_light</item>-->
-    <!--</style>-->
-
     <style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">17sp</item>
         <item name="android:fontFamily">sans-serif</item>

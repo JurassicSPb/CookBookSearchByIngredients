@@ -2,6 +2,7 @@ package com.github.jurassicspb.cookbooksearchbyingredients;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,8 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ProgressBar;
 
 /**
  * Created by Мария on 27.11.2016.
@@ -20,6 +19,7 @@ import android.widget.ProgressBar;
 public class IngredientDetailActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private IngredientDetailAdapter adapter;
+    private Intent intent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,8 +50,12 @@ public class IngredientDetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent = new Intent(this, RecipeListActivity.class);
+        intent = new Intent(this,ProgressBarActivity.class);
         startActivity(intent);
+        new Handler().postDelayed(() -> {
+            intent = new Intent(this,RecipeListActivity.class);
+            startActivity(intent);
+        }, 600);
         return super.onOptionsItemSelected(item);
     }
 }

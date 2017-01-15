@@ -25,4 +25,6 @@ public class ProgressBarActivity extends AppCompatActivity{
         super.onStop();
         finish();
     }
+    @Override
+    public void onBackPressed() {}
 }

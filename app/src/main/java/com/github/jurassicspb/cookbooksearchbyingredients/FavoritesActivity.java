@@ -43,7 +43,6 @@ public class FavoritesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.favorites_recyclerview);
 
         recipeDB = new IngredientDatabase();
@@ -61,7 +60,6 @@ public class FavoritesActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new FavoritesAdapter(favorites, clickListener);
         recyclerView.setAdapter(adapter);
-
     }
 
     @Override

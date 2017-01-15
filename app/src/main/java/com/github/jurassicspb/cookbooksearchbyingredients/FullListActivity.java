@@ -9,13 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
-
 import java.util.List;
 
 /**
@@ -53,10 +50,10 @@ public class FullListActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.full_list_recyclerview);
+
         recipeDB = new IngredientDatabase();
         performRecipes();
-
-        setContentView(R.layout.full_list_recyclerview);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
@@ -100,12 +97,23 @@ public class FullListActivity extends AppCompatActivity{
         });
 
         searchClearButton.setOnClickListener(v -> searchEditText.setText(""));
-
     }
+
     private void performRecipes(){
         recipes = recipeDB.copyFromRealmRecipeSorted();
     }
 
+//    private  List<Recipe> createFakeRecipes(){
+//        ArrayList<Recipe> newRecipes = new ArrayList<>();
+//        for (int i = 0; i < 100000; i++) {
+//            newRecipes.add(new Recipe("dweffffffffffffffffffffffffffffwefwefwefwefwefwefwefwefwefwefwefd",
+//                    "ddddfwefwefwefwefwedddddddwadwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwf",
+//                    "dwwefwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwdwfwfwfwfwfwd",
+//                    "wfwwfwfwfwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwfef",
+//                    "wefffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdwdwfwfwfwfwfw"));
+//        }
+//        return newRecipes;
+//    }
     @Override
     protected void onDestroy() {
         recipeDB.close();

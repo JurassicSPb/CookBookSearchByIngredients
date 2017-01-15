@@ -16,7 +16,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -48,7 +47,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     private IngredientDatabase ingredientDB;
     private List<Ingredient> ingredients;
     private List<CategoryTable> categoryTables;
-    MyPreferences preferences;
+    private MyPreferences preferences;
     private DrawerLayout drawer;
     private TabLayout tabLayout;
     private Intent intent;
@@ -121,7 +120,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
                 createRecipes("eng");
             }
             preferences.setFlag(false);
-            Log.d(IngedientTablayoutActivity.class.getSimpleName(),"herehere" + preferences.getFlag());
         }
         performCategoryTables();
         performIngredients();
@@ -155,18 +153,16 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id==R.id.fr1) {
-            intent = new Intent(this,FavoritesActivity.class);
-            startActivity(intent);
+                intent = new Intent(IngedientTablayoutActivity.this,FavoritesActivity.class);
+                startActivity(intent);
         }
         else if (id==R.id.fr2) {
-        new Handler().postDelayed(() -> {
-            intent = new Intent(IngedientTablayoutActivity.this,FullListActivity.class);
+            intent = new Intent(IngedientTablayoutActivity.this,ProgressBarActivity.class);
             startActivity(intent);
-        }, 3000);
-            new Handler().post(() -> {
-                intent = new Intent(IngedientTablayoutActivity.this,ProgressBarActivity.class);
+            new Handler().postDelayed(() -> {
+                intent = new Intent(IngedientTablayoutActivity.this,FullListActivity.class);
                 startActivity(intent);
-            });
+            }, 600);
         }
         else if (id==R.id.fr3) {
             finish();
