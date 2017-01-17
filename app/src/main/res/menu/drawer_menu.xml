@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/fr2"
-        android:icon="@android:drawable/ic_menu_view"
+        android:icon="@drawable/ic_full_list"
         android:title="@string/drawer_menu_full_list" />
     </group>
 
@@ -26,7 +26,7 @@
     <group android:id="@+id/grp3">
         <item
             android:id="@+id/fr3"
-            android:icon="@android:drawable/ic_menu_close_clear_cancel"
+            android:icon="@drawable/ic_close"
             android:title="@string/drawer_menu_exit" />
     </group>
 
