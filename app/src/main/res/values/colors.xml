@@ -27,7 +27,8 @@
     <!--Cooking time-->
     <color name="tabDividerRed">#E53935</color>
     <color name="tabBackgroundWhite">#FFFFFF</color>
-    <color name="tabTitlePorridge">#FFF3E0</color>
+    <color name="tabTitlePorridge">#FFECB3</color>
+    <color name="tabSecondRowPorridge">#FFF8E1</color>
 
     <!--Custom Colors-->
     <color name="White">#FFFFFF</color>

@@ -24,4 +24,6 @@
     <dimen name="text_size_cooking_time_body_small">16sp</dimen>
     <dimen name="tv2_cooking_time_height">48dp</dimen>
     <dimen name="tv2_cooking_time_width">38dp</dimen>
+    <dimen name="tv3_cooking_time_height">48dp</dimen>
+    <dimen name="tv3_cooking_time_width">38dp</dimen>
 </resources>

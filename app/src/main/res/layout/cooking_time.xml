@@ -17,13 +17,29 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
         <TableLayout
-            android:id="@+id/tableLayout"
+            android:id="@+id/tableLayoutPorridge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:stretchColumns="*"
             android:shrinkColumns="*">
         </TableLayout>
+
+        <TableLayout
+            android:id="@+id/tableLayoutOther"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:stretchColumns="*"
+            android:shrinkColumns="*">
+        </TableLayout>
+
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>

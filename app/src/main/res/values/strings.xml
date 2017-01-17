@@ -34,5 +34,9 @@
     <string name="grain">Grain</string>
     <string name="liquid">Liquid</string>
     <string name="time_to_boil">Time to boil</string>
+    <string name="meat">Meat</string>
+    <string name="boiling">Boiling</string>
+    <string name="fry_up">Fry-up</string>
+    <string name="stewing">Stewing</string>
 
 </resources>

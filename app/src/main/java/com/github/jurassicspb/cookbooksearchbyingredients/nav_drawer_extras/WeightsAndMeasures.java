@@ -335,7 +335,7 @@ public class WeightsAndMeasures extends AppCompatActivity{
         tabLayout.addView(rowTitle2);
     }
     public void createBody(){
-        TableLayout tabLayout = (TableLayout) findViewById(R.id.tableLayout);
+        TableLayout tabLayout = (TableLayout) findViewById(R.id.tableLayoutPorridge);
         int margin = getResources().getDimensionPixelSize(R.dimen.margin);
         int padding = getResources().getDimensionPixelSize(R.dimen.padding);
 
