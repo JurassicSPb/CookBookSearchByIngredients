@@ -33,6 +33,8 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
 
     @Override
     public void onBindViewHolder(FavoritesAdapter.ViewHolder holder, int position) {
+        Context cont =  holder.recipeName.getContext();
+        String category = cont.getResources().getString(R.string.category);
 
         String url = favorites.get(position).getImage();
         Context context = holder.photoSmall.getContext();
@@ -45,7 +47,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
                 .error(R.drawable.ic_error)
                 .into(holder.photoSmall);
 
-        holder.recipeName.setText(favorites.get(position).getName());
+        holder.recipeName.setText(favorites.get(position).getName() + "\n" + category + " " + favorites.get(position).getCategory());
     }
 
     @Override

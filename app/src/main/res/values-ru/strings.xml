@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">CookBookSearchByIngredients</string>
-    <string name="search">Поиск</string>
+    <string name="search_by_ingredient">Поиск по ингредиентам</string>
+    <string name="search_by_name">Поиск по названию или категории</string>
     <string name="ingredient_list">Список ингредиентов</string>
     <string name="select_one">Выберите хотя бы один ингредиент</string>
     <string name="selected">Выбрано</string>
@@ -17,6 +18,7 @@
     <string name="recipe_list">Список рецептов</string>
     <string name="weights">Таблица мер и весов</string>
     <string name="cooking_time">Время готовки</string>
+    <string name="category">Категория:</string>
 
     <!--Таблица мер и весов -->
 

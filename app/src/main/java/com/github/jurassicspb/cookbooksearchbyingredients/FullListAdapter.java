@@ -38,6 +38,9 @@ public class FullListAdapter extends RecyclerView.Adapter<FullListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(FullListAdapter.ViewHolder holder, int position) {
+        Context cont =  holder.recipeName.getContext();
+        String category = cont.getResources().getString(R.string.category);
+
         String url = recipes.get(position).getImage();
         Context context = holder.photoSmall.getContext();
 
@@ -49,7 +52,7 @@ public class FullListAdapter extends RecyclerView.Adapter<FullListAdapter.ViewHo
                 .error(R.drawable.ic_error)
                 .into(holder.photoSmall);
 
-        holder.recipeName.setText(recipes.get(position).getName());
+        holder.recipeName.setText(recipes.get(position).getName() + "\n" + category + " " + recipes.get(position).getCategory());
     }
 
     @Override
@@ -96,6 +99,8 @@ public class FullListAdapter extends RecyclerView.Adapter<FullListAdapter.ViewHo
                 ArrayList<Recipe> filterList = new ArrayList<>();
                 for (int i = 0; i < recipesFiltered.size(); i++) {
                     if (recipesFiltered.get(i).getName().toUpperCase()
+                            .contains(constraint.toString().toUpperCase()) ||
+                            recipesFiltered.get(i).getCategory().toUpperCase()
                             .contains(constraint.toString().toUpperCase())) {
                         filterList.add(recipesFiltered.get(i));
                     }

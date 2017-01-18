@@ -305,10 +305,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
                     JSONObject obj = new JSONObject(json);
                     String name = obj.getString("name");
                     String ingredients = obj.getString("ingredients");
+                    String category = obj.getString("category");
                     String description = obj.getString("description");
                     String calories = obj.getString("calories");
                     String image = obj.getString("image");
-                    newRecipe.add(new Recipe(name, ingredients, description, calories, image));
+                    newRecipe.add(new Recipe(name, ingredients, category, description, calories, image));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

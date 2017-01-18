@@ -31,6 +31,7 @@ public class RecipeListActivity extends AppCompatActivity {
             String ingredients = adapter.getRecipe(position).getIngredient();
             String description = adapter.getRecipe(position).getDescription();
             String calories = adapter.getRecipe(position).getCalories();
+            String category = adapter.getRecipe(position).getCategory();
 
             Intent intent = new Intent(RecipeListActivity.this, RecipeDetailActivity.class);
             intent.putExtra("name", name);
@@ -38,6 +39,7 @@ public class RecipeListActivity extends AppCompatActivity {
             intent.putExtra("ingredients", ingredients);
             intent.putExtra("description", description);
             intent.putExtra("calories", calories);
+            intent.putExtra("category", category);
             startActivity(intent);
 
         }

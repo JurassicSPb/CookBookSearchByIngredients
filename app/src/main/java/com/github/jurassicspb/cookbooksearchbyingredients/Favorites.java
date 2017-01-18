@@ -11,15 +11,17 @@ public class Favorites extends RealmObject{
     @PrimaryKey
     private String name;
     private String ingredient;
+    private String category;
     private String description;
     private String image;
     private String calories;
 
     public Favorites() {}
 
-    public Favorites(String name, String ingredient, String description, String calories, String image) {
+    public Favorites(String name, String ingredient, String category, String description, String calories, String image) {
         this.name = name;
         this.ingredient = ingredient;
+        this.category = category;
         this.description=description;
         this.calories=calories;
         this.image = image;
@@ -64,5 +66,12 @@ public class Favorites extends RealmObject{
 
     public void setCalories(String calories) {
         this.calories = calories;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

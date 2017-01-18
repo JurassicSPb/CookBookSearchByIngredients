@@ -29,7 +29,6 @@ public class RecipeDetailActivity extends AppCompatActivity{
     private IngredientDatabase favoritesDB;
     private List <Favorites> favorites;
     Toast toast;
-    MyPreferences preferences;
     ImageView largeImage;
     TextView name;
     TextView ingredient;
@@ -40,6 +39,7 @@ public class RecipeDetailActivity extends AppCompatActivity{
     String descriptions;
     String calories;
     String image;
+    String category;
     Drawable myDrawable;
 
 
@@ -49,7 +49,6 @@ public class RecipeDetailActivity extends AppCompatActivity{
         setContentView(R.layout.receipe_detail);
 
         favoritesDB = new IngredientDatabase();
-        preferences = new MyPreferences(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
@@ -88,6 +87,7 @@ public class RecipeDetailActivity extends AppCompatActivity{
         calories = intent.getStringExtra("calories");
         calorie.setText(calories);
 
+        category = intent.getStringExtra("category");
     }
 
     @Override
@@ -113,7 +113,7 @@ public class RecipeDetailActivity extends AppCompatActivity{
                     myDrawable = getResources().getDrawable(R.drawable.ic_favorites_selected);
                     item.setIcon(myDrawable);
                     ArrayList<Favorites> newFavorites = new ArrayList<>();
-                    newFavorites.add(new Favorites(names, ingredients, descriptions, calories, image));
+                    newFavorites.add(new Favorites(names, ingredients, category, descriptions, calories, image));
                     favoritesDB.copyOrUpdateFavorites(newFavorites);
                     toast = Toast.makeText(this, R.string.toast_favorites, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
