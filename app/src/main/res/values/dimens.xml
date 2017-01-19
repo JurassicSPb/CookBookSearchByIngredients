@@ -26,4 +26,5 @@
     <dimen name="tv2_cooking_time_width">38dp</dimen>
     <dimen name="tv3_cooking_time_height">48dp</dimen>
     <dimen name="tv3_cooking_time_width">38dp</dimen>
+    <dimen name="fish_cooking_time_height">57dp</dimen>
 </resources>
