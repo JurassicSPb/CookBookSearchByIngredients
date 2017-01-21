@@ -66,7 +66,7 @@ public class RecipeDetailActivity extends AppCompatActivity{
                 .load(image)
                 .fit()
                 .centerCrop()
-                .placeholder(R.drawable.ic_placeholder)
+                .placeholder(R.drawable.timeleft128)
                 .error(R.drawable.ic_error)
                 .into(largeImage);
 

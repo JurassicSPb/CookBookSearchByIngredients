@@ -33,6 +33,7 @@
         android:layout_width="220dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
+        android:scaleType="center"
         android:background="@android:color/holo_green_light"/>
     <TextView
         android:id="@+id/name_field"
