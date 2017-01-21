@@ -43,7 +43,8 @@
             android:configChanges="orientation|screenSize">
         </activity>
 
-        <activity android:name=".ProgressBarActivity">
+        <activity android:name=".ProgressBarActivity"
+            android:theme="@style/ProgressBarTheme">
 
         </activity>
 

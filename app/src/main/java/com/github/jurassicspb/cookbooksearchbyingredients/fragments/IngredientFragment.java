@@ -1,13 +1,11 @@
 package com.github.jurassicspb.cookbooksearchbyingredients.fragments;
 
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -80,13 +78,7 @@ public class IngredientFragment extends Fragment{
 //                String sel = ingredients.get(position).getIngredient();
 //                Ingredient item = gita.getItem(position);
 //                String sel = item.getIngredient();
-//                if (id==position){
-//                    tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.tabLayoutTextColorSelected));
-//                }
-//                if (tv.getCurrentTextColor()==getResources().getColor(R.color.tabLayoutTextColorSelected)){
-//                    tv.setTextColor(Color.WHITE);
-//                }
-//                Log.d(IngredientFragment.class.getSimpleName(), "here" + selected);
+
                 int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
                 if (ingredientPosition==-1) {
                     if (SelectedIngredient.showCount()<10) {
@@ -112,7 +104,6 @@ public class IngredientFragment extends Fragment{
 //                    tv.setTextColor(Color.WHITE);
 //                    tv.setBackgroundResource(R.color.ingredientsTextViewColor);
                 }
-//                gita.notifyDataSetChanged();
                 ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(selectedToString+": " + SelectedIngredient.showCount());
                 if (SelectedIngredient.showCount()==0){
                     ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);

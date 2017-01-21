@@ -36,4 +36,9 @@
         <item name="android:windowBackground">@drawable/splash_screen_layers</item>
     </style>
 
+    <style name="ProgressBarTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/progress_bar_layers</item>
+    </style>
+
+
 </resources>

@@ -38,8 +38,11 @@
     <string name="time_to_boil">Время варки</string>
     <string name="meat">Мясо</string>
     <string name="seafood">Морепродукты</string>
-    <string name="boiling">Варка</string>
-    <string name="fry_up">Жаре- ние</string>
-    <string name="stewing">Тушение</string>
+    <string name="bird">Птица</string>
+    <string name="vegetables">Овощи</string>
+    <string name="other">Другое</string>
+    <string name="boiling">Варка целиком</string>
+    <string name="fry_up">Жарение кусками</string>
+    <string name="stewing">Тушение кусками</string>
 
 </resources>

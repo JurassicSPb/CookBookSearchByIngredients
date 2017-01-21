@@ -37,8 +37,11 @@
     <string name="time_to_boil">Time to boil</string>
     <string name="meat">Meat</string>
     <string name="seafood">Seafood</string>
-    <string name="boiling">Boiling</string>
-    <string name="fry_up">Fry-up</string>
-    <string name="stewing">Stewing</string>
+    <string name="bird">Bird</string>
+    <string name="vegetables">Vegetables</string>
+    <string name="other">Other</string>
+    <string name="boiling">Boiling (whole)</string>
+    <string name="fry_up">Fry-up (pieces)</string>
+    <string name="stewing">Stewing (pieces)</string>
 
 </resources>

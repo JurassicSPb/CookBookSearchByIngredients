@@ -3,6 +3,7 @@ package com.github.jurassicspb.cookbooksearchbyingredients;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 
@@ -17,7 +18,7 @@ public class ProgressBarActivity extends AppCompatActivity{
         setContentView(R.layout.progress_bar);
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         progressBar.setVisibility(android.widget.ProgressBar.VISIBLE);
-        progressBar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.progressBar), PorterDuff.Mode.SRC_ATOP);
+        progressBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(this, R.color.progressBar), PorterDuff.Mode.SRC_ATOP);
     }
 
     @Override

@@ -3,7 +3,6 @@ package com.github.jurassicspb.cookbooksearchbyingredients;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -109,7 +108,6 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
                     if (ingredientAdapterFiltered.get(i).getIngredient().toUpperCase()
                             .contains(constraint.toString().toUpperCase())) {
                         filterList.add(ingredientAdapterFiltered.get(i));
-                        Log.d(GridviewImageTextAdapter.class.getSimpleName(), "yesyes" + ingredientAdapterFiltered.get(i).getState());
                     }
                 }
                 results.count = filterList.size();

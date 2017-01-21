@@ -13,7 +13,7 @@
     <color name="textColorHint">#BDBDBD</color>
     <color name="textEditText">#000000</color>
     <color name="backgrondTabLayoutActivity">#FFECB3</color>
-    <color name="progressBar">#8B0000</color>
+    <color name="progressBar">#F44336</color>
 
     <!--Weights and measures-->
     <color name="tabDivider">#FFFFFF</color>
