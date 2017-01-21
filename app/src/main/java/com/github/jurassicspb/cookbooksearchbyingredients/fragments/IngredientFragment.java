@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,13 +60,6 @@ public class IngredientFragment extends Fragment{
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 gita.getFilter().filter(s.toString());
-//                final int childcount = gridview.getChildCount();
-//                for (int i = 0; i < childcount; i++) {
-//                    View v = gridview.getChildAt(i);
-//                    Log.d(IngredientFragment.class.getSimpleName(), "herehere" + v);
-//                }
-
-
             }
 
             @Override
@@ -76,23 +70,31 @@ public class IngredientFragment extends Fragment{
 
         searchClearButton.setOnClickListener(v -> searchEditText.setText(""));
 
+
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView tv = (TextView) view.findViewById(R.id.textpart);
                 String selectedToString = getString(R.string.selected);
-//                String sel = tv.getText().toString();
+                String sel = tv.getText().toString();
 //                String sel = ingredients.get(position).getIngredient();
-                Ingredient item = gita.getItem(position);
-                String sel = item.getIngredient();
-
+//                Ingredient item = gita.getItem(position);
+//                String sel = item.getIngredient();
+//                if (id==position){
+//                    tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.tabLayoutTextColorSelected));
+//                }
+//                if (tv.getCurrentTextColor()==getResources().getColor(R.color.tabLayoutTextColorSelected)){
+//                    tv.setTextColor(Color.WHITE);
+//                }
 //                Log.d(IngredientFragment.class.getSimpleName(), "here" + selected);
                 int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
                 if (ingredientPosition==-1) {
                     if (SelectedIngredient.showCount()<10) {
                         SelectedIngredient.addCount();
                         SelectedIngredient.addSelectedIngredient(sel);
-                        tv.setTextColor(getResources().getColor(R.color.tabLayoutTextColorSelected));
+                        ingredients.get((int)id).setState(1);
+                        gita.notifyDataSetChanged();
+//                        tv.setTextColor(getResources().getColor(R.color.tabLayoutTextColorSelected));
 //                        tv.setBackgroundColor(Color.GREEN);
 
                     }
@@ -105,9 +107,12 @@ public class IngredientFragment extends Fragment{
                 else {
                     SelectedIngredient.removeCount();
                     SelectedIngredient.removeSelectedIngredient(sel);
-                    tv.setTextColor(Color.WHITE);
+                    ingredients.get((int)id).setState(0);
+                    gita.notifyDataSetChanged();
+//                    tv.setTextColor(Color.WHITE);
 //                    tv.setBackgroundResource(R.color.ingredientsTextViewColor);
                 }
+//                gita.notifyDataSetChanged();
                 ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(selectedToString+": " + SelectedIngredient.showCount());
                 if (SelectedIngredient.showCount()==0){
                     ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);

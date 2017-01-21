@@ -1,6 +1,9 @@
 package com.github.jurassicspb.cookbooksearchbyingredients;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +47,14 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
     @Override
     public long getItemId(int position) {
         // TODO Auto-generated method stub
-        return position;
+        int itemID;
+        if (ingredientAdapter==null){
+            itemID = position;
+        }
+        else{
+            itemID = ingredientAdapterFiltered.indexOf(ingredientAdapter.get(position));
+        }
+        return itemID;
     }
 
     public class ViewHolder {
@@ -55,10 +65,11 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
+        Ingredient object = ingredientAdapter.get(position);
         ViewHolder holder;
-        LayoutInflater inflater = (LayoutInflater) mContext
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) mContext
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.cell_gridview, null);
             holder.textView = (TextView) convertView.findViewById(R.id.textpart);
@@ -69,6 +80,11 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
         }
         holder.textView.setText(ingredientAdapter.get(position).getIngredient());
         holder.imageView.setImageResource(ingredientAdapter.get(position).getImage());
+        if (object.getState() == 1) {
+            holder.textView.setTextColor(ContextCompat.getColor(mContext, R.color.tabLayoutTextColorSelected));
+        } else {
+            holder.textView.setTextColor(Color.WHITE);
+        }
         return convertView;
     }
 
@@ -93,6 +109,7 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
                     if (ingredientAdapterFiltered.get(i).getIngredient().toUpperCase()
                             .contains(constraint.toString().toUpperCase())) {
                         filterList.add(ingredientAdapterFiltered.get(i));
+                        Log.d(GridviewImageTextAdapter.class.getSimpleName(), "yesyes" + ingredientAdapterFiltered.get(i).getState());
                     }
                 }
                 results.count = filterList.size();
@@ -106,8 +123,12 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            ingredientAdapter=(ArrayList<Ingredient>) results.values;
-            notifyDataSetChanged();
+            if (results.count == 0)
+                notifyDataSetInvalidated();
+            else {
+                ingredientAdapter = (ArrayList<Ingredient>) results.values;
+                notifyDataSetChanged();
+            }
         }
     }
 }

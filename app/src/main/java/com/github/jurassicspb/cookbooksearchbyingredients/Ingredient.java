@@ -13,14 +13,16 @@ public class Ingredient extends RealmObject{
     private int category;
     private String ingredient;
     private int image;
+    private int state;
 
     public Ingredient() {}
 
-    public Ingredient(String id, int category, String ingredient, int image){
+    public Ingredient(String id, int category, String ingredient, int image, int state){
         this.id=id;
         this.category=category;
         this.ingredient=ingredient;
         this.image=image;
+        this.state=state;
     }
 
     public String getId() {
@@ -51,5 +53,12 @@ public class Ingredient extends RealmObject{
 
     public void setImage(int category) {
         this.image = image;
+    }
+
+    public int getState() {
+        return state;
+    }
+    public void setState(int state) {
+        this.state = state;
     }
 }

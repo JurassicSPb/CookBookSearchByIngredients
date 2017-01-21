@@ -210,42 +210,42 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
     private void createIngredientsRU(){
         ArrayList<Ingredient> newIngredient = new ArrayList<>();
-        newIngredient.add(new Ingredient("0.1", 0, "Говядина", R.drawable.beef));
-        newIngredient.add(new Ingredient("0.2", 0, "Свинина", R.drawable.ic_circle));
-        newIngredient.add(new Ingredient("0.3", 0, "Фарш из говядины", R.drawable.ic_circle));
-        newIngredient.add(new Ingredient("0.4", 0, "Баранина", R.drawable.ic_circle));
-        newIngredient.add(new Ingredient("0.5", 0, "Телятина", R.drawable.ic_circle));
-        newIngredient.add(new Ingredient("0.6", 0, "Фарш из свинины", R.drawable.ic_circle));
-        newIngredient.add(new Ingredient("0.7", 0, "Фарш из баранины", R.drawable.ic_circle));
-        newIngredient.add(new Ingredient("0.8", 0, "Фарш из телятины", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("0.1", 0, "Говядина", R.drawable.beef, 0));
+        newIngredient.add(new Ingredient("0.2", 0, "Свинина", R.drawable.ic_circle, 0));
+        newIngredient.add(new Ingredient("0.3", 0, "Фарш из говядины", R.drawable.ic_circle, 0));
+        newIngredient.add(new Ingredient("0.4", 0, "Баранина", R.drawable.chicken, 0));
+        newIngredient.add(new Ingredient("0.5", 0, "Телятина", R.drawable.ic_circle, 0));
+        newIngredient.add(new Ingredient("0.6", 0, "Фарш из свинины", R.drawable.ic_circle, 0));
+        newIngredient.add(new Ingredient("0.7", 0, "Фарш из баранины", R.drawable.ic_circle, 0));
+        newIngredient.add(new Ingredient("0.8", 0, "Фарш из телятины", R.drawable.ic_circle, 0));
 
-        newIngredient.add(new Ingredient("1.1", 1, "Сельдь", R.drawable.ic_circle));
-        newIngredient.add(new Ingredient("1.2", 1, "Карась", R.drawable.ic_circle));
-        newIngredient.add(new Ingredient("1.2", 1, "Окунь", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("1.1", 1, "Сельдь", R.drawable.ic_circle, 0));
+        newIngredient.add(new Ingredient("1.2", 1, "Карась", R.drawable.ic_circle, 0));
+        newIngredient.add(new Ingredient("1.2", 1, "Окунь", R.drawable.ic_circle, 0));
 
-        newIngredient.add(new Ingredient("2.1", 2, "Курица", R.drawable.chicken));
-        newIngredient.add(new Ingredient("2.2", 2, "Индейка", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("2.1", 2, "Курица", R.drawable.chicken, 0));
+        newIngredient.add(new Ingredient("2.2", 2, "Индейка", R.drawable.ic_circle, 0));
 
-        newIngredient.add(new Ingredient("3.1", 3, "Молоко", R.drawable.ic_circle));
-        newIngredient.add(new Ingredient("3.2", 3, "Сметана", R.drawable.ic_circle));
-        newIngredient.add(new Ingredient("3.3", 3, "Творог", R.drawable.ic_circle));
-        newIngredient.add(new Ingredient("3.4", 3, "Сливки", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("3.1", 3, "Молоко", R.drawable.ic_circle, 0));
+        newIngredient.add(new Ingredient("3.2", 3, "Сметана", R.drawable.ic_circle, 0));
+        newIngredient.add(new Ingredient("3.3", 3, "Творог", R.drawable.ic_circle, 0));
+        newIngredient.add(new Ingredient("3.4", 3, "Сливки", R.drawable.ic_circle, 0));
 
-        newIngredient.add(new Ingredient("4.1", 4, "Огурец", R.drawable.ic_circle));
-        newIngredient.add(new Ingredient("4.2", 4, "Томат", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("4.1", 4, "Огурец", R.drawable.ic_circle, 0));
+        newIngredient.add(new Ingredient("4.2", 4, "Томат", R.drawable.ic_circle, 0));
 
-        newIngredient.add(new Ingredient("5.1", 5, "Яблоко", R.drawable.ic_circle));
-        newIngredient.add(new Ingredient("5.2", 5, "Груша", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("5.1", 5, "Яблоко", R.drawable.ic_circle, 0));
+        newIngredient.add(new Ingredient("5.2", 5, "Груша", R.drawable.ic_circle, 0));
 
-        newIngredient.add(new Ingredient("6.1", 6, "Рис", R.drawable.ic_circle));
-        newIngredient.add(new Ingredient("6.1", 6, "Греча", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("6.1", 6, "Рис", R.drawable.ic_circle, 0));
+        newIngredient.add(new Ingredient("6.1", 6, "Греча", R.drawable.ic_circle, 0));
 
         ingredientDB.copyOrUpdate(newIngredient);
     }
     private void createIngredientsENG(){
         ArrayList<Ingredient> newIngredient = new ArrayList<>();
-        newIngredient.add(new Ingredient("0.1", 0, "Beef", R.drawable.beef));
-        newIngredient.add(new Ingredient("0.2", 0, "Pork", R.drawable.ic_circle));
+        newIngredient.add(new Ingredient("0.1", 0, "Beef", R.drawable.beef, 0));
+        newIngredient.add(new Ingredient("0.2", 0, "Pork", R.drawable.ic_circle, 0));
         ingredientDB.copyOrUpdate(newIngredient);
     }
 
