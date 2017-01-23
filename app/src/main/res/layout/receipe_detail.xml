@@ -1,52 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/white"
-    android:fillViewport="true">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        style="@style/ToolBarStyle.Event"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:minHeight="?attr/actionBarSize" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:dividerPadding="3dp"
-        android:showDividers="middle"
-        android:divider="@drawable/separator">
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/large_image"
-        android:layout_width="220dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="center"
-        android:background="@android:color/holo_green_light"/>
-    <TextView
-        android:id="@+id/name_field"
-        android:layout_width="match_parent"
-        tools:text="Название"
-        android:paddingTop="10dp"
-        android:paddingLeft="16dp"
-        android:paddingBottom="10dp"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:layout_height="wrap_content" />
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:contentScrim="@color/colorHeadline"
+            app:collapsedTitleTextAppearance="@style/CollapsedAppBar"
+            app:expandedTitleTextAppearance="@style/ExpandedAppBar">
 
-    <TextView
+            <ImageView
+                android:id="@+id/large_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_collapseMode="parallax"
+                android:scaleType="center"
+                android:background="@color/colorPrimary"/>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <TextView
         android:id="@+id/ingredients_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,7 +58,8 @@
         android:paddingRight="16dp"
         android:textColor="@color/colorIngredientsField"
         android:textSize="14sp" />
-    <TextView
+
+        <TextView
         android:id="@+id/description_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,7 +70,8 @@
         android:paddingBottom="10dp"
         android:paddingRight="16dp"
         android:textSize="14sp" />
-    <TextView
+
+        <TextView
         android:id="@+id/calories_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -80,7 +83,88 @@
         android:textColor="@color/colorIngredientsField"
         android:textSize="14sp"
         />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
-    </LinearLayout>
-</LinearLayout>
-</ScrollView>
+</android.support.design.widget.CoordinatorLayout>
+
+
+
+<!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/toolbar"-->
+        <!--style="@style/ToolBarStyle.Event"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--android:minHeight="?attr/actionBarSize" />-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical"-->
+        <!--android:dividerPadding="3dp"-->
+        <!--android:showDividers="middle"-->
+        <!--android:divider="@drawable/separator">-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/large_image"-->
+        <!--android:layout_width="220dp"-->
+        <!--android:layout_height="150dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:scaleType="center"-->
+        <!--android:background="@android:color/darker_gray"/>-->
+    <!--<TextView-->
+        <!--android:id="@+id/name_field"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--tools:text="Название"-->
+        <!--android:paddingTop="10dp"-->
+        <!--android:paddingLeft="16dp"-->
+        <!--android:paddingBottom="10dp"-->
+        <!--android:textColor="@android:color/black"-->
+        <!--android:textSize="24sp"-->
+         <!--/>-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/ingredients_field"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--tools:text="Test\nTest\nTest\nTest"-->
+        <!--android:paddingLeft="16dp"-->
+        <!--android:paddingTop="10dp"-->
+        <!--android:paddingBottom="10dp"-->
+        <!--android:paddingRight="16dp"-->
+        <!--android:textColor="@color/colorIngredientsField"-->
+        <!--android:textSize="14sp" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/description_field"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--tools:text="Test\nTest\nTest\nTest"-->
+            <!--android:textColor="@android:color/black"-->
+            <!--android:paddingLeft="16dp"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:paddingRight="16dp"-->
+            <!--android:textSize="14sp" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/calories_field"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--tools:text="Test\nTest\nTest\nTest"-->
+        <!--android:paddingLeft="16dp"-->
+        <!--android:paddingTop="10dp"-->
+        <!--android:paddingBottom="10dp"-->
+        <!--android:paddingRight="16dp"-->
+        <!--android:textColor="@color/colorIngredientsField"-->
+        <!--android:textSize="14sp"-->
+        <!--/>-->
+
+    <!--</LinearLayout>-->
+<!--</LinearLayout>-->

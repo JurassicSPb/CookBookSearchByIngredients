@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#A52A2A</color>
-    <color name="colorPrimaryDark">#8B0000</color>
+    <color name="colorPrimaryDark">#800000</color>
     <color name="colorAccent">#424242</color>
     <color name="colorHeadline">#A52A2A</color>
     <color name="colorSearch">#FFDEAD</color>
@@ -13,7 +13,8 @@
     <color name="textColorHint">#BDBDBD</color>
     <color name="textEditText">#000000</color>
     <color name="backgrondTabLayoutActivity">#FFECB3</color>
-    <color name="progressBar">#A52A2A</color>
+    <color name="progressBar">#D50000</color>
+    <color name="progressBarBackground">#FFA500</color>
 
     <!--Weights and measures-->
     <color name="tabDivider">#FFFFFF</color>

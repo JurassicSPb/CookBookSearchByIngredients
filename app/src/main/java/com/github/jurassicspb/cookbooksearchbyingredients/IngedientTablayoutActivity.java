@@ -76,7 +76,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             toolbarTextView.requestFocus();
             toolbarTextView.setSingleLine(true);
             toolbarTextView.setSelected(true);
-            toolbarTextView.setMarqueeRepeatLimit(2);
+//            toolbarTextView.setMarqueeRepeatLimit(2);
             toolbarTextView.setText(R.string.ingredient_list);
         } catch (NoSuchFieldException e) {
         } catch (IllegalAccessException e) {

@@ -47,7 +47,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
                 .fit()
                 .centerCrop()
                 .placeholder(R.drawable.timeleft64)
-                .error(R.drawable.ic_error)
+                .error(R.drawable.noconnection64)
                 .into(holder.photoSmall);
         holder.recipeName.setText(recipes.get(position).getName() + "\n"
                 + category + " " + recipes.get(position).getCategory() + "\n"

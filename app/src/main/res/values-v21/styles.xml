@@ -1,0 +1,17 @@
+<resources>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@drawable/splash_screen_layers</item>
+    </style>
+
+    <style name="ProgressBarTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/progressBarBackground</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="DetailRecipeTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+</resources>

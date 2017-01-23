@@ -9,7 +9,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="start"
-        android:background="@android:color/holo_red_light"/>
+        android:background="@android:color/darker_gray"/>
     <TextView
         android:id="@+id/recipe_name"
         android:layout_width="match_parent"

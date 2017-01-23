@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -15,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
-import com.github.jurassicspb.cookbooksearchbyingredients.storage.MyPreferences;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -30,7 +30,6 @@ public class RecipeDetailActivity extends AppCompatActivity{
     private List <Favorites> favorites;
     Toast toast;
     ImageView largeImage;
-    TextView name;
     TextView ingredient;
     TextView description;
     TextView calorie;
@@ -50,15 +49,18 @@ public class RecipeDetailActivity extends AppCompatActivity{
 
         favoritesDB = new IngredientDatabase();
 
+        Intent intent = getIntent();
+
+        names = intent.getStringExtra("name");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
-        getSupportActionBar().setTitle("");
+        getSupportActionBar().setTitle(names);
 
-        Intent intent = getIntent();
+        favorites = favoritesDB.getFavorite(names);
 
         largeImage = (ImageView) findViewById(R.id.large_image);
         image = intent.getStringExtra("photo");
@@ -67,13 +69,8 @@ public class RecipeDetailActivity extends AppCompatActivity{
                 .fit()
                 .centerCrop()
                 .placeholder(R.drawable.timeleft128)
-                .error(R.drawable.ic_error)
+                .error(R.drawable.noconnection128)
                 .into(largeImage);
-
-        name = (TextView) findViewById(R.id.name_field);
-        names = intent.getStringExtra("name");
-        name.setText(names);
-        favorites = favoritesDB.getFavorite(names);
 
         ingredient = (TextView) findViewById(R.id.ingredients_field);
         ingredients = intent.getStringExtra("ingredients");
@@ -110,7 +107,7 @@ public class RecipeDetailActivity extends AppCompatActivity{
         switch (item.getItemId()) {
             case R.id.item4:
                 if (favorites.size()==0) {
-                    myDrawable = getResources().getDrawable(R.drawable.ic_favorites_selected);
+                    myDrawable = ContextCompat.getDrawable(this, R.drawable.ic_favorites_selected);
                     item.setIcon(myDrawable);
                     ArrayList<Favorites> newFavorites = new ArrayList<>();
                     newFavorites.add(new Favorites(names, ingredients, category, descriptions, calories, image));
@@ -121,14 +118,12 @@ public class RecipeDetailActivity extends AppCompatActivity{
                 }
                 else if (favorites.size()==1) {
                     favoritesDB.deleteFavoritePosition(names);
-                    myDrawable = getResources().getDrawable(R.drawable.ic_favourites);
+                    myDrawable = ContextCompat.getDrawable(this, R.drawable.ic_favourites);
                     item.setIcon(myDrawable);
                     toast = Toast.makeText(this, R.string.toast_favorites_remove, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 }
-//                favorites = favoritesDB.getAllFavorites();
-//                Log.d(RecipeDetailActivity.class.getSimpleName(), "hihihi " + favorites);
                 break;
         }
         return super.onOptionsItemSelected(item);
