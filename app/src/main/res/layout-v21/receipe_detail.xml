@@ -6,54 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-        <TextView
-        android:id="@+id/ingredients_field"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Test\nTest\nTest\nTest"
-        android:paddingLeft="16dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingRight="16dp"
-        android:textColor="@color/colorIngredientsField"
-        android:textSize="14sp" />
-
-        <TextView
-        android:id="@+id/description_field"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Test\nTest\nTest\nTest"
-        android:textColor="@android:color/black"
-        android:paddingLeft="16dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingRight="16dp"
-        android:textSize="14sp" />
-
-        <TextView
-        android:id="@+id/calories_field"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Test\nTest\nTest\nTest"
-        android:paddingLeft="16dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingRight="16dp"
-        android:textColor="@color/colorIngredientsField"
-        android:textSize="14sp"
-        />
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
-
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
@@ -86,5 +38,53 @@
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/ingredients_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Test\nTest\nTest\nTest"
+                android:paddingLeft="16dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorIngredientsField"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/description_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Test\nTest\nTest\nTest"
+                android:textColor="@android:color/black"
+                android:paddingLeft="16dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="16dp"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/calories_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Test\nTest\nTest\nTest"
+                android:paddingLeft="16dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorIngredientsField"
+                android:textSize="14sp"
+                />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
 </android.support.design.widget.CoordinatorLayout>
