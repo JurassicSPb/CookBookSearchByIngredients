@@ -1,6 +1,7 @@
 package com.github.jurassicspb.cookbooksearchbyingredients;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -51,6 +52,9 @@ public class RecipeDetailActivity extends AppCompatActivity{
 
         Intent intent = getIntent();
 
+        Typeface typefaceIngredient = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Medium.ttf");
+        Typeface typefaceCalorie = Typeface.createFromAsset(getAssets(), "fonts/Lobster-Regular.ttf");
+
         names = intent.getStringExtra("name");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
@@ -75,6 +79,7 @@ public class RecipeDetailActivity extends AppCompatActivity{
         ingredient = (TextView) findViewById(R.id.ingredients_field);
         ingredients = intent.getStringExtra("ingredients");
         ingredient.setText(ingredients);
+        ingredient.setTypeface(typefaceIngredient);
 
         description = (TextView) findViewById(R.id.description_field);
         descriptions = intent.getStringExtra("description");
@@ -83,6 +88,7 @@ public class RecipeDetailActivity extends AppCompatActivity{
         calorie = (TextView) findViewById(R.id.calories_field);
         calories = intent.getStringExtra("calories");
         calorie.setText(calories);
+        calorie.setTypeface(typefaceCalorie);
 
         category = intent.getStringExtra("category");
     }

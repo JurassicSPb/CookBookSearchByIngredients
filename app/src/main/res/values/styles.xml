@@ -37,7 +37,7 @@
     </style>
 
     <style name="ProgressBarTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@color/progressBarBackground</item>
+        <item name="android:windowBackground">@drawable/progressbar_layers</item>
     </style>
 
     <style name="DetailRecipeTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -55,7 +55,7 @@
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/toolbarTextColor</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
 </resources>

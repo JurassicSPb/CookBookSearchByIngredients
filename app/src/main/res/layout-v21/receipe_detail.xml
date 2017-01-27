@@ -45,44 +45,45 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
             <TextView
                 android:id="@+id/ingredients_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="Test\nTest\nTest\nTest"
-                android:paddingLeft="16dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:paddingRight="16dp"
+                android:fontFamily="sans-serif"
+                android:background="@drawable/notenoteingredient"
+                android:lineSpacingMultiplier="1.2"
+                tools:text="Test\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest"
                 android:textColor="@color/colorIngredientsField"
-                android:textSize="14sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/description_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="-4dp"
+                android:fontFamily="sans-serif"
                 tools:text="Test\nTest\nTest\nTest"
                 android:textColor="@android:color/black"
-                android:paddingLeft="16dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:paddingRight="16dp"
-                android:textSize="14sp" />
+                android:background="@drawable/notedescription"
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/calories_field"
-                android:layout_width="match_parent"
+                android:layout_width="190dp"
                 android:layout_height="wrap_content"
                 tools:text="Test\nTest\nTest\nTest"
-                android:paddingLeft="16dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:paddingRight="16dp"
+                android:lineSpacingMultiplier="1.2"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/notecalorie"
+                android:layout_gravity="right"
                 android:textColor="@color/colorIngredientsField"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

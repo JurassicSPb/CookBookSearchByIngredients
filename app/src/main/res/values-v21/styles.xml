@@ -6,7 +6,7 @@
     </style>
 
     <style name="ProgressBarTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@color/progressBarBackground</item>
+        <item name="android:windowBackground">@drawable/progressbar_layers</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
