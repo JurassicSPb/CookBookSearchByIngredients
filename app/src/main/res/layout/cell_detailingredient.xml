@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:layout_height="100dp"
+    android:background="@color/backgrondTabLayoutActivity">
 
+    <ImageView
+        android:id="@+id/detail_image"
+        android:layout_marginTop="-2.5dp"
+        android:layout_marginLeft="8dp"
+        android:layout_width="110dp"
+        android:layout_height="80dp"
+        android:background="@color/searchBorder"
+        android:layout_gravity="left|center"
+        />
     <TextView
+        android:paddingRight="140dp"
         android:id="@+id/detail_ingredient"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/white"
-        android:textSize="30sp"
-        tools:text="Ingredient" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        tools:text="Ingredient"
+        android:layout_gravity="right|center"/>
     <View
         android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:background="@color/colorPrimaryDark"/>
-</LinearLayout>
+        android:background="@color/colorPrimaryDark"
+        android:layout_gravity="bottom"/>
+</FrameLayout>

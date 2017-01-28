@@ -14,7 +14,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.github.jurassicspb.cookbooksearchbyingredients.GridviewImageTextAdapter;
 import com.github.jurassicspb.cookbooksearchbyingredients.IngedientTablayoutActivity;
@@ -72,23 +71,26 @@ public class IngredientFragment extends Fragment{
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView tv = (TextView) view.findViewById(R.id.textpart);
-                String selectedToString = getString(R.string.selected);
-                String sel = tv.getText().toString();
-//                String sel = ingredients.get(position).getIngredient();
+//                TextView tv = (TextView) view.findViewById(R.id.textpart);
+//                String sel = tv.getText().toString();
 //                Ingredient item = gita.getItem(position);
 //                String sel = item.getIngredient();
+//                String image = String.valueOf(item.getImage());
+
+                String selectedToString = getString(R.string.selected);
+
+                long itemId = gita.getItemId(position);
+                String sel = ingredients.get((int) itemId).getIngredient();
+                String image = String.valueOf(ingredients.get((int) itemId).getImage());
 
                 int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
+
                 if (ingredientPosition==-1) {
                     if (SelectedIngredient.showCount()<10) {
                         SelectedIngredient.addCount();
-                        SelectedIngredient.addSelectedIngredient(sel);
+                        SelectedIngredient.addSelectedIngredient(sel, image);
                         ingredients.get((int)id).setState(1);
                         gita.notifyDataSetChanged();
-//                        tv.setTextColor(getResources().getColor(R.color.tabLayoutTextColorSelected));
-//                        tv.setBackgroundColor(Color.GREEN);
-
                     }
                     else if (SelectedIngredient.showCount()==10){
                         Toast toast = Toast.makeText(getActivity(), R.string.no_more_than_10,Toast.LENGTH_SHORT);
@@ -98,11 +100,9 @@ public class IngredientFragment extends Fragment{
                 }
                 else {
                     SelectedIngredient.removeCount();
-                    SelectedIngredient.removeSelectedIngredient(sel);
+                    SelectedIngredient.removeSelectedIngredient(sel, image);
                     ingredients.get((int)id).setState(0);
                     gita.notifyDataSetChanged();
-//                    tv.setTextColor(Color.WHITE);
-//                    tv.setBackgroundResource(R.color.ingredientsTextViewColor);
                 }
                 ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(selectedToString+": " + SelectedIngredient.showCount());
                 if (SelectedIngredient.showCount()==0){

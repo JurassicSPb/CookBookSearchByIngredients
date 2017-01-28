@@ -331,6 +331,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     @Override
     protected void onDestroy() {
         SelectedIngredient.getSelectedIngredient().clear();
+        SelectedIngredient.getSelectedImage().clear();
         SelectedIngredient.resetCount();
         ingredientDB.close();
         super.onDestroy();

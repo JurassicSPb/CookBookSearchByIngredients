@@ -52,8 +52,8 @@ public class RecipeDetailActivity extends AppCompatActivity{
 
         Intent intent = getIntent();
 
-        Typeface typefaceIngredient = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Medium.ttf");
-        Typeface typefaceCalorie = Typeface.createFromAsset(getAssets(), "fonts/Lobster-Regular.ttf");
+        Typeface typefaceIngredientDescription = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Medium.ttf");
+        Typeface typefaceCalorieAndIngredient = Typeface.createFromAsset(getAssets(), "fonts/Lobster-Regular.ttf");
 
         names = intent.getStringExtra("name");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -79,16 +79,17 @@ public class RecipeDetailActivity extends AppCompatActivity{
         ingredient = (TextView) findViewById(R.id.ingredients_field);
         ingredients = intent.getStringExtra("ingredients");
         ingredient.setText(ingredients);
-        ingredient.setTypeface(typefaceIngredient);
+        ingredient.setTypeface(typefaceCalorieAndIngredient);
 
         description = (TextView) findViewById(R.id.description_field);
         descriptions = intent.getStringExtra("description");
         description.setText(descriptions);
+        description.setTypeface(typefaceIngredientDescription);
 
         calorie = (TextView) findViewById(R.id.calories_field);
         calories = intent.getStringExtra("calories");
         calorie.setText(calories);
-        calorie.setTypeface(typefaceCalorie);
+        calorie.setTypeface(typefaceCalorieAndIngredient);
 
         category = intent.getStringExtra("category");
     }

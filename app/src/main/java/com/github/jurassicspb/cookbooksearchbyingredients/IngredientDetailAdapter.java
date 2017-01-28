@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -25,6 +26,7 @@ public class IngredientDetailAdapter extends RecyclerView.Adapter<IngredientDeta
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.detailIngredient.setText(SelectedIngredient.getSelectedIngredient().get(position));
+        holder.detailImage.setImageResource(Integer.valueOf(SelectedIngredient.getSelectedImage().get(position)));
     }
 
     @Override
@@ -34,10 +36,12 @@ public class IngredientDetailAdapter extends RecyclerView.Adapter<IngredientDeta
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView detailIngredient;
+        ImageView detailImage;
         View separator;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            detailImage = (ImageView) itemView.findViewById(R.id.detail_image);
             detailIngredient = (TextView) itemView.findViewById(R.id.detail_ingredient);
             separator = itemView.findViewById(R.id.separator);
         }
