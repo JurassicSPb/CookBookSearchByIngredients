@@ -76,12 +76,12 @@ public class IngredientFragment extends Fragment{
 //                Ingredient item = gita.getItem(position);
 //                String sel = item.getIngredient();
 //                String image = String.valueOf(item.getImage());
+//                long itemId = gita.getItemId(position);
 
                 String selectedToString = getString(R.string.selected);
 
-                long itemId = gita.getItemId(position);
-                String sel = ingredients.get((int) itemId).getIngredient();
-                String image = String.valueOf(ingredients.get((int) itemId).getImage());
+                String sel = ingredients.get((int)id).getIngredient();
+                String image = String.valueOf(ingredients.get((int)id).getImage());
 
                 int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
 

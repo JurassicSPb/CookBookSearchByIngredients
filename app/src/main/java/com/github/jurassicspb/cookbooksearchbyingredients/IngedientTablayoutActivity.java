@@ -211,11 +211,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     private void createIngredientsRU(){
         ArrayList<Ingredient> newIngredient = new ArrayList<>();
         newIngredient.add(new Ingredient("0.1", 0, "Говядина", R.drawable.beef, 0));
-        newIngredient.add(new Ingredient("0.2", 0, "Свинина", R.drawable.ic_circle, 0));
-        newIngredient.add(new Ingredient("0.3", 0, "Фарш из говядины", R.drawable.ic_circle, 0));
-        newIngredient.add(new Ingredient("0.4", 0, "Баранина", R.drawable.chicken, 0));
-        newIngredient.add(new Ingredient("0.5", 0, "Телятина", R.drawable.ic_circle, 0));
-        newIngredient.add(new Ingredient("0.6", 0, "Фарш из свинины", R.drawable.ic_circle, 0));
+        newIngredient.add(new Ingredient("0.2", 0, "Свинина", R.drawable.pork, 0));
+        newIngredient.add(new Ingredient("0.3", 0, "Фарш из говядины", R.drawable.beef_mince, 0));
+        newIngredient.add(new Ingredient("0.4", 0, "Баранина", R.drawable.lamb, 0));
+        newIngredient.add(new Ingredient("0.5", 0, "Телятина", R.drawable.veal, 0));
+        newIngredient.add(new Ingredient("0.6", 0, "Фарш из свинины", R.drawable.pork_mince, 0));
         newIngredient.add(new Ingredient("0.7", 0, "Фарш из баранины", R.drawable.ic_circle, 0));
         newIngredient.add(new Ingredient("0.8", 0, "Фарш из телятины", R.drawable.ic_circle, 0));
 
@@ -224,7 +224,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         newIngredient.add(new Ingredient("1.2", 1, "Окунь", R.drawable.ic_circle, 0));
 
         newIngredient.add(new Ingredient("2.1", 2, "Курица", R.drawable.chicken, 0));
-        newIngredient.add(new Ingredient("2.2", 2, "Индейка", R.drawable.ic_circle, 0));
+        newIngredient.add(new Ingredient("2.2", 2, "Индейка", R.drawable.turkey, 0));
 
         newIngredient.add(new Ingredient("3.1", 3, "Молоко", R.drawable.ic_circle, 0));
         newIngredient.add(new Ingredient("3.2", 3, "Сметана", R.drawable.ic_circle, 0));
