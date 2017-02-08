@@ -14,7 +14,7 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="240dp"
+            android:layout_height="450dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:contentScrim="@color/colorHeadline"
             app:collapsedTitleTextAppearance="@style/CollapsedAppBar"
@@ -32,7 +32,8 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin" />
+                app:layout_collapseMode="pin"
+                android:layout_marginTop="25dp"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -62,7 +63,7 @@
                 android:lineSpacingMultiplier="1.2"
                 tools:text="Test\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest"
                 android:textColor="@color/colorIngredientsField"
-                android:textSize="19sp" />
+                android:textSize="18sp" />
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
