@@ -1,7 +1,11 @@
 package com.github.jurassicspb.cookbooksearchbyingredients;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,15 +43,20 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
         String url = favorites.get(position).getImage();
         Context context = holder.photoSmall.getContext();
 
+        final SpannableString span = new SpannableString(favorites.get(position).getName() + "\n" + category + " " +
+                favorites.get(position).getCategory());
+        final StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
+        span.setSpan(styleSpan, 0, favorites.get(position).getName().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
         Picasso.with(context)
                 .load(url)
                 .fit()
                 .centerCrop()
-                .placeholder(R.drawable.ic_placeholder)
-                .error(R.drawable.ic_error)
+                .placeholder(R.drawable.timeleft64)
+                .error(R.drawable.noconnection64)
                 .into(holder.photoSmall);
 
-        holder.recipeName.setText(favorites.get(position).getName() + "\n" + category + " " + favorites.get(position).getCategory());
+        holder.recipeName.setText(span);
     }
 
     @Override

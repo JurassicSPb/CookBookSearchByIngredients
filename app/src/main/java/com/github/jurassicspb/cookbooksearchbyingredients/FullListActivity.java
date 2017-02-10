@@ -109,7 +109,7 @@ public class FullListActivity extends AppCompatActivity{
 
 //    private  List<Recipe> createFakeRecipes(){
 //        ArrayList<Recipe> newRecipes = new ArrayList<>();
-//        for (int i = 0; i < 30000; i++) {
+//        for (int i = 0; i < 100000; i++) {
 //            newRecipes.add(new Recipe("dwefffffffffffffffffГовядинаfffffffffffwefwefwefwefwefwefwefwefwefwefwefd",
 //                    "ddddfwefwefwefwefwedddddddwadwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwf",
 //                    "dwedwedeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeed",

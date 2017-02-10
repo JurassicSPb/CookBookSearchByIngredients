@@ -13,27 +13,32 @@
         android:background="@color/colorPrimary"/>
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/recipeListsBackground">
         <EditText
             android:id="@+id/search"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:hint="@string/search_by_name"
-            android:background="@color/colorSearch"
+            android:textColorHint="@color/textColorHint"
+            android:background="@drawable/search_edittext_border"
             android:textSize="18sp"
-            android:padding="8dp"
+            android:textColor="@color/textEditText"
+            android:fontFamily="sans-serif"
+            android:paddingLeft="14dp"
             android:maxLength="25"
             android:maxLines="1"
             android:inputType="text"
-            android:layout_marginBottom="4dp"
             android:layout_marginRight="8dp"
-            android:layout_marginLeft="8dp" />
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"/>
         <Button
             android:id="@+id/search_button"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="7.5dp"
+            android:layout_marginTop="8dp"
             android:layout_gravity="right"
             android:background="@drawable/ic_cross"
             />

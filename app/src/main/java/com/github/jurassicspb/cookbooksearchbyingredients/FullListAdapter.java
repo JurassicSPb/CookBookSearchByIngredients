@@ -5,7 +5,11 @@ package com.github.jurassicspb.cookbooksearchbyingredients;
  */
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,15 +48,20 @@ public class FullListAdapter extends RecyclerView.Adapter<FullListAdapter.ViewHo
         String url = recipes.get(position).getImage();
         Context context = holder.photoSmall.getContext();
 
+        final SpannableString span = new SpannableString(recipes.get(position).getName() + "\n" + category + " "
+                + recipes.get(position).getCategory());
+        final StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
+        span.setSpan(styleSpan, 0, recipes.get(position).getName().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
         Picasso.with(context)
                 .load(url)
                 .fit()
                 .centerCrop()
-                .placeholder(R.drawable.ic_placeholder)
-                .error(R.drawable.ic_error)
+                .placeholder(R.drawable.timeleft64)
+                .error(R.drawable.noconnection64)
                 .into(holder.photoSmall);
 
-        holder.recipeName.setText(recipes.get(position).getName() + "\n" + category + " " + recipes.get(position).getCategory());
+        holder.recipeName.setText(span);
     }
 
     @Override
