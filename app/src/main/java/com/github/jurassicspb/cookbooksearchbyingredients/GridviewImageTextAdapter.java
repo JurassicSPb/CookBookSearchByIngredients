@@ -121,8 +121,9 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            if (results.count == 0)
+            if (results.count == 0) {
                 notifyDataSetInvalidated();
+            }
             else {
                 ingredientAdapter = (ArrayList<Ingredient>) results.values;
                 notifyDataSetChanged();

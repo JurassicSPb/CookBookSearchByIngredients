@@ -116,8 +116,13 @@ public class FullListAdapter extends RecyclerView.Adapter<FullListAdapter.ViewHo
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            recipes=(ArrayList<Recipe>) results.values;
-            notifyDataSetChanged();
+            if (results.count == 0) {
+                //do nothing
+            }
+            else {
+                recipes = (ArrayList<Recipe>) results.values;
+                notifyDataSetChanged();
+            }
         }
     }
 }

@@ -105,7 +105,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         ingredientDB = new IngredientDatabase();
 //            delete();
-    //        deleteRecipe();
+//            deleteRecipe();
 
 
         if (preferences.getFlag()) {

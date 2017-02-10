@@ -91,6 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-4dp"
+                android:lineSpacingMultiplier="1.1"
                 android:fontFamily="sans-serif"
                 tools:text="Test\nTest\nTest\nTest"
                 android:textColor="@android:color/black"
