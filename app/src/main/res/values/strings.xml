@@ -1,47 +1,94 @@
 <resources>
     <string name="app_name">CookBookSearchByIngredients</string>
-    <string name="search_by_ingredient">Search by ingredient</string>
-    <string name="search_by_name">Search by name or category</string>
-    <string name="ingredient_list">Ingredient list</string>
-    <string name="select_one">Select at least one ingredient</string>
-    <string name="selected">Selected</string>
-    <string name="no_more_than_10">Select no more than 10 ingredients</string>
-    <string name="count_of_matching_ingredients">Matching ingredients: </string>
+    <string name="search_by_ingredient">Поиск по ингредиентам</string>
+    <string name="search_by_name">Поиск по названию или категории</string>
+    <string name="ingredient_list">Список ингредиентов</string>
+    <string name="select_one">Выберите хотя бы один ингредиент</string>
+    <string name="selected">Выбрано</string>
+    <string name="no_more_than_10">Выберите не более 10 ингредиентов</string>
+    <string name="count_of_matching_ingredients">Совпадающие ингредиенты: </string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
-    <string name="drawer_menu_favorites">Favorites</string>
-    <string name="drawer_menu_full_list">Full list</string>
-    <string name="drawer_menu_exit">Exit</string>
-    <string name="toast_favorites">Added to Favorites</string>
-    <string name="toast_favorites_remove">Removed from Favorites</string>
-    <string name="full_list">Full list of recipes</string>
-    <string name="recipe_list">List of recipes</string>
-    <string name="weights">Weights and measures</string>
-    <string name="cooking_time">Cooking time</string>
-    <string name="category">Category:</string>
+    <string name="drawer_menu_favorites">Избранное</string>
+    <string name="drawer_menu_full_list">Полный список</string>
+    <string name="drawer_menu_exit">Выход</string>
+    <string name="toast_favorites">Добавлено в Избранное</string>
+    <string name="toast_favorites_remove">Удалено из Избранного</string>
+    <string name="full_list">Полный список рецептов</string>
+    <string name="recipe_list">Список рецептов</string>
+    <string name="weights">Таблица мер и весов</string>
+    <string name="cooking_time">Время готовки</string>
+    <string name="category">Категория:</string>
 
-    <!--Weights and measures-->
-    <string name="products">Products</string>
-    <string name="weight_in_grams">Products weight in grams</string>
-    <string name="glass_250_ml">Glass 250 ml.</string>
-    <string name="glass_200_ml">Glass 200 ml.</string>
-    <string name="table_spoon">Table spoon</string>
-    <string name="tea_spoon">Tea spoon</string>
-    <string name="one_piece_in_grams">1 piece in grams</string>
+    <!--Таблица мер и весов -->
 
-    <!--Cooking time-->
-    <string name="porridge_title">Porridge</string>
-    <string name="porridge_body">Porridge</string>
-    <string name="grain">Grain</string>
-    <string name="liquid">Liquid</string>
-    <string name="time_to_boil">Time to boil</string>
-    <string name="meat">Meat</string>
-    <string name="seafood">Seafood</string>
-    <string name="bird">Bird</string>
-    <string name="vegetables">Vegetables</string>
-    <string name="other">Other</string>
-    <string name="boiling">Boiling (whole)</string>
-    <string name="fry_up">Fry-up (pieces)</string>
-    <string name="stewing">Stewing (pieces)</string>
+    <string name="products">Продукты</string>
+    <string name="weight_in_grams">Вес продуктов в граммах</string>
+    <string name="glass_250_ml">Стакан 250 мл.</string>
+    <string name="glass_200_ml">Стакан 200 мл.</string>
+    <string name="table_spoon">Стол. ложка</string>
+    <string name="tea_spoon">Чайная ложк</string>
+    <string name="one_piece_in_grams">1 штука в грам.</string>
+
+    <!--Время готовки-->
+    <string name="porridge_title">Каши</string>
+    <string name="porridge_body">Каша</string>
+    <string name="grain">Крупа</string>
+    <string name="liquid">Жид-ть</string>
+    <string name="time_to_boil">Время варки</string>
+    <string name="meat">Мясо</string>
+    <string name="seafood">Морепродукты</string>
+    <string name="bird">Птица</string>
+    <string name="vegetables">Овощи</string>
+    <string name="other">Другое</string>
+    <string name="boiling">Варка целиком</string>
+    <string name="fry_up">Жарение кусками</string>
+    <string name="stewing">Тушение кусками</string>
+
+
+    <!--<string name="app_name">CookBookSearchByIngredients</string>-->
+    <!--<string name="search_by_ingredient">Search by ingredient</string>-->
+    <!--<string name="search_by_name">Search by name or category</string>-->
+    <!--<string name="ingredient_list">Ingredient list</string>-->
+    <!--<string name="select_one">Select at least one ingredient</string>-->
+    <!--<string name="selected">Selected</string>-->
+    <!--<string name="no_more_than_10">Select no more than 10 ingredients</string>-->
+    <!--<string name="count_of_matching_ingredients">Matching ingredients: </string>-->
+    <!--<string name="navigation_drawer_open">Open</string>-->
+    <!--<string name="navigation_drawer_close">Close</string>-->
+    <!--<string name="drawer_menu_favorites">Favorites</string>-->
+    <!--<string name="drawer_menu_full_list">Full list</string>-->
+    <!--<string name="drawer_menu_exit">Exit</string>-->
+    <!--<string name="toast_favorites">Added to Favorites</string>-->
+    <!--<string name="toast_favorites_remove">Removed from Favorites</string>-->
+    <!--<string name="full_list">Full list of recipes</string>-->
+    <!--<string name="recipe_list">List of recipes</string>-->
+    <!--<string name="weights">Weights and measures</string>-->
+    <!--<string name="cooking_time">Cooking time</string>-->
+    <!--<string name="category">Category:</string>-->
+
+    <!--&lt;!&ndash;Weights and measures&ndash;&gt;-->
+    <!--<string name="products">Products</string>-->
+    <!--<string name="weight_in_grams">Products weight in grams</string>-->
+    <!--<string name="glass_250_ml">Glass 250 ml.</string>-->
+    <!--<string name="glass_200_ml">Glass 200 ml.</string>-->
+    <!--<string name="table_spoon">Table spoon</string>-->
+    <!--<string name="tea_spoon">Tea spoon</string>-->
+    <!--<string name="one_piece_in_grams">1 piece in grams</string>-->
+
+    <!--&lt;!&ndash;Cooking time&ndash;&gt;-->
+    <!--<string name="porridge_title">Porridge</string>-->
+    <!--<string name="porridge_body">Porridge</string>-->
+    <!--<string name="grain">Grain</string>-->
+    <!--<string name="liquid">Liquid</string>-->
+    <!--<string name="time_to_boil">Time to boil</string>-->
+    <!--<string name="meat">Meat</string>-->
+    <!--<string name="seafood">Seafood</string>-->
+    <!--<string name="bird">Bird</string>-->
+    <!--<string name="vegetables">Vegetables</string>-->
+    <!--<string name="other">Other</string>-->
+    <!--<string name="boiling">Boiling (whole)</string>-->
+    <!--<string name="fry_up">Fry-up (pieces)</string>-->
+    <!--<string name="stewing">Stewing (pieces)</string>-->
 
 </resources>

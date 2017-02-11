@@ -33,17 +33,17 @@ public class CookingTime extends AppCompatActivity {
             {"Пшеничн.", "1 стакан", "3 стакана", "50 мин."},
             {"Рисовая", "1 стакан", "1,5-2 стакана", "15-20 мин."},
     };
-    private String[][] porridgeENG = new String[][]{
-            {""},
-            {""},
-            {"Boiled buckwheat", "1 glass", "2 glasses", "15-20 min."},
-            {"Boiled pearl barley", "1 glass", "3 glasses", "60 min."},
-            {"Cooked semolina", "1-2 tablesp.", "1 glass", "4 min."},
-            {"Millet porridge", "1 glass", "3 glasses", "45 min."},
-            {"Oatmeal", "1,5 glasses", "1 liter", "4 min."},
-            {"Rice porridge", "1 glass", "1,5-2 glasses", "15-20 min."},
-            {"Wheat porridge", "1 glass", "3 glasses", "50 min."},
-    };
+//    private String[][] porridgeENG = new String[][]{
+//            {""},
+//            {""},
+//            {"Boiled buckwheat", "1 glass", "2 glasses", "15-20 min."},
+//            {"Boiled pearl barley", "1 glass", "3 glasses", "60 min."},
+//            {"Cooked semolina", "1-2 tablesp.", "1 glass", "4 min."},
+//            {"Millet porridge", "1 glass", "3 glasses", "45 min."},
+//            {"Oatmeal", "1,5 glasses", "1 liter", "4 min."},
+//            {"Rice porridge", "1 glass", "1,5-2 glasses", "15-20 min."},
+//            {"Wheat porridge", "1 glass", "3 glasses", "50 min."},
+//    };
     private String[][]meatRUS = new String[][]{
             {""},
             {""},
@@ -53,15 +53,15 @@ public class CookingTime extends AppCompatActivity {
             {"Кролик", "1-1,5 ч.", "25-35 мин.", "1-1,5 ч."},
             {"Свинина", "1,5-2 ч.", "25 мин.", "1-1,5 ч."},
     };
-    private String[][]meatENG = new String[][]{
-            {""},
-            {""},
-            {"Beef", "2-2,5 h.", "20 min.", "1-1,5 h."},
-            {"Cutlet", "", "15-25 min.", ""},
-            {"Mutton", "1,5-2 h.", "15-20 min.", "1,5-2 h."},
-            {"Pork", "1,5-2 h.", "25 min.", "1-1,5 h."},
-            {"Rabbit", "1-1,5 h.", "25-35 min.", "1-1,5 h."},
-    };
+//    private String[][]meatENG = new String[][]{
+//            {""},
+//            {""},
+//            {"Beef", "2-2,5 h.", "20 min.", "1-1,5 h."},
+//            {"Cutlet", "", "15-25 min.", ""},
+//            {"Mutton", "1,5-2 h.", "15-20 min.", "1,5-2 h."},
+//            {"Pork", "1,5-2 h.", "25 min.", "1-1,5 h."},
+//            {"Rabbit", "1-1,5 h.", "25-35 min.", "1-1,5 h."},
+//    };
     private String[][] seafoodRUS = new String[][]{
             {""},
             {""},
@@ -72,16 +72,16 @@ public class CookingTime extends AppCompatActivity {
             {"Рыба целиком (крупная)", "1-2,5 ч.", "", ""},
             {"Рыбные котлеты", "", "10-15 мин.", ""},
     };
-    private String[][] seafoodENG = new String[][]{
-            {""},
-            {""},
-            {"Crayfish", "10-15 min.", "", ""},
-            {"Fish cutlets", "", "10-15 min.", ""},
-            {"Shrimp", "3-5 min.", "", ""},
-            {"Squid", "3-4 min.", "", ""},
-            {"Fish pieces 150-200 g.", "12-15 min.", "10-20 min.", "10-20 min."},
-            {"Whole fish (large)", "1-2,5 h.", "", ""},
-    };
+//    private String[][] seafoodENG = new String[][]{
+//            {""},
+//            {""},
+//            {"Crayfish", "10-15 min.", "", ""},
+//            {"Fish cutlets", "", "10-15 min.", ""},
+//            {"Shrimp", "3-5 min.", "", ""},
+//            {"Squid", "3-4 min.", "", ""},
+//            {"Fish pieces 150-200 g.", "12-15 min.", "10-20 min.", "10-20 min."},
+//            {"Whole fish (large)", "1-2,5 h.", "", ""},
+//    };
     private String [][] birdRUS = new String[][]{
             {""},
             {""},
@@ -92,15 +92,15 @@ public class CookingTime extends AppCompatActivity {
             {"Утка", "1-1,5 ч.", "35 мин.", "1,5 ч."},
 
     };
-    private String [][]birdENG = new String[][]{
-            {""},
-            {""},
-            {"Goose", "2,5-3 h.", "1,5-2 h. in oven", "1-1,5 h."},
-            {"Chicken", "1 h.", "20 min.", "40-60 min."},
-            {"Chicken cutlets", "", "14-20 min.", ""},
-            {"Turkey", "1-1,5 h.", "25 min.", "1 h."},
-            {"Duck", "1-1,5 h.", "35 min.", "1,5 h."},
-    };
+//    private String [][]birdENG = new String[][]{
+//            {""},
+//            {""},
+//            {"Goose", "2,5-3 h.", "1,5-2 h. in oven", "1-1,5 h."},
+//            {"Chicken", "1 h.", "20 min.", "40-60 min."},
+//            {"Chicken cutlets", "", "14-20 min.", ""},
+//            {"Turkey", "1-1,5 h.", "25 min.", "1 h."},
+//            {"Duck", "1-1,5 h.", "35 min.", "1,5 h."},
+//    };
     private String[][]vegetablesRUS = new String[][]{
             {""},
             {""},
@@ -111,16 +111,16 @@ public class CookingTime extends AppCompatActivity {
             {"Морковь", "20-30 мин.", "10 мин.", "20 мин."},
             {"Свекла", "45-60 мин.", "", ""},
     };
-    private String[][]vegetablesENG = new String[][]{
-            {""},
-            {""},
-            {"Beet", "45-60 мин.", "", ""},
-            {"Cabbage", "15-25 min.", "", "20-30 min."},
-            {"Carrot", "20-30 min.", "10 min.", "20 min."},
-            {"Onion", "5 min.", "5-7 min.", ""},
-            {"Potato", "20-25 min.", "20-30 min.", "50 min."},
-            {"Zucchini", "20 min.", "5-10 min.", "25 min."},
-    };
+//    private String[][]vegetablesENG = new String[][]{
+//            {""},
+//            {""},
+//            {"Beet", "45-60 мин.", "", ""},
+//            {"Cabbage", "15-25 min.", "", "20-30 min."},
+//            {"Carrot", "20-30 min.", "10 min.", "20 min."},
+//            {"Onion", "5 min.", "5-7 min.", ""},
+//            {"Potato", "20-25 min.", "20-30 min.", "50 min."},
+//            {"Zucchini", "20 min.", "5-10 min.", "25 min."},
+//    };
     private String[][]otherRUS = new String[][]{
             {""},
             {""},
@@ -130,15 +130,15 @@ public class CookingTime extends AppCompatActivity {
             {"Яйца \"в мешочек\"", "4-4,5 мин.", "", ""},
             {"Яйца вкрутую", "7-10 мин.", "", ""},
     };
-    private String[][]otherENG = new String[][]{
-            {""},
-            {""},
-            {"Mushrooms", "35-40 min.", "", ""},
-            {"Pasta", "7-10 min.", "", ""},
-            {"Soft-boiled eggs", "3-3,5 min.", "", ""},
-            {"Medium-timed eggs", "4-4,5 min.", "", ""},
-            {"Hard-boiled eggs", "7-10 min.", "", ""},
-    };
+//    private String[][]otherENG = new String[][]{
+//            {""},
+//            {""},
+//            {"Mushrooms", "35-40 min.", "", ""},
+//            {"Pasta", "7-10 min.", "", ""},
+//            {"Soft-boiled eggs", "3-3,5 min.", "", ""},
+//            {"Medium-timed eggs", "4-4,5 min.", "", ""},
+//            {"Hard-boiled eggs", "7-10 min.", "", ""},
+//    };
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -251,11 +251,11 @@ public class CookingTime extends AppCompatActivity {
             tvParams2.width = getResources().getDimensionPixelSize(R.dimen.tv2_cooking_time_width);
             tvParams2.setMargins(marginBody, 0, marginBody, marginBody);
             tv2.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv2.setText(porridgeRUS[i][0]);
-            } else {
-                tv2.setText(porridgeENG[i][0]);
-            }
+//            } else {
+//                tv2.setText(porridgeENG[i][0]);
+//            }
             tv2.setGravity(Gravity.CENTER);
             tv2.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv2.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -268,11 +268,11 @@ public class CookingTime extends AppCompatActivity {
             tvParams3.width = getResources().getDimensionPixelSize(R.dimen.tv2_cooking_time_width);
             tvParams3.setMargins(0, 0, marginBody, marginBody);
             tv3.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv3.setText(porridgeRUS[i][1]);
-            } else {
-                tv3.setText(porridgeENG[i][1]);
-            }
+//            } else {
+//                tv3.setText(porridgeENG[i][1]);
+//            }
             tv3.setGravity(Gravity.CENTER);
             tv3.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv3.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -281,11 +281,11 @@ public class CookingTime extends AppCompatActivity {
 
             TextView tv4 = new TextView(this);
             tv4.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv4.setText(porridgeRUS[i][2]);
-            } else {
-                tv4.setText(porridgeENG[i][2]);
-            }
+//            } else {
+//                tv4.setText(porridgeENG[i][2]);
+//            }
             tv4.setGravity(Gravity.CENTER);
             tv4.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv4.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -294,11 +294,11 @@ public class CookingTime extends AppCompatActivity {
 
             TextView tv5 = new TextView(this);
             tv5.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv5.setText(porridgeRUS[i][3]);
-            } else {
-                tv5.setText(porridgeENG[i][3]);
-            }
+//            } else {
+//                tv5.setText(porridgeENG[i][3]);
+//            }
             tv5.setGravity(Gravity.CENTER);
             tv5.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv5.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -394,11 +394,11 @@ public class CookingTime extends AppCompatActivity {
             tvParams2.width = getResources().getDimensionPixelSize(R.dimen.tv3_cooking_time_width);
             tvParams2.setMargins(marginBody, 0, marginBody, marginBody);
             tv2.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv2.setText(meatRUS[i][0]);
-            } else {
-                tv2.setText(meatENG[i][0]);
-            }
+//            } else {
+//                tv2.setText(meatENG[i][0]);
+//            }
             tv2.setGravity(Gravity.CENTER);
             tv2.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv2.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -411,11 +411,11 @@ public class CookingTime extends AppCompatActivity {
             tvParams3.width = getResources().getDimensionPixelSize(R.dimen.tv3_cooking_time_height);
             tvParams3.setMargins(0, 0, marginBody, marginBody);
             tv3.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv3.setText(meatRUS[i][1]);
-            } else {
-                tv3.setText(meatENG[i][1]);
-            }
+//            } else {
+//                tv3.setText(meatENG[i][1]);
+//            }
             tv3.setGravity(Gravity.CENTER);
             tv3.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv3.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -424,11 +424,11 @@ public class CookingTime extends AppCompatActivity {
 
             TextView tv4 = new TextView(this);
             tv4.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv4.setText(meatRUS[i][2]);
-            } else {
-                tv4.setText(meatENG[i][2]);
-            }
+//            } else {
+//                tv4.setText(meatENG[i][2]);
+//            }
             tv4.setGravity(Gravity.CENTER);
             tv4.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv4.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -437,11 +437,11 @@ public class CookingTime extends AppCompatActivity {
 
             TextView tv5 = new TextView(this);
             tv5.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv5.setText(meatRUS[i][3]);
-            } else {
-                tv5.setText(meatENG[i][3]);
-            }
+//            } else {
+//                tv5.setText(meatENG[i][3]);
+//            }
             tv5.setGravity(Gravity.CENTER);
             tv5.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv5.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -535,11 +535,11 @@ public class CookingTime extends AppCompatActivity {
             tvParams2.width = getResources().getDimensionPixelSize(R.dimen.tv3_cooking_time_width);
             tvParams2.setMargins(marginBody, 0, marginBody, marginBody);
             tv2.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv2.setText(seafoodRUS[i][0]);
-            } else {
-                tv2.setText(seafoodENG[i][0]);
-            }
+//            } else {
+//                tv2.setText(seafoodENG[i][0]);
+//            }
             tv2.setGravity(Gravity.CENTER);
             tv2.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv2.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -552,11 +552,11 @@ public class CookingTime extends AppCompatActivity {
             tvParams3.width = getResources().getDimensionPixelSize(R.dimen.tv3_cooking_time_height);
             tvParams3.setMargins(0, 0, marginBody, marginBody);
             tv3.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv3.setText(seafoodRUS[i][1]);
-            } else {
-                tv3.setText(seafoodENG[i][1]);
-            }
+//            } else {
+//                tv3.setText(seafoodENG[i][1]);
+//            }
             tv3.setGravity(Gravity.CENTER);
             tv3.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv3.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -565,11 +565,11 @@ public class CookingTime extends AppCompatActivity {
 
             TextView tv4 = new TextView(this);
             tv4.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv4.setText(seafoodRUS[i][2]);
-            } else {
-                tv4.setText(seafoodENG[i][2]);
-            }
+//            } else {
+//                tv4.setText(seafoodENG[i][2]);
+//            }
             tv4.setGravity(Gravity.CENTER);
             tv4.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv4.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -578,11 +578,11 @@ public class CookingTime extends AppCompatActivity {
 
             TextView tv5 = new TextView(this);
             tv5.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv5.setText(seafoodRUS[i][3]);
-            } else {
-                tv5.setText(seafoodENG[i][3]);
-            }
+//            } else {
+//                tv5.setText(seafoodENG[i][3]);
+//            }
             tv5.setGravity(Gravity.CENTER);
             tv5.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv5.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -676,11 +676,11 @@ public class CookingTime extends AppCompatActivity {
             tvParams2.width = getResources().getDimensionPixelSize(R.dimen.tv3_cooking_time_width);
             tvParams2.setMargins(marginBody, 0, marginBody, marginBody);
             tv2.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv2.setText(birdRUS[i][0]);
-            } else {
-                tv2.setText(birdENG[i][0]);
-            }
+//            } else {
+//                tv2.setText(birdENG[i][0]);
+//            }
             tv2.setGravity(Gravity.CENTER);
             tv2.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv2.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -693,11 +693,11 @@ public class CookingTime extends AppCompatActivity {
             tvParams3.width = getResources().getDimensionPixelSize(R.dimen.tv3_cooking_time_height);
             tvParams3.setMargins(0, 0, marginBody, marginBody);
             tv3.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv3.setText(birdRUS[i][1]);
-            } else {
-                tv3.setText(birdENG[i][1]);
-            }
+//            } else {
+//                tv3.setText(birdENG[i][1]);
+//            }
             tv3.setGravity(Gravity.CENTER);
             tv3.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv3.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -706,11 +706,11 @@ public class CookingTime extends AppCompatActivity {
 
             TextView tv4 = new TextView(this);
             tv4.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv4.setText(birdRUS[i][2]);
-            } else {
-                tv4.setText(birdENG[i][2]);
-            }
+//            } else {
+//                tv4.setText(birdENG[i][2]);
+//            }
             tv4.setGravity(Gravity.CENTER);
             tv4.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv4.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -719,11 +719,11 @@ public class CookingTime extends AppCompatActivity {
 
             TextView tv5 = new TextView(this);
             tv5.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv5.setText(birdRUS[i][3]);
-            } else {
-                tv5.setText(birdENG[i][3]);
-            }
+//            } else {
+//                tv5.setText(birdENG[i][3]);
+//            }
             tv5.setGravity(Gravity.CENTER);
             tv5.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv5.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -817,11 +817,11 @@ public class CookingTime extends AppCompatActivity {
             tvParams2.width = getResources().getDimensionPixelSize(R.dimen.tv3_cooking_time_width);
             tvParams2.setMargins(marginBody, 0, marginBody, marginBody);
             tv2.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv2.setText(vegetablesRUS[i][0]);
-            } else {
-                tv2.setText(vegetablesENG[i][0]);
-            }
+//            } else {
+//                tv2.setText(vegetablesENG[i][0]);
+//            }
             tv2.setGravity(Gravity.CENTER);
             tv2.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv2.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -834,11 +834,11 @@ public class CookingTime extends AppCompatActivity {
             tvParams3.width = getResources().getDimensionPixelSize(R.dimen.tv3_cooking_time_height);
             tvParams3.setMargins(0, 0, marginBody, marginBody);
             tv3.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv3.setText(vegetablesRUS[i][1]);
-            } else {
-                tv3.setText(vegetablesENG[i][1]);
-            }
+//            } else {
+//                tv3.setText(vegetablesENG[i][1]);
+//            }
             tv3.setGravity(Gravity.CENTER);
             tv3.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv3.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -847,11 +847,11 @@ public class CookingTime extends AppCompatActivity {
 
             TextView tv4 = new TextView(this);
             tv4.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv4.setText(vegetablesRUS[i][2]);
-            } else {
-                tv4.setText(vegetablesENG[i][2]);
-            }
+//            } else {
+//                tv4.setText(vegetablesENG[i][2]);
+//            }
             tv4.setGravity(Gravity.CENTER);
             tv4.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv4.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -860,11 +860,11 @@ public class CookingTime extends AppCompatActivity {
 
             TextView tv5 = new TextView(this);
             tv5.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv5.setText(vegetablesRUS[i][3]);
-            } else {
-                tv5.setText(vegetablesENG[i][3]);
-            }
+//            } else {
+//                tv5.setText(vegetablesENG[i][3]);
+//            }
             tv5.setGravity(Gravity.CENTER);
             tv5.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv5.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -958,11 +958,11 @@ public class CookingTime extends AppCompatActivity {
             tvParams2.width = getResources().getDimensionPixelSize(R.dimen.tv3_cooking_time_width);
             tvParams2.setMargins(marginBody, 0, marginBody, marginBody);
             tv2.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv2.setText(otherRUS[i][0]);
-            } else {
-                tv2.setText(otherENG[i][0]);
-            }
+//            } else {
+//                tv2.setText(otherENG[i][0]);
+//            }
             tv2.setGravity(Gravity.CENTER);
             tv2.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv2.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -975,11 +975,11 @@ public class CookingTime extends AppCompatActivity {
             tvParams3.width = getResources().getDimensionPixelSize(R.dimen.tv3_cooking_time_height);
             tvParams3.setMargins(0, 0, marginBody, marginBody);
             tv3.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv3.setText(otherRUS[i][1]);
-            } else {
-                tv3.setText(otherENG[i][1]);
-            }
+//            } else {
+//                tv3.setText(otherENG[i][1]);
+//            }
             tv3.setGravity(Gravity.CENTER);
             tv3.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv3.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -988,11 +988,11 @@ public class CookingTime extends AppCompatActivity {
 
             TextView tv4 = new TextView(this);
             tv4.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv4.setText(otherRUS[i][2]);
-            } else {
-                tv4.setText(otherENG[i][2]);
-            }
+//            } else {
+//                tv4.setText(otherENG[i][2]);
+//            }
             tv4.setGravity(Gravity.CENTER);
             tv4.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv4.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));
@@ -1001,11 +1001,11 @@ public class CookingTime extends AppCompatActivity {
 
             TextView tv5 = new TextView(this);
             tv5.setBackgroundResource(R.color.tabBackgroundWhite);
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 tv5.setText(otherRUS[i][3]);
-            } else {
-                tv5.setText(otherENG[i][3]);
-            }
+//            } else {
+//                tv5.setText(otherENG[i][3]);
+//            }
             tv5.setGravity(Gravity.CENTER);
             tv5.setTextColor((ContextCompat.getColor(this, R.color.tabDividerRed)));
             tv5.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_cooking_time_body_small));

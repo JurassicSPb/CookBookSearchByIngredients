@@ -14,7 +14,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/recipeListsBackground">
+        android:background="@color/colorPrimary">
         <EditText
             android:id="@+id/search"
             android:layout_width="match_parent"
@@ -22,7 +22,7 @@
             android:hint="@string/search_by_name"
             android:textColorHint="@color/textColorHint"
             android:background="@drawable/search_edittext_border"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textColor="@color/textEditText"
             android:fontFamily="sans-serif"
             android:paddingLeft="14dp"
@@ -32,7 +32,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="4dp"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="5dp"/>
         <Button
             android:id="@+id/search_button"
             android:layout_width="32dp"

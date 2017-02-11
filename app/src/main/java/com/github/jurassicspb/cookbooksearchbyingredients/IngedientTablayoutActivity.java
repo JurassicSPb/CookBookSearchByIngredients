@@ -107,18 +107,17 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 //            delete();
 //            deleteRecipe();
 
-
         if (preferences.getFlag()) {
-            if (Locale.getDefault().getLanguage().equals("ru")) {
+//            if (Locale.getDefault().getLanguage().equals("ru")) {
                 createIngredientsRU();
                 createCategoryTablesRU();
                 createRecipes("rus");
-            }
-            else {
-                createIngredientsENG();
-                createCategoryTablesENG();
-                createRecipes("eng");
-            }
+//            }
+//            else {
+//                createIngredientsENG();
+//                createCategoryTablesENG();
+//                createRecipes("eng");
+//            }
             preferences.setFlag(false);
         }
         performCategoryTables();
@@ -242,12 +241,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         ingredientDB.copyOrUpdate(newIngredient);
     }
-    private void createIngredientsENG(){
-        ArrayList<Ingredient> newIngredient = new ArrayList<>();
-        newIngredient.add(new Ingredient("0.1", 0, "Beef", R.drawable.beef, 0));
-        newIngredient.add(new Ingredient("0.2", 0, "Pork", R.drawable.ic_circle, 0));
-        ingredientDB.copyOrUpdate(newIngredient);
-    }
 
     private void performIngredients(){
         ingredients = ingredientDB.getAll();
@@ -264,17 +257,24 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         categoryTables.add(new CategoryTable(6, "Крупы"));
         ingredientDB.copyOrUpdateCategoryTable(categoryTables);
     }
-    private void createCategoryTablesENG(){
-        ArrayList<CategoryTable> categoryTables = new ArrayList<>();
-        categoryTables.add(new CategoryTable(0, "Meat"));
-        categoryTables.add(new CategoryTable(1, "Fish"));
-        categoryTables.add(new CategoryTable(2, "Bird"));
-        categoryTables.add(new CategoryTable(3, "Milk"));
-        categoryTables.add(new CategoryTable(4, "Vegetables"));
-        categoryTables.add(new CategoryTable(5, "Fruits"));
-        categoryTables.add(new CategoryTable(6, "Cereal"));
-        ingredientDB.copyOrUpdateCategoryTable(categoryTables);
-    }
+    //    private void createIngredientsENG(){
+//        ArrayList<Ingredient> newIngredient = new ArrayList<>();
+//        newIngredient.add(new Ingredient("0.1", 0, "Beef", R.drawable.beef, 0));
+//        newIngredient.add(new Ingredient("0.2", 0, "Pork", R.drawable.ic_circle, 0));
+//        ingredientDB.copyOrUpdate(newIngredient);
+//    }
+
+//    private void createCategoryTablesENG(){
+//        ArrayList<CategoryTable> categoryTables = new ArrayList<>();
+//        categoryTables.add(new CategoryTable(0, "Meat"));
+//        categoryTables.add(new CategoryTable(1, "Fish"));
+//        categoryTables.add(new CategoryTable(2, "Bird"));
+//        categoryTables.add(new CategoryTable(3, "Milk"));
+//        categoryTables.add(new CategoryTable(4, "Vegetables"));
+//        categoryTables.add(new CategoryTable(5, "Fruits"));
+//        categoryTables.add(new CategoryTable(6, "Cereal"));
+//        ingredientDB.copyOrUpdateCategoryTable(categoryTables);
+//    }
 
     private void performCategoryTables(){
         categoryTables = ingredientDB.getAllCategoryTables();
