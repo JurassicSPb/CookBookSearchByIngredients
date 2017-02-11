@@ -12,46 +12,56 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".IngredientDetailActivity">
+        <activity android:name=".IngredientDetailActivity"
+            android:screenOrientation="portrait">
 
         </activity>
 
-        <activity android:name=".RecipeListActivity">
+        <activity android:name=".RecipeListActivity"
+            android:screenOrientation="portrait">
 
         </activity>
 
         <activity android:name=".RecipeDetailActivity"
-            android:theme="@style/DetailRecipeTheme">
+            android:theme="@style/DetailRecipeTheme"
+            android:screenOrientation="portrait">
 
         </activity>
 
-        <activity android:name=".FavoritesActivity">
+        <activity android:name=".FavoritesActivity"
+            android:screenOrientation="portrait">
 
         </activity>
 
-        <activity android:name=".FullListActivity">
+        <activity android:name=".FullListActivity"
+            android:screenOrientation="portrait">
 
         </activity>
 
-        <activity android:name=".nav_drawer_extras.WeightsAndMeasures">
+        <activity android:name=".nav_drawer_extras.WeightsAndMeasures"
+            android:screenOrientation="portrait">
 
         </activity>
 
-        <activity android:name=".nav_drawer_extras.CookingTime">
+        <activity android:name=".nav_drawer_extras.CookingTime"
+            android:screenOrientation="portrait">
 
         </activity>
 
         <activity android:name=".IngedientTablayoutActivity"
-            android:configChanges="orientation|screenSize">
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait">
         </activity>
 
         <activity android:name=".ProgressBarActivity"
-            android:theme="@style/ProgressBarTheme">
+            android:theme="@style/ProgressBarTheme"
+            android:screenOrientation="portrait">
 
         </activity>
 
         <activity android:name=".LoadingScreenActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
