@@ -84,7 +84,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
-        pager.setOffscreenPageLimit(8);
+        pager.setOffscreenPageLimit(10);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -209,7 +209,8 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
     private void createIngredientsRU(){
         ArrayList<Ingredient> newIngredient = new ArrayList<>();
-//        newIngredient.add(new Ingredient("0.1", 0, "Говядина", R.drawable.beef, 0));
+
+        newIngredient.add(new Ingredient("0.1", 0, "колбаса копченая", R.drawable.kolbasa_kopchenaya, 0));
 //        newIngredient.add(new Ingredient("0.2", 0, "Свинина", R.drawable.pork, 0));
 //        newIngredient.add(new Ingredient("0.3", 0, "Фарш из говядины", R.drawable.beef_mince, 0));
 //        newIngredient.add(new Ingredient("0.4", 0, "Баранина", R.drawable.lamb, 0));
@@ -217,34 +218,38 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 //        newIngredient.add(new Ingredient("0.6", 0, "Фарш из свинины", R.drawable.pork_mince, 0));
 //        newIngredient.add(new Ingredient("0.7", 0, "Фарш из баранины", R.drawable.ic_circle, 0));
 //        newIngredient.add(new Ingredient("0.8", 0, "Фарш из телятины", R.drawable.ic_circle, 0));
-//
-        newIngredient.add(new Ingredient("1", 1, "крабовые палочки", R.drawable.krabovie_palochki, 0));
+
+        newIngredient.add(new Ingredient("1.1", 1, "крабовые палочки", R.drawable.krabovie_palochki, 0));
 //        newIngredient.add(new Ingredient("1.2", 1, "Карась", R.drawable.ic_circle, 0));
 //        newIngredient.add(new Ingredient("1.2", 1, "Окунь", R.drawable.ic_circle, 0));
-//
-            newIngredient.add(new Ingredient("2.1", 2, "куриное филе", R.drawable.chicken_fillet, 0));
+
+        newIngredient.add(new Ingredient("2.1", 2, "куриное филе", R.drawable.chicken_fillet, 0));
         newIngredient.add(new Ingredient("2.2", 2, "яйца куриные", R.drawable.eggs, 0));
-//
+
         newIngredient.add(new Ingredient("3.1", 3, "сметана", R.drawable.sour_cream, 0));
-//        newIngredient.add(new Ingredient("3.2", 3, "Сметана", R.drawable.ic_circle, 0));
+        newIngredient.add(new Ingredient("3.2", 3, "сыр", R.drawable.cheese, 0));
 //        newIngredient.add(new Ingredient("3.3", 3, "Творог", R.drawable.ic_circle, 0));
 //        newIngredient.add(new Ingredient("3.4", 3, "Сливки", R.drawable.ic_circle, 0));
-//
 
         newIngredient.add(new Ingredient("4.1", 4, "зелень", R.drawable.zelen, 0));
-        newIngredient.add(new Ingredient("4.2", 4, "консервированный горошек", R.drawable.canned_pea, 0));
-        newIngredient.add(new Ingredient("4.3", 4, "огурцы", R.drawable.cucumber, 0));
-        newIngredient.add(new Ingredient("4.4", 4, "укроп", R.drawable.ukrop, 0));
-        newIngredient.add(new Ingredient("4.5", 4, "фасоль красная консервированная", R.drawable.fasol_red, 0));
+        newIngredient.add(new Ingredient("4.2", 4, "горошек консервированный", R.drawable.canned_pea, 0));
+        newIngredient.add(new Ingredient("4.3", 4, "кукуруза консервированная", R.drawable.canned_corn, 0));
+        newIngredient.add(new Ingredient("4.4", 4, "морковь", R.drawable.carrot, 0));
+        newIngredient.add(new Ingredient("4.5", 4, "огурцы", R.drawable.cucumber, 0));
+        newIngredient.add(new Ingredient("4.6", 4, "укроп", R.drawable.ukrop, 0));
+        newIngredient.add(new Ingredient("4.7", 4, "фасоль красная консервированная", R.drawable.fasol_red, 0));
+        newIngredient.add(new Ingredient("4.8", 4, "чеснок", R.drawable.garlic, 0));
 
-//
 //        newIngredient.add(new Ingredient("5.1", 5, "Яблоко", R.drawable.ic_circle, 0));
 //        newIngredient.add(new Ingredient("5.2", 5, "Груша", R.drawable.ic_circle, 0));
-//
+
 //        newIngredient.add(new Ingredient("6.1", 6, "Рис", R.drawable.ic_circle, 0));
 //        newIngredient.add(new Ingredient("6.1", 6, "Греча", R.drawable.ic_circle, 0));
 
         newIngredient.add(new Ingredient("7.1", 7, "перец молотый", R.drawable.pepper_minced, 0));
+        newIngredient.add(new Ingredient("7.2", 7, "соль", R.drawable.salt, 0));
+
+        newIngredient.add(new Ingredient("8.1", 8, "майонез", R.drawable.mayonese, 0));
 
 
 
@@ -259,13 +264,15 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         ArrayList<CategoryTable> categoryTables = new ArrayList<>();
 
         categoryTables.add(new CategoryTable(0, "Мясо"));
-        categoryTables.add(new CategoryTable(1, "Рыба"));
+        categoryTables.add(new CategoryTable(1, "Морепродукты"));
         categoryTables.add(new CategoryTable(2, "Птица"));
         categoryTables.add(new CategoryTable(3, "Молочное"));
         categoryTables.add(new CategoryTable(4, "Овощи"));
         categoryTables.add(new CategoryTable(5, "Фрукты"));
         categoryTables.add(new CategoryTable(6, "Крупы"));
         categoryTables.add(new CategoryTable(7, "Приправы"));
+        categoryTables.add(new CategoryTable(8, "Соусы"));
+        categoryTables.add(new CategoryTable(9, "Жидкости"));
         ingredientDB.copyOrUpdateCategoryTable(categoryTables);
     }
 
