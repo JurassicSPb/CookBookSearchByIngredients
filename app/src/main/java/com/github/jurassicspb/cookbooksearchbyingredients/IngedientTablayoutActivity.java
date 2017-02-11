@@ -84,7 +84,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
-        pager.setOffscreenPageLimit(7);
+        pager.setOffscreenPageLimit(8);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -218,27 +218,35 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 //        newIngredient.add(new Ingredient("0.7", 0, "Фарш из баранины", R.drawable.ic_circle, 0));
 //        newIngredient.add(new Ingredient("0.8", 0, "Фарш из телятины", R.drawable.ic_circle, 0));
 //
-//        newIngredient.add(new Ingredient("1.1", 1, "Сельдь", R.drawable.ic_circle, 0));
+        newIngredient.add(new Ingredient("1", 1, "крабовые палочки", R.drawable.krabovie_palochki, 0));
 //        newIngredient.add(new Ingredient("1.2", 1, "Карась", R.drawable.ic_circle, 0));
 //        newIngredient.add(new Ingredient("1.2", 1, "Окунь", R.drawable.ic_circle, 0));
 //
             newIngredient.add(new Ingredient("2.1", 2, "куриное филе", R.drawable.chicken_fillet, 0));
-//        newIngredient.add(new Ingredient("2.2", 2, "Индейка", R.drawable.turkey, 0));
+        newIngredient.add(new Ingredient("2.2", 2, "яйца куриные", R.drawable.eggs, 0));
 //
         newIngredient.add(new Ingredient("3.1", 3, "сметана", R.drawable.sour_cream, 0));
 //        newIngredient.add(new Ingredient("3.2", 3, "Сметана", R.drawable.ic_circle, 0));
 //        newIngredient.add(new Ingredient("3.3", 3, "Творог", R.drawable.ic_circle, 0));
 //        newIngredient.add(new Ingredient("3.4", 3, "Сливки", R.drawable.ic_circle, 0));
 //
-        newIngredient.add(new Ingredient("4.1", 4, "огурцы", R.drawable.cucumber, 0));
+
+        newIngredient.add(new Ingredient("4.1", 4, "зелень", R.drawable.zelen, 0));
         newIngredient.add(new Ingredient("4.2", 4, "консервированный горошек", R.drawable.canned_pea, 0));
-        newIngredient.add(new Ingredient("4.3", 4, "укроп", R.drawable.ukrop, 0));
+        newIngredient.add(new Ingredient("4.3", 4, "огурцы", R.drawable.cucumber, 0));
+        newIngredient.add(new Ingredient("4.4", 4, "укроп", R.drawable.ukrop, 0));
+        newIngredient.add(new Ingredient("4.5", 4, "фасоль красная консервированная", R.drawable.fasol_red, 0));
+
 //
 //        newIngredient.add(new Ingredient("5.1", 5, "Яблоко", R.drawable.ic_circle, 0));
 //        newIngredient.add(new Ingredient("5.2", 5, "Груша", R.drawable.ic_circle, 0));
 //
 //        newIngredient.add(new Ingredient("6.1", 6, "Рис", R.drawable.ic_circle, 0));
 //        newIngredient.add(new Ingredient("6.1", 6, "Греча", R.drawable.ic_circle, 0));
+
+        newIngredient.add(new Ingredient("7.1", 7, "перец молотый", R.drawable.pepper_minced, 0));
+
+
 
         ingredientDB.copyOrUpdate(newIngredient);
     }
@@ -257,6 +265,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         categoryTables.add(new CategoryTable(4, "Овощи"));
         categoryTables.add(new CategoryTable(5, "Фрукты"));
         categoryTables.add(new CategoryTable(6, "Крупы"));
+        categoryTables.add(new CategoryTable(7, "Приправы"));
         ingredientDB.copyOrUpdateCategoryTable(categoryTables);
     }
 
