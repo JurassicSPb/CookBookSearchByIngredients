@@ -87,16 +87,15 @@ public class RecipeDetailActivity extends AppCompatActivity{
         ingredients = intent.getStringExtra("ingredients");
         ingredient.setTypeface(typefaceCalorieAndIngredient);
 
-//        final Spannable text = new SpannableString(ingredients);
-//        final ForegroundColorSpan colorSpan = new ForegroundColorSpan(Color.GREEN);
-//
-//        for (int i = 0; i < SelectedIngredient.getSelectedIngredient().size(); i++) {
-//            if (ingredients.contains(SelectedIngredient.getSelectedIngredient().get(i))) {
-//                int position = ingredients.indexOf(SelectedIngredient.getSelectedIngredient().get(i));
-//                text.setSpan(colorSpan, position, position + SelectedIngredient.getSelectedIngredient().get(i).length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-//            }
-//        }
-        ingredient.setText(ingredients);
+        final Spannable text = new SpannableString(ingredients);
+
+        for (int i = 0; i < SelectedIngredient.getSelectedIngredient().size(); i++) {
+            if (ingredients.contains(SelectedIngredient.getSelectedIngredient().get(i))) {
+                int position = ingredients.indexOf(SelectedIngredient.getSelectedIngredient().get(i));
+                text.setSpan(new ForegroundColorSpan(ContextCompat.getColor(this, R.color.Green)), position, position + SelectedIngredient.getSelectedIngredient().get(i).length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+        }
+        ingredient.setText(text);
 
 
         description = (TextView) findViewById(R.id.description_field);
