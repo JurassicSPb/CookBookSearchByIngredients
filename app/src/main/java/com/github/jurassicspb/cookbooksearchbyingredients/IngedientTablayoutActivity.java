@@ -276,7 +276,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         categoryTables.add(new CategoryTable(0, "Мясное"));
         categoryTables.add(new CategoryTable(1, "Морепродукты"));
         categoryTables.add(new CategoryTable(2, "Птица/Яйца"));
-        categoryTables.add(new CategoryTable(3, "Молочное"));
+        categoryTables.add(new CategoryTable(3, "Молочное/Сыр"));
         categoryTables.add(new CategoryTable(4, "Овощи"));
         categoryTables.add(new CategoryTable(5, "Фрукты"));
         categoryTables.add(new CategoryTable(6, "Грибы"));

@@ -1,6 +1,7 @@
 package com.github.jurassicspb.cookbooksearchbyingredients;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -8,6 +9,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -78,8 +85,19 @@ public class RecipeDetailActivity extends AppCompatActivity{
 
         ingredient = (TextView) findViewById(R.id.ingredients_field);
         ingredients = intent.getStringExtra("ingredients");
-        ingredient.setText(ingredients);
         ingredient.setTypeface(typefaceCalorieAndIngredient);
+
+//        final Spannable text = new SpannableString(ingredients);
+//        final ForegroundColorSpan colorSpan = new ForegroundColorSpan(Color.GREEN);
+//
+//        for (int i = 0; i < SelectedIngredient.getSelectedIngredient().size(); i++) {
+//            if (ingredients.contains(SelectedIngredient.getSelectedIngredient().get(i))) {
+//                int position = ingredients.indexOf(SelectedIngredient.getSelectedIngredient().get(i));
+//                text.setSpan(colorSpan, position, position + SelectedIngredient.getSelectedIngredient().get(i).length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//            }
+//        }
+        ingredient.setText(ingredients);
+
 
         description = (TextView) findViewById(R.id.description_field);
         descriptions = intent.getStringExtra("description");
