@@ -86,14 +86,14 @@ public class IngredientFragment extends Fragment{
                 int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
 
                 if (ingredientPosition==-1) {
-                    if (SelectedIngredient.showCount()<10) {
+                    if (SelectedIngredient.showCount()<15) {
                         SelectedIngredient.addCount();
                         SelectedIngredient.addSelectedIngredient(sel, image);
                         ingredients.get((int)id).setState(1);
                         gita.notifyDataSetChanged();
                     }
-                    else if (SelectedIngredient.showCount()==10){
-                        Toast toast = Toast.makeText(getActivity(), R.string.no_more_than_10,Toast.LENGTH_SHORT);
+                    else if (SelectedIngredient.showCount()==15){
+                        Toast toast = Toast.makeText(getActivity(), R.string.no_more_than_15,Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                     }

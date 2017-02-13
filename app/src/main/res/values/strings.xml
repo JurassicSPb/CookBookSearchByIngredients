@@ -5,7 +5,7 @@
     <string name="ingredient_list">Список ингредиентов</string>
     <string name="select_one">Выберите хотя бы один ингредиент</string>
     <string name="selected">Выбрано</string>
-    <string name="no_more_than_10">Выберите не более 10 ингредиентов</string>
+    <string name="no_more_than_15">Выберите не более 15 ингредиентов</string>
     <string name="count_of_matching_ingredients">Совпадающие ингредиенты: </string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
@@ -52,7 +52,7 @@
     <!--<string name="ingredient_list">Ingredient list</string>-->
     <!--<string name="select_one">Select at least one ingredient</string>-->
     <!--<string name="selected">Selected</string>-->
-    <!--<string name="no_more_than_10">Select no more than 10 ingredients</string>-->
+    <!--<string name="no_more_than_15">Select no more than 15 ingredients</string>-->
     <!--<string name="count_of_matching_ingredients">Matching ingredients: </string>-->
     <!--<string name="navigation_drawer_open">Open</string>-->
     <!--<string name="navigation_drawer_close">Close</string>-->

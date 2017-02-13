@@ -107,7 +107,9 @@ public class IngredientDatabase {
     }
     public List<Recipe> copyFromRealmRecipeSorted() {
         realm.beginTransaction();
-        RealmResults <Recipe> results = realm.where(Recipe.class).findAllSorted("name", Sort.ASCENDING);
+        String [] fieldNames = {"category", "name"};
+        Sort sort[] = {Sort.ASCENDING, Sort.ASCENDING};
+        RealmResults <Recipe> results = realm.where(Recipe.class).findAllSorted(fieldNames, sort);
         List<Recipe> newRecipe = realm.copyFromRealm(results);
         realm.commitTransaction();
         return newRecipe;
