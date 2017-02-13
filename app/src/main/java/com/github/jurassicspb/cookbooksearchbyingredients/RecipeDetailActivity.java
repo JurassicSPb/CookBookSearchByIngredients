@@ -86,9 +86,7 @@ public class RecipeDetailActivity extends AppCompatActivity{
         ingredient = (TextView) findViewById(R.id.ingredients_field);
         ingredients = intent.getStringExtra("ingredients");
         ingredient.setTypeface(typefaceCalorieAndIngredient);
-
         final Spannable text = new SpannableString(ingredients);
-
         for (int i = 0; i < SelectedIngredient.getSelectedIngredient().size(); i++) {
             if (ingredients.contains(SelectedIngredient.getSelectedIngredient().get(i))) {
                 int position = ingredients.indexOf(SelectedIngredient.getSelectedIngredient().get(i));
@@ -96,7 +94,6 @@ public class RecipeDetailActivity extends AppCompatActivity{
             }
         }
         ingredient.setText(text);
-
 
         description = (TextView) findViewById(R.id.description_field);
         descriptions = intent.getStringExtra("description");
