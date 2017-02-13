@@ -127,6 +127,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             IngredientFragment m = new IngredientFragment();
             ingredients = ingredientDB.getCategory(categoryTables.get(i).getNum());
             m.setIngrbycategory(ingredientDB.copyFromRealm(ingredients));
+//            m.setIngrbycategory(createFakeRecipes());
             adapter.addFragment(m, categoryTables.get(i).getName());
         }
 
@@ -207,6 +208,13 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         return super.onOptionsItemSelected(item);
     }
 
+//    public List <Ingredient>createFakeIngrs(){
+//        ArrayList<Ingredient> newIngredient = new ArrayList<>();
+//        for (int i=0; i<1000; i++){
+//            newIngredient.add(new Ingredient("e9", 4, "морковь", R.drawable.carrot, 0));
+//        }
+//        return newIngredient;
+//    }
     private void createIngredientsRU(){
         ArrayList<Ingredient> newIngredient = new ArrayList<>();
 
