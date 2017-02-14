@@ -9,24 +9,18 @@ import io.realm.annotations.PrimaryKey;
 
 public class Ingredient extends RealmObject{
     @PrimaryKey
-    private String id;
-    private int category;
     private String ingredient;
+    private int category;
     private int image;
     private int state;
 
     public Ingredient() {}
 
-    public Ingredient(String id, int category, String ingredient, int image, int state){
-        this.id=id;
+    public Ingredient(int category, String ingredient, int image, int state){
         this.category=category;
         this.ingredient=ingredient;
         this.image=image;
         this.state=state;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public int getCategory() {
@@ -38,10 +32,6 @@ public class Ingredient extends RealmObject{
     }
 
     public int getImage() {return image;}
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public void setCategory(int category) {
         this.category = category;

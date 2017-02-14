@@ -88,7 +88,7 @@ public class IngredientDatabase {
     }
 
     public List<Ingredient> getAll() {
-        return realm.where(Ingredient.class).findAllSorted("id", Sort.ASCENDING);
+        return realm.where(Ingredient.class).findAll();
     }
     public List<CategoryTable> getAllCategoryTables() {
         return realm.where(CategoryTable.class).findAllSorted("num", Sort.ASCENDING);
@@ -98,7 +98,7 @@ public class IngredientDatabase {
     }
 
     public List<Ingredient>getCategory(int i){
-        return realm.where(Ingredient.class).equalTo("category", i).findAllSorted("id", Sort.ASCENDING);
+        return realm.where(Ingredient.class).equalTo("category", i).findAllSorted("ingredient", Sort.ASCENDING);
     }
     public List <Recipe> getRecipe(ArrayList<String> selected){
         RealmQuery <Recipe> query = realm.where(Recipe.class);
