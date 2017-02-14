@@ -90,6 +90,7 @@ public class IngredientDatabase {
     public List<Ingredient> getAll() {
         return realm.where(Ingredient.class).findAll();
     }
+
     public List<CategoryTable> getAllCategoryTables() {
         return realm.where(CategoryTable.class).findAllSorted("num", Sort.ASCENDING);
     }

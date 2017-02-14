@@ -44,13 +44,11 @@ public class CategoriesListAdapter extends RecyclerView.Adapter<CategoriesListAd
     @Override
     public void onBindViewHolder(CategoriesListAdapter.ViewHolder holder, int position) {
         Context cont =  holder.recipeName.getContext();
-        String category = cont.getResources().getString(R.string.category);
 
         String url = recipes.get(position).getImage();
         Context context = holder.photoSmall.getContext();
 
-        final SpannableString span = new SpannableString(recipes.get(position).getName() + "\n" + category + " "
-                + recipes.get(position).getCategory());
+        final SpannableString span = new SpannableString(recipes.get(position).getName());
         final StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
         span.setSpan(styleSpan, 0, recipes.get(position).getName().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 

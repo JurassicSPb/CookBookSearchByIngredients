@@ -127,7 +127,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             IngredientFragment m = new IngredientFragment();
             ingredients = ingredientDB.getCategory(categoryTables.get(i).getNum());
             m.setIngrbycategory(ingredientDB.copyFromRealm(ingredients));
-//            m.setIngrbycategory(createFakeRecipes());
             adapter.addFragment(m, categoryTables.get(i).getName());
         }
 
@@ -212,13 +211,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         return super.onOptionsItemSelected(item);
     }
 
-//    public List <Ingredient>createFakeIngrs(){
-//        ArrayList<Ingredient> newIngredient = new ArrayList<>();
-//        for (int i=0; i<1000; i++){
-//            newIngredient.add(new Ingredient("e9", 4, "морковь", R.drawable.carrot, 0));
-//        }
-//        return newIngredient;
-//    }
     private void createIngredientsRU(){
         ArrayList<Ingredient> newIngredient = new ArrayList<>();
 
@@ -316,10 +308,10 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     }
     private void createCategoriesRU(){
         ArrayList<Categories> categories = new ArrayList<>();
-        categories.add(new Categories("блины", R.drawable.ic_circle));
-        categories.add(new Categories("вторые блюда", R.drawable.ic_circle));
-        categories.add(new Categories("салаты", R.drawable.ic_circle));
-        categories.add(new Categories("супы", R.drawable.ic_circle));
+        categories.add(new Categories("блины", R.drawable.pancaces));
+        categories.add(new Categories("вторые блюда", R.drawable.vtor_bludo));
+        categories.add(new Categories("салаты", R.drawable.salads));
+        categories.add(new Categories("супы", R.drawable.soups));
         ingredientDB.copyOrUpdateCategories(categories);
     }
 
