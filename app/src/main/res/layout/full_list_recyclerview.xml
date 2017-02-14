@@ -26,7 +26,7 @@
             android:textColor="@color/textEditText"
             android:fontFamily="sans-serif"
             android:paddingLeft="14dp"
-            android:maxLength="25"
+            android:maxLength="30"
             android:maxLines="1"
             android:inputType="text"
             android:layout_marginRight="8dp"

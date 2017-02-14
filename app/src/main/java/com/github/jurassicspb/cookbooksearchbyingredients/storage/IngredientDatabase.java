@@ -1,5 +1,6 @@
 package com.github.jurassicspb.cookbooksearchbyingredients.storage;
 
+import com.github.jurassicspb.cookbooksearchbyingredients.Categories;
 import com.github.jurassicspb.cookbooksearchbyingredients.CategoryTable;
 import com.github.jurassicspb.cookbooksearchbyingredients.Favorites;
 import com.github.jurassicspb.cookbooksearchbyingredients.Ingredient;
@@ -45,6 +46,11 @@ public class IngredientDatabase {
         realm.copyToRealmOrUpdate(favorite);
         realm.commitTransaction();
     }
+    public void copyOrUpdateCategories(List <Categories> categories){
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(categories);
+        realm.commitTransaction();
+    }
     public List<Favorites> getAllFavorites() {
         return realm.where(Favorites.class).findAll();
     }
@@ -86,6 +92,9 @@ public class IngredientDatabase {
     }
     public List<CategoryTable> getAllCategoryTables() {
         return realm.where(CategoryTable.class).findAllSorted("num", Sort.ASCENDING);
+    }
+    public List<Categories>getAllCategories(){
+        return realm.where(Categories.class).findAllSorted("name", Sort.ASCENDING);
     }
 
     public List<Ingredient>getCategory(int i){
