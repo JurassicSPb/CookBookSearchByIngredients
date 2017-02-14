@@ -64,6 +64,11 @@
 
         </activity>
 
+        <activity android:name=".CategoriesListActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
         <activity android:name=".LoadingScreenActivity"
             android:theme="@style/SplashTheme"
             android:screenOrientation="portrait">

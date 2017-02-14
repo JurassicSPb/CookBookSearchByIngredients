@@ -2,6 +2,7 @@
     <string name="app_name">CookBookSearchByIngredients</string>
     <string name="search_by_ingredient">Поиск по ингредиентам</string>
     <string name="search_by_name">Поиск по названию или категории</string>
+    <string name="search_by_name_short">Поиск по названию</string>
     <string name="ingredient_list">Список ингредиентов</string>
     <string name="select_one">Выберите хотя бы один ингредиент</string>
     <string name="selected">Выбрано</string>
