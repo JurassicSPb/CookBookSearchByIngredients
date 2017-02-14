@@ -68,6 +68,7 @@ public class CategoriesListActivity extends AppCompatActivity{
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
         getSupportActionBar().setTitle(getNames);
 
+        
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new CategoriesListAdapter(recipes, clickListener);
