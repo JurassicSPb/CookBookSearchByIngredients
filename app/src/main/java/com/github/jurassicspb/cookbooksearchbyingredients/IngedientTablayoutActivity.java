@@ -375,7 +375,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         ingredientDB.close();
         super.onDestroy();
     }
-    //    private void createIngredientsENG(){
+    //    private void createIngredientsENG() {
 //        ArrayList<Ingredient> newIngredient = new ArrayList<>();
 //        newIngredient.add(new Ingredient("0.1", 0, "Beef", R.drawable.beef, 0));
 //        newIngredient.add(new Ingredient("0.2", 0, "Pork", R.drawable.ic_circle, 0));
