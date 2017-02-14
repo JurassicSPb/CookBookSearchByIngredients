@@ -26,7 +26,7 @@ import java.util.List;
 public class CategoriesListAdapter extends RecyclerView.Adapter<CategoriesListAdapter.ViewHolder> implements Filterable {
     private List<Recipe> recipes;
     private List<Recipe> recipesFiltered;
-    private CategoriesListAdapter.ValueFilter valueFilter;
+    private ValueFilter valueFilter;
     private OnListItemClickListener clickListener;
 
     public CategoriesListAdapter (List <Recipe> recipes, OnListItemClickListener clickListener){
@@ -96,7 +96,7 @@ public class CategoriesListAdapter extends RecyclerView.Adapter<CategoriesListAd
 
         if (valueFilter == null) {
 
-            valueFilter = new CategoriesListAdapter.ValueFilter();
+            valueFilter = new ValueFilter();
         }
 
         return valueFilter;

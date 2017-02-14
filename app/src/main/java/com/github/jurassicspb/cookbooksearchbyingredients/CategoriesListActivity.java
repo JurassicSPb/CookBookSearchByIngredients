@@ -103,7 +103,7 @@ public class CategoriesListActivity extends AppCompatActivity{
 
         searchClearButton.setOnClickListener(v -> searchEditText.setText(""));
     }
-    
+
     @Override
     protected void onDestroy() {
         recipeDB.close();

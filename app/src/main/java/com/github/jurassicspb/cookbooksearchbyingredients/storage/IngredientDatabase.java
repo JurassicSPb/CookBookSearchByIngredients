@@ -124,7 +124,11 @@ public class IngredientDatabase {
         return newRecipe;
     }
     public List<Recipe>getRecipesByCategories(String name){
-        return realm.where(Recipe.class).equalTo("category", name).findAllSorted("name", Sort.ASCENDING);
+        realm.beginTransaction();
+        RealmResults <Recipe> results = realm.where(Recipe.class).equalTo("category", name).findAllSorted("name", Sort.ASCENDING);
+        List<Recipe> newRecipe = realm.copyFromRealm(results);
+        realm.commitTransaction();
+        return newRecipe;
     }
     public List<Recipe> getAllRecipes() {
         return realm.where(Recipe.class).findAll();
