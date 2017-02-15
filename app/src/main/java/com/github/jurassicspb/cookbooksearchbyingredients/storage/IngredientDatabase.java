@@ -88,7 +88,7 @@ public class IngredientDatabase {
     }
 
     public List<Ingredient> getAll() {
-        return realm.where(Ingredient.class).findAll();
+        return realm.where(Ingredient.class).findAllSorted("ingredient", Sort.ASCENDING);
     }
 
     public List<CategoryTable> getAllCategoryTables() {

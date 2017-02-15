@@ -32,6 +32,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
         return fragments.size();
     }
 
+    @Override
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
+    }
+
     public void addFragment(Fragment fragment, String title){
         fragments.add(fragment);
         titles.add(title);

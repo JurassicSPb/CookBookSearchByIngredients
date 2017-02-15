@@ -89,7 +89,7 @@ public class IngredientFragment extends Fragment{
                     if (SelectedIngredient.showCount()<15) {
                         SelectedIngredient.addCount();
                         SelectedIngredient.addSelectedIngredient(sel, image);
-                        ingredients.get((int)id).setState(1);
+//                        ingredients.get((int) id).setState(1);
                         gita.notifyDataSetChanged();
                     }
                     else if (SelectedIngredient.showCount()==15){
@@ -98,10 +98,11 @@ public class IngredientFragment extends Fragment{
                         toast.show();
                     }
                 }
+//                if (ingredientPosition>-1 &&  ingredients.get((int)id).getState()==1)
                 else {
                     SelectedIngredient.removeCount();
                     SelectedIngredient.removeSelectedIngredient(sel, image);
-                    ingredients.get((int)id).setState(0);
+//                    ingredients.get((int) id).setState(0);
                     gita.notifyDataSetChanged();
                 }
                 ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(selectedToString+": " + SelectedIngredient.showCount());
