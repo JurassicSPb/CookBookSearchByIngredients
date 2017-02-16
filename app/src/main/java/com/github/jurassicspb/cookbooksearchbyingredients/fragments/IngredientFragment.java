@@ -27,7 +27,7 @@ import java.util.List;
  * Created by Мария on 12.11.2016.
  */
 
-public class IngredientFragment extends Fragment{
+public class IngredientFragment extends Fragment implements FragmentInterface{
     private List<Ingredient> ingredients;
     private GridView gridview;
     private EditText searchEditText;
@@ -89,7 +89,7 @@ public class IngredientFragment extends Fragment{
                     if (SelectedIngredient.showCount()<15) {
                         SelectedIngredient.addCount();
                         SelectedIngredient.addSelectedIngredient(sel, image);
-//                        ingredients.get((int) id).setState(1);
+                        ingredients.get((int) id).setState(1);
                         gita.notifyDataSetChanged();
                     }
                     else if (SelectedIngredient.showCount()==15){
@@ -102,7 +102,7 @@ public class IngredientFragment extends Fragment{
                 else {
                     SelectedIngredient.removeCount();
                     SelectedIngredient.removeSelectedIngredient(sel, image);
-//                    ingredients.get((int) id).setState(0);
+                    ingredients.get((int) id).setState(0);
                     gita.notifyDataSetChanged();
                 }
                 ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(selectedToString+": " + SelectedIngredient.showCount());
@@ -113,6 +113,20 @@ public class IngredientFragment extends Fragment{
         });
         return view;
     }
+
+    @Override
+    public void fragmentBecameVisible() {
+            for (int i=0; i<ingredients.size(); i++){
+            String sel = ingredients.get(i).getIngredient();
+            int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
+            if (ingredientPosition>-1){
+                ingredients.get(i).setState(1);
+                gita.notifyDataSetChanged();
+            }
+        }
+
+    }
+
     public void setIngrbycategory(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }

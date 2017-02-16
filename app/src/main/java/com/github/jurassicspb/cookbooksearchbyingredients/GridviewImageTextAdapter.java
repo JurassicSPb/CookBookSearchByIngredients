@@ -64,10 +64,10 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
-//        Ingredient object = ingredientAdapter.get(position);
+        Ingredient object = ingredientAdapter.get(position);
 
-        String sel = ingredientAdapter.get(position).getIngredient();
-        int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
+//        String sel = ingredientAdapter.get(position).getIngredient();
+//        int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
 
 
         ViewHolder holder;
@@ -81,10 +81,12 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
+
         }
         holder.textView.setText(ingredientAdapter.get(position).getIngredient());
         holder.imageView.setImageResource(ingredientAdapter.get(position).getImage());
-        if (ingredientPosition>-1) {
+//         ingredientPosition>-1 object.getState()==1
+        if (object.getState()==1) {
             holder.textView.setTextColor(ContextCompat.getColor(mContext, R.color.tabLayoutTextColorSelected));
         } else {
             holder.textView.setTextColor(Color.WHITE);

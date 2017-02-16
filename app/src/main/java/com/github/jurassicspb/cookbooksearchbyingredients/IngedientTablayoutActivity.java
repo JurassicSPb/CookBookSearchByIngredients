@@ -8,7 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -23,6 +22,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.jurassicspb.cookbooksearchbyingredients.fragments.FragmentInterface;
 import com.github.jurassicspb.cookbooksearchbyingredients.fragments.IngredientFragment;
 import com.github.jurassicspb.cookbooksearchbyingredients.nav_drawer_extras.CookingTime;
 import com.github.jurassicspb.cookbooksearchbyingredients.nav_drawer_extras.WeightsAndMeasures;
@@ -37,7 +37,6 @@ import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by Мария on 12.11.2016.
@@ -84,9 +83,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
-        pager.setOffscreenPageLimit(1);
+
+        pager.setOffscreenPageLimit(8);
+
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.notifyDataSetChanged();
+
         drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -137,11 +138,32 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         }
 
         pager.setAdapter(adapter);
+
+        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                FragmentInterface fragment = (FragmentInterface) adapter.instantiateItem(pager, position);
+                if (fragment != null) {
+                    fragment.fragmentBecameVisible();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         tabLayout.setupWithViewPager(pager);
-        tabLayout.setTabTextColors(
-                ContextCompat.getColor(this, R.color.tabLayoutTextColorUnselected),
-                ContextCompat.getColor(this, R.color.tabLayoutTextColorSelected)
-        );
+
+//        tabLayout.setTabTextColors( лишнее - есть в XML
+//                ContextCompat.getColor(this, R.color.tabLayoutTextColorUnselected),
+//                ContextCompat.getColor(this, R.color.tabLayoutTextColorSelected)
+//        );
     }
 //    public void customTabs(){
 //        for (int i=0; i<categoryTables.size(); i++) {
@@ -220,84 +242,84 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     private void createIngredientsRU(){
         ArrayList<Ingredient> newIngredient = new ArrayList<>();
 
-        newIngredient.add(new Ingredient(1, "грибы", R.drawable.sour_cream));
+        newIngredient.add(new Ingredient(1, "грибы", R.drawable.sour_cream, 0));
 //
-//        newIngredient.add(new Ingredient(2, "злаки", R.drawable.sour_cream));
+        newIngredient.add(new Ingredient(2, "злаки", R.drawable.sour_cream, 0));
+
+        newIngredient.add(new Ingredient(3, "крупы", R.drawable.sour_cream, 0));
+
+        newIngredient.add(new Ingredient(4, "спагетти", R.drawable.spagetti, 0));
+
+        newIngredient.add(new Ingredient(5, "масло растительное", R.drawable.oils, 0));
+
+        newIngredient.add(new Ingredient(6, "крабовые палочки", R.drawable.krabovie_palochki, 0));
+
+//        newIngredient.add(new Ingredient(7, "мука", R.drawable.muka));
 //
-//        newIngredient.add(new Ingredient(3, "крупы", R.drawable.sour_cream));
-
-        newIngredient.add(new Ingredient(4, "спагетти", R.drawable.spagetti));
-
-        newIngredient.add(new Ingredient(5, "масло растительное", R.drawable.oils));
-
-        newIngredient.add(new Ingredient(6, "крабовые палочки", R.drawable.krabovie_palochki));
-
-        newIngredient.add(new Ingredient(7, "мука", R.drawable.muka));
-
-        newIngredient.add(new Ingredient(8, "молоко", R.drawable.milk));
-        newIngredient.add(new Ingredient(8, "сметана", R.drawable.sour_cream));
-
-        newIngredient.add(new Ingredient(9, "ветчина", R.drawable.vetchina));
-        newIngredient.add(new Ingredient(9, "говядина", R.drawable.beef));
-        newIngredient.add(new Ingredient(9, "колбаса", R.drawable.kolbasi));
-        newIngredient.add(new Ingredient(9, "колбаса вареная", R.drawable.kolbasa_varen));
-        newIngredient.add(new Ingredient(9, "колбаса копченая", R.drawable.kolbasa_kopchenaya));
-        newIngredient.add(new Ingredient(9, "мясо", R.drawable.meat));
-        newIngredient.add(new Ingredient(9, "мясо копченое", R.drawable.maso_kopch));
-        newIngredient.add(new Ingredient(9, "сардельки", R.drawable.sardelki));
-        newIngredient.add(new Ingredient(9, "свинина", R.drawable.pork));
-        newIngredient.add(new Ingredient(9, "сосиски", R.drawable.sosiska));
-
-        newIngredient.add(new Ingredient(10, "пиво светлое", R.drawable.beer_light));
-        newIngredient.add(new Ingredient(10, "сок лимона", R.drawable.lemon_juice));
-        newIngredient.add(new Ingredient(10, "сок яблочный", R.drawable.apple_juice));
-
-        newIngredient.add(new Ingredient(11, "зелень", R.drawable.zelen));
-        newIngredient.add(new Ingredient(11, "горошек консервированный", R.drawable.canned_pea));
-        newIngredient.add(new Ingredient(11, "кабачок", R.drawable.cabachok));
-        newIngredient.add(new Ingredient(11, "капуста", R.drawable.cabbage));
-        newIngredient.add(new Ingredient(11, "капуста пекинская", R.drawable.pekinskaya_kapusta));
-        newIngredient.add(new Ingredient(11, "картофель", R.drawable.potato));
-        newIngredient.add(new Ingredient(11, "кукуруза консервированная", R.drawable.canned_corn));
-        newIngredient.add(new Ingredient(11, "лук", R.drawable.onion));
-        newIngredient.add(new Ingredient(11, "лук зеленый", R.drawable.onion_green));
-        newIngredient.add(new Ingredient(11, "лук репчатый", R.drawable.luk_repch));
-        newIngredient.add(new Ingredient(11, "малосольный огурец", R.drawable.malosol));
-        newIngredient.add(new Ingredient(11, "морковь", R.drawable.carrot));
-        newIngredient.add(new Ingredient(11, "огурец", R.drawable.cucumber));
-        newIngredient.add(new Ingredient(11, "помидор", R.drawable.tomat));
-        newIngredient.add(new Ingredient(11, "соленый огурец", R.drawable.soleniy));
-        newIngredient.add(new Ingredient(11, "укроп", R.drawable.ukrop));
-        newIngredient.add(new Ingredient(11, "фасоль красная консервированная", R.drawable.fasol_red));
-        newIngredient.add(new Ingredient(11, "чеснок", R.drawable.garlic));
-
-//        newIngredient.add(new Ingredient(12, "орехи", R.drawable.));
-
-        newIngredient.add(new Ingredient(13, "душистый перец", R.drawable.perec_dush));
-        newIngredient.add(new Ingredient(13, "корица", R.drawable.koritsa));
-        newIngredient.add(new Ingredient(13, "лавровый лист", R.drawable.lavr));
-        newIngredient.add(new Ingredient(13, "перец", R.drawable.pepper));
-        newIngredient.add(new Ingredient(13, "сахар", R.drawable.sugar));
-        newIngredient.add(new Ingredient(13, "соль", R.drawable.salt));
-
-        newIngredient.add(new Ingredient(14, "куриная грудка копченая", R.drawable.grudka_kopchenaja));
-        newIngredient.add(new Ingredient(14, "куриное филе", R.drawable.chicken_fillet));
-
-//        newIngredient.add(new Ingredient(15, "рыба", R.drawable.));
-
-        newIngredient.add(new Ingredient(16, "майонез", R.drawable.mayonese));
-        newIngredient.add(new Ingredient(16, "томатная паста", R.drawable.tomat_pasta));
-
-        newIngredient.add(new Ingredient(17, "плавленый сыр", R.drawable.plavl_sir));
-        newIngredient.add(new Ingredient(17, "сыр", R.drawable.cheese));
-
-        newIngredient.add(new Ingredient(18, "ананас консервированный", R.drawable.ananas_konserv));
-        newIngredient.add(new Ingredient(18, "киви", R.drawable.qiwi));
-        newIngredient.add(new Ingredient(18, "яблоко", R.drawable.apple));
-
-        newIngredient.add(new Ingredient(19, "сухари из белого хлеба", R.drawable.suhari_bel));
-
-        newIngredient.add(new Ingredient(20, "яйцо куриное", R.drawable.eggs));
+//        newIngredient.add(new Ingredient(8, "молоко", R.drawable.milk));
+//        newIngredient.add(new Ingredient(8, "сметана", R.drawable.sour_cream));
+//
+//        newIngredient.add(new Ingredient(9, "ветчина", R.drawable.vetchina));
+//        newIngredient.add(new Ingredient(9, "говядина", R.drawable.beef));
+//        newIngredient.add(new Ingredient(9, "колбаса", R.drawable.kolbasi));
+//        newIngredient.add(new Ingredient(9, "колбаса вареная", R.drawable.kolbasa_varen));
+//        newIngredient.add(new Ingredient(9, "колбаса копченая", R.drawable.kolbasa_kopchenaya));
+//        newIngredient.add(new Ingredient(9, "мясо", R.drawable.meat));
+//        newIngredient.add(new Ingredient(9, "мясо копченое", R.drawable.maso_kopch));
+//        newIngredient.add(new Ingredient(9, "сардельки", R.drawable.sardelki));
+//        newIngredient.add(new Ingredient(9, "свинина", R.drawable.pork));
+//        newIngredient.add(new Ingredient(9, "сосиски", R.drawable.sosiska));
+//
+//        newIngredient.add(new Ingredient(10, "пиво светлое", R.drawable.beer_light));
+//        newIngredient.add(new Ingredient(10, "сок лимона", R.drawable.lemon_juice));
+//        newIngredient.add(new Ingredient(10, "сок яблочный", R.drawable.apple_juice));
+//
+//        newIngredient.add(new Ingredient(11, "зелень", R.drawable.zelen));
+//        newIngredient.add(new Ingredient(11, "горошек консервированный", R.drawable.canned_pea));
+//        newIngredient.add(new Ingredient(11, "кабачок", R.drawable.cabachok));
+//        newIngredient.add(new Ingredient(11, "капуста", R.drawable.cabbage));
+//        newIngredient.add(new Ingredient(11, "капуста пекинская", R.drawable.pekinskaya_kapusta));
+//        newIngredient.add(new Ingredient(11, "картофель", R.drawable.potato));
+//        newIngredient.add(new Ingredient(11, "кукуруза консервированная", R.drawable.canned_corn));
+//        newIngredient.add(new Ingredient(11, "лук", R.drawable.onion));
+//        newIngredient.add(new Ingredient(11, "лук зеленый", R.drawable.onion_green));
+//        newIngredient.add(new Ingredient(11, "лук репчатый", R.drawable.luk_repch));
+//        newIngredient.add(new Ingredient(11, "малосольный огурец", R.drawable.malosol));
+//        newIngredient.add(new Ingredient(11, "морковь", R.drawable.carrot));
+//        newIngredient.add(new Ingredient(11, "огурец", R.drawable.cucumber));
+//        newIngredient.add(new Ingredient(11, "помидор", R.drawable.tomat));
+//        newIngredient.add(new Ingredient(11, "соленый огурец", R.drawable.soleniy));
+//        newIngredient.add(new Ingredient(11, "укроп", R.drawable.ukrop));
+//        newIngredient.add(new Ingredient(11, "фасоль красная консервированная", R.drawable.fasol_red));
+//        newIngredient.add(new Ingredient(11, "чеснок", R.drawable.garlic));
+//
+////        newIngredient.add(new Ingredient(12, "орехи", R.drawable.));
+//
+//        newIngredient.add(new Ingredient(13, "душистый перец", R.drawable.perec_dush));
+//        newIngredient.add(new Ingredient(13, "корица", R.drawable.koritsa));
+//        newIngredient.add(new Ingredient(13, "лавровый лист", R.drawable.lavr));
+//        newIngredient.add(new Ingredient(13, "перец", R.drawable.pepper));
+//        newIngredient.add(new Ingredient(13, "сахар", R.drawable.sugar));
+//        newIngredient.add(new Ingredient(13, "соль", R.drawable.salt));
+//
+//        newIngredient.add(new Ingredient(14, "куриная грудка копченая", R.drawable.grudka_kopchenaja));
+//        newIngredient.add(new Ingredient(14, "куриное филе", R.drawable.chicken_fillet));
+//
+////        newIngredient.add(new Ingredient(15, "рыба", R.drawable.));
+//
+//        newIngredient.add(new Ingredient(16, "майонез", R.drawable.mayonese));
+//        newIngredient.add(new Ingredient(16, "томатная паста", R.drawable.tomat_pasta));
+//
+//        newIngredient.add(new Ingredient(17, "плавленый сыр", R.drawable.plavl_sir));
+//        newIngredient.add(new Ingredient(17, "сыр", R.drawable.cheese));
+//
+//        newIngredient.add(new Ingredient(18, "ананас консервированный", R.drawable.ananas_konserv));
+//        newIngredient.add(new Ingredient(18, "киви", R.drawable.qiwi));
+//        newIngredient.add(new Ingredient(18, "яблоко", R.drawable.apple));
+//
+//        newIngredient.add(new Ingredient(19, "сухари из белого хлеба", R.drawable.suhari_bel));
+//
+//        newIngredient.add(new Ingredient(20, "яйцо куриное", R.drawable.eggs));
 
         ingredientDB.copyOrUpdate(newIngredient);
     }
@@ -391,6 +413,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             super.onBackPressed();
         }
     }
+
     @Override
     protected void onDestroy() {
         SelectedIngredient.getSelectedIngredient().clear();
