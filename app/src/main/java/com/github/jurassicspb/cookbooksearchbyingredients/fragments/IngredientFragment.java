@@ -123,6 +123,10 @@ public class IngredientFragment extends Fragment implements FragmentInterface{
                 ingredients.get(i).setState(1);
                 gita.notifyDataSetChanged();
             }
+                else{
+                ingredients.get(i).setState(0);
+                gita.notifyDataSetChanged();
+            }
         }
 
     }
