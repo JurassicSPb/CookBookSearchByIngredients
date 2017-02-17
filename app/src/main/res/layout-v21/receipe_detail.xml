@@ -46,7 +46,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
-            android:paddingTop="8dp"
+            android:paddingTop="16dp"
             android:paddingBottom="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,6 +75,7 @@
                     tools:text="Test\nTest\nTest\nTest"
                     android:lineSpacingMultiplier="1.2"
                     android:layout_marginRight="6dp"
+                    android:layout_marginBottom="8dp"
                     android:background="@drawable/notecalorie"
                     android:layout_gravity="right"
                     android:textColor="@color/colorIngredientsField"
@@ -91,14 +92,12 @@
                 android:id="@+id/description_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-4dp"
                 android:lineSpacingMultiplier="1.1"
                 android:fontFamily="sans-serif"
                 tools:text="Test\nTest\nTest\nTest"
                 android:textColor="@android:color/black"
                 android:padding="16dp"
                 android:textSize="17sp" />
-
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
