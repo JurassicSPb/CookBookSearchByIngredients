@@ -322,7 +322,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         newIngredient.add(new Ingredient(14, "куриная грудка копченая", R.drawable.grudka_kopch, 0));
         newIngredient.add(new Ingredient(14, "куриное филе", R.drawable.chicken_fillet, 0));
 
-//        newIngredient.add(new Ingredient(15, "рыба", R.drawable.));
+//        newIngredient.add(new Ingredient(15, "рыба", R.drawable. ));
 
         newIngredient.add(new Ingredient(16, "кетчуп", R.drawable.ketchup, 0));
         newIngredient.add(new Ingredient(16, "майонез", R.drawable.mayonese, 0));
