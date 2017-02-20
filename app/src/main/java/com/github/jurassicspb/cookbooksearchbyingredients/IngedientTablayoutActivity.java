@@ -244,108 +244,111 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
 //        newIngredient.add(new Ingredient(1, "грибы", R.drawable., 0));
 
-//        newIngredient.add(new Ingredient(2, "злаки", R.drawable., 0));
+        newIngredient.add(new Ingredient(2, "овсяные хлопья", R.drawable.oves, 0));
 
-//        newIngredient.add(new Ingredient(3, "крупы", R.drawable., 0));
+        newIngredient.add(new Ingredient(3, "спагетти", R.drawable.spagetti, 0));
 
-        newIngredient.add(new Ingredient(4, "спагетти", R.drawable.spagetti, 0));
+        newIngredient.add(new Ingredient(4, "масло оливковое", R.drawable.maslo_oliv, 0));
+        newIngredient.add(new Ingredient(4, "масло подсолнечное", R.drawable.maslo_podsoln, 0));
+        newIngredient.add(new Ingredient(4, "масло растительное", R.drawable.oils, 0));
 
-        newIngredient.add(new Ingredient(5, "масло оливковое", R.drawable.maslo_oliv, 0));
-        newIngredient.add(new Ingredient(5, "масло подсолнечное", R.drawable.maslo_podsoln, 0));
-        newIngredient.add(new Ingredient(5, "масло растительное", R.drawable.oils, 0));
+        newIngredient.add(new Ingredient(5, "молоко", R.drawable.milk, 0));
+        newIngredient.add(new Ingredient(5, "сметана", R.drawable.sour_cream, 0));
 
-        newIngredient.add(new Ingredient(6, "молоко", R.drawable.milk, 0));
-        newIngredient.add(new Ingredient(6, "сметана", R.drawable.sour_cream, 0));
+        newIngredient.add(new Ingredient(6, "кальмар", R.drawable.kalmar, 0));
+        newIngredient.add(new Ingredient(6, "крабовое мясо", R.drawable.krab_meat, 0));
+        newIngredient.add(new Ingredient(6, "крабовые палочки", R.drawable.krab_pal, 0));
+        newIngredient.add(new Ingredient(6, "креветки", R.drawable.krevetki, 0));
 
-        newIngredient.add(new Ingredient(7, "кальмар", R.drawable.kalmar, 0));
-        newIngredient.add(new Ingredient(7, "крабовые палочки", R.drawable.krab_pal, 0));
-        newIngredient.add(new Ingredient(7, "креветки", R.drawable.krevetki, 0));
+        newIngredient.add(new Ingredient(7, "овсяная мука", R.drawable.oves_muka, 0));
+        newIngredient.add(new Ingredient(7, "мука", R.drawable.muka, 0));
 
-        newIngredient.add(new Ingredient(8, "мука", R.drawable.muka, 0));
+        newIngredient.add(new Ingredient(8, "ветчина", R.drawable.vetchina, 0));
+        newIngredient.add(new Ingredient(8, "говядина", R.drawable.beef, 0));
+        newIngredient.add(new Ingredient(8, "колбаса", R.drawable.kolbasi, 0));
+        newIngredient.add(new Ingredient(8, "колбаса вареная", R.drawable.kolbas_var, 0));
+        newIngredient.add(new Ingredient(8, "колбаса копченая", R.drawable.kolbasa_kopch, 0));
+        newIngredient.add(new Ingredient(8, "мясо", R.drawable.meat, 0));
+        newIngredient.add(new Ingredient(8, "мясо копченое", R.drawable.maso_kopch, 0));
+        newIngredient.add(new Ingredient(8, "сарделька", R.drawable.sardelki, 0));
+        newIngredient.add(new Ingredient(8, "свинина", R.drawable.pork, 0));
+        newIngredient.add(new Ingredient(8, "сосиска", R.drawable.sosiska, 0));
 
-        newIngredient.add(new Ingredient(9, "ветчина", R.drawable.vetchina, 0));
-        newIngredient.add(new Ingredient(9, "говядина", R.drawable.beef, 0));
-        newIngredient.add(new Ingredient(9, "колбаса", R.drawable.kolbasi, 0));
-        newIngredient.add(new Ingredient(9, "колбаса вареная", R.drawable.kolbas_var, 0));
-        newIngredient.add(new Ingredient(9, "колбаса копченая", R.drawable.kolbasa_kopch, 0));
-        newIngredient.add(new Ingredient(9, "мясо", R.drawable.meat, 0));
-        newIngredient.add(new Ingredient(9, "мясо копченое", R.drawable.maso_kopch, 0));
-        newIngredient.add(new Ingredient(9, "сарделька", R.drawable.sardelki, 0));
-        newIngredient.add(new Ingredient(9, "свинина", R.drawable.pork, 0));
-        newIngredient.add(new Ingredient(9, "сосиска", R.drawable.sosiska, 0));
+        newIngredient.add(new Ingredient(9, "вода", R.drawable.water, 0));
+        newIngredient.add(new Ingredient(9, "пиво светлое", R.drawable.beer_light, 0));
+        newIngredient.add(new Ingredient(9, "яблочный сок", R.drawable.apple_juice, 0));
 
-        newIngredient.add(new Ingredient(10, "вода", R.drawable.water, 0));
-        newIngredient.add(new Ingredient(10, "пиво светлое", R.drawable.beer_light, 0));
-        newIngredient.add(new Ingredient(10, "сок яблочный", R.drawable.apple_juice, 0));
+        newIngredient.add(new Ingredient(10, "болгарский перец", R.drawable.perez_bolg, 0));
+        newIngredient.add(new Ingredient(10, "зелень", R.drawable.zelen, 0));
+        newIngredient.add(new Ingredient(10, "горошек консервированный", R.drawable.canned_pea, 0));
+        newIngredient.add(new Ingredient(10, "кабачок", R.drawable.cabachok, 0));
+        newIngredient.add(new Ingredient(10, "капуста", R.drawable.cabbage, 0));
+        newIngredient.add(new Ingredient(10, "капуста пекинская", R.drawable.pekin_kap, 0));
+        newIngredient.add(new Ingredient(10, "картофель", R.drawable.potato, 0));
+        newIngredient.add(new Ingredient(10, "корень сельдерея", R.drawable.selder_root, 0));
+        newIngredient.add(new Ingredient(10, "кукуруза консервированная", R.drawable.canned_corn, 0));
+        newIngredient.add(new Ingredient(10, "лук", R.drawable.onion, 0));
+        newIngredient.add(new Ingredient(10, "лук зеленый", R.drawable.onion_green, 0));
+        newIngredient.add(new Ingredient(10, "лук репчатый", R.drawable.luk_repch, 0));
+        newIngredient.add(new Ingredient(10, "малосольный огурец", R.drawable.malosol, 0));
+        newIngredient.add(new Ingredient(10, "маслины без косточки", R.drawable.maslini, 0));
+        newIngredient.add(new Ingredient(10, "морковь", R.drawable.carrot, 0));
+        newIngredient.add(new Ingredient(10, "огурец", R.drawable.cucumber, 0));
+        newIngredient.add(new Ingredient(10, "петрушка", R.drawable.petrushka, 0));
+        newIngredient.add(new Ingredient(10, "помидор", R.drawable.tomat, 0));
+        newIngredient.add(new Ingredient(10, "салат", R.drawable.salat, 0));
+        newIngredient.add(new Ingredient(10, "соленый огурец", R.drawable.soleniy, 0));
+        newIngredient.add(new Ingredient(10, "укроп", R.drawable.ukrop, 0));
+        newIngredient.add(new Ingredient(10, "фасоль красная консервированная", R.drawable.fasol_red, 0));
+        newIngredient.add(new Ingredient(10, "чеснок", R.drawable.garlic, 0));
 
-        newIngredient.add(new Ingredient(11, "болгарский перец", R.drawable.perez_bolg, 0));
-        newIngredient.add(new Ingredient(11, "зелень", R.drawable.zelen, 0));
-        newIngredient.add(new Ingredient(11, "горошек консервированный", R.drawable.canned_pea, 0));
-        newIngredient.add(new Ingredient(11, "кабачок", R.drawable.cabachok, 0));
-        newIngredient.add(new Ingredient(11, "капуста", R.drawable.cabbage, 0));
-        newIngredient.add(new Ingredient(11, "капуста пекинская", R.drawable.pekin_kap, 0));
-        newIngredient.add(new Ingredient(11, "картофель", R.drawable.potato, 0));
-        newIngredient.add(new Ingredient(11, "корень сельдерея", R.drawable.selder_root, 0));
-        newIngredient.add(new Ingredient(11, "кукуруза консервированная", R.drawable.canned_corn, 0));
-        newIngredient.add(new Ingredient(11, "лук", R.drawable.onion, 0));
-        newIngredient.add(new Ingredient(11, "лук зеленый", R.drawable.onion_green, 0));
-        newIngredient.add(new Ingredient(11, "лук репчатый", R.drawable.luk_repch, 0));
-        newIngredient.add(new Ingredient(11, "малосольный огурец", R.drawable.malosol, 0));
-        newIngredient.add(new Ingredient(11, "маслины без косточки", R.drawable.maslini, 0));
-        newIngredient.add(new Ingredient(11, "морковь", R.drawable.carrot, 0));
-        newIngredient.add(new Ingredient(11, "огурец", R.drawable.cucumber, 0));
-        newIngredient.add(new Ingredient(11, "петрушка", R.drawable.petrushka, 0));
-        newIngredient.add(new Ingredient(11, "помидор", R.drawable.tomat, 0));
-        newIngredient.add(new Ingredient(11, "салат", R.drawable.salat, 0));
-        newIngredient.add(new Ingredient(11, "соленый огурец", R.drawable.soleniy, 0));
-        newIngredient.add(new Ingredient(11, "укроп", R.drawable.ukrop, 0));
-        newIngredient.add(new Ingredient(11, "фасоль красная консервированная", R.drawable.fasol_red, 0));
-        newIngredient.add(new Ingredient(11, "чеснок", R.drawable.garlic, 0));
+        newIngredient.add(new Ingredient(11, "грецкие орехи", R.drawable.grec_oreh, 0));
+        newIngredient.add(new Ingredient(11, "кедровые орехи", R.drawable.kedr, 0));
 
-        newIngredient.add(new Ingredient(12, "кедровые орехи", R.drawable.kedr, 0));
+        newIngredient.add(new Ingredient(12, "душистый перец", R.drawable.perec_dush, 0));
+        newIngredient.add(new Ingredient(12, "итальянские травы", R.drawable.ital_trav, 0));
+        newIngredient.add(new Ingredient(12, "кориандр молотый", R.drawable.koriandr, 0));
+        newIngredient.add(new Ingredient(12, "корица", R.drawable.koritsa, 0));
+        newIngredient.add(new Ingredient(12, "кунжут", R.drawable.kunzut, 0));
+        newIngredient.add(new Ingredient(12, "лавровый лист", R.drawable.lavr, 0));
+        newIngredient.add(new Ingredient(12, "паприка сладкая", R.drawable.paprika_sweet, 0));
+        newIngredient.add(new Ingredient(12, "перец молотый", R.drawable.perez_molot, 0));
+        newIngredient.add(new Ingredient(12, "перец молотый черный", R.drawable.perez_black, 0));
+        newIngredient.add(new Ingredient(12, "сахар", R.drawable.sugar, 0));
+        newIngredient.add(new Ingredient(12, "сахарозаменитель", R.drawable.sweetener, 0));
+        newIngredient.add(new Ingredient(12, "сок лимона", R.drawable.lemon_juice, 0));
+        newIngredient.add(new Ingredient(12, "соль", R.drawable.salt, 0));
+        newIngredient.add(new Ingredient(12, "уксус", R.drawable.uksus, 0));
 
-        newIngredient.add(new Ingredient(13, "душистый перец", R.drawable.perec_dush, 0));
-        newIngredient.add(new Ingredient(13, "итальянские травы", R.drawable.ital_trav, 0));
-        newIngredient.add(new Ingredient(13, "кориандр молотый", R.drawable.koriandr, 0));
-        newIngredient.add(new Ingredient(13, "корица", R.drawable.koritsa, 0));
-        newIngredient.add(new Ingredient(13, "кунжут", R.drawable.kunzut, 0));
-        newIngredient.add(new Ingredient(13, "лавровый лист", R.drawable.lavr, 0));
-        newIngredient.add(new Ingredient(13, "паприка сладкая", R.drawable.paprika_sweet, 0));
-        newIngredient.add(new Ingredient(13, "перец молотый", R.drawable.perez_molot, 0));
-        newIngredient.add(new Ingredient(13, "перец молотый черный", R.drawable.perez_black, 0));
-        newIngredient.add(new Ingredient(13, "сахар", R.drawable.sugar, 0));
-        newIngredient.add(new Ingredient(13, "сахарозаменитель", R.drawable.sweetener, 0));
-        newIngredient.add(new Ingredient(13, "сок лимона", R.drawable.lemon_juice, 0));
-        newIngredient.add(new Ingredient(13, "соль", R.drawable.salt, 0));
-        newIngredient.add(new Ingredient(13, "уксус", R.drawable.uksus, 0));
+        newIngredient.add(new Ingredient(13, "куриная грудка копченая", R.drawable.grudka_kopch, 0));
+        newIngredient.add(new Ingredient(13, "куриное филе", R.drawable.chicken_fillet, 0));
 
-        newIngredient.add(new Ingredient(14, "куриная грудка копченая", R.drawable.grudka_kopch, 0));
-        newIngredient.add(new Ingredient(14, "куриное филе", R.drawable.chicken_fillet, 0));
+        newIngredient.add(new Ingredient(14, "треска", R.drawable.treska, 0));
+        newIngredient.add(new Ingredient(14, "филе белой рыбы", R.drawable.white_fish, 0));
 
-//        newIngredient.add(new Ingredient(15, "рыба", R.drawable. ));
+        newIngredient.add(new Ingredient(15, "кетчуп", R.drawable.ketchup, 0));
+        newIngredient.add(new Ingredient(15, "майонез", R.drawable.mayonese, 0));
+        newIngredient.add(new Ingredient(15, "майонез легкий", R.drawable.mayon_light, 0));
+        newIngredient.add(new Ingredient(15, "острый соус чили", R.drawable.chili, 0));
+        newIngredient.add(new Ingredient(15, "томатная паста", R.drawable.tomat_pasta, 0));
 
-        newIngredient.add(new Ingredient(16, "кетчуп", R.drawable.ketchup, 0));
-        newIngredient.add(new Ingredient(16, "майонез", R.drawable.mayonese, 0));
-        newIngredient.add(new Ingredient(16, "майонез легкий", R.drawable.mayon_light, 0));
-        newIngredient.add(new Ingredient(16, "острый соус чили", R.drawable.chili, 0));
-        newIngredient.add(new Ingredient(16, "томатная паста", R.drawable.tomat_pasta, 0));
+        newIngredient.add(new Ingredient(16, "плавленый сыр", R.drawable.plavl_sir, 0));
+        newIngredient.add(new Ingredient(16, "сыр", R.drawable.cheese, 0));
+        newIngredient.add(new Ingredient(16, "сыр пармезан", R.drawable.parmezan, 0));
+        newIngredient.add(new Ingredient(16, "сыр сливочный", R.drawable.sir_sliv, 0));
+        newIngredient.add(new Ingredient(16, "сыр фета", R.drawable.feta, 0));
 
-        newIngredient.add(new Ingredient(17, "плавленый сыр", R.drawable.plavl_sir, 0));
-        newIngredient.add(new Ingredient(17, "сыр", R.drawable.cheese, 0));
-        newIngredient.add(new Ingredient(17, "сыр пармезан", R.drawable.parmezan, 0));
-        newIngredient.add(new Ingredient(17, "сыр сливочный", R.drawable.sir_sliv, 0));
-        newIngredient.add(new Ingredient(17, "сыр фета", R.drawable.feta, 0));
+        newIngredient.add(new Ingredient(17, "ананас консервированный", R.drawable.ananas_kons, 0));
+        newIngredient.add(new Ingredient(17, "киви", R.drawable.qiwi, 0));
+        newIngredient.add(new Ingredient(17, "финики", R.drawable.finiki, 0));
+        newIngredient.add(new Ingredient(17, "яблоко", R.drawable.apple, 0));
 
-        newIngredient.add(new Ingredient(18, "ананас консервированный", R.drawable.ananas_kons, 0));
-        newIngredient.add(new Ingredient(18, "киви", R.drawable.qiwi, 0));
-        newIngredient.add(new Ingredient(18, "яблоко", R.drawable.apple, 0));
+        newIngredient.add(new Ingredient(18, "батон", R.drawable.baton, 0));
+        newIngredient.add(new Ingredient(18, "сухарики", R.drawable.suhar, 0));
+        newIngredient.add(new Ingredient(18, "сухарики из белого хлеба", R.drawable.suhari_bel, 0));
+        newIngredient.add(new Ingredient(18, "французский багет", R.drawable.baget_fr, 0));
 
-        newIngredient.add(new Ingredient(19, "батон", R.drawable.baton, 0));
-        newIngredient.add(new Ingredient(19, "сухарики", R.drawable.suhar, 0));
-        newIngredient.add(new Ingredient(19, "сухарики из белого хлеба", R.drawable.suhari_bel, 0));
-        newIngredient.add(new Ingredient(19, "французский багет", R.drawable.baget_fr, 0));
-
-        newIngredient.add(new Ingredient(20, "яйцо куриное", R.drawable.eggs, 0));
+        newIngredient.add(new Ingredient(19, "яйцо куриное", R.drawable.eggs, 0));
 
         ingredientDB.copyOrUpdate(newIngredient);
     }
@@ -355,36 +358,38 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         categoryTables.add(new CategoryTable(0, "Все"));
         categoryTables.add(new CategoryTable(1, "Грибы"));
-        categoryTables.add(new CategoryTable(2, "Злаки"));
-        categoryTables.add(new CategoryTable(3, "Крупы"));
-        categoryTables.add(new CategoryTable(4, "Макароны"));
-        categoryTables.add(new CategoryTable(5, "Масла растит."));
-        categoryTables.add(new CategoryTable(6, "Молочное"));
-        categoryTables.add(new CategoryTable(7, "Морепр-ты"));
-        categoryTables.add(new CategoryTable(8, "Мука"));
-        categoryTables.add(new CategoryTable(9, "Мясное"));
-        categoryTables.add(new CategoryTable(10, "Напитки"));
-        categoryTables.add(new CategoryTable(11, "Овощи"));
-        categoryTables.add(new CategoryTable(12, "Орехи"));
-        categoryTables.add(new CategoryTable(13, "Приправы"));
-        categoryTables.add(new CategoryTable(14, "Птица"));
-        categoryTables.add(new CategoryTable(15, "Рыба"));
-        categoryTables.add(new CategoryTable(16, "Соусы"));
-        categoryTables.add(new CategoryTable(17, "Сыр"));
-        categoryTables.add(new CategoryTable(18, "Фрукты"));
-        categoryTables.add(new CategoryTable(19, "Хлебобул. изд."));
-        categoryTables.add(new CategoryTable(20, "Яйца"));
+        categoryTables.add(new CategoryTable(2, "Крупы и злаки"));
+        categoryTables.add(new CategoryTable(3, "Макароны"));
+        categoryTables.add(new CategoryTable(4, "Масла растит."));
+        categoryTables.add(new CategoryTable(5, "Молочное"));
+        categoryTables.add(new CategoryTable(6, "Морепр-ты"));
+        categoryTables.add(new CategoryTable(7, "Мука"));
+        categoryTables.add(new CategoryTable(8, "Мясное"));
+        categoryTables.add(new CategoryTable(9, "Напитки"));
+        categoryTables.add(new CategoryTable(10, "Овощи"));
+        categoryTables.add(new CategoryTable(11, "Орехи"));
+        categoryTables.add(new CategoryTable(12, "Приправы"));
+        categoryTables.add(new CategoryTable(13, "Птица"));
+        categoryTables.add(new CategoryTable(14, "Рыба"));
+        categoryTables.add(new CategoryTable(15, "Соусы"));
+        categoryTables.add(new CategoryTable(16, "Сыр"));
+        categoryTables.add(new CategoryTable(17, "Фрукты"));
+        categoryTables.add(new CategoryTable(18, "Хлебобул. изд."));
+        categoryTables.add(new CategoryTable(19, "Яйца"));
 
 
         ingredientDB.copyOrUpdateCategoryTable(categoryTables);
     }
     private void createCategoriesRU(){
         ArrayList<Categories> categories = new ArrayList<>();
-        categories.add(new Categories("блины", R.drawable.pancaces));
+        categories.add(new Categories("блины и оладьи", R.drawable.pancaces));
         categories.add(new Categories("блюда на завтрак", R.drawable.zavtrak));
         categories.add(new Categories("вторые блюда", R.drawable.vtor_bludo));
+        categories.add(new Categories("выпечка", R.drawable.vipechka));
         categories.add(new Categories("напитки", R.drawable.drinks));
+        categories.add(new Categories("рыба и морепродукты", R.drawable.bluda_fish));
         categories.add(new Categories("салаты", R.drawable.salads));
+        categories.add(new Categories("соусы", R.drawable.sauces));
         categories.add(new Categories("супы", R.drawable.soups));
         ingredientDB.copyOrUpdateCategories(categories);
     }

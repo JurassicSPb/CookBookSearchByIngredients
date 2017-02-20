@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +51,10 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
                 recipes.get(position).getCategory() + "\n" + matchingIngr + " " + recipes.get(position).getCount());
         final StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
         final StyleSpan styleSpan2 = new StyleSpan(Typeface.BOLD);
+        final RelativeSizeSpan sizeSpan = new RelativeSizeSpan(0.9f);
+
         span.setSpan(styleSpan, 0, recipes.get(position).getName().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        span.setSpan(sizeSpan, recipes.get(position).getName().length()+1, span.length()-recipes.get(position).getCount().length()-matchingIngr.length()-1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         span.setSpan(styleSpan2, span.length()-recipes.get(position).getCount().length(), span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         Picasso.with(context)
