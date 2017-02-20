@@ -1,5 +1,6 @@
 package com.github.jurassicspb.cookbooksearchbyingredients.nav_drawer_extras;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.widget.TableRow;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 
+import com.github.jurassicspb.cookbooksearchbyingredients.LoadingScreenActivity;
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
 
 import java.util.Locale;
@@ -229,6 +231,13 @@ public class WeightsAndMeasures extends AppCompatActivity{
         createTitle();
         createBody();
 
+    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Intent intent = new Intent(this, LoadingScreenActivity.class);
+        startActivity(intent);
+        finish();
     }
     public void createTitle(){
         int margin = getResources().getDimensionPixelSize(R.dimen.margin);
@@ -453,6 +462,5 @@ public class WeightsAndMeasures extends AppCompatActivity{
 
             tabLayout.addView(rowBody, i);
         }
-
     }
 }

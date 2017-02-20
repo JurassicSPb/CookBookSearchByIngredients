@@ -1,5 +1,6 @@
 package com.github.jurassicspb.cookbooksearchbyingredients.nav_drawer_extras;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.github.jurassicspb.cookbooksearchbyingredients.LoadingScreenActivity;
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
 
 import java.util.Locale;
@@ -165,7 +167,13 @@ public class CookingTime extends AppCompatActivity {
         createOtherTitle();
         createOtherBody();
     }
-
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Intent intent = new Intent(this, LoadingScreenActivity.class);
+        startActivity(intent);
+        finish();
+    }
     public void createPorridgeTitle() {
         int marginTitle = getResources().getDimensionPixelSize(R.dimen.margin_cooking_time_title);
         int marginBody = getResources().getDimensionPixelSize(R.dimen.margin_cooking_time_body);

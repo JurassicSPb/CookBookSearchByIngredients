@@ -60,6 +60,13 @@ public class CategoriesActivity extends AppCompatActivity{
         categories = categoriesDB.getAllCategories();
     }
     @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Intent intent = new Intent(this,LoadingScreenActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    @Override
     protected void onDestroy() {
         categoriesDB.close();
         super.onDestroy();

@@ -151,6 +151,14 @@ public class RecipeDetailActivity extends AppCompatActivity{
     }
 
     @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Intent intent = new Intent(this,LoadingScreenActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
     protected void onDestroy() {
         favoritesDB.close();
         super.onDestroy();

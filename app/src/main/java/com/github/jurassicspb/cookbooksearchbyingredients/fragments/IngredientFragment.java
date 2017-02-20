@@ -1,5 +1,6 @@
 package com.github.jurassicspb.cookbooksearchbyingredients.fragments;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.github.jurassicspb.cookbooksearchbyingredients.GridviewImageTextAdapter;
 import com.github.jurassicspb.cookbooksearchbyingredients.IngedientTablayoutActivity;
 import com.github.jurassicspb.cookbooksearchbyingredients.Ingredient;
+import com.github.jurassicspb.cookbooksearchbyingredients.LoadingScreenActivity;
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
 import com.github.jurassicspb.cookbooksearchbyingredients.SelectedIngredient;
 import java.util.List;
@@ -42,7 +44,13 @@ public class IngredientFragment extends Fragment implements FragmentInterface{
         gridview = (GridView) view.findViewById(R.id.gridview);
 
         gita = new GridviewImageTextAdapter(getActivity(), getIngrbycategory());
-        gridview.setAdapter(gita);
+        try {
+            gridview.setAdapter(gita);
+        } catch (NullPointerException e){
+            Intent intent = new Intent(getActivity(),LoadingScreenActivity.class);
+            startActivity(intent);
+            getActivity().finish();
+        }
 
         searchEditText = (EditText) view.findViewById(R.id.search);
         searchClearButton = (Button) view.findViewById(R.id.search_button);

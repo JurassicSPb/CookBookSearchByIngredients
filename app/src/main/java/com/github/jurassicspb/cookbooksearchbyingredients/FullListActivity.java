@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import java.util.List;
  * Created by Мария on 27.12.2016.
  */
 
-public class FullListActivity extends AppCompatActivity{
+public class FullListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private FullListAdapter adapter;
     private IngredientDatabase recipeDB;
@@ -50,6 +51,7 @@ public class FullListActivity extends AppCompatActivity{
 
         }
     };
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,11 +105,11 @@ public class FullListActivity extends AppCompatActivity{
         searchClearButton.setOnClickListener(v -> searchEditText.setText(""));
     }
 
-    private void performRecipes(){
+    private void performRecipes() {
         recipes = recipeDB.copyFromRealmRecipeSorted();
     }
 
-//    private  List<Recipe> createFakeRecipes(){
+    //    private  List<Recipe> createFakeRecipes(){
 //        ArrayList<Recipe> newRecipes = new ArrayList<>();
 //        for (int i = 0; i < 100000; i++) {
 //            newRecipes.add(new Recipe("dwefffffffffffffffffГовядинаfffffffffffwefwefwefwefwefwefwefwefwefwefwefd",
@@ -125,6 +127,14 @@ public class FullListActivity extends AppCompatActivity{
 //        }
 //        return newRecipes;
 //    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Intent intent = new Intent(this, LoadingScreenActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     @Override
     protected void onDestroy() {
         recipeDB.close();

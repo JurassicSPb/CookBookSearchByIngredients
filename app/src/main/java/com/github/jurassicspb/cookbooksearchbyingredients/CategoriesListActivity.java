@@ -103,7 +103,13 @@ public class CategoriesListActivity extends AppCompatActivity{
 
         searchClearButton.setOnClickListener(v -> searchEditText.setText(""));
     }
-
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Intent intent = new Intent(this,LoadingScreenActivity.class);
+        startActivity(intent);
+        finish();
+    }
     @Override
     protected void onDestroy() {
         recipeDB.close();

@@ -36,8 +36,15 @@ public class IngredientDetailActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new IngredientDetailAdapter();
-        recyclerView.setAdapter(adapter);
+        if (SelectedIngredient.getSelectedIngredient().size()==0){
+            intent = new Intent(this,LoadingScreenActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        else {
+            adapter = new IngredientDetailAdapter();
+            recyclerView.setAdapter(adapter);
+        }
     }
 
     @Override
@@ -57,5 +64,10 @@ public class IngredientDetailActivity extends AppCompatActivity {
             startActivity(intent);
         }, 600);
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
