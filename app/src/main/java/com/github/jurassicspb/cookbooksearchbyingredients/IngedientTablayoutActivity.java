@@ -165,7 +165,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 //                ContextCompat.getColor(this, R.color.tabLayoutTextColorSelected)
 //        );
     }
-//    public void customTabs(){
+    //    public void customTabs(){
 //        for (int i=0; i<categoryTables.size(); i++) {
 //            TextView tabI = new TextView(this);
 ////            tabI.setTextColor(getResources().getColor(R.color.tabLayoutTextColor));

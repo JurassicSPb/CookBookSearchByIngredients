@@ -64,7 +64,8 @@ public class RecipeListActivity extends AppCompatActivity {
         try {
             adapter = new RecipeListAdapter(performRecipes(), clickListener);
         }catch(IndexOutOfBoundsException e){
-            Intent intent = new Intent(this,LoadingScreenActivity.class);
+            Intent intent = new Intent(this,IngedientTablayoutActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             finish();
         }

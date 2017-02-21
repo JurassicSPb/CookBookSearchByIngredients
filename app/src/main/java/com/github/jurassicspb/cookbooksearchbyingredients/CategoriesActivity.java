@@ -62,7 +62,8 @@ public class CategoriesActivity extends AppCompatActivity{
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        Intent intent = new Intent(this,LoadingScreenActivity.class);
+        Intent intent = new Intent(this,IngedientTablayoutActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }

@@ -16,12 +16,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
+
 import com.github.jurassicspb.cookbooksearchbyingredients.GridviewImageTextAdapter;
 import com.github.jurassicspb.cookbooksearchbyingredients.IngedientTablayoutActivity;
 import com.github.jurassicspb.cookbooksearchbyingredients.Ingredient;
 import com.github.jurassicspb.cookbooksearchbyingredients.LoadingScreenActivity;
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
 import com.github.jurassicspb.cookbooksearchbyingredients.SelectedIngredient;
+
 import java.util.List;
 
 
@@ -47,7 +49,8 @@ public class IngredientFragment extends Fragment implements FragmentInterface{
         try {
             gridview.setAdapter(gita);
         } catch (NullPointerException e){
-            Intent intent = new Intent(getActivity(),LoadingScreenActivity.class);
+            Intent intent = new Intent(getActivity(),IngedientTablayoutActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             getActivity().finish();
         }

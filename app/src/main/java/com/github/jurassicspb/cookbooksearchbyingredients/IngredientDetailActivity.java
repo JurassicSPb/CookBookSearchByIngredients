@@ -37,7 +37,8 @@ public class IngredientDetailActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         if (SelectedIngredient.getSelectedIngredient().size()==0){
-            intent = new Intent(this,LoadingScreenActivity.class);
+            intent = new Intent(this,IngedientTablayoutActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             finish();
         }

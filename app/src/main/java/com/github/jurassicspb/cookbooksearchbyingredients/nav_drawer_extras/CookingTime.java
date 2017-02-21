@@ -14,6 +14,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.github.jurassicspb.cookbooksearchbyingredients.IngedientTablayoutActivity;
 import com.github.jurassicspb.cookbooksearchbyingredients.LoadingScreenActivity;
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
 
@@ -170,7 +171,8 @@ public class CookingTime extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        Intent intent = new Intent(this, LoadingScreenActivity.class);
+        Intent intent = new Intent(this, IngedientTablayoutActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }
