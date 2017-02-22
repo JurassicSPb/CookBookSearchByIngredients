@@ -47,9 +47,14 @@ public class RecipeListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        recipeDB = new IngredientDatabase();
-
         setContentView(R.layout.recipelist_recyclerview);
+
+        if (savedInstanceState!=null) {
+            SelectedIngredient.copyAllIngr(savedInstanceState.getStringArrayList("ingr"));
+            SelectedIngredient.copyAllImage(savedInstanceState.getStringArrayList("image"));
+        }
+
+        recipeDB = new IngredientDatabase();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
@@ -61,14 +66,14 @@ public class RecipeListActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        try {
+//        try {
             adapter = new RecipeListAdapter(performRecipes(), clickListener);
-        }catch(IndexOutOfBoundsException e){
-            Intent intent = new Intent(this,IngedientTablayoutActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
-        }
+//        }catch(IndexOutOfBoundsException e){
+//            Intent intent = new Intent(this,IngedientTablayoutActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            startActivity(intent);
+//            finish();
+//        }
         recyclerView.setAdapter(adapter);
 
     }
@@ -88,6 +93,13 @@ public class RecipeListActivity extends AppCompatActivity {
         Comparator<Recipe> compare = (name1, name2) -> name2.getCount().compareTo(name1.getCount());
         Collections.sort(newRecipes, compare);
         return newRecipes;
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putStringArrayList("ingr", SelectedIngredient.getSelectedIngredient());
+        outState.putStringArrayList("image", SelectedIngredient.getSelectedImage());
     }
 
     @Override

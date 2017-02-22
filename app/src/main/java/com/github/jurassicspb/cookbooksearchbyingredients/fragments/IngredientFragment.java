@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +47,6 @@ public class IngredientFragment extends Fragment implements FragmentInterface{
             SelectedIngredient.copyAllImage(savedInstanceState.getStringArrayList("image"));
             SelectedIngredient.setCount(savedInstanceState.getInt("count"));
             ingredients = savedInstanceState.getParcelableArrayList("ingredients");
-            Log.d(IngredientFragment.class.getSimpleName(), "hellothere" + SelectedIngredient.showCount() + " " + SelectedIngredient.getSelectedIngredient());
             if (SelectedIngredient.testCount()==0){
                 ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
             }

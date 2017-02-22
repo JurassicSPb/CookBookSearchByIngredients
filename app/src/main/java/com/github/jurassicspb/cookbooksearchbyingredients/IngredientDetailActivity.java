@@ -26,6 +26,11 @@ public class IngredientDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ingredientdetail_recyclerview);
 
+        if (savedInstanceState!=null) {
+            SelectedIngredient.copyAllIngr(savedInstanceState.getStringArrayList("ingr"));
+            SelectedIngredient.copyAllImage(savedInstanceState.getStringArrayList("image"));
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
         setSupportActionBar(toolbar);
@@ -36,16 +41,16 @@ public class IngredientDetailActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        if (SelectedIngredient.getSelectedIngredient().size()==0){
-            intent = new Intent(this,IngedientTablayoutActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
-        }
-        else {
+//        if (SelectedIngredient.getSelectedIngredient().size()==0){
+//            intent = new Intent(this,IngedientTablayoutActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            startActivity(intent);
+//            finish();
+//        }
+//        else {
             adapter = new IngredientDetailAdapter();
             recyclerView.setAdapter(adapter);
-        }
+//        }
     }
 
     @Override
@@ -65,6 +70,13 @@ public class IngredientDetailActivity extends AppCompatActivity {
             startActivity(intent);
         }, 600);
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putStringArrayList("ingr", SelectedIngredient.getSelectedIngredient());
+        outState.putStringArrayList("image", SelectedIngredient.getSelectedImage());
     }
 
     @Override

@@ -40,15 +40,15 @@ public class SelectedIngredient {
 
     public static ArrayList<String> getSelectedImage() {return selectedImage;}
 
-    public static int addCount (){
-        return count = count+1;
-    }
-    public static int removeCount (){
-        return count = count-1;
-    }
-    public static int showCount(){
-        return count;
-    }
+//    public static int addCount (){
+//        return count = count+1;
+//    }
+//    public static int removeCount (){
+//        return count = count-1;
+//    }
+//    public static int showCount(){
+//        return count;
+//    }
     public static int resetCount() { return count=0;}
 
     public static int testCount() { return count=SelectedIngredient.getSelectedIngredient().size();}

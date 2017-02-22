@@ -227,7 +227,8 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.item1:
-                if (SelectedIngredient.showCount() == 0) {
+                if (SelectedIngredient.testCount()==0){
+//                if (SelectedIngredient.showCount() == 0) {
                     Toast toast = Toast.makeText(this, R.string.select_one, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();

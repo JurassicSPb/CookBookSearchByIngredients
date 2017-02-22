@@ -1,7 +1,6 @@
 package com.github.jurassicspb.cookbooksearchbyingredients;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -11,10 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
-import android.text.style.StyleSpan;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -54,6 +50,16 @@ public class RecipeDetailActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.receipe_detail);
+
+        if (savedInstanceState!=null) {
+            SelectedIngredient.copyAllIngr(savedInstanceState.getStringArrayList("ingr"));
+            names = savedInstanceState.getString("names");
+            ingredients = savedInstanceState.getString("ingredients");
+            descriptions = savedInstanceState.getString("descriptions");
+            calories = savedInstanceState.getString("calories");
+            image = savedInstanceState.getString("image");
+            category = savedInstanceState.getString("category");
+        }
 
         favoritesDB = new IngredientDatabase();
 
@@ -151,13 +157,25 @@ public class RecipeDetailActivity extends AppCompatActivity{
     }
 
     @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        Intent intent = new Intent(this,IngedientTablayoutActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-        finish();
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putStringArrayList("ingr", SelectedIngredient.getSelectedIngredient());
+        outState.putString("names", names);
+        outState.putString("ingredients", ingredients);
+        outState.putString("descriptions", descriptions);
+        outState.putString("calories", calories);
+        outState.putString("image", image);
+        outState.putString("category", category);
+
     }
+    //    @Override
+//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//        Intent intent = new Intent(this,IngedientTablayoutActivity.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        startActivity(intent);
+//        finish();
+//    }
 
     @Override
     protected void onDestroy() {
