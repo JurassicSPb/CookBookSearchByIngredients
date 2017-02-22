@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -164,6 +165,12 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 //                ContextCompat.getColor(this, R.color.tabLayoutTextColorUnselected),
 //                ContextCompat.getColor(this, R.color.tabLayoutTextColorSelected)
 //        );
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        outState.putParcelableArrayList("ingredientList", (ArrayList) ingredients);
     }
     //    public void customTabs(){
 //        for (int i=0; i<categoryTables.size(); i++) {

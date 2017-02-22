@@ -48,8 +48,8 @@
 
         </activity>
 
+        <!--android:configChanges="orientation|screenSize"-->
         <activity android:name=".IngedientTablayoutActivity"
-            android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait">
         </activity>
 

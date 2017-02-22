@@ -15,6 +15,19 @@ public class SelectedIngredient {
         return selectedIngredient;
     }
 
+    public static ArrayList<String>copyAllIngr(ArrayList<String> newIngr){
+        selectedIngredient = newIngr;
+        return selectedIngredient;
+    }
+    public static ArrayList<String>copyAllImage(ArrayList<String> newImage){
+        selectedImage = newImage;
+        return selectedImage;
+    }
+    public static int setCount(int value) {
+        count = value;
+        return count;
+    }
+
     public static void addSelectedIngredient(String selected, String image){
         selectedIngredient.add(selected);
         selectedImage.add(image);
@@ -37,4 +50,6 @@ public class SelectedIngredient {
         return count;
     }
     public static int resetCount() { return count=0;}
+
+    public static int testCount() { return count=SelectedIngredient.getSelectedIngredient().size();}
 }

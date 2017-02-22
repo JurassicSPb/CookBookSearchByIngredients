@@ -15,7 +15,6 @@ import android.widget.EditText;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

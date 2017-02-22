@@ -1,12 +1,12 @@
 package com.github.jurassicspb.cookbooksearchbyingredients.fragments;
 
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,10 +20,10 @@ import android.widget.Toast;
 import com.github.jurassicspb.cookbooksearchbyingredients.GridviewImageTextAdapter;
 import com.github.jurassicspb.cookbooksearchbyingredients.IngedientTablayoutActivity;
 import com.github.jurassicspb.cookbooksearchbyingredients.Ingredient;
-import com.github.jurassicspb.cookbooksearchbyingredients.LoadingScreenActivity;
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
 import com.github.jurassicspb.cookbooksearchbyingredients.SelectedIngredient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -43,17 +43,31 @@ public class IngredientFragment extends Fragment implements FragmentInterface{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.gridview_list, container, false);
 
+        if (savedInstanceState!=null) {
+            SelectedIngredient.copyAllIngr(savedInstanceState.getStringArrayList("ingr"));
+            SelectedIngredient.copyAllImage(savedInstanceState.getStringArrayList("image"));
+            SelectedIngredient.setCount(savedInstanceState.getInt("count"));
+            ingredients = savedInstanceState.getParcelableArrayList("ingredients");
+            Log.d(IngredientFragment.class.getSimpleName(), "hellothere" + SelectedIngredient.showCount() + " " + SelectedIngredient.getSelectedIngredient());
+            if (SelectedIngredient.testCount()==0){
+                ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
+            }
+            else {
+                ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle("Выбрано" + ": " + SelectedIngredient.testCount());
+            }
+        }
+
         gridview = (GridView) view.findViewById(R.id.gridview);
 
         gita = new GridviewImageTextAdapter(getActivity(), getIngrbycategory());
-        try {
+//        try {
             gridview.setAdapter(gita);
-        } catch (NullPointerException e){
-            Intent intent = new Intent(getActivity(),IngedientTablayoutActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            getActivity().finish();
-        }
+//        } catch (NullPointerException e){
+//            Intent intent = new Intent(getActivity(),IngedientTablayoutActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            startActivity(intent);
+//            getActivity().finish();
+//        }
 
         searchEditText = (EditText) view.findViewById(R.id.search);
         searchClearButton = (Button) view.findViewById(R.id.search_button);
@@ -97,27 +111,32 @@ public class IngredientFragment extends Fragment implements FragmentInterface{
                 int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
 
                 if (ingredientPosition==-1) {
-                    if (SelectedIngredient.showCount()<15) {
-                        SelectedIngredient.addCount();
+                    if (SelectedIngredient.testCount()<15){
+//                    if (SelectedIngredient.showCount()<15) {
+//                        SelectedIngredient.addCount();
                         SelectedIngredient.addSelectedIngredient(sel, image);
+                        SelectedIngredient.testCount();
                         ingredients.get((int) id).setState(1);
                         gita.notifyDataSetChanged();
-                    }
-                    else if (SelectedIngredient.showCount()==15){
-                        Toast toast = Toast.makeText(getActivity(), R.string.no_more_than_15,Toast.LENGTH_SHORT);
+                    } else if (SelectedIngredient.testCount() == 15) {
+//                    } else if (SelectedIngredient.showCount() == 15) {
+                        Toast toast = Toast.makeText(getActivity(), R.string.no_more_than_15, Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                     }
                 }
 //                if (ingredientPosition>-1 &&  ingredients.get((int)id).getState()==1)
                 else {
-                    SelectedIngredient.removeCount();
+//                    SelectedIngredient.removeCount();
                     SelectedIngredient.removeSelectedIngredient(sel, image);
+                    SelectedIngredient.testCount();
                     ingredients.get((int) id).setState(0);
                     gita.notifyDataSetChanged();
                 }
-                ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(selectedToString+": " + SelectedIngredient.showCount());
-                if (SelectedIngredient.showCount()==0){
+                ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(selectedToString+": " + SelectedIngredient.testCount());
+//                ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(selectedToString+": " + SelectedIngredient.showCount());
+                if (SelectedIngredient.testCount()==0){
+//                if (SelectedIngredient.showCount()==0){
                     ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
                 }
             }
@@ -126,22 +145,30 @@ public class IngredientFragment extends Fragment implements FragmentInterface{
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putStringArrayList("ingr", SelectedIngredient.getSelectedIngredient());
+        outState.putStringArrayList("image", SelectedIngredient.getSelectedImage());
+        outState.putInt("count", SelectedIngredient.testCount());
+        outState.putParcelableArrayList("ingredients", new ArrayList<>(ingredients));
+    }
+
+    @Override
     public void fragmentBecameVisible() {
-            for (int i=0; i<ingredients.size(); i++){
+        for (int i=0; i<ingredients.size(); i++){
             String sel = ingredients.get(i).getIngredient();
             int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
             if (ingredientPosition>-1){
                 ingredients.get(i).setState(1);
                 gita.notifyDataSetChanged();
             }
-                else{
+            else{
                 ingredients.get(i).setState(0);
                 gita.notifyDataSetChanged();
             }
         }
 
     }
-
     public void setIngrbycategory(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
