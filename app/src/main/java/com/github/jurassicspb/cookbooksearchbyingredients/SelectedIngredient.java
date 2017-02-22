@@ -51,5 +51,5 @@ public class SelectedIngredient {
 //    }
     public static int resetCount() { return count=0;}
 
-    public static int testCount() { return count=SelectedIngredient.getSelectedIngredient().size();}
+    public static int showCount() { return count=SelectedIngredient.getSelectedIngredient().size();}
 }

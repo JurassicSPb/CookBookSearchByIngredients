@@ -1,6 +1,5 @@
 package com.github.jurassicspb.cookbooksearchbyingredients.nav_drawer_extras;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,8 +12,6 @@ import android.widget.TableRow;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 
-import com.github.jurassicspb.cookbooksearchbyingredients.IngedientTablayoutActivity;
-import com.github.jurassicspb.cookbooksearchbyingredients.LoadingScreenActivity;
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
 
 import java.util.Locale;
@@ -233,14 +230,14 @@ public class WeightsAndMeasures extends AppCompatActivity{
         createBody();
 
     }
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        Intent intent = new Intent(this, IngedientTablayoutActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-        finish();
-    }
+//    @Override
+//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//        Intent intent = new Intent(this, IngedientTablayoutActivity.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        startActivity(intent);
+//        finish();
+//    }
     public void createTitle(){
         int margin = getResources().getDimensionPixelSize(R.dimen.margin);
         int padding = getResources().getDimensionPixelSize(R.dimen.padding);

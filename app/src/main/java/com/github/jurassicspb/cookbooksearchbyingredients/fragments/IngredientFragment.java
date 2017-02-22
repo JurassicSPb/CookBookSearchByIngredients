@@ -47,11 +47,11 @@ public class IngredientFragment extends Fragment implements FragmentInterface{
             SelectedIngredient.copyAllImage(savedInstanceState.getStringArrayList("image"));
             SelectedIngredient.setCount(savedInstanceState.getInt("count"));
             ingredients = savedInstanceState.getParcelableArrayList("ingredients");
-            if (SelectedIngredient.testCount()==0){
+            if (SelectedIngredient.showCount()==0){
                 ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
             }
             else {
-                ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle("Выбрано" + ": " + SelectedIngredient.testCount());
+                ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle("Выбрано" + ": " + SelectedIngredient.showCount());
             }
         }
 
@@ -109,14 +109,14 @@ public class IngredientFragment extends Fragment implements FragmentInterface{
                 int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
 
                 if (ingredientPosition==-1) {
-                    if (SelectedIngredient.testCount()<15){
+                    if (SelectedIngredient.showCount()<15){
 //                    if (SelectedIngredient.showCount()<15) {
 //                        SelectedIngredient.addCount();
                         SelectedIngredient.addSelectedIngredient(sel, image);
-                        SelectedIngredient.testCount();
+                        SelectedIngredient.showCount();
                         ingredients.get((int) id).setState(1);
                         gita.notifyDataSetChanged();
-                    } else if (SelectedIngredient.testCount() == 15) {
+                    } else if (SelectedIngredient.showCount() == 15) {
 //                    } else if (SelectedIngredient.showCount() == 15) {
                         Toast toast = Toast.makeText(getActivity(), R.string.no_more_than_15, Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
@@ -127,13 +127,13 @@ public class IngredientFragment extends Fragment implements FragmentInterface{
                 else {
 //                    SelectedIngredient.removeCount();
                     SelectedIngredient.removeSelectedIngredient(sel, image);
-                    SelectedIngredient.testCount();
+                    SelectedIngredient.showCount();
                     ingredients.get((int) id).setState(0);
                     gita.notifyDataSetChanged();
                 }
-                ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(selectedToString+": " + SelectedIngredient.testCount());
+                ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(selectedToString+": " + SelectedIngredient.showCount());
 //                ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(selectedToString+": " + SelectedIngredient.showCount());
-                if (SelectedIngredient.testCount()==0){
+                if (SelectedIngredient.showCount()==0){
 //                if (SelectedIngredient.showCount()==0){
                     ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
                 }
@@ -147,7 +147,7 @@ public class IngredientFragment extends Fragment implements FragmentInterface{
         super.onSaveInstanceState(outState);
         outState.putStringArrayList("ingr", SelectedIngredient.getSelectedIngredient());
         outState.putStringArrayList("image", SelectedIngredient.getSelectedImage());
-        outState.putInt("count", SelectedIngredient.testCount());
+        outState.putInt("count", SelectedIngredient.showCount());
         outState.putParcelableArrayList("ingredients", new ArrayList<>(ingredients));
     }
 
