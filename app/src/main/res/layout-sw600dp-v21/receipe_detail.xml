@@ -54,14 +54,14 @@
             >
             <TextView
                 android:id="@+id/ingredients_field"
-                android:layout_width="500dp"
+                android:layout_width="400dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="48dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="sans-serif"
                 android:background="@drawable/note"
                 android:lineSpacingMultiplier="1.2"
-                tools:text="Test\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest"
+                tools:text="Test\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest\nTest"
                 android:textColor="@color/colorIngredientsField"
                 android:textSize="18sp" />
             <FrameLayout
@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"
                     tools:text="Test\nTest\nTest\nTest"
                     android:lineSpacingMultiplier="1.2"
-                    android:layout_marginRight="48dp"
+                    android:layout_marginRight="52dp"
                     android:background="@drawable/notecalorie"
                     android:layout_gravity="right"
                     android:textColor="@color/colorIngredientsField"
