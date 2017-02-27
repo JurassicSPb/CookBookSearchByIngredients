@@ -1,6 +1,5 @@
 package com.github.jurassicspb.cookbooksearchbyingredients;
 
-import android.content.pm.ActivityInfo;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,10 +15,6 @@ public class ProgressBarActivity extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if(getResources().getBoolean(R.bool.portrait_for_phones)){
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
 
         setContentView(R.layout.progress_bar);
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_bar);

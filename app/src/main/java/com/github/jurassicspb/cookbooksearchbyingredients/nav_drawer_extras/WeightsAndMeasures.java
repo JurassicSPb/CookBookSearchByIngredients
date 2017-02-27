@@ -1,6 +1,5 @@
 package com.github.jurassicspb.cookbooksearchbyingredients.nav_drawer_extras;
 
-import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -217,10 +216,6 @@ public class WeightsAndMeasures extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if(getResources().getBoolean(R.bool.portrait_for_phones)){
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
 
         setContentView(R.layout.weights_and_mesures);
 

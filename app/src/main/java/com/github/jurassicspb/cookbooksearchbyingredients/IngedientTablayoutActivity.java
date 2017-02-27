@@ -1,7 +1,6 @@
 package com.github.jurassicspb.cookbooksearchbyingredients;
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -56,9 +55,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getResources().getBoolean(R.bool.portrait_for_phones)){
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
 
         setContentView(R.layout.tablayout_with_viewpager);
 
