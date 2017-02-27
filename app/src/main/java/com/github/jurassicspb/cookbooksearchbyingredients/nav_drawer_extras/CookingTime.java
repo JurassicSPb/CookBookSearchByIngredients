@@ -1,5 +1,6 @@
 package com.github.jurassicspb.cookbooksearchbyingredients.nav_drawer_extras;
 
+import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,6 +23,7 @@ import java.util.Locale;
  */
 
 public class CookingTime extends AppCompatActivity {
+
     private String[][] porridgeRUS = new String[][]{
             {""},
             {""},
@@ -142,6 +144,11 @@ public class CookingTime extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if(getResources().getBoolean(R.bool.portrait_for_phones)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+
         setContentView(R.layout.cooking_time);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

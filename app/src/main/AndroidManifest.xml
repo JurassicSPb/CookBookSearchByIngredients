@@ -13,60 +13,60 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".IngredientDetailActivity"
-            android:screenOrientation="portrait">
+        <!--android:screenOrientation="portrait"-->
+        <activity android:name=".IngredientDetailActivity">
 
         </activity>
 
-        <activity android:name=".RecipeListActivity"
-            android:screenOrientation="portrait">
+        <!--android:screenOrientation="portrait"-->
+        <activity android:name=".RecipeListActivity">
 
         </activity>
 
+        <!--android:screenOrientation="portrait"-->
         <activity android:name=".RecipeDetailActivity"
-            android:theme="@style/DetailRecipeTheme"
-            android:screenOrientation="portrait">
+            android:theme="@style/DetailRecipeTheme">
 
         </activity>
 
-        <activity android:name=".FavoritesActivity"
-            android:screenOrientation="portrait">
+        <!--android:screenOrientation="portrait"-->
+        <activity android:name=".FavoritesActivity">
 
         </activity>
 
-        <activity android:name=".FullListActivity"
-            android:screenOrientation="portrait">
+        <!--android:screenOrientation="portrait"-->
+        <activity android:name=".FullListActivity">
 
         </activity>
 
-        <activity android:name=".nav_drawer_extras.WeightsAndMeasures"
-            android:screenOrientation="portrait">
+        <!--android:screenOrientation="portrait"-->
+        <activity android:name=".nav_drawer_extras.WeightsAndMeasures">
 
         </activity>
 
-        <activity android:name=".nav_drawer_extras.CookingTime"
-            android:screenOrientation="portrait">
+        <!--android:screenOrientation="portrait"-->
+        <activity android:name=".nav_drawer_extras.CookingTime">
 
         </activity>
 
-        <!--android:configChanges="orientation|screenSize"-->
+        <!--android:screenOrientation="portrait"-->
         <activity android:name=".IngedientTablayoutActivity"
-            android:screenOrientation="portrait">
+            android:configChanges="orientation|screenSize">
         </activity>
 
+        <!--android:screenOrientation="portrait"-->
         <activity android:name=".ProgressBarActivity"
-            android:theme="@style/ProgressBarTheme"
-            android:screenOrientation="portrait">
+            android:theme="@style/ProgressBarTheme">
 
         </activity>
 
-        <activity android:name=".CategoriesActivity"
-            android:screenOrientation="portrait">
+        <!--android:screenOrientation="portrait"-->
+        <activity android:name=".CategoriesActivity">
 
         </activity>
 
-        <activity android:name=".CategoriesListActivity"
-            android:screenOrientation="portrait">
+        <!--android:screenOrientation="portrait"-->
+        <activity android:name=".CategoriesListActivity">
 
         </activity>
 
