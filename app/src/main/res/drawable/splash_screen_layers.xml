@@ -15,13 +15,13 @@
     </item>
 
     <item
-        android:top="110dp">
+        android:bottom="155dp">
         <bitmap
-            android:gravity="top"
+            android:gravity="center"
             android:src="@drawable/fridge256"/>
     </item>
     <item
-        android:bottom="110dp">
+        android:bottom="30dp">
         <bitmap
             android:gravity="bottom"
             android:src="@drawable/splash"/>
