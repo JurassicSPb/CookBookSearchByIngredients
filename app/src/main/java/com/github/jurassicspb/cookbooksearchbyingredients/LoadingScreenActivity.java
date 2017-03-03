@@ -18,6 +18,5 @@ public class LoadingScreenActivity extends AppCompatActivity{
         Intent mainIntent = new Intent(LoadingScreenActivity.this,IngedientTablayoutActivity.class);
         startActivity(mainIntent);
         finish();
-        
     }
 }

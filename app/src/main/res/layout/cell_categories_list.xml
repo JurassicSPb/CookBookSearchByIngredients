@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/backgrondTabLayoutActivity">
 
     <ImageView
         android:id="@+id/photo"
@@ -14,7 +15,8 @@
         android:id="@+id/recipe_name"
         tools:text="Hello"
         android:layout_width="match_parent"
-        android:layout_height="116dp"
+        android:layout_height="wrap_content"
+        android:minHeight="116dp"
         android:layout_toRightOf="@+id/photo"
         android:lineSpacingMultiplier="1.2"
         android:padding="6dp"
@@ -24,7 +26,7 @@
         android:background="@color/backgrondTabLayoutActivity"/>
     <View
         android:id="@+id/separator"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/recipe_name"
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:background="@color/colorPrimary"/>

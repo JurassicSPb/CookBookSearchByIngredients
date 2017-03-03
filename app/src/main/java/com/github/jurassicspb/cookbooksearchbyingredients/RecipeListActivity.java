@@ -67,14 +67,7 @@ public class RecipeListActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        try {
-            adapter = new RecipeListAdapter(performRecipes(), clickListener);
-//        }catch(IndexOutOfBoundsException e){
-//            Intent intent = new Intent(this,IngedientTablayoutActivity.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(intent);
-//            finish();
-//        }
+        adapter = new RecipeListAdapter(performRecipes(), clickListener);
         recyclerView.setAdapter(adapter);
 
     }
