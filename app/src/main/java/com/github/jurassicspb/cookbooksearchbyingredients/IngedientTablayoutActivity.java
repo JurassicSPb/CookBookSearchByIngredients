@@ -228,7 +228,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         switch (item.getItemId()) {
             case R.id.item1:
                 if (SelectedIngredient.showCount()==0){
-//                if (SelectedIngredient.showCount() == 0) {
                     Toast toast = Toast.makeText(this, R.string.select_one, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
@@ -261,6 +260,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         newIngredient.add(new Ingredient(4, "масло растительное", R.drawable.oils, 0));
 
         newIngredient.add(new Ingredient(5, "йогурт натуральный", R.drawable.jogurt, 0));
+        newIngredient.add(new Ingredient(5, "кефир", R.drawable.kefir, 0));
         newIngredient.add(new Ingredient(5, "молоко", R.drawable.milk, 0));
         newIngredient.add(new Ingredient(5, "сметана", R.drawable.sour_cream, 0));
 
@@ -300,7 +300,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         newIngredient.add(new Ingredient(10, "лук зеленый", R.drawable.onion_green, 0));
         newIngredient.add(new Ingredient(10, "лук репчатый", R.drawable.luk_repch, 0));
         newIngredient.add(new Ingredient(10, "малосольный огурец", R.drawable.malosol, 0));
-        newIngredient.add(new Ingredient(10, "маслины без косточки", R.drawable.maslini, 0));
+        newIngredient.add(new Ingredient(10, "маслины без косточек", R.drawable.maslini, 0));
         newIngredient.add(new Ingredient(10, "морковь", R.drawable.carrot, 0));
         newIngredient.add(new Ingredient(10, "огурец", R.drawable.cucumber, 0));
         newIngredient.add(new Ingredient(10, "петрушка", R.drawable.petrushka, 0));
@@ -315,6 +315,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         newIngredient.add(new Ingredient(11, "грецкие орехи", R.drawable.grec_oreh, 0));
         newIngredient.add(new Ingredient(11, "кедровые орехи", R.drawable.kedr, 0));
 
+        newIngredient.add(new Ingredient(12, "базилик сушеный", R.drawable.bazilik, 0));
         newIngredient.add(new Ingredient(12, "душистый перец", R.drawable.perec_dush, 0));
         newIngredient.add(new Ingredient(12, "итальянские травы", R.drawable.ital_trav, 0));
         newIngredient.add(new Ingredient(12, "кориандр молотый", R.drawable.koriandr, 0));
@@ -324,6 +325,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         newIngredient.add(new Ingredient(12, "паприка сладкая", R.drawable.paprika_sweet, 0));
         newIngredient.add(new Ingredient(12, "перец молотый", R.drawable.perez_molot, 0));
         newIngredient.add(new Ingredient(12, "перец молотый черный", R.drawable.perez_black, 0));
+        newIngredient.add(new Ingredient(12, "разрыхлитель теста", R.drawable.razrihl, 0));
         newIngredient.add(new Ingredient(12, "сахар", R.drawable.sugar, 0));
         newIngredient.add(new Ingredient(12, "сахарозаменитель", R.drawable.sweetener, 0));
         newIngredient.add(new Ingredient(12, "сок лимона", R.drawable.lemon_juice, 0));
@@ -333,6 +335,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         newIngredient.add(new Ingredient(13, "куриная грудка копченая", R.drawable.grudka_kopch, 0));
         newIngredient.add(new Ingredient(13, "куриное филе", R.drawable.chicken_fillet, 0));
 
+        newIngredient.add(new Ingredient(14, "рыбные консервы", R.drawable.rib_kons, 0));
         newIngredient.add(new Ingredient(14, "треска", R.drawable.treska, 0));
         newIngredient.add(new Ingredient(14, "филе белой рыбы", R.drawable.white_fish, 0));
 
@@ -398,6 +401,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         categories.add(new Categories("вторые блюда", R.drawable.vtor_bludo));
         categories.add(new Categories("выпечка", R.drawable.vipechka));
         categories.add(new Categories("напитки", R.drawable.drinks));
+        categories.add(new Categories("несладкая выпечка", R.drawable.nesl_vip));
         categories.add(new Categories("рыба и морепродукты", R.drawable.bluda_fish));
         categories.add(new Categories("салаты", R.drawable.salads));
         categories.add(new Categories("соусы", R.drawable.sauces));
