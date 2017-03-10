@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CookBookSearchByIngredients</string>
+    <string name="app_name">Подбери рецепт</string>
     <string name="search_by_ingredient">Поиск по ингредиентам</string>
     <string name="search_by_name">Поиск по названию или категории</string>
     <string name="search_by_name_short">Поиск по названию</string>
