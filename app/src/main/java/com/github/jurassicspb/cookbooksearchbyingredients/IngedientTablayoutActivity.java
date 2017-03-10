@@ -271,6 +271,8 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         newIngredient.add(new Ingredient(5, "масло сливочное", R.drawable.maslo_sliv, 0));
         newIngredient.add(new Ingredient(5, "молоко", R.drawable.milk, 0));
         newIngredient.add(new Ingredient(5, "простокваша", R.drawable.prostokv, 0));
+        newIngredient.add(new Ingredient(5, "сливки", R.drawable.slivki, 0));
+        newIngredient.add(new Ingredient(5, "сливки жирные", R.drawable.slivki_zhir, 0));
         newIngredient.add(new Ingredient(5, "сметана", R.drawable.sour_cream, 0));
 
         newIngredient.add(new Ingredient(6, "кальмар", R.drawable.kalmar, 0));
@@ -293,9 +295,9 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         newIngredient.add(new Ingredient(8, "свинина", R.drawable.pork, 0));
         newIngredient.add(new Ingredient(8, "сосиска", R.drawable.sosiska, 0));
         newIngredient.add(new Ingredient(8, "фарш говяжий", R.drawable.beef_mince, 0));
+        newIngredient.add(new Ingredient(8, "фарш мясной", R.drawable.farsch, 0));
 
         newIngredient.add(new Ingredient(9, "вода", R.drawable.water, 0));
-
         newIngredient.add(new Ingredient(9, "огуречный рассол", R.drawable.rassol, 0));
         newIngredient.add(new Ingredient(9, "пиво светлое", R.drawable.beer_light, 0));
         newIngredient.add(new Ingredient(9, "томатный сок", R.drawable.tomat_sok, 0));
@@ -345,6 +347,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         newIngredient.add(new Ingredient(12, "перец молотый", R.drawable.perez_molot, 0));
         newIngredient.add(new Ingredient(12, "перец молотый черный", R.drawable.perez_black, 0));
         newIngredient.add(new Ingredient(12, "перец черный горошек", R.drawable.pepper_gor, 0));
+        newIngredient.add(new Ingredient(12, "прованские травы", R.drawable.provans, 0));
         newIngredient.add(new Ingredient(12, "разрыхлитель теста", R.drawable.razrihl, 0));
         newIngredient.add(new Ingredient(12, "сахар", R.drawable.sugar, 0));
         newIngredient.add(new Ingredient(12, "сахарозаменитель", R.drawable.sweetener, 0));
@@ -358,8 +361,10 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         newIngredient.add(new Ingredient(13, "куриная грудка копченая", R.drawable.grudka_kopch, 0));
         newIngredient.add(new Ingredient(13, "куриное филе", R.drawable.chicken_fillet, 0));
         newIngredient.add(new Ingredient(13, "курица копченая", R.drawable.chick_kopch, 0));
+        newIngredient.add(new Ingredient(13, "фарш куриный", R.drawable.farsh_kur, 0));
 
         newIngredient.add(new Ingredient(14, "рыбные консервы", R.drawable.rib_kons, 0));
+        newIngredient.add(new Ingredient(14, "скумбрия консервированная", R.drawable.skumbr_kons, 0));
         newIngredient.add(new Ingredient(14, "треска", R.drawable.treska, 0));
         newIngredient.add(new Ingredient(14, "тунец консервированный", R.drawable.tuna_kons, 0));
         newIngredient.add(new Ingredient(14, "филе белой рыбы", R.drawable.white_fish, 0));
@@ -385,12 +390,13 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         newIngredient.add(new Ingredient(17, "яблоко", R.drawable.apple, 0));
 
         newIngredient.add(new Ingredient(18, "батон", R.drawable.baton, 0));
-        newIngredient.add(new Ingredient(18, "лаваш", R.drawable.lavash, 0));
+        newIngredient.add(new Ingredient(18, "лаваш тонкий", R.drawable.lavash, 0));
         newIngredient.add(new Ingredient(18, "сухари панировочные", R.drawable.suh_panir, 0));
         newIngredient.add(new Ingredient(18, "сухарики", R.drawable.suhar, 0));
         newIngredient.add(new Ingredient(18, "сухарики из белого хлеба", R.drawable.suhari_bel, 0));
         newIngredient.add(new Ingredient(18, "французский багет", R.drawable.baget_fr, 0));
 
+        newIngredient.add(new Ingredient(19, "белок", R.drawable.belok, 0));
         newIngredient.add(new Ingredient(19, "яйцо", R.drawable.egg, 0));
         newIngredient.add(new Ingredient(19, "яйцо куриное", R.drawable.eggs, 0));
 
