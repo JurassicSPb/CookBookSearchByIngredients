@@ -8,7 +8,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -22,7 +25,7 @@ public class RecipeListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecipeListAdapter adapter;
     private IngredientDatabase recipeDB;
-    private List <Recipe> recipes;
+    private List<Recipe> recipes;
     private OnListItemClickListener clickListener = new OnListItemClickListener() {
         @Override
         public void onClick(View v, int position) {
@@ -44,13 +47,14 @@ public class RecipeListActivity extends AppCompatActivity {
 
         }
     };
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.recipelist_recyclerview);
 
-        if (savedInstanceState!=null) {
+        if (savedInstanceState != null) {
             SelectedIngredient.copyAllIngr(savedInstanceState.getStringArrayList("ingr"));
             SelectedIngredient.copyAllImage(savedInstanceState.getStringArrayList("image"));
         }
@@ -71,6 +75,7 @@ public class RecipeListActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
     }
+
     private List<Recipe> performRecipes() {
         recipes = recipeDB.getRecipe(SelectedIngredient.getSelectedIngredient());
         List<Recipe> newRecipes = recipeDB.copyFromRealmRecipe(recipes);
@@ -84,9 +89,20 @@ public class RecipeListActivity extends AppCompatActivity {
             }
             newRecipes.get(i).setCount(String.valueOf(count));
         }
-        Comparator<Recipe> compare = (name1, name2) -> name2.getCount().compareTo(name1.getCount());
-        Collections.sort(newRecipes, compare);
+//        Comparator<Recipe> compare = (name1, name2) -> name2.getCount().compareTo(name1.getCount());
+//        Collections.sort(newRecipes, compare);
+        Collections.sort(newRecipes, sortByCountAndCategory());
         return newRecipes;
+    }
+
+    public Comparator <Recipe> sortByCountAndCategory() {
+        Comparator<Recipe> comparator = (o1, o2) -> {
+            if (o2.getCount().compareTo(o1.getCount()) == 0) {
+                return o1.getCategory().compareTo(o2.getCategory());
+            }
+            return o2.getCount().compareTo(o1.getCount());
+        };
+        return comparator;
     }
 
     @Override

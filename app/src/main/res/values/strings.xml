@@ -10,11 +10,12 @@
     <string name="count_of_matching_ingredients">Совпадающие ингредиенты: </string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
-    <string name="drawer_menu_favorites">Избранное</string>
+    <string name="drawer_menu_favorites">Избранные рецепты</string>
+    <string name="drawer_menu_ingr_favorites">Избранные ингредиенты</string>
     <string name="drawer_menu_full_list">Полный список</string>
     <string name="drawer_menu_exit">Выход</string>
-    <string name="toast_favorites">Добавлено в Избранное</string>
-    <string name="toast_favorites_remove">Удалено из Избранного</string>
+    <string name="toast_favorites">Добавлено в Избранные рецепты</string>
+    <string name="toast_favorites_remove">Удалено из Избранных рецептов</string>
     <string name="full_list">Полный список рецептов</string>
     <string name="recipe_list">Список рецептов</string>
     <string name="weights">Таблица мер и весов</string>

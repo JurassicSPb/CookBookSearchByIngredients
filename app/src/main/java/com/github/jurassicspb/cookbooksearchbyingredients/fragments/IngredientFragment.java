@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,11 +17,14 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.github.jurassicspb.cookbooksearchbyingredients.Favorites;
 import com.github.jurassicspb.cookbooksearchbyingredients.GridviewImageTextAdapter;
 import com.github.jurassicspb.cookbooksearchbyingredients.IngedientTablayoutActivity;
 import com.github.jurassicspb.cookbooksearchbyingredients.Ingredient;
+import com.github.jurassicspb.cookbooksearchbyingredients.IngredientFavorites;
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
 import com.github.jurassicspb.cookbooksearchbyingredients.SelectedIngredient;
+import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,36 +34,40 @@ import java.util.List;
  * Created by Мария on 12.11.2016.
  */
 
-public class IngredientFragment extends Fragment implements FragmentInterface{
+public class IngredientFragment extends Fragment implements FragmentInterface {
     private List<Ingredient> ingredients;
     private GridView gridview;
     private EditText searchEditText;
     private Button searchClearButton;
     private GridviewImageTextAdapter gita;
+    private IngredientDatabase ingrFavoritesDB;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.gridview_list, container, false);
 
-        if (savedInstanceState!=null) {
+        if (savedInstanceState != null) {
             SelectedIngredient.copyAllIngr(savedInstanceState.getStringArrayList("ingr"));
             SelectedIngredient.copyAllImage(savedInstanceState.getStringArrayList("image"));
             SelectedIngredient.setCount(savedInstanceState.getInt("count"));
             ingredients = savedInstanceState.getParcelableArrayList("ingredients");
-            if (SelectedIngredient.showCount()==0){
-                ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
-            }
-            else {
+            if (SelectedIngredient.showCount() == 0) {
+                ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
+            } else {
                 ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle("Выбрано" + ": " + SelectedIngredient.showCount());
             }
         }
+        ingrFavoritesDB = new IngredientDatabase();
 
         gridview = (GridView) view.findViewById(R.id.gridview);
 
         gita = new GridviewImageTextAdapter(getActivity(), getIngrbycategory());
 //        try {
-            gridview.setAdapter(gita);
+
+        gridview.setAdapter(gita);
+
 //        } catch (NullPointerException e){
 //            Intent intent = new Intent(getActivity(),IngedientTablayoutActivity.class);
 //            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -94,6 +102,7 @@ public class IngredientFragment extends Fragment implements FragmentInterface{
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
 //                TextView tv = (TextView) view.findViewById(R.id.textpart);
 //                String sel = tv.getText().toString();
 //                Ingredient item = gita.getItem(position);
@@ -103,13 +112,20 @@ public class IngredientFragment extends Fragment implements FragmentInterface{
 
                 String selectedToString = getString(R.string.selected);
 
-                String sel = ingredients.get((int)id).getIngredient();
-                String image = String.valueOf(ingredients.get((int)id).getImage());
+                String sel = ingredients.get((int) id).getIngredient();
+                String image = String.valueOf(ingredients.get((int) id).getImage());
 
                 int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
 
-                if (ingredientPosition==-1) {
-                    if (SelectedIngredient.showCount()<15){
+                if (ingredientPosition == -1) {
+                    if (SelectedIngredient.showCount() < 15) {
+
+//                        ArrayList<IngredientFavorites> newIngrFav = new ArrayList<>();
+//                        newIngrFav.add(new IngredientFavorites(ingredients.get((int) id).getIngredient(),
+//                                ingredients.get((int) id).getImage(), ingredients.get((int) id).getState()));
+//                        ingrFavoritesDB.copyOrUpdateIngrFavorites(newIngrFav);
+
+
 //                    if (SelectedIngredient.showCount()<15) {
 //                        SelectedIngredient.addCount();
                         SelectedIngredient.addSelectedIngredient(sel, image);
@@ -125,17 +141,20 @@ public class IngredientFragment extends Fragment implements FragmentInterface{
                 }
 //                if (ingredientPosition>-1 &&  ingredients.get((int)id).getState()==1)
                 else {
+
+//                    ingrFavoritesDB.deleteIngrFavoritePosition(ingredients.get((int) id).getIngredient());
+
 //                    SelectedIngredient.removeCount();
                     SelectedIngredient.removeSelectedIngredient(sel, image);
                     SelectedIngredient.showCount();
                     ingredients.get((int) id).setState(0);
                     gita.notifyDataSetChanged();
                 }
-                ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(selectedToString+": " + SelectedIngredient.showCount());
+                ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(selectedToString + ": " + SelectedIngredient.showCount());
 //                ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(selectedToString+": " + SelectedIngredient.showCount());
-                if (SelectedIngredient.showCount()==0){
+                if (SelectedIngredient.showCount() == 0) {
 //                if (SelectedIngredient.showCount()==0){
-                    ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
+                    ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
                 }
             }
         });
@@ -153,20 +172,39 @@ public class IngredientFragment extends Fragment implements FragmentInterface{
 
     @Override
     public void fragmentBecameVisible() {
-        for (int i=0; i<ingredients.size(); i++){
+        refreshIngredientState();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(IngredientFragment.class.getSimpleName(), "yesyesyes: " + SelectedIngredient.getSelectedIngredient().size());
+        refreshIngredientState();
+
+        if (SelectedIngredient.showCount() == 0) {
+            ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
+        } else {
+            ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle("Выбрано" + ": " + SelectedIngredient.showCount());
+        }
+    }
+
+    public void refreshIngredientState() {
+        for (int i = 0; i < ingredients.size(); i++) {
             String sel = ingredients.get(i).getIngredient();
             int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
-            if (ingredientPosition>-1){
+            Log.d(IngredientFragment.class.getSimpleName(), "herehere: " + SelectedIngredient.getSelectedIngredient().size());
+            if (ingredientPosition > -1) {
                 ingredients.get(i).setState(1);
-                gita.notifyDataSetChanged();
-            }
-            else{
+//                gita.notifyDataSetChanged();
+            } else {
+                Log.d(IngredientFragment.class.getSimpleName(), "therethere: " + ingredients.get(i).getState());
                 ingredients.get(i).setState(0);
-                gita.notifyDataSetChanged();
+//                gita.notifyDataSetChanged();
             }
         }
-
+        gita.notifyDataSetChanged();
     }
+
     public void setIngrbycategory(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }

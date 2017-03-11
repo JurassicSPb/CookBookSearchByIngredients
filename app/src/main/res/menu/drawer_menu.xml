@@ -6,6 +6,10 @@
         android:icon="@drawable/ic_drawer_favorites"
         android:title="@string/drawer_menu_favorites" />
         <item
+            android:id="@+id/fr7"
+            android:icon="@drawable/ic_drawer_favorites"
+            android:title="@string/drawer_menu_ingr_favorites" />
+        <item
             android:id="@+id/fr6"
             android:icon="@drawable/ic_category"
             android:title="@string/categories" />

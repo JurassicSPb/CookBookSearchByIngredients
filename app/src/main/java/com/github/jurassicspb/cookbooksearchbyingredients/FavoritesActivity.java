@@ -73,14 +73,6 @@ public class FavoritesActivity extends AppCompatActivity {
         favorites = recipeDB.getAllFavorites();
     }
 
-//    @Override
-//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-//        super.onRestoreInstanceState(savedInstanceState);
-//        Intent intent = new Intent(this,IngedientTablayoutActivity.class);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        startActivity(intent);
-//        finish();
-//    }
     @Override
     protected void onDestroy() {
         recipeDB.close();

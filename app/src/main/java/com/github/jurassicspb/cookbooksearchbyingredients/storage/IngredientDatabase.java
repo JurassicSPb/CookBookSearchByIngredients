@@ -4,6 +4,7 @@ import com.github.jurassicspb.cookbooksearchbyingredients.Categories;
 import com.github.jurassicspb.cookbooksearchbyingredients.CategoryTable;
 import com.github.jurassicspb.cookbooksearchbyingredients.Favorites;
 import com.github.jurassicspb.cookbooksearchbyingredients.Ingredient;
+import com.github.jurassicspb.cookbooksearchbyingredients.IngredientFavorites;
 import com.github.jurassicspb.cookbooksearchbyingredients.Recipe;
 
 import java.util.ArrayList;
@@ -46,6 +47,28 @@ public class IngredientDatabase {
         realm.copyToRealmOrUpdate(favorite);
         realm.commitTransaction();
     }
+
+    public void copyOrUpdateIngrFavorites(List <IngredientFavorites> ingrFavorites){
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(ingrFavorites);
+        realm.commitTransaction();
+    }
+
+    public List<IngredientFavorites>getAllIngrFavorites(){
+        realm.beginTransaction();
+        RealmResults <IngredientFavorites> results = realm.where(IngredientFavorites.class).findAllSorted("ingredient", Sort.ASCENDING);
+        List<IngredientFavorites> newIngrFav = realm.copyFromRealm(results);
+        realm.commitTransaction();
+        return newIngrFav;
+    }
+
+    public void deleteIngrFavoritePosition (String name) {
+        realm.beginTransaction();
+        RealmResults <IngredientFavorites> results = realm.where(IngredientFavorites.class).equalTo("ingredient", name).findAll();
+        results.deleteAllFromRealm();
+        realm.commitTransaction();
+    }
+
     public void copyOrUpdateCategories(List <Categories> categories){
         realm.beginTransaction();
         realm.copyToRealmOrUpdate(categories);
@@ -65,6 +88,7 @@ public class IngredientDatabase {
         results.deleteAllFromRealm();
         realm.commitTransaction();
     }
+
     public List<Ingredient> copyFromRealm(List <Ingredient> ingredient){
         realm.beginTransaction();
         List <Ingredient> newingr = realm.copyFromRealm(ingredient);

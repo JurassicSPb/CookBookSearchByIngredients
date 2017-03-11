@@ -62,6 +62,10 @@
 
         </activity>
 
+        <activity android:name=".IngredientFavoritesActivity">
+
+        </activity>
+
         <activity android:name=".LoadingScreenActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>

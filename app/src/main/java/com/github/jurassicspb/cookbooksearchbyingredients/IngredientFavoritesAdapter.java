@@ -1,0 +1,78 @@
+package com.github.jurassicspb.cookbooksearchbyingredients;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.List;
+
+/**
+ * Created by Мария on 11.03.2017.
+ */
+
+public class IngredientFavoritesAdapter extends BaseAdapter {
+    private Context mContext;
+    private List<IngredientFavorites> ingrFavoritesAdapter;
+
+    public IngredientFavoritesAdapter(Context mContext, List<IngredientFavorites> ingrFavoritesAdapter) {
+        this.mContext = mContext;
+        this.ingrFavoritesAdapter = ingrFavoritesAdapter;
+    }
+
+    @Override
+    public int getCount() {
+        // TODO Auto-generated method stub
+        return ingrFavoritesAdapter.size();
+    }
+
+    @Override
+    public IngredientFavorites getItem(int position) {
+        // TODO Auto-generated method stub
+        return ingrFavoritesAdapter.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        // TODO Auto-generated method stub
+        return position;
+    }
+
+    public class ViewHolder {
+        TextView textView;
+        ImageView imageView;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        // TODO Auto-generated method stub
+        IngredientFavorites object = ingrFavoritesAdapter.get(position);
+
+        IngredientFavoritesAdapter.ViewHolder holder;
+        if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) mContext
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            holder = new IngredientFavoritesAdapter.ViewHolder();
+            convertView = inflater.inflate(R.layout.cell_ingr_favorites, null);
+            holder.textView = (TextView) convertView.findViewById(R.id.textpart);
+            holder.imageView = (ImageView) convertView.findViewById(R.id.imagepart);
+            convertView.setTag(holder);
+        } else {
+            holder = (IngredientFavoritesAdapter.ViewHolder) convertView.getTag();
+        }
+        holder.textView.setText(ingrFavoritesAdapter.get(position).getIngredient());
+        holder.imageView.setImageResource(ingrFavoritesAdapter.get(position).getImage());
+
+        if (object.getState()==1) {
+            holder.textView.setTextColor(ContextCompat.getColor(mContext, R.color.tabLayoutTextColorSelected));
+        } else {
+            holder.textView.setTextColor(Color.WHITE);
+        }
+        return convertView;
+    }
+}
