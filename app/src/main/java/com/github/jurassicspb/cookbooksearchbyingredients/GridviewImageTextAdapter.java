@@ -3,14 +3,19 @@ package com.github.jurassicspb.cookbooksearchbyingredients;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,12 +28,14 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
     private Context mContext;
     private List<Ingredient> ingredientAdapter;
     private List<Ingredient> ingredientAdapterFiltered;
+    private List <IngredientFavorites> ingredientFavorites;
     private ValueFilter valueFilter;
 
-    public GridviewImageTextAdapter(Context c, List<Ingredient> ingredientAdapter) {
+    public GridviewImageTextAdapter(Context c, List<Ingredient> ingredientAdapter, List<IngredientFavorites> ingredientFavorites) {
         mContext = c;
         this.ingredientAdapter = ingredientAdapter;
         ingredientAdapterFiltered = ingredientAdapter;
+        this.ingredientFavorites = ingredientFavorites;
     }
 
     @Override
@@ -59,16 +66,13 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
     public class ViewHolder {
         TextView textView;
         ImageView imageView;
+        CheckBox checkBox;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
         Ingredient object = ingredientAdapter.get(position);
-
-//        String sel = ingredientAdapter.get(position).getIngredient();
-//        int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
-
 
         ViewHolder holder;
         if (convertView == null) {
@@ -78,6 +82,7 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
             convertView = inflater.inflate(R.layout.cell_gridview, null);
             holder.textView = (TextView) convertView.findViewById(R.id.textpart);
             holder.imageView = (ImageView) convertView.findViewById(R.id.imagepart);
+            holder.checkBox = (CheckBox) convertView.findViewById(R.id.checkbox);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -85,12 +90,40 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
         }
         holder.textView.setText(ingredientAdapter.get(position).getIngredient());
         holder.imageView.setImageResource(ingredientAdapter.get(position).getImage());
-//         ingredientPosition>-1 object.getState()==1
         if (object.getState()==1) {
             holder.textView.setTextColor(ContextCompat.getColor(mContext, R.color.tabLayoutTextColorSelected));
         } else {
             holder.textView.setTextColor(Color.WHITE);
         }
+
+        String sel = ingredientAdapter.get(position).getIngredient();
+
+//        Log.d(GridviewImageTextAdapter.class.getSimpleName(), "pukapuka " + sel);
+
+        for (int i=0; i<ingredientFavorites.size(); i++) {
+            int ingredientPosition = ingredientFavorites.get(i).getIngredient().indexOf(sel);
+
+//            Log.d(GridviewImageTextAdapter.class.getSimpleName(), "kakaka " + ingredientPosition);
+
+                if (ingredientPosition>-1){
+                    holder.checkBox.setChecked(true);
+                    break;
+                }
+                else {
+                    holder.checkBox.setChecked(false);
+                }
+            }
+
+        holder.checkBox.setOnClickListener(v -> {
+            final boolean isChecked = holder.checkBox.isChecked();
+            if (isChecked){
+
+            }
+            else{
+
+            }
+            notifyDataSetChanged();
+        });
         return convertView;
     }
 

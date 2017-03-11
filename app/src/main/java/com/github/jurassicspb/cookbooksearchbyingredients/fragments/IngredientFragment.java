@@ -6,18 +6,17 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
 
-import com.github.jurassicspb.cookbooksearchbyingredients.Favorites;
 import com.github.jurassicspb.cookbooksearchbyingredients.GridviewImageTextAdapter;
 import com.github.jurassicspb.cookbooksearchbyingredients.IngedientTablayoutActivity;
 import com.github.jurassicspb.cookbooksearchbyingredients.Ingredient;
@@ -41,6 +40,7 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
     private Button searchClearButton;
     private GridviewImageTextAdapter gita;
     private IngredientDatabase ingrFavoritesDB;
+    private List<IngredientFavorites> ingredientFavorites;
 
     @Nullable
     @Override
@@ -59,21 +59,16 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
                 ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle("Выбрано" + ": " + SelectedIngredient.showCount());
             }
         }
+
+
         ingrFavoritesDB = new IngredientDatabase();
+        ingredientFavorites = ingrFavoritesDB.getAllIngrFavorites();
 
         gridview = (GridView) view.findViewById(R.id.gridview);
 
-        gita = new GridviewImageTextAdapter(getActivity(), getIngrbycategory());
-//        try {
+        gita = new GridviewImageTextAdapter(getActivity(), getIngrbycategory(), getAllIngrFavs());
 
         gridview.setAdapter(gita);
-
-//        } catch (NullPointerException e){
-//            Intent intent = new Intent(getActivity(),IngedientTablayoutActivity.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(intent);
-//            getActivity().finish();
-//        }
 
         searchEditText = (EditText) view.findViewById(R.id.search);
         searchClearButton = (Button) view.findViewById(R.id.search_button);
@@ -97,7 +92,6 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
         });
 
         searchClearButton.setOnClickListener(v -> searchEditText.setText(""));
-
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -125,15 +119,11 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
 //                                ingredients.get((int) id).getImage(), ingredients.get((int) id).getState()));
 //                        ingrFavoritesDB.copyOrUpdateIngrFavorites(newIngrFav);
 
-
-//                    if (SelectedIngredient.showCount()<15) {
-//                        SelectedIngredient.addCount();
                         SelectedIngredient.addSelectedIngredient(sel, image);
                         SelectedIngredient.showCount();
                         ingredients.get((int) id).setState(1);
                         gita.notifyDataSetChanged();
                     } else if (SelectedIngredient.showCount() == 15) {
-//                    } else if (SelectedIngredient.showCount() == 15) {
                         Toast toast = Toast.makeText(getActivity(), R.string.no_more_than_15, Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
@@ -151,9 +141,7 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
                     gita.notifyDataSetChanged();
                 }
                 ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(selectedToString + ": " + SelectedIngredient.showCount());
-//                ((IngedientTablayoutActivity)getActivity()).getSupportActionBar().setTitle(selectedToString+": " + SelectedIngredient.showCount());
                 if (SelectedIngredient.showCount() == 0) {
-//                if (SelectedIngredient.showCount()==0){
                     ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
                 }
             }
@@ -178,9 +166,7 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(IngredientFragment.class.getSimpleName(), "yesyesyes: " + SelectedIngredient.getSelectedIngredient().size());
         refreshIngredientState();
-
         if (SelectedIngredient.showCount() == 0) {
             ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
         } else {
@@ -188,18 +174,20 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
         }
     }
 
+    @Override
+    public void onDestroy() {
+        ingrFavoritesDB.close();
+        super.onDestroy();
+    }
+
     public void refreshIngredientState() {
         for (int i = 0; i < ingredients.size(); i++) {
             String sel = ingredients.get(i).getIngredient();
             int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
-            Log.d(IngredientFragment.class.getSimpleName(), "herehere: " + SelectedIngredient.getSelectedIngredient().size());
             if (ingredientPosition > -1) {
                 ingredients.get(i).setState(1);
-//                gita.notifyDataSetChanged();
             } else {
-                Log.d(IngredientFragment.class.getSimpleName(), "therethere: " + ingredients.get(i).getState());
                 ingredients.get(i).setState(0);
-//                gita.notifyDataSetChanged();
             }
         }
         gita.notifyDataSetChanged();
@@ -211,6 +199,10 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
 
     public List<Ingredient> getIngrbycategory() {
         return ingredients;
+    }
+
+    public List<IngredientFavorites> getAllIngrFavs() {
+        return ingredientFavorites;
     }
 
 }

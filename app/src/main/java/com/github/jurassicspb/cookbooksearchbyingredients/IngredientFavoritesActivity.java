@@ -11,8 +11,6 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -95,10 +93,8 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
             int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
             if (ingredientPosition > -1) {
                 ingrFavorites.get(i).setState(1);
-//                adapter.notifyDataSetChanged();
             } else {
                 ingrFavorites.get(i).setState(0);
-//                adapter.notifyDataSetChanged();
             }
         }
         adapter.notifyDataSetChanged();
