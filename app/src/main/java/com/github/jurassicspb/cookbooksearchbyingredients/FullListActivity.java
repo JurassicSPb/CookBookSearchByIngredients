@@ -22,12 +22,10 @@ import java.util.List;
  */
 
 public class FullListActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
     private FullListAdapter adapter;
     private IngredientDatabase recipeDB;
     private List<Recipe> recipes;
     private EditText searchEditText;
-    private Button searchClearButton;
 
     private OnListItemClickListener clickListener = new OnListItemClickListener() {
         @Override
@@ -68,7 +66,7 @@ public class FullListActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
         getSupportActionBar().setTitle(R.string.full_list);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new FullListAdapter(recipes, clickListener);
         recyclerView.setAdapter(adapter);
@@ -81,7 +79,7 @@ public class FullListActivity extends AppCompatActivity {
             return false;
         });
 
-        searchClearButton = (Button) findViewById(R.id.search_button);
+        Button searchClearButton = (Button) findViewById(R.id.search_button);
 
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override

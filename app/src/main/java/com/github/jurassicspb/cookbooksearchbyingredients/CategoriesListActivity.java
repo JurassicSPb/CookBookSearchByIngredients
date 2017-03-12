@@ -21,14 +21,10 @@ import java.util.List;
  * Created by Мария on 14.02.2017.
  */
 
-public class CategoriesListActivity extends AppCompatActivity{
-    private RecyclerView recyclerView;
+public class CategoriesListActivity extends AppCompatActivity {
     private CategoriesListAdapter adapter;
     private IngredientDatabase recipeDB;
-    private List<Recipe> recipes;
     private EditText searchEditText;
-    private Button searchClearButton;
-    private String getNames;
     private OnListItemClickListener clickListener = new OnListItemClickListener() {
         @Override
         public void onClick(View v, int position) {
@@ -49,6 +45,7 @@ public class CategoriesListActivity extends AppCompatActivity{
             startActivity(intent);
         }
     };
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +54,8 @@ public class CategoriesListActivity extends AppCompatActivity{
 
         recipeDB = new IngredientDatabase();
         Intent intent = getIntent();
-        getNames = intent.getStringExtra("name");
-        recipes = recipeDB.getRecipesByCategories(getNames);
+        String getNames = intent.getStringExtra("name");
+        List<Recipe> recipes = recipeDB.getRecipesByCategories(getNames);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
@@ -68,7 +65,7 @@ public class CategoriesListActivity extends AppCompatActivity{
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
         getSupportActionBar().setTitle(getNames);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new CategoriesListAdapter(recipes, clickListener);
         recyclerView.setAdapter(adapter);
@@ -81,7 +78,7 @@ public class CategoriesListActivity extends AppCompatActivity{
             return false;
         });
 
-        searchClearButton = (Button) findViewById(R.id.search_button);
+        Button searchClearButton = (Button) findViewById(R.id.search_button);
 
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override

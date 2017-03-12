@@ -17,8 +17,6 @@ import android.view.MenuItem;
  */
 
 public class IngredientDetailActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
-    private IngredientDetailAdapter adapter;
     private Intent intent;
 
     @Override
@@ -40,10 +38,10 @@ public class IngredientDetailActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
         getSupportActionBar().setTitle(R.string.selected);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new IngredientDetailAdapter();
+        IngredientDetailAdapter adapter = new IngredientDetailAdapter();
         recyclerView.setAdapter(adapter);
 
     }

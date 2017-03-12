@@ -21,10 +21,8 @@ import java.util.List;
  */
 
 public class RecipeListActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
     private RecipeListAdapter adapter;
     private IngredientDatabase recipeDB;
-    private List<Recipe> recipes;
     private OnListItemClickListener clickListener = new OnListItemClickListener() {
         @Override
         public void onClick(View v, int position) {
@@ -68,7 +66,7 @@ public class RecipeListActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
         getSupportActionBar().setTitle(R.string.recipe_list);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new RecipeListAdapter(performRecipes(), clickListener);
         recyclerView.setAdapter(adapter);
@@ -76,7 +74,7 @@ public class RecipeListActivity extends AppCompatActivity {
     }
 
     private List<Recipe> performRecipes() {
-        recipes = recipeDB.getRecipe(SelectedIngredient.getSelectedIngredient());
+        List<Recipe> recipes = recipeDB.getRecipe(SelectedIngredient.getSelectedIngredient());
         List<Recipe> newRecipes = recipeDB.copyFromRealmRecipe(recipes);
         int count;
         for (int i = 0; i < newRecipes.size(); i++) {

@@ -17,7 +17,6 @@ import java.util.List;
  */
 
 public class FavoritesActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
     private FavoritesAdapter adapter;
     private IngredientDatabase recipeDB;
     private List<Favorites> favorites;
@@ -57,7 +56,7 @@ public class FavoritesActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
         getSupportActionBar().setTitle(R.string.drawer_menu_favorites);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new FavoritesAdapter(favorites, clickListener);
         recyclerView.setAdapter(adapter);

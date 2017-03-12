@@ -34,9 +34,7 @@ import java.util.List;
 
 public class IngredientFragment extends Fragment implements FragmentInterface {
     private List<Ingredient> ingredients;
-    private GridView gridview;
     private EditText searchEditText;
-    private Button searchClearButton;
     private GridviewImageTextAdapter gita;
     private IngredientDatabase ingrFavoritesDB;
 
@@ -60,14 +58,14 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
 
         ingrFavoritesDB = new IngredientDatabase();
 
-        gridview = (GridView) view.findViewById(R.id.gridview);
+        GridView gridview = (GridView) view.findViewById(R.id.gridview);
 
         gita = new GridviewImageTextAdapter(getActivity(), getIngrbycategory());
 
         gridview.setAdapter(gita);
 
         searchEditText = (EditText) view.findViewById(R.id.search);
-        searchClearButton = (Button) view.findViewById(R.id.search_button);
+        Button searchClearButton = (Button) view.findViewById(R.id.search_button);
         searchClearButton.setTypeface(Typeface.SANS_SERIF);
 
         searchEditText.addTextChangedListener(new TextWatcher() {
@@ -161,12 +159,6 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
         }
     }
 
-    @Override
-    public void onDestroy() {
-        ingrFavoritesDB.close();
-        super.onDestroy();
-    }
-
     public void refreshIngredientState() {
         for (int i = 0; i < ingredients.size(); i++) {
             String sel = ingredients.get(i).getIngredient();
@@ -206,6 +198,12 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
 
     public List<Ingredient> getIngrbycategory() {
         return ingredients;
+    }
+
+    @Override
+    public void onDestroy() {
+        ingrFavoritesDB.close();
+        super.onDestroy();
     }
 
 }

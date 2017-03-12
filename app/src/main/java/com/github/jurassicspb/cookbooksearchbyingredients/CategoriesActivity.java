@@ -20,8 +20,6 @@ import java.util.List;
 public class CategoriesActivity extends AppCompatActivity{
     private IngredientDatabase categoriesDB;
     private List<Categories> categories;
-    private GridView gridview;
-    private CategoriesAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,7 +27,7 @@ public class CategoriesActivity extends AppCompatActivity{
 
         setContentView(R.layout.categories_gridview);
 
-        gridview = (GridView) findViewById(R.id.gridview);
+        GridView gridview = (GridView) findViewById(R.id.gridview);
 
         categoriesDB = new IngredientDatabase();
         performCategories();
@@ -42,7 +40,7 @@ public class CategoriesActivity extends AppCompatActivity{
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
         getSupportActionBar().setTitle(R.string.categories);
 
-        adapter = new CategoriesAdapter(this, categories);
+        CategoriesAdapter adapter = new CategoriesAdapter(this, categories);
         gridview.setAdapter(adapter);
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -21,7 +21,6 @@ import java.util.List;
 public class IngredientFavoritesActivity extends AppCompatActivity {
     private IngredientDatabase ingrFavoritesDB;
     private List<IngredientFavorites> ingrFavorites;
-    private GridView gridview;
     private IngredientFavoritesAdapter adapter;
 
     @Override
@@ -36,7 +35,7 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
             SelectedIngredient.setCount(savedInstanceState.getInt("count"));
         }
 
-        gridview = (GridView) findViewById(R.id.gridview);
+        GridView gridview = (GridView) findViewById(R.id.gridview);
 
         ingrFavoritesDB = new IngredientDatabase();
 
