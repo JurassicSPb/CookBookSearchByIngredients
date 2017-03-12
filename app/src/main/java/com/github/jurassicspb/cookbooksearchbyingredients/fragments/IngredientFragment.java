@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
@@ -40,7 +39,6 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
     private Button searchClearButton;
     private GridviewImageTextAdapter gita;
     private IngredientDatabase ingrFavoritesDB;
-    private List<IngredientFavorites> ingredientFavorites;
 
     @Nullable
     @Override
@@ -60,13 +58,11 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
             }
         }
 
-
         ingrFavoritesDB = new IngredientDatabase();
-        ingredientFavorites = ingrFavoritesDB.getAllIngrFavorites();
 
         gridview = (GridView) view.findViewById(R.id.gridview);
 
-        gita = new GridviewImageTextAdapter(getActivity(), getIngrbycategory(), getAllIngrFavs());
+        gita = new GridviewImageTextAdapter(getActivity(), getIngrbycategory());
 
         gridview.setAdapter(gita);
 
@@ -113,12 +109,6 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
 
                 if (ingredientPosition == -1) {
                     if (SelectedIngredient.showCount() < 15) {
-
-//                        ArrayList<IngredientFavorites> newIngrFav = new ArrayList<>();
-//                        newIngrFav.add(new IngredientFavorites(ingredients.get((int) id).getIngredient(),
-//                                ingredients.get((int) id).getImage(), ingredients.get((int) id).getState()));
-//                        ingrFavoritesDB.copyOrUpdateIngrFavorites(newIngrFav);
-
                         SelectedIngredient.addSelectedIngredient(sel, image);
                         SelectedIngredient.showCount();
                         ingredients.get((int) id).setState(1);
@@ -129,12 +119,7 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
                         toast.show();
                     }
                 }
-//                if (ingredientPosition>-1 &&  ingredients.get((int)id).getState()==1)
                 else {
-
-//                    ingrFavoritesDB.deleteIngrFavoritePosition(ingredients.get((int) id).getIngredient());
-
-//                    SelectedIngredient.removeCount();
                     SelectedIngredient.removeSelectedIngredient(sel, image);
                     SelectedIngredient.showCount();
                     ingredients.get((int) id).setState(0);
@@ -161,12 +146,14 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
     @Override
     public void fragmentBecameVisible() {
         refreshIngredientState();
+        refreshCheckboxState();
     }
 
     @Override
     public void onResume() {
         super.onResume();
         refreshIngredientState();
+        refreshCheckboxState();
         if (SelectedIngredient.showCount() == 0) {
             ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
         } else {
@@ -193,16 +180,30 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
         gita.notifyDataSetChanged();
     }
 
+    public void refreshCheckboxState(){
+        List<IngredientFavorites> ingredientFavorites = ingrFavoritesDB.getAllIngrFavorites();
+
+        for (int i=0; i<ingredients.size(); i++) {
+            for (int j=0; j<ingredientFavorites.size(); j++){
+                if (ingredients.get(i).getIngredient().equals(ingredientFavorites.get(j).getIngredient())) {
+                    ingredients.get(i).setCheckboxState(1);
+                    break;
+                }
+                else {
+                    ingredients.get(i).setCheckboxState(0);
+                }
+            }
+
+        }
+        gita.notifyDataSetChanged();
+    }
+
     public void setIngrbycategory(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 
     public List<Ingredient> getIngrbycategory() {
         return ingredients;
-    }
-
-    public List<IngredientFavorites> getAllIngrFavs() {
-        return ingredientFavorites;
     }
 
 }

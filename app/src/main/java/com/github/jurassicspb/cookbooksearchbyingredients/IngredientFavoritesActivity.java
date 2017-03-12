@@ -48,7 +48,7 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
-        getSupportActionBar().setTitle(R.string.categories);
+        getSupportActionBar().setTitle(R.string.drawer_menu_ingr_favorites);
 
         adapter = new IngredientFavoritesAdapter(this, ingrFavorites);
         gridview.setAdapter(adapter);
@@ -82,7 +82,7 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
     }
 
     private void performIngrFavorites() {
-        ingrFavorites = ingrFavoritesDB.getAllIngrFavorites();
+        ingrFavorites = ingrFavoritesDB.getAllIngrFavoritesSorted();
     }
 
     @Override

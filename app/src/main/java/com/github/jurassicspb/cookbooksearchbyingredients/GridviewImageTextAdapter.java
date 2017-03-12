@@ -3,8 +3,6 @@ package com.github.jurassicspb.cookbooksearchbyingredients;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +12,8 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,14 +27,12 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
     private Context mContext;
     private List<Ingredient> ingredientAdapter;
     private List<Ingredient> ingredientAdapterFiltered;
-    private List <IngredientFavorites> ingredientFavorites;
     private ValueFilter valueFilter;
 
-    public GridviewImageTextAdapter(Context c, List<Ingredient> ingredientAdapter, List<IngredientFavorites> ingredientFavorites) {
+    public GridviewImageTextAdapter(Context c, List<Ingredient> ingredientAdapter) {
         mContext = c;
         this.ingredientAdapter = ingredientAdapter;
         ingredientAdapterFiltered = ingredientAdapter;
-        this.ingredientFavorites = ingredientFavorites;
     }
 
     @Override
@@ -72,6 +69,7 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
+
         Ingredient object = ingredientAdapter.get(position);
 
         ViewHolder holder;
@@ -90,37 +88,34 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
         }
         holder.textView.setText(ingredientAdapter.get(position).getIngredient());
         holder.imageView.setImageResource(ingredientAdapter.get(position).getImage());
+
         if (object.getState()==1) {
             holder.textView.setTextColor(ContextCompat.getColor(mContext, R.color.tabLayoutTextColorSelected));
         } else {
             holder.textView.setTextColor(Color.WHITE);
         }
 
-        String sel = ingredientAdapter.get(position).getIngredient();
-
-//        Log.d(GridviewImageTextAdapter.class.getSimpleName(), "pukapuka " + sel);
-
-        for (int i=0; i<ingredientFavorites.size(); i++) {
-            int ingredientPosition = ingredientFavorites.get(i).getIngredient().indexOf(sel);
-
-//            Log.d(GridviewImageTextAdapter.class.getSimpleName(), "kakaka " + ingredientPosition);
-
-                if (ingredientPosition>-1){
-                    holder.checkBox.setChecked(true);
-                    break;
-                }
-                else {
-                    holder.checkBox.setChecked(false);
-                }
-            }
+        if (object.getCheckboxState()==1){
+            holder.checkBox.setChecked(true);
+        }
+        else {
+            holder.checkBox.setChecked(false);
+        }
 
         holder.checkBox.setOnClickListener(v -> {
-            final boolean isChecked = holder.checkBox.isChecked();
-            if (isChecked){
-
+            IngredientDatabase ingrFavoritesDB = new IngredientDatabase();
+            if(object.getCheckboxState()==0){
+                ArrayList<IngredientFavorites> newIngrFav = new ArrayList<>();
+                newIngrFav.add(new IngredientFavorites(ingredientAdapter.get(position).getIngredient(),
+                        ingredientAdapter.get(position).getImage(), ingredientAdapter.get(position).getState()));
+                ingrFavoritesDB.copyOrUpdateIngrFavorites(newIngrFav);
+                ingrFavoritesDB.close();
+                object.setCheckboxState(1);
             }
             else{
-
+                ingrFavoritesDB.deleteIngrFavoritePosition(ingredientAdapter.get(position).getIngredient());
+                ingrFavoritesDB.close();
+                object.setCheckboxState(0);
             }
             notifyDataSetChanged();
         });

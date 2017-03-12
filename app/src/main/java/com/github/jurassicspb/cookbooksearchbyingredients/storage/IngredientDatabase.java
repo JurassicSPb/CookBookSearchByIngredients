@@ -54,7 +54,15 @@ public class IngredientDatabase {
         realm.commitTransaction();
     }
 
-    public List<IngredientFavorites>getAllIngrFavorites(){
+    public List<IngredientFavorites> getAllIngrFavorites(){
+        realm.beginTransaction();
+        RealmResults <IngredientFavorites> results = realm.where(IngredientFavorites.class).findAll();
+        List<IngredientFavorites> newIngrFav = realm.copyFromRealm(results);
+        realm.commitTransaction();
+        return newIngrFav;
+    }
+
+    public List<IngredientFavorites> getAllIngrFavoritesSorted(){
         realm.beginTransaction();
         RealmResults <IngredientFavorites> results = realm.where(IngredientFavorites.class).findAllSorted("ingredient", Sort.ASCENDING);
         List<IngredientFavorites> newIngrFav = realm.copyFromRealm(results);
