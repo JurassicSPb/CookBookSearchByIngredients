@@ -16,7 +16,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:focusable="false"
-        android:focusableInTouchMode="false"/>
+        android:focusableInTouchMode="false"
+        android:button="@drawable/checkbox_selector"
+        android:scaleX="0.80"
+        android:scaleY="0.80"/>
 
     <TextView
         android:id="@+id/textpart"

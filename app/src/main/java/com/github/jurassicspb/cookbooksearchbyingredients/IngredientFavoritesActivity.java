@@ -42,7 +42,6 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
 
         performIngrFavorites();
 
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
         setSupportActionBar(toolbar);
@@ -89,7 +88,6 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         refreshState();
-        refreshCheckboxState();
     }
 
     public void refreshState() {
@@ -101,15 +99,6 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
             } else {
                 ingrFavorites.get(i).setState(0);
             }
-        }
-        adapter.notifyDataSetChanged();
-    }
-
-    public void refreshCheckboxState() {
-        List<IngredientFavorites> ingredientFavorites = ingrFavoritesDB.getAllIngrFavorites();
-
-        for (int i = 0; i < ingredientFavorites.size(); i++) {
-            ingredientFavorites.get(i).setCheckboxState(1);
         }
         adapter.notifyDataSetChanged();
     }

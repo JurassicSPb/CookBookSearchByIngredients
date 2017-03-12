@@ -74,26 +74,19 @@ public class IngredientFavoritesAdapter extends BaseAdapter {
         holder.textView.setText(ingrFavoritesAdapter.get(position).getIngredient());
         holder.imageView.setImageResource(ingrFavoritesAdapter.get(position).getImage());
 
-        if (object.getState()==1) {
+        if (object.getState() == 1) {
             holder.textView.setTextColor(ContextCompat.getColor(mContext, R.color.tabLayoutTextColorSelected));
         } else {
             holder.textView.setTextColor(Color.WHITE);
         }
 
-        if (object.getCheckboxState()==1){
-            holder.checkBox.setChecked(true);
-        }
-        else {
-            holder.checkBox.setChecked(false);
-        }
+        holder.checkBox.setChecked(true);
 
         holder.checkBox.setOnClickListener(v -> {
             IngredientDatabase ingrFavoritesDB = new IngredientDatabase();
-            if(object.getCheckboxState()==1){
-                ingrFavoritesDB.deleteIngrFavoritePosition(ingrFavoritesAdapter.get(position).getIngredient());
-                ingrFavoritesDB.close();
-                object.setCheckboxState(0);
-            }
+            ingrFavoritesDB.deleteIngrFavoritePosition(ingrFavoritesAdapter.get(position).getIngredient());
+            ingrFavoritesAdapter.remove(ingrFavoritesAdapter.get(position));
+            ingrFavoritesDB.close();
             notifyDataSetChanged();
         });
 
