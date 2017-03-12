@@ -182,18 +182,20 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
 
     public void refreshCheckboxState(){
         List<IngredientFavorites> ingredientFavorites = ingrFavoritesDB.getAllIngrFavorites();
-
         for (int i=0; i<ingredients.size(); i++) {
-            for (int j=0; j<ingredientFavorites.size(); j++){
-                if (ingredients.get(i).getIngredient().equals(ingredientFavorites.get(j).getIngredient())) {
-                    ingredients.get(i).setCheckboxState(1);
-                    break;
+            if (ingredientFavorites.size() == 0) {
+                ingredients.get(i).setCheckboxState(0);
+            } else {
+                for (int j = 0; j < ingredientFavorites.size(); j++) {
+                    if (ingredients.get(i).getIngredient().equals(ingredientFavorites.get(j).getIngredient())) {
+                        ingredients.get(i).setCheckboxState(1);
+                        break;
+                    } else {
+                        ingredients.get(i).setCheckboxState(0);
+                    }
                 }
-                else {
-                    ingredients.get(i).setCheckboxState(0);
-                }
-            }
 
+            }
         }
         gita.notifyDataSetChanged();
     }

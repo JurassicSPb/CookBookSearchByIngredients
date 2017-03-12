@@ -7,9 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,6 +50,7 @@ public class IngredientFavoritesAdapter extends BaseAdapter {
     public class ViewHolder {
         TextView textView;
         ImageView imageView;
+        CheckBox checkBox;
     }
 
     @Override
@@ -61,6 +66,7 @@ public class IngredientFavoritesAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.cell_ingr_favorites, null);
             holder.textView = (TextView) convertView.findViewById(R.id.textpart);
             holder.imageView = (ImageView) convertView.findViewById(R.id.imagepart);
+            holder.checkBox = (CheckBox) convertView.findViewById(R.id.checkbox);
             convertView.setTag(holder);
         } else {
             holder = (IngredientFavoritesAdapter.ViewHolder) convertView.getTag();
@@ -73,6 +79,24 @@ public class IngredientFavoritesAdapter extends BaseAdapter {
         } else {
             holder.textView.setTextColor(Color.WHITE);
         }
+
+        if (object.getCheckboxState()==1){
+            holder.checkBox.setChecked(true);
+        }
+        else {
+            holder.checkBox.setChecked(false);
+        }
+
+        holder.checkBox.setOnClickListener(v -> {
+            IngredientDatabase ingrFavoritesDB = new IngredientDatabase();
+            if(object.getCheckboxState()==1){
+                ingrFavoritesDB.deleteIngrFavoritePosition(ingrFavoritesAdapter.get(position).getIngredient());
+                ingrFavoritesDB.close();
+                object.setCheckboxState(0);
+            }
+            notifyDataSetChanged();
+        });
+
         return convertView;
     }
 }

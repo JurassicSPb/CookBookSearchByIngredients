@@ -11,6 +11,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
+
 import java.util.List;
 
 /**
@@ -66,7 +67,6 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
                     if (SelectedIngredient.showCount() < 15) {
                         SelectedIngredient.addSelectedIngredient(sel, image);
                         ingrFavorites.get((int) id).setState(1);
-                        adapter.notifyDataSetChanged();
                     } else if (SelectedIngredient.showCount() == 15) {
                         Toast toast = Toast.makeText(getApplication(), R.string.no_more_than_15, Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
@@ -75,8 +75,8 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
                 } else {
                     SelectedIngredient.removeSelectedIngredient(sel, image);
                     ingrFavorites.get((int) id).setState(0);
-                    adapter.notifyDataSetChanged();
                 }
+                adapter.notifyDataSetChanged();
             }
         });
     }
@@ -88,6 +88,11 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        refreshState();
+        refreshCheckboxState();
+    }
+
+    public void refreshState() {
         for (int i = 0; i < ingrFavorites.size(); i++) {
             String sel = ingrFavorites.get(i).getIngredient();
             int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
@@ -96,6 +101,15 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
             } else {
                 ingrFavorites.get(i).setState(0);
             }
+        }
+        adapter.notifyDataSetChanged();
+    }
+
+    public void refreshCheckboxState() {
+        List<IngredientFavorites> ingredientFavorites = ingrFavoritesDB.getAllIngrFavorites();
+
+        for (int i = 0; i < ingredientFavorites.size(); i++) {
+            ingredientFavorites.get(i).setCheckboxState(1);
         }
         adapter.notifyDataSetChanged();
     }

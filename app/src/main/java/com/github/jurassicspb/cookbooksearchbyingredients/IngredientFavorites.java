@@ -12,13 +12,15 @@ public class IngredientFavorites extends RealmObject{
     private String ingredient;
     private int image;
     private int state;
+    private int checkboxState;
 
     public IngredientFavorites(){}
 
-    public IngredientFavorites(String ingredient, int image, int state) {
+    public IngredientFavorites(String ingredient, int image, int state, int checkboxState) {
         this.ingredient = ingredient;
         this.image = image;
         this.state = state;
+        this.checkboxState=checkboxState;
     }
 
     public String getIngredient() {
@@ -43,5 +45,13 @@ public class IngredientFavorites extends RealmObject{
 
     public void setState(int state) {
         this.state = state;
+    }
+
+    public void setCheckboxState(int checkboxState) {
+        this.checkboxState = checkboxState;
+    }
+
+    public int getCheckboxState() {
+        return checkboxState;
     }
 }

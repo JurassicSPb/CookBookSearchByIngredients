@@ -107,7 +107,8 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
             if(object.getCheckboxState()==0){
                 ArrayList<IngredientFavorites> newIngrFav = new ArrayList<>();
                 newIngrFav.add(new IngredientFavorites(ingredientAdapter.get(position).getIngredient(),
-                        ingredientAdapter.get(position).getImage(), ingredientAdapter.get(position).getState()));
+                        ingredientAdapter.get(position).getImage(), ingredientAdapter.get(position).getState(),
+                        ingredientAdapter.get(position).getCheckboxState()));
                 ingrFavoritesDB.copyOrUpdateIngrFavorites(newIngrFav);
                 ingrFavoritesDB.close();
                 object.setCheckboxState(1);
