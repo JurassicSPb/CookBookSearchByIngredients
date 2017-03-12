@@ -11,7 +11,6 @@ import android.view.View;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -89,8 +88,6 @@ public class RecipeListActivity extends AppCompatActivity {
             }
             newRecipes.get(i).setCount(String.valueOf(count));
         }
-//        Comparator<Recipe> compare = (name1, name2) -> name2.getCount().compareTo(name1.getCount());
-//        Collections.sort(newRecipes, compare);
         Collections.sort(newRecipes, sortByCountAndCategory());
         return newRecipes;
     }

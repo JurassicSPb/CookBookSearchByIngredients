@@ -27,7 +27,7 @@ public class IngredientDetailActivity extends AppCompatActivity {
 
         setContentView(R.layout.ingredientdetail_recyclerview);
 
-        if (savedInstanceState!=null) {
+        if (savedInstanceState != null) {
             SelectedIngredient.copyAllIngr(savedInstanceState.getStringArrayList("ingr"));
             SelectedIngredient.copyAllImage(savedInstanceState.getStringArrayList("image"));
         }
@@ -42,16 +42,10 @@ public class IngredientDetailActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        if (SelectedIngredient.getSelectedIngredient().size()==0){
-//            intent = new Intent(this,IngedientTablayoutActivity.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(intent);
-//            finish();
-//        }
-//        else {
-            adapter = new IngredientDetailAdapter();
-            recyclerView.setAdapter(adapter);
-//        }
+
+        adapter = new IngredientDetailAdapter();
+        recyclerView.setAdapter(adapter);
+
     }
 
     @Override
@@ -64,10 +58,10 @@ public class IngredientDetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        intent = new Intent(this,ProgressBarActivity.class);
+        intent = new Intent(this, ProgressBarActivity.class);
         startActivity(intent);
         new Handler().postDelayed(() -> {
-            intent = new Intent(this,RecipeListActivity.class);
+            intent = new Intent(this, RecipeListActivity.class);
             startActivity(intent);
         }, 600);
         return super.onOptionsItemSelected(item);

@@ -43,7 +43,6 @@ public class CategoriesListAdapter extends RecyclerView.Adapter<CategoriesListAd
 
     @Override
     public void onBindViewHolder(CategoriesListAdapter.ViewHolder holder, int position) {
-//         Context cont =  holder.recipeName.getContext();
 
         String url = recipes.get(position).getImage();
         Context context = holder.photoSmall.getContext();

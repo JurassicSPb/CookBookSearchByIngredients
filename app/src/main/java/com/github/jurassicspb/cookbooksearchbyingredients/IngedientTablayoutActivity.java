@@ -16,7 +16,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -61,7 +60,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         SelectedIngredient.getSelectedImage().clear();
         SelectedIngredient.resetCount();
 
-        Log.d(IngedientTablayoutActivity.class.getSimpleName(), "activeact");
         setContentView(R.layout.tablayout_with_viewpager);
 
         preferences = new MyPreferences(this);
@@ -166,11 +164,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             }
         });
         tabLayout.setupWithViewPager(pager);
-
-//        tabLayout.setTabTextColors( лишнее - есть в XML
-//                ContextCompat.getColor(this, R.color.tabLayoutTextColorUnselected),
-//                ContextCompat.getColor(this, R.color.tabLayoutTextColorSelected)
-//        );
     }
 
     @Override
@@ -178,16 +171,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         super.onSaveInstanceState(outState, outPersistentState);
         outState.putParcelableArrayList("ingredientList", (ArrayList) ingredients);
     }
-    //    public void customTabs(){
-//        for (int i=0; i<categoryTables.size(); i++) {
-//            TextView tabI = new TextView(this);
-////            tabI.setTextColor(getResources().getColor(R.color.tabLayoutTextColor));
-//            tabI.setText(categoryTables.get(i).getName());
-//            tabI.setTypeface(Typeface.SANS_SERIF);
-//            tabI.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.tabLayout_textsize));
-//            tabLayout.getTabAt(i).setCustomView(tabI);
-//        }
-//    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

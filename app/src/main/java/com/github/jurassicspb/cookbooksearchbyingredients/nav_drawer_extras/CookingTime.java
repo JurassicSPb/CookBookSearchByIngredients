@@ -167,14 +167,7 @@ public class CookingTime extends AppCompatActivity {
         createOtherTitle();
         createOtherBody();
     }
-//    @Override
-//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-//        super.onRestoreInstanceState(savedInstanceState);
-//        Intent intent = new Intent(this, IngedientTablayoutActivity.class);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        startActivity(intent);
-//        finish();
-//    }
+
     public void createPorridgeTitle() {
         int marginTitle = getResources().getDimensionPixelSize(R.dimen.margin_cooking_time_title);
         int marginBody = getResources().getDimensionPixelSize(R.dimen.margin_cooking_time_body);

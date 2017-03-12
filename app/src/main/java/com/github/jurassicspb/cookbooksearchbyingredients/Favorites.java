@@ -43,7 +43,6 @@ public class Favorites extends RealmObject{
         return image;
     }
 
-
     public String getCalories() {
         return calories;
     }
@@ -71,6 +70,7 @@ public class Favorites extends RealmObject{
     public String getCategory() {
         return category;
     }
+
     public void setCategory(String category) {
         this.category = category;
     }
