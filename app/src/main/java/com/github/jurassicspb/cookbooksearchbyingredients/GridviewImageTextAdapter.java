@@ -3,6 +3,7 @@ package com.github.jurassicspb.cookbooksearchbyingredients;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 
@@ -112,11 +114,17 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
                 ingrFavoritesDB.copyOrUpdateIngrFavorites(newIngrFav);
                 ingrFavoritesDB.close();
                 object.setCheckboxState(1);
+                Toast toast = Toast.makeText(v.getContext(), R.string.checkbox_add, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
             }
             else{
                 ingrFavoritesDB.deleteIngrFavoritePosition(ingredientAdapter.get(position).getIngredient());
                 ingrFavoritesDB.close();
                 object.setCheckboxState(0);
+                Toast toast = Toast.makeText(v.getContext(), R.string.checkbox_remove, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
             }
             notifyDataSetChanged();
         });

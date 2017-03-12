@@ -22,6 +22,8 @@
     <string name="cooking_time">Время готовки</string>
     <string name="category">Категория:</string>
     <string name="categories">Категории</string>
+    <string name="checkbox_add">Добавлено в Избранные ингредиенты</string>
+    <string name="checkbox_remove">Удалено из Избранных ингредиентов</string>
 
     <!--Таблица мер и весов -->
 

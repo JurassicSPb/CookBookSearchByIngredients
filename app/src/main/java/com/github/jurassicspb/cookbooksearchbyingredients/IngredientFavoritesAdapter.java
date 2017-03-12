@@ -3,6 +3,7 @@ package com.github.jurassicspb.cookbooksearchbyingredients;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +11,10 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -88,6 +89,9 @@ public class IngredientFavoritesAdapter extends BaseAdapter {
             ingrFavoritesAdapter.remove(ingrFavoritesAdapter.get(position));
             ingrFavoritesDB.close();
             notifyDataSetChanged();
+            Toast toast = Toast.makeText(v.getContext(), R.string.checkbox_remove, Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
         });
 
         return convertView;
