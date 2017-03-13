@@ -116,8 +116,7 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                     }
-                }
-                else {
+                } else {
                     SelectedIngredient.removeSelectedIngredient(sel, image);
                     SelectedIngredient.showCount();
                     ingredients.get((int) id).setState(0);
@@ -172,9 +171,9 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
         gita.notifyDataSetChanged();
     }
 
-    public void refreshCheckboxState(){
+    public void refreshCheckboxState() {
         List<IngredientFavorites> ingredientFavorites = ingrFavoritesDB.getAllIngrFavorites();
-        for (int i=0; i<ingredients.size(); i++) {
+        for (int i = 0; i < ingredients.size(); i++) {
             if (ingredientFavorites.size() == 0) {
                 ingredients.get(i).setCheckboxState(0);
             } else {

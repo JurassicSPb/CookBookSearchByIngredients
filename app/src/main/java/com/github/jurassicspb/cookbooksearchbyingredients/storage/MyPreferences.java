@@ -9,7 +9,7 @@ import android.content.SharedPreferences;
 
 public class MyPreferences {
     private static final String KEY_REALM_FLAG = "key_realm_flag";
-    private static final String KEY_REALM_FLAG_RECIPES = "key_realm_flag_recipes";
+    private static final String KEY_FLAG_ALERT = "key_flag_alert";
 
     private SharedPreferences preferences;
 
@@ -22,9 +22,9 @@ public class MyPreferences {
                 .putBoolean(KEY_REALM_FLAG, flag)
                 .apply();
     }
-    public void setFlagRecipe(boolean flag) {
+    public void setFlagAlert(boolean flag) {
         preferences.edit()
-                .putBoolean(KEY_REALM_FLAG_RECIPES, flag)
+                .putBoolean(KEY_FLAG_ALERT, flag)
                 .apply();
     }
 
@@ -32,8 +32,8 @@ public class MyPreferences {
         return preferences.getBoolean(KEY_REALM_FLAG, true);
     }
 
-    public boolean getFlagRecipes() {
-        return preferences.getBoolean(KEY_REALM_FLAG_RECIPES, true);
+    public boolean getFlagAlert() {
+        return preferences.getBoolean(KEY_FLAG_ALERT, true);
     }
 
 
