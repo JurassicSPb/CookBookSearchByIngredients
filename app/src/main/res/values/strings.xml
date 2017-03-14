@@ -27,7 +27,7 @@
     <string name="alert_1">Вы можете прокручивать категории быстрее, проводя пальцем по верхним вкладкам</string>
     <string name="alert_2">Нажимайте на ингредиенты, подтвердите выбор галочкой в правом верхнем углу</string>
     <string name="alert_3">Слева открывается меню с дополнительными возможностями</string>
-    <string name="alert_4">При следующем запуске показывать подсказки?</string>
+    <string name="alert_4">Показывать подсказки при следующем запуске?</string>
     <string name="alert_button_yes">Показывать</string>
     <string name="alert_button_no">Не показывать</string>
 

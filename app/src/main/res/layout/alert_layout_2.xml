@@ -50,6 +50,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:gravity="center"
+        android:padding="6dp"
         android:text="@string/alert_2"
         android:textColor="@color/Black"
         android:textSize="18sp" />
