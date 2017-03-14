@@ -60,4 +60,8 @@
         <item name="android:textSize">21sp</item>
     </style>
 
+    <style name="custom_dialog_theme">
+        <item name="android:windowBackground">@color/dialog_background_color</item>
+    </style>
+
 </resources>

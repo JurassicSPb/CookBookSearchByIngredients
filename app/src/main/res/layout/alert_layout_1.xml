@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/alert_window"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="160dp"
+        android:alpha="0.92"
+        android:scaleType="fitXY"
+        android:src="@drawable/alert_window" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="82dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="78dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/arrow_up_medium" />
+
+    <Button
+        android:id="@+id/close_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="123dp"
+        android:layout_marginTop="142dp"
+        android:alpha="0.92"
+        android:background="@drawable/close_setting_btn" />
+
+    <TextView
+        android:id="@+id/alert_message"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="160dp"
+        android:gravity="center"
+        android:text="@string/alert_1"
+        android:textColor="@color/Black"
+        android:textSize="18sp" />
+
+</FrameLayout>

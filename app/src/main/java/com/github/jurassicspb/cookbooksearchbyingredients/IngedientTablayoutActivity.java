@@ -13,7 +13,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -24,6 +23,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.jurassicspb.cookbooksearchbyingredients.custom_dialogs.CustomDialog1;
 import com.github.jurassicspb.cookbooksearchbyingredients.fragments.FragmentInterface;
 import com.github.jurassicspb.cookbooksearchbyingredients.fragments.IngredientFragment;
 import com.github.jurassicspb.cookbooksearchbyingredients.nav_drawer_extras.CookingTime;
@@ -50,7 +50,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     private List<CategoryTable> categoryTables;
     private DrawerLayout drawer;
     private Intent intent;
-    private MyPreferences preferences;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,7 +61,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         setContentView(R.layout.tablayout_with_viewpager);
 
-        preferences = new MyPreferences(this);
+        MyPreferences preferences = new MyPreferences(this);
 //                preferences.clearPrefs();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -163,6 +162,12 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             }
         });
         tabLayout.setupWithViewPager(pager);
+
+
+//        if (preferences.getFlagAlert()) {
+        new CustomDialog1(this).show();
+//            preferences.setFlagAlert(false);
+//        }
     }
 
     @Override
@@ -499,23 +504,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             e.printStackTrace();
         }
         ingredientDB.copyOrUpdateRecipe(newRecipe);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        if (preferences.getFlagAlert()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Важное сообщение!")
-                    .setMessage("Привет!")
-                    .setCancelable(false)
-                    .setPositiveButton("ОК",
-            (dialog, id) -> dialog.cancel())
-                    .setNegativeButton("Больше не показывать",
-                            (dialog, id) -> preferences.setFlagAlert(false));
-            AlertDialog alert = builder.create();
-            alert.show();
-        }
     }
 
     @Override
