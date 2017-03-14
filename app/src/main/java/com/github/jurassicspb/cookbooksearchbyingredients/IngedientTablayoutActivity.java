@@ -164,10 +164,9 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         tabLayout.setupWithViewPager(pager);
 
 
-//        if (preferences.getFlagAlert()) {
-        new CustomDialog1(this).show();
-//            preferences.setFlagAlert(false);
-//        }
+        if (preferences.getFlagAlert()) {
+            new CustomDialog1(this).show();
+        }
     }
 
     @Override

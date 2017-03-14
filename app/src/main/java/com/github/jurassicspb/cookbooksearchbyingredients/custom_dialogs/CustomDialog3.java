@@ -12,11 +12,12 @@ import com.github.jurassicspb.cookbooksearchbyingredients.R;
  * Created by Мария on 14.03.2017.
  */
 
-public class CustomDialog2 extends Dialog {
-    Button btnClose;
-    Activity activity;
+public class CustomDialog3 extends Dialog {
+    private Button btnClose;
+    private Activity activity;
 
-    public CustomDialog2(Activity a) {
+
+    public CustomDialog3(Activity a) {
         super(a, R.style.custom_dialog_theme);
         activity = a;
     }
@@ -27,14 +28,14 @@ public class CustomDialog2 extends Dialog {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        setContentView(R.layout.alert_layout_2);
+        setContentView(R.layout.alert_layout_3);
 
         setCancelable(false);
 
         btnClose = (Button) findViewById(R.id.close_button);
         btnClose.setOnClickListener(v -> {
             dismiss();
-            new CustomDialog3(activity).show();
+            new CustomDialog4(activity).show();
         });
     }
 }

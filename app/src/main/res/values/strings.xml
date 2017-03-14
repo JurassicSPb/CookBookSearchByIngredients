@@ -24,8 +24,13 @@
     <string name="categories">Категории</string>
     <string name="checkbox_add">Добавлено в Избранные ингредиенты</string>
     <string name="checkbox_remove">Удалено из Избранных ингредиентов</string>
-    <string name="alert_1">Подсказка: вы можете прокручивать категории быстрее, проводя пальцем по верхним вкладкам</string>
-    <string name="alert_2">Подсказка: нажимайте на ингредиенты, подтвердите выбор галочкой в правом верхнем углу </string>
+    <string name="alert_1">Вы можете прокручивать категории быстрее, проводя пальцем по верхним вкладкам</string>
+    <string name="alert_2">Нажимайте на ингредиенты, подтвердите выбор галочкой в правом верхнем углу</string>
+    <string name="alert_3">Слева открывается меню с дополнительными возможностями</string>
+    <string name="alert_4">При следующем запуске показывать подсказки?</string>
+    <string name="alert_button_yes">Показывать</string>
+    <string name="alert_button_no">Не показывать</string>
+
 
     <!--Таблица мер и весов -->
 
