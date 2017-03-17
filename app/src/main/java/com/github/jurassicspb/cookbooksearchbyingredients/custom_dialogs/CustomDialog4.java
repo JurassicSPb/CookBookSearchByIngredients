@@ -38,4 +38,11 @@ public class CustomDialog4 extends Dialog{
             new CustomDialog5(activity).show();
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        dismiss();
+        new CustomDialog5(activity).show();
+    }
 }

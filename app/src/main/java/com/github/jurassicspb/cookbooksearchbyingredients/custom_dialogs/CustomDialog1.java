@@ -40,4 +40,10 @@ public class CustomDialog1 extends Dialog {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        dismiss();
+        new CustomDialog2(activity).show();
+    }
 }

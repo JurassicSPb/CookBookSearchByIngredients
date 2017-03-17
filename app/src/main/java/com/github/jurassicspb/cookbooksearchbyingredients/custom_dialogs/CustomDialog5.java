@@ -45,4 +45,10 @@ public class CustomDialog5 extends Dialog {
             dismiss();
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        dismiss();
+    }
 }

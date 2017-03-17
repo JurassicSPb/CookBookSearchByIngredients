@@ -37,4 +37,11 @@ public class CustomDialog2 extends Dialog {
             new CustomDialog3(activity).show();
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        dismiss();
+        new CustomDialog3(activity).show();
+    }
 }
