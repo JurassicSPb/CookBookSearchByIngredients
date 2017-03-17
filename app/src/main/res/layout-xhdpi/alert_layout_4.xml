@@ -5,7 +5,7 @@
 
     <ImageView
         android:id="@+id/alert_window"
-        android:layout_width="300dp"
+        android:layout_width="250dp"
         android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="120dp"
@@ -14,38 +14,22 @@
         android:src="@drawable/alert_window" />
 
     <Button
-        android:id="@+id/choice_button_yes"
-        android:layout_width="145dp"
+        android:id="@+id/close_button"
+        android:layout_width="40dp"
         android:layout_height="40dp"
-        android:textSize="14sp"
-        android:textColor="@color/Black"
-        android:text="@string/alert_button_yes"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="230dp"
-        android:layout_marginRight="75dp"
+        android:layout_marginLeft="123dp"
+        android:layout_marginTop="102dp"
         android:alpha="0.92"
-        android:background="@drawable/alert_window"/>
-
-    <Button
-        android:id="@+id/choice_button_no"
-        android:layout_width="145dp"
-        android:layout_height="40dp"
-        android:textSize="14sp"
-        android:textColor="@color/Black"
-        android:text="@string/alert_button_no"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="230dp"
-        android:layout_marginLeft="75dp"
-        android:alpha="0.92"
-        android:background="@drawable/alert_window"/>
+        android:background="@drawable/close_setting_btn" />
 
     <TextView
         android:id="@+id/alert_message"
-        android:layout_width="300dp"
+        android:layout_width="250dp"
         android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="120dp"
-        android:paddingBottom="20dp"
+        android:padding="6dp"
         android:gravity="center"
         android:text="@string/alert_4"
         android:textColor="@color/Black"

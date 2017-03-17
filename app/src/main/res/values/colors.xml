@@ -19,8 +19,6 @@
     <color name="favIngrCheckbox">#6eff0000</color>
     <color name="dialog_background_color">#79000000</color>
 
-    <!--<color name="progressBarBackground">#FFD54F</color>-->
-
     <!--Weights and measures-->
     <color name="tabDivider">#FFFFFF</color>
     <color name="tabFirstRow">#FFAB91</color>

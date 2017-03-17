@@ -110,8 +110,8 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         }
 
         ingredientDB = new IngredientDatabase();
-//            delete();
-//            deleteRecipe();
+//            deleteIngredients();
+//            deleteRecipes();
 
         if (preferences.getFlag()) {
 //            if (Locale.getDefault().getLanguage().equals("ru")) {
@@ -464,12 +464,12 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         categoryTables = ingredientDB.getAllCategoryTables();
     }
 
-    public void delete() {
+    public void deleteIngredients() {
         ArrayList<Ingredient> newIngredient = new ArrayList<>();
         ingredientDB.delete(newIngredient);
     }
 
-    public void deleteRecipe() {
+    public void deleteRecipes() {
         ArrayList<Recipe> newRecipe = new ArrayList<>();
         ingredientDB.deleteRecipes(newRecipe);
     }

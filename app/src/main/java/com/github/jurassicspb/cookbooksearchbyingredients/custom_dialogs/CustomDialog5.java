@@ -7,17 +7,19 @@ import android.view.Window;
 import android.widget.Button;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
+import com.github.jurassicspb.cookbooksearchbyingredients.storage.MyPreferences;
 
 /**
- * Created by Мария on 17.03.2017.
+ * Created by Мария on 14.03.2017.
  */
 
-public class CustomDialog4 extends Dialog{
-    private Button btnClose;
+public class CustomDialog5 extends Dialog {
+    private Button btnYes;
+    private Button btnNo;
     private Activity activity;
 
 
-    public CustomDialog4 (Activity a) {
+    public CustomDialog5(Activity a) {
         super(a, R.style.custom_dialog_theme);
         activity = a;
     }
@@ -26,16 +28,21 @@ public class CustomDialog4 extends Dialog{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        MyPreferences preferences = new MyPreferences(activity);
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        setContentView(R.layout.alert_layout_4);
+        setContentView(R.layout.alert_layout_5);
 
         setCancelable(false);
 
-        btnClose = (Button) findViewById(R.id.close_button);
-        btnClose.setOnClickListener(v -> {
+        btnYes = (Button) findViewById(R.id.choice_button_yes);
+        btnYes.setOnClickListener(v -> dismiss());
+
+        btnNo = (Button) findViewById(R.id.choice_button_no);
+        btnNo.setOnClickListener(v -> {
+            preferences.setFlagAlert(false);
             dismiss();
-            new CustomDialog5(activity).show();
         });
     }
 }
