@@ -56,7 +56,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         SelectedIngredient.getSelectedIngredient().clear();
         SelectedIngredient.getSelectedImage().clear();
-        SelectedIngredient.resetCount();
+//        SelectedIngredient.resetCount();
 
         setContentView(R.layout.tablayout_with_viewpager);
 

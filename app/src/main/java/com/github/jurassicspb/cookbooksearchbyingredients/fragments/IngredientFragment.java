@@ -47,7 +47,7 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
         if (savedInstanceState != null) {
             SelectedIngredient.copyAllIngr(savedInstanceState.getStringArrayList("ingr"));
             SelectedIngredient.copyAllImage(savedInstanceState.getStringArrayList("image"));
-            SelectedIngredient.setCount(savedInstanceState.getInt("count"));
+//            SelectedIngredient.setCount(savedInstanceState.getInt("count"));
             ingredients = savedInstanceState.getParcelableArrayList("ingredients");
             if (SelectedIngredient.showCount() == 0) {
                 ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
@@ -135,7 +135,7 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
         super.onSaveInstanceState(outState);
         outState.putStringArrayList("ingr", SelectedIngredient.getSelectedIngredient());
         outState.putStringArrayList("image", SelectedIngredient.getSelectedImage());
-        outState.putInt("count", SelectedIngredient.showCount());
+//        outState.putInt("count", SelectedIngredient.showCount());
         outState.putParcelableArrayList("ingredients", new ArrayList<>(ingredients));
     }
 

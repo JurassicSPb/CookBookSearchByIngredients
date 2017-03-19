@@ -26,7 +26,7 @@ public class ProgressBarActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        new Handler().postDelayed(this::finish, 1000);
+        new Handler().postDelayed(this::finish, 800);
     }
 
     @Override

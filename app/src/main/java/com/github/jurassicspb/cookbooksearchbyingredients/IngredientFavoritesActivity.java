@@ -39,7 +39,7 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             SelectedIngredient.copyAllIngr(savedInstanceState.getStringArrayList("ingr"));
             SelectedIngredient.copyAllImage(savedInstanceState.getStringArrayList("image"));
-            SelectedIngredient.setCount(savedInstanceState.getInt("count"));
+//            SelectedIngredient.setCount(savedInstanceState.getInt("count"));
             if (SelectedIngredient.showCount() == 0) {
                 getSupportActionBar().setTitle(R.string.drawer_menu_ingr_favorites);
             } else {
@@ -123,7 +123,7 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putStringArrayList("ingr", SelectedIngredient.getSelectedIngredient());
         outState.putStringArrayList("image", SelectedIngredient.getSelectedImage());
-        outState.putInt("count", SelectedIngredient.showCount());
+//        outState.putInt("count", SelectedIngredient.showCount());
     }
 
     @Override

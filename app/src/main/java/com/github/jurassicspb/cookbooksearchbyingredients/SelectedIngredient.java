@@ -23,10 +23,11 @@ public class SelectedIngredient {
         selectedImage = newImage;
         return selectedImage;
     }
-    public static int setCount(int value) {
-        count = value;
-        return count;
-    }
+
+//    public static int setCount(int value) {
+//        count = value;
+//        return count;
+//    }
 
     public static void addSelectedIngredient(String selected, String image){
         selectedIngredient.add(selected);
@@ -40,7 +41,7 @@ public class SelectedIngredient {
 
     public static ArrayList<String> getSelectedImage() {return selectedImage;}
 
-    public static int resetCount() { return count=0;}
+//    public static int resetCount() { return count=0;}
 
     public static int showCount() { return count=SelectedIngredient.getSelectedIngredient().size();}
 }
