@@ -110,7 +110,6 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
                         SelectedIngredient.addSelectedIngredient(sel, image);
                         SelectedIngredient.showCount();
                         ingredients.get((int) id).setState(1);
-                        gita.notifyDataSetChanged();
                     } else if (SelectedIngredient.showCount() == 15) {
                         Toast toast = Toast.makeText(getActivity(), R.string.no_more_than_15, Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
@@ -120,12 +119,12 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
                     SelectedIngredient.removeSelectedIngredient(sel, image);
                     SelectedIngredient.showCount();
                     ingredients.get((int) id).setState(0);
-                    gita.notifyDataSetChanged();
                 }
                 ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(selectedToString + ": " + SelectedIngredient.showCount());
                 if (SelectedIngredient.showCount() == 0) {
                     ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
                 }
+                gita.notifyDataSetChanged();
             }
         });
         return view;
@@ -185,7 +184,6 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
                         ingredients.get(i).setCheckboxState(0);
                     }
                 }
-
             }
         }
         gita.notifyDataSetChanged();
