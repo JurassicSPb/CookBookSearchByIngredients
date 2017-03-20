@@ -23,8 +23,10 @@ import com.github.jurassicspb.cookbooksearchbyingredients.IngredientFavorites;
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
 import com.github.jurassicspb.cookbooksearchbyingredients.SelectedIngredient;
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
+import com.github.jurassicspb.cookbooksearchbyingredients.storage.MyPreferences;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -37,6 +39,7 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
     private EditText searchEditText;
     private GridviewImageTextAdapter gita;
     private IngredientDatabase ingrFavoritesDB;
+    private MyPreferences preferences;
 
     @Nullable
     @Override
@@ -44,9 +47,19 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
 
         View view = inflater.inflate(R.layout.gridview_list, container, false);
 
+        preferences = new MyPreferences(getActivity());
+        ArrayList<String> bufferedIngredients = new ArrayList<>(Arrays.asList(preferences.getBufferedIngredients().split(",")));
+        ArrayList<String> bufferedImages = new ArrayList<>(Arrays.asList(preferences.getBufferedImages().split(",")));
+
         if (savedInstanceState != null) {
-            SelectedIngredient.copyAllIngr(savedInstanceState.getStringArrayList("ingr"));
-            SelectedIngredient.copyAllImage(savedInstanceState.getStringArrayList("image"));
+            if (!bufferedIngredients.get(0).equals("")) {
+                SelectedIngredient.copyAllIngr(bufferedIngredients);
+                SelectedIngredient.copyAllImage(bufferedImages);
+            } else {
+                SelectedIngredient.copyAllIngr(savedInstanceState.getStringArrayList("ingr"));
+                SelectedIngredient.copyAllImage(savedInstanceState.getStringArrayList("image"));
+            }
+
 //            SelectedIngredient.setCount(savedInstanceState.getInt("count"));
             ingredients = savedInstanceState.getParcelableArrayList("ingredients");
             if (SelectedIngredient.showCount() == 0) {
@@ -133,6 +146,10 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+
+        preferences.clearBufferedIngredients();
+        preferences.clearBufferedImage();
+
         outState.putStringArrayList("ingr", SelectedIngredient.getSelectedIngredient());
         outState.putStringArrayList("image", SelectedIngredient.getSelectedImage());
 //        outState.putInt("count", SelectedIngredient.showCount());
