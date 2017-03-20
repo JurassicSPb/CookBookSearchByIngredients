@@ -10,8 +10,9 @@ import android.content.SharedPreferences;
 public class MyPreferences {
     private static final String KEY_REALM_FLAG = "key_realm_flag";
     private static final String KEY_FLAG_ALERT = "key_flag_alert";
-    private static final String KEY_FAV_INGR = "ingrBuffer";
-    private static final String KEY_FAV_IMAGE = "imageBuffer";
+    private static final String KEY_BUFFER_INGR = "ingrBuffer";
+    private static final String KEY_BUFFER_IMAGE = "imageBuffer";
+    private static final String KEY_BUFFER_FLAG = "flagBuffer";
 
     private SharedPreferences preferences;
 
@@ -45,29 +46,39 @@ public class MyPreferences {
 
     public void setBufferedIngredients(String ingredients) {
         preferences.edit()
-                .putString(KEY_FAV_INGR, ingredients)
+                .putString(KEY_BUFFER_INGR, ingredients)
                 .apply();
     }
 
     public void setBufferedImage(String images) {
         preferences.edit()
-                .putString(KEY_FAV_IMAGE, images)
+                .putString(KEY_BUFFER_IMAGE, images)
+                .apply();
+    }
+
+    public void setBufferedFlag(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_BUFFER_FLAG, flag)
                 .apply();
     }
 
     public String getBufferedIngredients() {
-        return preferences.getString(KEY_FAV_INGR, "");
+        return preferences.getString(KEY_BUFFER_INGR, "");
     }
 
     public String getBufferedImages() {
-        return preferences.getString(KEY_FAV_IMAGE, "0");
+        return preferences.getString(KEY_BUFFER_IMAGE, "0");
+    }
+
+    public boolean getBufferedFlag() {
+        return preferences.getBoolean(KEY_BUFFER_FLAG, true);
     }
 
     public void clearBufferedIngredients() {
-        preferences.edit().remove(KEY_FAV_INGR).apply();
+        preferences.edit().remove(KEY_BUFFER_INGR).apply();
     }
 
     public void clearBufferedImage() {
-        preferences.edit().remove(KEY_FAV_IMAGE).apply();
+        preferences.edit().remove(KEY_BUFFER_IMAGE).apply();
     }
 }

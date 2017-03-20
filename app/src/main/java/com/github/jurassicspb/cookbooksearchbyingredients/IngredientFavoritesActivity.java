@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.MyPreferences;
+
 import java.util.List;
 
 
@@ -137,20 +138,22 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
         setBufferPreferences();
     }
 
-    public void setBufferPreferences(){
+    public void setBufferPreferences() {
         MyPreferences preferences = new MyPreferences(this);
 
-        if (SelectedIngredient.getSelectedIngredient().size() > 0) {
-            String bufferIngr = "";
-            String bufferImage = "";
-            for (String s : SelectedIngredient.getSelectedIngredient()) {
-                bufferIngr += s + ",";
-            }
-            for (String s : SelectedIngredient.getSelectedImage()) {
-                bufferImage += s + ",";
-            }
-            preferences.setBufferedIngredients(bufferIngr);
-            preferences.setBufferedImage(bufferImage);
+        String bufferIngr = "";
+        String bufferImage = "";
+        for (String s : SelectedIngredient.getSelectedIngredient()) {
+            bufferIngr += s + ",";
+        }
+        for (String s : SelectedIngredient.getSelectedImage()) {
+            bufferImage += s + ",";
+        }
+        preferences.setBufferedIngredients(bufferIngr);
+        preferences.setBufferedImage(bufferImage);
+
+        if (bufferIngr.equals("")) {
+            preferences.setBufferedFlag(true);
         }
     }
 

@@ -55,6 +55,9 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
             if (!bufferedIngredients.get(0).equals("")) {
                 SelectedIngredient.copyAllIngr(bufferedIngredients);
                 SelectedIngredient.copyAllImage(bufferedImages);
+            } else if (preferences.getBufferedFlag()) {
+                SelectedIngredient.getSelectedIngredient().clear();
+                SelectedIngredient.getSelectedImage().clear();
             } else {
                 SelectedIngredient.copyAllIngr(savedInstanceState.getStringArrayList("ingr"));
                 SelectedIngredient.copyAllImage(savedInstanceState.getStringArrayList("image"));
@@ -149,6 +152,7 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
 
         preferences.clearBufferedIngredients();
         preferences.clearBufferedImage();
+        preferences.setBufferedFlag(false);
 
         outState.putStringArrayList("ingr", SelectedIngredient.getSelectedIngredient());
         outState.putStringArrayList("image", SelectedIngredient.getSelectedImage());
