@@ -296,8 +296,10 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         newIngredient.add(new Ingredient(9, "свинина", R.drawable.pork, 0, 0));
         newIngredient.add(new Ingredient(9, "сосиска", R.drawable.sosiska, 0, 0));
         newIngredient.add(new Ingredient(9, "телятина", R.drawable.telatina, 0, 0));
+        newIngredient.add(new Ingredient(9, "фарш бараний", R.drawable.farsh_baran, 0, 0));
         newIngredient.add(new Ingredient(9, "фарш говяжий", R.drawable.beef_mince, 0, 0));
         newIngredient.add(new Ingredient(9, "фарш мясной", R.drawable.farsch, 0, 0));
+        newIngredient.add(new Ingredient(9, "фарш свиной", R.drawable.pork_mince, 0, 0));
 
         newIngredient.add(new Ingredient(10, "баклажан", R.drawable.baklazhan, 0, 0));
         newIngredient.add(new Ingredient(10, "болгарский перец", R.drawable.perez_bolg, 0, 0));
