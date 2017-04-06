@@ -247,6 +247,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         newIngredient.add(new Ingredient(2, "яблочный сок", R.drawable.apple_juice, 0, 0));
 
         newIngredient.add(new Ingredient(3, "гречневая крупа", R.drawable.grech_krupa, 0, 0));
+        newIngredient.add(new Ingredient(3, "крупа", R.drawable.krupa, 0, 0));
         newIngredient.add(new Ingredient(3, "отруби", R.drawable.otrubi, 0, 0));
         newIngredient.add(new Ingredient(3, "овсяные отруби", R.drawable.otrubi_ovs, 0, 0));
         newIngredient.add(new Ingredient(3, "овсяные хлопья", R.drawable.oves, 0, 0));
@@ -355,6 +356,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         newIngredient.add(new Ingredient(12, "лавровый лист", R.drawable.lavr, 0, 0));
         newIngredient.add(new Ingredient(12, "лимонная кислота", R.drawable.limon_kisl, 0, 0));
         newIngredient.add(new Ingredient(12, "мак", R.drawable.mak, 0, 0));
+        newIngredient.add(new Ingredient(12, "орегано", R.drawable.oregano, 0, 0));
         newIngredient.add(new Ingredient(12, "паприка сладкая", R.drawable.paprika_sweet, 0, 0));
         newIngredient.add(new Ingredient(12, "перец молотый", R.drawable.perez_molot, 0, 0));
         newIngredient.add(new Ingredient(12, "перец молотый красный", R.drawable.perec_mol_kr, 0, 0));
