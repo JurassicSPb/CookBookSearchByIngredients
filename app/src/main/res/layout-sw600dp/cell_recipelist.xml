@@ -6,7 +6,7 @@
     android:background="@color/backgrondTabLayoutActivity">
     <ImageView
         android:id="@+id/photo"
-        android:layout_width="150dp"
+        android:layout_width="160dp"
         android:layout_height="116dp"
         android:scaleType="center"
         android:background="@color/tabDividerRed"/>
