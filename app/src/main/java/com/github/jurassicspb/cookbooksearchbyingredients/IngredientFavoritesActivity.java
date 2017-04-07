@@ -5,8 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -42,7 +40,6 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             SelectedIngredient.copyAllIngr(savedInstanceState.getStringArrayList("ingr"));
             SelectedIngredient.copyAllImage(savedInstanceState.getStringArrayList("image"));
-//            SelectedIngredient.setCount(savedInstanceState.getInt("count"));
             if (SelectedIngredient.showCount() == 0) {
                 getSupportActionBar().setTitle(R.string.drawer_menu_ingr_favorites);
             } else {
@@ -59,37 +56,34 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
         adapter = new IngredientFavoritesAdapter(this, ingrFavorites);
         gridview.setAdapter(adapter);
 
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedToString = getString(R.string.selected);
+        gridview.setOnItemClickListener((parent, view, position, id) -> {
+            String selectedToString = getString(R.string.selected);
 
-                String sel = ingrFavorites.get((int) id).getIngredient();
-                String image = String.valueOf(ingrFavorites.get((int) id).getImage());
+            String sel = ingrFavorites.get((int) id).getIngredient();
+            String image = String.valueOf(ingrFavorites.get((int) id).getImage());
 
-                int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
+            int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
 
-                if (ingredientPosition == -1) {
-                    if (SelectedIngredient.showCount() < 15) {
-                        SelectedIngredient.addSelectedIngredient(sel, image);
-                        SelectedIngredient.showCount();
-                        ingrFavorites.get((int) id).setState(1);
-                    } else if (SelectedIngredient.showCount() == 15) {
-                        Toast toast = Toast.makeText(getApplication(), R.string.no_more_than_15, Toast.LENGTH_SHORT);
-                        toast.setGravity(Gravity.CENTER, 0, 0);
-                        toast.show();
-                    }
-                } else {
-                    SelectedIngredient.removeSelectedIngredient(sel, image);
+            if (ingredientPosition == -1) {
+                if (SelectedIngredient.showCount() < 15) {
+                    SelectedIngredient.addSelectedIngredient(sel, image);
                     SelectedIngredient.showCount();
-                    ingrFavorites.get((int) id).setState(0);
+                    ingrFavorites.get((int) id).setState(1);
+                } else if (SelectedIngredient.showCount() == 15) {
+                    Toast toast = Toast.makeText(getApplication(), R.string.no_more_than_15, Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
                 }
-                getSupportActionBar().setTitle(selectedToString + ": " + SelectedIngredient.showCount());
-                if (SelectedIngredient.showCount() == 0) {
-                    getSupportActionBar().setTitle(R.string.drawer_menu_ingr_favorites);
-                }
-                adapter.notifyDataSetChanged();
+            } else {
+                SelectedIngredient.removeSelectedIngredient(sel, image);
+                SelectedIngredient.showCount();
+                ingrFavorites.get((int) id).setState(0);
             }
+            getSupportActionBar().setTitle(selectedToString + ": " + SelectedIngredient.showCount());
+            if (SelectedIngredient.showCount() == 0) {
+                getSupportActionBar().setTitle(R.string.drawer_menu_ingr_favorites);
+            }
+            adapter.notifyDataSetChanged();
         });
     }
 
@@ -125,10 +119,8 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-
         outState.putStringArrayList("ingr", SelectedIngredient.getSelectedIngredient());
         outState.putStringArrayList("image", SelectedIngredient.getSelectedImage());
-//        outState.putInt("count", SelectedIngredient.showCount());
     }
 
     @Override

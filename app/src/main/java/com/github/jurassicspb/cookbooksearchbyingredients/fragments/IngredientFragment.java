@@ -10,7 +10,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -63,7 +62,6 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
                 SelectedIngredient.copyAllImage(savedInstanceState.getStringArrayList("image"));
             }
 
-//            SelectedIngredient.setCount(savedInstanceState.getInt("count"));
             ingredients = savedInstanceState.getParcelableArrayList("ingredients");
             if (SelectedIngredient.showCount() == 0) {
                 ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
@@ -153,7 +151,6 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
 
         outState.putStringArrayList("ingr", SelectedIngredient.getSelectedIngredient());
         outState.putStringArrayList("image", SelectedIngredient.getSelectedImage());
-//        outState.putInt("count", SelectedIngredient.showCount());
         outState.putParcelableArrayList("ingredients", new ArrayList<>(ingredients));
     }
 
@@ -220,5 +217,4 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
         ingrFavoritesDB.close();
         super.onDestroy();
     }
-
 }
