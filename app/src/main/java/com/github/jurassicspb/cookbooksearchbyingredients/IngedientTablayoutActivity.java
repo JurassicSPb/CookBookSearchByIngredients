@@ -61,7 +61,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         setContentView(R.layout.tablayout_with_viewpager);
 
         MyPreferences preferences = new MyPreferences(this);
-//                preferences.clearPrefs();
+                preferences.clearPrefs();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -341,6 +341,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         newIngredient.add(new Ingredient(12, "бульонный кубик", R.drawable.kubik, 0, 0));
         newIngredient.add(new Ingredient(12, "ванилин", R.drawable.vanilin, 0, 0));
         newIngredient.add(new Ingredient(12, "ванильный сахар", R.drawable.vanil_sugar, 0, 0));
+        newIngredient.add(new Ingredient(12, "гвоздика", R.drawable.gvozdika, 0, 0));
         newIngredient.add(new Ingredient(12, "дрожжи", R.drawable.drozzi, 0, 0));
         newIngredient.add(new Ingredient(12, "душистый перец", R.drawable.perec_dush, 0, 0));
         newIngredient.add(new Ingredient(12, "желатин", R.drawable.jelatin, 0, 0));
@@ -383,6 +384,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         newIngredient.add(new Ingredient(13, "куриное филе", R.drawable.chicken_fillet, 0, 0));
         newIngredient.add(new Ingredient(13, "курица", R.drawable.chicken, 0, 0));
         newIngredient.add(new Ingredient(13, "курица копченая", R.drawable.chick_kopch, 0, 0));
+        newIngredient.add(new Ingredient(13, "окорочок копченый", R.drawable.okorochok, 0, 0));
         newIngredient.add(new Ingredient(13, "фарш индейки", R.drawable.farsch_ind, 0, 0));
         newIngredient.add(new Ingredient(13, "фарш куриный", R.drawable.farsh_kur, 0, 0));
         newIngredient.add(new Ingredient(13, "филе индейки", R.drawable.file_ind, 0, 0));
@@ -434,6 +436,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         newIngredient.add(new Ingredient(20, "сухарики из белого хлеба", R.drawable.suhari_bel, 0, 0));
         newIngredient.add(new Ingredient(20, "французский багет", R.drawable.baget_fr, 0, 0));
 
+        newIngredient.add(new Ingredient(21, "клюква", R.drawable.klukva, 0, 0));
         newIngredient.add(new Ingredient(21, "черника", R.drawable.chernika, 0, 0));
         newIngredient.add(new Ingredient(21, "ягоды", R.drawable.yagodi, 0, 0));
 

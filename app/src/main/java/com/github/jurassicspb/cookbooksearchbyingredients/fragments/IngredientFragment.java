@@ -103,9 +103,7 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
 
         searchClearButton.setOnClickListener(v -> searchEditText.setText(""));
 
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        gridview.setOnItemClickListener((parent, view1, position, id) -> {
 
 //                TextView tv = (TextView) view.findViewById(R.id.textpart);
 //                String sel = tv.getText().toString();
@@ -114,34 +112,33 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
 //                String image = String.valueOf(item.getImage());
 //                long itemId = gita.getItemId(position);
 
-                String selectedToString = getString(R.string.selected);
+            String selectedToString = getString(R.string.selected);
 
-                String sel = ingredients.get((int) id).getIngredient();
-                String image = String.valueOf(ingredients.get((int) id).getImage());
+            String sel = ingredients.get((int) id).getIngredient();
+            String image = String.valueOf(ingredients.get((int) id).getImage());
 
-                int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
+            int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
 
-                if (ingredientPosition == -1) {
-                    if (SelectedIngredient.showCount() < 15) {
-                        SelectedIngredient.addSelectedIngredient(sel, image);
-                        SelectedIngredient.showCount();
-                        ingredients.get((int) id).setState(1);
-                    } else if (SelectedIngredient.showCount() == 15) {
-                        Toast toast = Toast.makeText(getActivity(), R.string.no_more_than_15, Toast.LENGTH_SHORT);
-                        toast.setGravity(Gravity.CENTER, 0, 0);
-                        toast.show();
-                    }
-                } else {
-                    SelectedIngredient.removeSelectedIngredient(sel, image);
+            if (ingredientPosition == -1) {
+                if (SelectedIngredient.showCount() < 15) {
+                    SelectedIngredient.addSelectedIngredient(sel, image);
                     SelectedIngredient.showCount();
-                    ingredients.get((int) id).setState(0);
+                    ingredients.get((int) id).setState(1);
+                } else if (SelectedIngredient.showCount() == 15) {
+                    Toast toast = Toast.makeText(getActivity(), R.string.no_more_than_15, Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
                 }
-                ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(selectedToString + ": " + SelectedIngredient.showCount());
-                if (SelectedIngredient.showCount() == 0) {
-                    ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
-                }
-                gita.notifyDataSetChanged();
+            } else {
+                SelectedIngredient.removeSelectedIngredient(sel, image);
+                SelectedIngredient.showCount();
+                ingredients.get((int) id).setState(0);
             }
+            ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(selectedToString + ": " + SelectedIngredient.showCount());
+            if (SelectedIngredient.showCount() == 0) {
+                ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
+            }
+            gita.notifyDataSetChanged();
         });
         return view;
     }
