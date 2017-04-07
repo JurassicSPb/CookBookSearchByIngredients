@@ -56,12 +56,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         SelectedIngredient.getSelectedIngredient().clear();
         SelectedIngredient.getSelectedImage().clear();
-//        SelectedIngredient.resetCount();
 
         setContentView(R.layout.tablayout_with_viewpager);
 
         MyPreferences preferences = new MyPreferences(this);
-                preferences.clearPrefs();
+//                preferences.clearPrefs();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
