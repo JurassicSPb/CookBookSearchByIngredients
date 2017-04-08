@@ -17,6 +17,11 @@
         android:id="@+id/fr2"
         android:icon="@drawable/ic_full_list"
         android:title="@string/drawer_menu_full_list" />
+
+        <item
+            android:id="@+id/fr8"
+            android:icon="@drawable/ic_ingredients_to_buy"
+            android:title="@string/shopping_list" />
     </group>
 
     <group android:id="@+id/grp2" >

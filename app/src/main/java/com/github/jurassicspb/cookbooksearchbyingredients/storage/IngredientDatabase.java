@@ -5,6 +5,7 @@ import com.github.jurassicspb.cookbooksearchbyingredients.CategoryTable;
 import com.github.jurassicspb.cookbooksearchbyingredients.Favorites;
 import com.github.jurassicspb.cookbooksearchbyingredients.Ingredient;
 import com.github.jurassicspb.cookbooksearchbyingredients.IngredientFavorites;
+import com.github.jurassicspb.cookbooksearchbyingredients.IngredientToBuy;
 import com.github.jurassicspb.cookbooksearchbyingredients.Recipe;
 
 import java.util.ArrayList;
@@ -185,6 +186,39 @@ public class IngredientDatabase {
             realm.close();
         }
     }
+
+    public void copyIngredientToBuy(List<IngredientToBuy> ingrToBuy) {
+        realm.beginTransaction();
+        realm.copyToRealm(ingrToBuy);
+        realm.commitTransaction();
+    }
+
+    public List<IngredientToBuy> getAllIngrToBuy() {
+        return realm.where(IngredientToBuy.class).findAll();
+    }
+
+    public void deleteIngrToBuy(int position) {
+        realm.beginTransaction();
+        RealmResults<IngredientToBuy> results = realm.where(IngredientToBuy.class).findAll();
+        results.deleteFromRealm(position);
+        realm.commitTransaction();
+    }
+
+    public List<IngredientToBuy> copyIngrToBuyFromRealm() {
+        realm.beginTransaction();
+        RealmResults<IngredientToBuy> results = realm.where(IngredientToBuy.class).findAll();
+        List<IngredientToBuy> newIngrsToBuy = realm.copyFromRealm(results);
+        realm.commitTransaction();
+        return newIngrsToBuy;
+    }
+
+    public void clearIngrToBuy() {
+        realm.beginTransaction();
+        RealmResults<IngredientToBuy> results = realm.where(IngredientToBuy.class).findAll();
+        results.deleteAllFromRealm();
+        realm.commitTransaction();
+    }
+
 
     public void addChangeListener(RealmChangeListener<Realm> changeListener) {
         realm.addChangeListener(changeListener);

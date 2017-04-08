@@ -18,6 +18,7 @@
     <color name="favIngrDrawer">#FF0000</color>
     <color name="favIngrCheckbox">#6eff0000</color>
     <color name="dialog_background_color">#79000000</color>
+    <color name="ok_button_edittext">#FFCC80</color>
 
     <!--Weights and measures-->
     <color name="tabDivider">#FFFFFF</color>

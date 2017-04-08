@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/ToolBarStyle.Event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.6"/>
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:layout_weight="1">
+
+        <EditText
+            android:id="@+id/edit_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/search_edittext_border"
+            android:fontFamily="sans-serif"
+            android:hint="@string/hint_name"
+            android:inputType="text"
+            android:maxLength="100"
+            android:maxLines="1"
+            android:paddingLeft="14dp"
+            android:textColorHint="@color/textColorHint"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edit_weight"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/search_edittext_border"
+            android:fontFamily="sans-serif"
+            android:hint="@string/weight_hint"
+            android:inputType="number"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:paddingLeft="14dp"
+            android:textColorHint="@color/textColorHint"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edit_weight2"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/search_edittext_border"
+            android:fontFamily="sans-serif"
+            android:hint="@string/weight2_hint"
+            android:inputType="number"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:paddingLeft="14dp"
+            android:textColorHint="@color/textColorHint"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edit_count"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="6dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/search_edittext_border"
+            android:fontFamily="sans-serif"
+            android:hint="@string/count_hint"
+            android:inputType="number"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:paddingLeft="14dp"
+            android:textColorHint="@color/textColorHint"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/edit_button"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:textColor="@color/Black"
+            android:background="@color/ok_button_edittext"
+            android:text="@string/ok_hint"
+            android:layout_width="200dp"
+            android:layout_height="50dp" />
+    </FrameLayout>
+
+</LinearLayout>

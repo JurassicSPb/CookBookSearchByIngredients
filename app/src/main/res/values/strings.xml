@@ -32,7 +32,6 @@
     <string name="alert_button_yes">Показывать</string>
     <string name="alert_button_no">Не показывать</string>
 
-
     <!--Таблица мер и весов -->
 
     <string name="products">Продукты</string>
@@ -58,6 +57,15 @@
     <string name="fry_up">Жарение кусками</string>
     <string name="stewing">Тушение кусками</string>
 
+        <!--Список покупок-->
+    <string name="shopping_list">Список покупок</string>
+    <string name="hint_name">Название</string>
+    <string name="weight_hint">Вес гр.</string>
+    <string name="weight2_hint">Вес кг.</string>
+    <string name="count_hint">Кол-во шт.</string>
+    <string name="ok_hint">Подтвердить</string>
+    <string name="empty_name">Заполните поле "Название"</string>
+    <string name="no_more_than_50">Доступно не более 50 записей</string>
 
     <!--<string name="app_name">CookBookSearchByIngredients</string>-->
     <!--<string name="search_by_ingredient">Search by ingredient</string>-->

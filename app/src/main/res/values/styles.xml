@@ -64,4 +64,9 @@
         <item name="android:windowBackground">@color/dialog_background_color</item>
     </style>
 
+    <style name="checkBoxForIngrsToBuy" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/Black</item>
+        <item name="colorControlActivated">@android:color/holo_green_light</item>
+    </style>
+
 </resources>

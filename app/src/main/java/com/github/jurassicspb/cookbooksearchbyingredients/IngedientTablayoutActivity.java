@@ -195,6 +195,9 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         } else if (id == R.id.fr7) {
             intent = new Intent(this, IngredientFavoritesActivity.class);
             startActivity(intent);
+        } else if (id == R.id.fr8) {
+            intent = new Intent(this, IngredientToBuyActivity.class);
+            startActivity(intent);
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
