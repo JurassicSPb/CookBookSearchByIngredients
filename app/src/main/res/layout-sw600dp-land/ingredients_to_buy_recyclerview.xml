@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/ToolBarStyle.Event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.1"/>
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:layout_weight="1">
+
+        <EditText
+            android:id="@+id/edit_name"
+            tools:text="ddddddddddddddddddddddddddddddddddddddddd"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/search_edittext_border"
+            android:fontFamily="sans-serif"
+            android:hint="@string/hint_name"
+            android:inputType="text"
+            android:maxLength="100"
+            android:maxLines="1"
+            android:paddingLeft="14dp"
+            android:paddingRight="58dp"
+            android:textColorHint="@color/textColorHint"
+            android:textSize="17sp" />
+
+        <Button
+            android:id="@+id/clear_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="7dp"
+            android:layout_gravity="right"
+            android:background="@drawable/ic_cross"
+            />
+
+        <EditText
+            android:id="@+id/edit_weight"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="170dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/search_edittext_border"
+            android:fontFamily="sans-serif"
+            android:hint="@string/weight_hint"
+            android:inputType="numberDecimal"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:textColorHint="@color/textColorHint"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edit_weight2"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/search_edittext_border"
+            android:fontFamily="sans-serif"
+            android:hint="@string/weight2_hint"
+            android:inputType="numberDecimal"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:textColorHint="@color/textColorHint"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edit_count"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="170dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/search_edittext_border"
+            android:fontFamily="sans-serif"
+            android:hint="@string/count_hint"
+            android:inputType="numberDecimal"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:textColorHint="@color/textColorHint"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/edit_button"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:layout_marginTop="95dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/Black"
+            android:background="@drawable/ingrs_to_buy_border"
+            android:text="@string/ok_hint"
+            android:layout_width="200dp"
+            android:layout_height="50dp" />
+    </FrameLayout>
+
+</LinearLayout>

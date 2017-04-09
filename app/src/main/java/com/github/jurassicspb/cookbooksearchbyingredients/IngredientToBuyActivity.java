@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -59,7 +60,7 @@ public class IngredientToBuyActivity extends AppCompatActivity {
         EditText weight = (EditText) findViewById(R.id.edit_weight);
         EditText weight2 = (EditText) findViewById(R.id.edit_weight2);
         EditText amount = (EditText) findViewById(R.id.edit_count);
-
+        Button clearButton = (Button) findViewById(R.id.clear_button);
 
         name.addTextChangedListener(new TextWatcher() {
             @Override
@@ -167,6 +168,8 @@ public class IngredientToBuyActivity extends AppCompatActivity {
                 toast.show();
             }
         });
+
+        clearButton.setOnClickListener(v -> name.setText(""));
     }
 
     private void performIngredientsToBuy() {
