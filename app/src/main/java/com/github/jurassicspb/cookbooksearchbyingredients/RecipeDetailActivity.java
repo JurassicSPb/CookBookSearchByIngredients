@@ -22,7 +22,6 @@ import android.widget.Toast;
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -165,7 +164,6 @@ public class RecipeDetailActivity extends AppCompatActivity {
         outState.putString("calories", calories);
         outState.putString("image", image);
         outState.putString("category", category);
-
     }
 
     @Override

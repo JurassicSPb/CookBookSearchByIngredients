@@ -140,11 +140,20 @@ public class IngredientToBuyActivity extends AppCompatActivity {
             } else if (ingredientsToBuy.size() < 50) {
                 IngredientToBuy ingredientToBuy;
                 if (weightToBuy2 == null || weightToBuy2.trim().equals(KILOS)) {
-                    ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy, amountToBuy, 0);
+                    if (amountToBuy == null || amountToBuy.trim().equals(PIECES)) {
+                        ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy, "", 0);
+                    } else
+                        ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy, amountToBuy, 0);
                 } else if (weightToBuy == null || weightToBuy.trim().equals(GRAMS)) {
-                    ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy2, amountToBuy, 0);
+                    if (amountToBuy == null || amountToBuy.trim().equals(PIECES)) {
+                        ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy2, "", 0);
+                    } else
+                        ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy2, amountToBuy, 0);
                 } else {
-                    ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy, amountToBuy, 0);
+                    if (amountToBuy == null || amountToBuy.trim().equals(PIECES)) {
+                        ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy, "", 0);
+                    } else
+                        ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy, amountToBuy, 0);
                 }
                 ingrsToBuyDB.copyIngredientToBuy(ingredientToBuy);
                 ingredientsToBuy = ingrsToBuyDB.getAllIngrToBuy();
