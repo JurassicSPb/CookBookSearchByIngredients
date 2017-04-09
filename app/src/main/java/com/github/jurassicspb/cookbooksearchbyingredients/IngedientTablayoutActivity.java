@@ -126,10 +126,10 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 //                createCategoryTablesENG();
 //                createRecipes("eng");
 //            }
-            bufferIngredient.clear();
-            bufferRecipe.clear();
-            bufferCategories.clear();
-            bufferCategoryTables.clear();
+            bufferIngredient = null;
+            bufferRecipe = null;
+            bufferCategories = null;
+            bufferCategoryTables = null;
 
             preferences.setFlag(false);
         }
