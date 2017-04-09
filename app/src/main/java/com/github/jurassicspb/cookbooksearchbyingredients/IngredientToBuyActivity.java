@@ -75,7 +75,7 @@ public class IngredientToBuyActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                nameToBuy = name.getText().toString();
+                nameToBuy = s.toString();
             }
         });
 
@@ -92,7 +92,14 @@ public class IngredientToBuyActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                weightToBuy = weight.getText() + " " + GRAMS;
+                if (s.toString().length() == 0) {
+                    weight2.setFocusable(true);
+                    weight2.setFocusableInTouchMode(true);
+                } else {
+                    weight2.setFocusable(false);
+                    weight2.setFocusableInTouchMode(false);
+                }
+                weightToBuy = s.toString();
             }
         });
 
@@ -109,7 +116,14 @@ public class IngredientToBuyActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                weightToBuy2 = weight2.getText() + " " + KILOS;
+                if (s.toString().length() == 0) {
+                    weight.setFocusable(true);
+                    weight.setFocusableInTouchMode(true);
+                } else {
+                    weight.setFocusable(false);
+                    weight.setFocusableInTouchMode(false);
+                }
+                weightToBuy2 = s.toString();
             }
         });
 
@@ -126,7 +140,7 @@ public class IngredientToBuyActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                amountToBuy = amount.getText() + " " + PIECES;
+                amountToBuy = s.toString();
             }
         });
 
@@ -140,22 +154,23 @@ public class IngredientToBuyActivity extends AppCompatActivity {
                 toast.show();
             } else if (ingredientsToBuy.size() < 50) {
                 IngredientToBuy ingredientToBuy;
-                if (weightToBuy2 == null || weightToBuy2.trim().equals(KILOS)) {
-                    if (amountToBuy == null || amountToBuy.trim().equals(PIECES)) {
-                        ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy, "", 0);
+
+                if (weightToBuy != null && weightToBuy.length() > 0) {
+                    if (amountToBuy == null || amountToBuy.length() == 0) {
+                        ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy + " " + GRAMS, "", 0);
                     } else
-                        ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy, amountToBuy, 0);
-                } else if (weightToBuy == null || weightToBuy.trim().equals(GRAMS)) {
-                    if (amountToBuy == null || amountToBuy.trim().equals(PIECES)) {
-                        ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy2, "", 0);
+                        ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy + " " + GRAMS, amountToBuy + " " + PIECES, 0);
+                } else if (weightToBuy2 != null && weightToBuy2.length() > 0) {
+                    if (amountToBuy == null || amountToBuy.length() == 0) {
+                        ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy2 + " " + KILOS, "", 0);
                     } else
-                        ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy2, amountToBuy, 0);
+                        ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy2 + " " + KILOS, amountToBuy + " " + PIECES, 0);
+                } else if (amountToBuy != null && amountToBuy.length()>0) {
+                    ingredientToBuy = new IngredientToBuy(nameToBuy, "", amountToBuy + " " + PIECES, 0);
                 } else {
-                    if (amountToBuy == null || amountToBuy.trim().equals(PIECES)) {
-                        ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy, "", 0);
-                    } else
-                        ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy, amountToBuy, 0);
+                    ingredientToBuy = new IngredientToBuy(nameToBuy, "", "", 0);
                 }
+
                 ingrsToBuyDB.copyIngredientToBuy(ingredientToBuy);
                 ingredientsToBuy = ingrsToBuyDB.getAllIngrToBuy();
                 adapter.notifyDataSetChanged();
