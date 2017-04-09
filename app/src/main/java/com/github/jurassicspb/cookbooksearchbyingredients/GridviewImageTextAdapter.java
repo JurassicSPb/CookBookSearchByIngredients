@@ -53,10 +53,9 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
     public long getItemId(int position) {
         // TODO Auto-generated method stub
         int itemID;
-        if (ingredientAdapter==null){
+        if (ingredientAdapter == null) {
             itemID = position;
-        }
-        else{
+        } else {
             itemID = ingredientAdapterFiltered.indexOf(ingredientAdapter.get(position));
         }
         return itemID;
@@ -91,34 +90,33 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
         holder.textView.setText(ingredientAdapter.get(position).getIngredient());
         holder.imageView.setImageResource(ingredientAdapter.get(position).getImage());
 
-        if (object.getState()==1) {
+        if (object.getState() == 1) {
             holder.textView.setTextColor(ContextCompat.getColor(mContext, R.color.tabLayoutTextColorSelected));
         } else {
             holder.textView.setTextColor(Color.WHITE);
         }
 
-        if (object.getCheckboxState()==1){
+        if (object.getCheckboxState() == 1) {
             holder.checkBox.setChecked(true);
-        }
-        else {
+        } else {
             holder.checkBox.setChecked(false);
         }
 
         holder.checkBox.setOnClickListener(v -> {
             IngredientDatabase ingrFavoritesDB = new IngredientDatabase();
-            if(object.getCheckboxState()==0){
-                ArrayList<IngredientFavorites> newIngrFav = new ArrayList<>();
-                newIngrFav.add(new IngredientFavorites(ingredientAdapter.get(position).getIngredient(),
+            if (object.getCheckboxState() == 0) {
+                IngredientFavorites newIngrFav;
+                newIngrFav = new IngredientFavorites(ingredientAdapter.get(position).getIngredient(),
                         ingredientAdapter.get(position).getImage(), ingredientAdapter.get(position).getState(),
-                        ingredientAdapter.get(position).getCheckboxState()));
+                        ingredientAdapter.get(position).getCheckboxState());
+
                 ingrFavoritesDB.copyOrUpdateIngrFavorites(newIngrFav);
                 ingrFavoritesDB.close();
                 object.setCheckboxState(1);
                 Toast toast = Toast.makeText(v.getContext(), R.string.checkbox_add, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
-            }
-            else{
+            } else {
                 ingrFavoritesDB.deleteIngrFavoritePosition(ingredientAdapter.get(position).getIngredient());
                 ingrFavoritesDB.close();
                 object.setCheckboxState(0);
@@ -167,8 +165,7 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
         protected void publishResults(CharSequence constraint, FilterResults results) {
             if (results.count == 0) {
                 notifyDataSetInvalidated();
-            }
-            else {
+            } else {
                 ingredientAdapter = (ArrayList<Ingredient>) results.values;
                 notifyDataSetChanged();
             }

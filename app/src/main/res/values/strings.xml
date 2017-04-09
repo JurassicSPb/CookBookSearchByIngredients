@@ -66,6 +66,8 @@
     <string name="ok_hint">Подтвердить</string>
     <string name="empty_name">Заполните поле "Название"</string>
     <string name="no_more_than_50">Доступно не более 50 записей</string>
+    <string name="added_successfully">Запись добавлена</string>
+    <string name="removed_successfully">Запись удалена</string>
 
     <!--<string name="app_name">CookBookSearchByIngredients</string>-->
     <!--<string name="search_by_ingredient">Search by ingredient</string>-->

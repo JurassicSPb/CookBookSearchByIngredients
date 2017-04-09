@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -133,24 +132,28 @@ public class IngredientToBuyActivity extends AppCompatActivity {
         Button okButton = (Button) findViewById(R.id.edit_button);
 
         okButton.setOnClickListener(v -> {
+            Toast toast;
             if (nameToBuy == null || nameToBuy.trim().equals("")) {
-                Toast toast = Toast.makeText(getApplication(), R.string.empty_name, Toast.LENGTH_SHORT);
+                toast = Toast.makeText(getApplication(), R.string.empty_name, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
             } else if (ingredientsToBuy.size() < 50) {
-                ingredientsToBuy = new ArrayList<>();
+                IngredientToBuy ingredientToBuy;
                 if (weightToBuy2 == null || weightToBuy2.trim().equals(KILOS)) {
-                    ingredientsToBuy.add(new IngredientToBuy(nameToBuy, weightToBuy, amountToBuy, 0));
+                    ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy, amountToBuy, 0);
                 } else if (weightToBuy == null || weightToBuy.trim().equals(GRAMS)) {
-                    ingredientsToBuy.add(new IngredientToBuy(nameToBuy, weightToBuy2, amountToBuy, 0));
+                    ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy2, amountToBuy, 0);
                 } else {
-                    ingredientsToBuy.add(new IngredientToBuy(nameToBuy, weightToBuy, amountToBuy, 0));
+                    ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy, amountToBuy, 0);
                 }
-                ingrsToBuyDB.copyIngredientToBuy(ingredientsToBuy);
+                ingrsToBuyDB.copyIngredientToBuy(ingredientToBuy);
                 ingredientsToBuy = ingrsToBuyDB.getAllIngrToBuy();
                 adapter.notifyDataSetChanged();
+                toast = Toast.makeText(getApplication(), R.string.added_successfully, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
             } else {
-                Toast toast = Toast.makeText(getApplication(), R.string.no_more_than_50, Toast.LENGTH_SHORT);
+                toast = Toast.makeText(getApplication(), R.string.no_more_than_50, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
             }

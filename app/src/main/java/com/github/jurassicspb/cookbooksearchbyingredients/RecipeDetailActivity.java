@@ -29,9 +29,9 @@ import java.util.List;
  * Created by Мария on 13.12.2016.
  */
 
-public class RecipeDetailActivity extends AppCompatActivity{
+public class RecipeDetailActivity extends AppCompatActivity {
     private IngredientDatabase favoritesDB;
-    private List <Favorites> favorites;
+    private List<Favorites> favorites;
     Toast toast;
     ImageView largeImage;
     TextView ingredient;
@@ -52,7 +52,7 @@ public class RecipeDetailActivity extends AppCompatActivity{
 
         setContentView(R.layout.receipe_detail);
 
-        if (savedInstanceState!=null) {
+        if (savedInstanceState != null) {
             SelectedIngredient.copyAllIngr(savedInstanceState.getStringArrayList("ingr"));
             names = savedInstanceState.getString("names");
             ingredients = savedInstanceState.getString("ingredients");
@@ -123,7 +123,7 @@ public class RecipeDetailActivity extends AppCompatActivity{
 
         MenuItem item = menu.findItem(R.id.item4);
 
-        if (favorites.size()==1) {
+        if (favorites.size() == 1) {
             item.setIcon(R.drawable.ic_favorites_selected);
         }
 
@@ -134,17 +134,15 @@ public class RecipeDetailActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.item4:
-                if (favorites.size()==0) {
+                if (favorites.size() == 0) {
                     myDrawable = ContextCompat.getDrawable(this, R.drawable.ic_favorites_selected);
                     item.setIcon(myDrawable);
-                    ArrayList<Favorites> newFavorites = new ArrayList<>();
-                    newFavorites.add(new Favorites(names, ingredients, category, descriptions, calories, image));
+                    Favorites newFavorites = new Favorites(names, ingredients, category, descriptions, calories, image);
                     favoritesDB.copyOrUpdateFavorites(newFavorites);
                     toast = Toast.makeText(this, R.string.toast_favorites, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
-                }
-                else if (favorites.size()==1) {
+                } else if (favorites.size() == 1) {
                     favoritesDB.deleteFavoritePosition(names);
                     myDrawable = ContextCompat.getDrawable(this, R.drawable.ic_favourites);
                     item.setIcon(myDrawable);

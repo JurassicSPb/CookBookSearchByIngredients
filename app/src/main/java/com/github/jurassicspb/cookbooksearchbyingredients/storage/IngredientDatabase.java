@@ -46,13 +46,13 @@ public class IngredientDatabase {
         realm.commitTransaction();
     }
 
-    public void copyOrUpdateFavorites(List<Favorites> favorite) {
+    public void copyOrUpdateFavorites(Favorites favorite) {
         realm.beginTransaction();
         realm.copyToRealmOrUpdate(favorite);
         realm.commitTransaction();
     }
 
-    public void copyOrUpdateIngrFavorites(List<IngredientFavorites> ingrFavorites) {
+    public void copyOrUpdateIngrFavorites(IngredientFavorites ingrFavorites) {
         realm.beginTransaction();
         realm.copyToRealmOrUpdate(ingrFavorites);
         realm.commitTransaction();
@@ -188,6 +188,12 @@ public class IngredientDatabase {
     }
 
     public void copyIngredientToBuy(List<IngredientToBuy> ingrToBuy) {
+        realm.beginTransaction();
+        realm.copyToRealm(ingrToBuy);
+        realm.commitTransaction();
+    }
+
+    public void copyIngredientToBuy(IngredientToBuy ingrToBuy) {
         realm.beginTransaction();
         realm.copyToRealm(ingrToBuy);
         realm.commitTransaction();

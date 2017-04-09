@@ -1,12 +1,14 @@
 package com.github.jurassicspb.cookbooksearchbyingredients;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 
@@ -44,6 +46,9 @@ public class IngredientToBuyAdapter extends RecyclerView.Adapter<IngredientToBuy
             ingrsToBuy = ingrToBuyDB.getAllIngrToBuy();
             ingrToBuyDB.close();
             notifyDataSetChanged();
+            Toast toast = Toast.makeText(v.getContext(), R.string.removed_successfully, Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
         });
 
         if (object.getCheckboxState() == 1) {
@@ -66,6 +71,7 @@ public class IngredientToBuyAdapter extends RecyclerView.Adapter<IngredientToBuy
             ingrToBuyDB.clearIngrToBuy();
             ingrToBuyDB.copyIngredientToBuy(newIngrToBuy);
             ingrToBuyDB.close();
+            newIngrToBuy = null;
             notifyDataSetChanged();
         });
     }
