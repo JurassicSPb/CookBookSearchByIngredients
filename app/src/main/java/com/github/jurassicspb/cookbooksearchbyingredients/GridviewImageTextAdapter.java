@@ -111,19 +111,18 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
                         ingredientAdapter.get(position).getCheckboxState());
 
                 ingrFavoritesDB.copyOrUpdateIngrFavorites(newIngrFav);
-                ingrFavoritesDB.close();
                 object.setCheckboxState(1);
                 Toast toast = Toast.makeText(v.getContext(), R.string.checkbox_add, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
             } else {
                 ingrFavoritesDB.deleteIngrFavoritePosition(ingredientAdapter.get(position).getIngredient());
-                ingrFavoritesDB.close();
                 object.setCheckboxState(0);
                 Toast toast = Toast.makeText(v.getContext(), R.string.checkbox_remove, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
             }
+            ingrFavoritesDB.close();
             notifyDataSetChanged();
         });
         return convertView;

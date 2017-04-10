@@ -24,7 +24,6 @@ import java.util.List;
 public class FullListActivity extends AppCompatActivity {
     private FullListAdapter adapter;
     private IngredientDatabase recipeDB;
-    private List<Recipe> recipes;
     private EditText searchEditText;
 
     private OnListItemClickListener clickListener = new OnListItemClickListener() {
@@ -68,7 +67,7 @@ public class FullListActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new FullListAdapter(recipes, clickListener);
+        adapter = new FullListAdapter(performRecipes(), clickListener);
         recyclerView.setAdapter(adapter);
 
         searchEditText = (EditText) findViewById(R.id.search);
@@ -102,8 +101,8 @@ public class FullListActivity extends AppCompatActivity {
         searchClearButton.setOnClickListener(v -> searchEditText.setText(""));
     }
 
-    private void performRecipes() {
-        recipes = recipeDB.copyFromRealmRecipeSorted();
+    private List <Recipe> performRecipes() {
+        return recipeDB.copyFromRealmRecipeSorted();
     }
 
     //    private  List<Recipe> createFakeRecipes(){

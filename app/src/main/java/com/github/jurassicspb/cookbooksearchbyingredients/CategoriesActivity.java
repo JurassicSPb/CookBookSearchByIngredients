@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
@@ -43,14 +41,11 @@ public class CategoriesActivity extends AppCompatActivity{
         CategoriesAdapter adapter = new CategoriesAdapter(this, categories);
         gridview.setAdapter(adapter);
 
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String name = categories.get((int)id).getName();
-                Intent intent = new Intent(CategoriesActivity.this, CategoriesListActivity.class);
-                intent.putExtra("name", name);
-                startActivity(intent);
-            }
+        gridview.setOnItemClickListener((parent, view, position, id) -> {
+            String name = categories.get((int)id).getName();
+            Intent intent = new Intent(CategoriesActivity.this, CategoriesListActivity.class);
+            intent.putExtra("name", name);
+            startActivity(intent);
         });
 
     }
