@@ -9,6 +9,7 @@ import io.realm.annotations.PrimaryKey;
 
 public class Favorites extends RealmObject{
     @PrimaryKey
+    private int id;
     private String name;
     private String ingredient;
     private String category;
@@ -18,13 +19,18 @@ public class Favorites extends RealmObject{
 
     public Favorites() {}
 
-    public Favorites(String name, String ingredient, String category, String description, String calories, String image) {
+    public Favorites(int id, String name, String ingredient, String category, String description, String calories, String image) {
+        this.id = id;
         this.name = name;
         this.ingredient = ingredient;
         this.category = category;
         this.description=description;
         this.calories=calories;
         this.image = image;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -45,6 +51,10 @@ public class Favorites extends RealmObject{
 
     public String getCalories() {
         return calories;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setName(String name) {

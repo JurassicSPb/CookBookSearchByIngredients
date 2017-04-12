@@ -9,6 +9,7 @@ import io.realm.annotations.PrimaryKey;
 
 public class Recipe extends RealmObject{
     @PrimaryKey
+    private int id;
     private String name;
     private String ingredient;
     private String category;
@@ -19,13 +20,18 @@ public class Recipe extends RealmObject{
 
     public Recipe() {}
 
-        public Recipe(String name, String ingredient, String category, String description, String calories, String image) {
+        public Recipe(int id, String name, String ingredient, String category, String description, String calories, String image) {
+            this.id=id;
             this.name = name;
             this.ingredient = ingredient;
             this.category=category;
             this.description=description;
             this.calories=calories;
             this.image = image;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -42,6 +48,10 @@ public class Recipe extends RealmObject{
 
     public String getImage() {
         return image;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setName(String name) {

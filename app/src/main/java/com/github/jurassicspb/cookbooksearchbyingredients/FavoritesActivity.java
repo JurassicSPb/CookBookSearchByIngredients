@@ -23,18 +23,22 @@ public class FavoritesActivity extends AppCompatActivity {
     private OnListItemClickListener clickListener = new OnListItemClickListener() {
         @Override
         public void onClick(View v, int position) {
+            int id = adapter.getRecipe(position).getId();
             String name = adapter.getRecipe(position).getName();
             String photo = adapter.getRecipe(position).getImage();
             String ingredients = adapter.getRecipe(position).getIngredient();
             String description = adapter.getRecipe(position).getDescription();
             String calories = adapter.getRecipe(position).getCalories();
+            String category = adapter.getRecipe(position).getCategory();
 
             Intent intent = new Intent(FavoritesActivity.this, RecipeDetailActivity.class);
+            intent.putExtra("id", id);
             intent.putExtra("name", name);
             intent.putExtra("photo", photo);
             intent.putExtra("ingredients", ingredients);
             intent.putExtra("description", description);
             intent.putExtra("calories", calories);
+            intent.putExtra("category", category);
             startActivity(intent);
 
         }

@@ -26,6 +26,7 @@ public class RecipeListActivity extends AppCompatActivity {
     private OnListItemClickListener clickListener = new OnListItemClickListener() {
         @Override
         public void onClick(View v, int position) {
+            int id = adapter.getRecipe(position).getId();
             String name = adapter.getRecipe(position).getName();
             String photo = adapter.getRecipe(position).getImage();
             String ingredients = adapter.getRecipe(position).getIngredient();
@@ -34,6 +35,7 @@ public class RecipeListActivity extends AppCompatActivity {
             String category = adapter.getRecipe(position).getCategory();
 
             Intent intent = new Intent(RecipeListActivity.this, RecipeDetailActivity.class);
+            intent.putExtra("id", id);
             intent.putExtra("name", name);
             intent.putExtra("photo", photo);
             intent.putExtra("ingredients", ingredients);

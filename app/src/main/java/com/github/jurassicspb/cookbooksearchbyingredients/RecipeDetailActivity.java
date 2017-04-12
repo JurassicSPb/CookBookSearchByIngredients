@@ -31,19 +31,13 @@ import java.util.List;
 public class RecipeDetailActivity extends AppCompatActivity {
     private IngredientDatabase favoritesDB;
     private List<Favorites> favorites;
-    Toast toast;
-    ImageView largeImage;
-    TextView ingredient;
-    TextView description;
-    TextView calorie;
-    String names;
-    String ingredients;
-    String descriptions;
-    String calories;
-    String image;
-    String category;
-    Drawable myDrawable;
-
+    private int id;
+    private String names;
+    private String ingredients;
+    private String descriptions;
+    private String calories;
+    private String image;
+    private String category;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,6 +47,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
 
         if (savedInstanceState != null) {
             SelectedIngredient.copyAllIngr(savedInstanceState.getStringArrayList("ingr"));
+            id = savedInstanceState.getInt("id");
             names = savedInstanceState.getString("names");
             ingredients = savedInstanceState.getString("ingredients");
             descriptions = savedInstanceState.getString("descriptions");
@@ -68,6 +63,8 @@ public class RecipeDetailActivity extends AppCompatActivity {
         Typeface typefaceIngredientDescription = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Medium.ttf");
         Typeface typefaceCalorieAndIngredient = Typeface.createFromAsset(getAssets(), "fonts/Lobster-Regular.ttf");
 
+        id = intent.getIntExtra("id", 0);
+
         names = intent.getStringExtra("name");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
@@ -79,7 +76,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
 
         favorites = favoritesDB.getFavorite(names);
 
-        largeImage = (ImageView) findViewById(R.id.large_image);
+        ImageView largeImage = (ImageView) findViewById(R.id.large_image);
         image = intent.getStringExtra("photo");
         Picasso.with(this)
                 .load(image)
@@ -89,7 +86,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
                 .error(R.drawable.noconnection128)
                 .into(largeImage);
 
-        ingredient = (TextView) findViewById(R.id.ingredients_field);
+        TextView ingredient = (TextView) findViewById(R.id.ingredients_field);
         ingredients = intent.getStringExtra("ingredients");
         ingredient.setTypeface(typefaceCalorieAndIngredient);
         final Spannable text = new SpannableString(ingredients);
@@ -101,12 +98,12 @@ public class RecipeDetailActivity extends AppCompatActivity {
         }
         ingredient.setText(text);
 
-        description = (TextView) findViewById(R.id.description_field);
+        TextView description = (TextView) findViewById(R.id.description_field);
         descriptions = intent.getStringExtra("description");
         description.setText(descriptions);
         description.setTypeface(typefaceIngredientDescription);
 
-        calorie = (TextView) findViewById(R.id.calories_field);
+        TextView calorie = (TextView) findViewById(R.id.calories_field);
         calories = intent.getStringExtra("calories");
         calorie.setText(calories);
         calorie.setTypeface(typefaceCalorieAndIngredient);
@@ -131,12 +128,14 @@ public class RecipeDetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Toast toast;
+        Drawable myDrawable;
         switch (item.getItemId()) {
             case R.id.item4:
                 if (favorites.size() == 0) {
                     myDrawable = ContextCompat.getDrawable(this, R.drawable.ic_favorites_selected);
                     item.setIcon(myDrawable);
-                    Favorites newFavorites = new Favorites(names, ingredients, category, descriptions, calories, image);
+                    Favorites newFavorites = new Favorites(id, names, ingredients, category, descriptions, calories, image);
                     favoritesDB.copyOrUpdateFavorites(newFavorites);
                     toast = Toast.makeText(this, R.string.toast_favorites, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
@@ -158,6 +157,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putStringArrayList("ingr", SelectedIngredient.getSelectedIngredient());
+        outState.putInt("id", id);
         outState.putString("names", names);
         outState.putString("ingredients", ingredients);
         outState.putString("descriptions", descriptions);
