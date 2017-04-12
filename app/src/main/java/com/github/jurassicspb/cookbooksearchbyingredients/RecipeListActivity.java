@@ -86,7 +86,7 @@ public class RecipeListActivity extends AppCompatActivity {
                     count++;
                 }
             }
-            newRecipes.get(i).setCount(String.valueOf(count));
+            newRecipes.get(i).setCount(count);
         }
         Collections.sort(newRecipes, sortByCountAndCategory());
         return newRecipes;
@@ -94,10 +94,12 @@ public class RecipeListActivity extends AppCompatActivity {
 
     public Comparator <Recipe> sortByCountAndCategory() {
         Comparator<Recipe> comparator = (o1, o2) -> {
-            if (o2.getCount().compareTo(o1.getCount()) == 0) {
+            if (o2.getCount()==o1.getCount()) {
                 return o1.getCategory().compareTo(o2.getCategory());
+            } else if (o2.getCount()>o1.getCount()){
+                return 1;
             }
-            return o2.getCount().compareTo(o1.getCount());
+            return -1;
         };
         return comparator;
     }

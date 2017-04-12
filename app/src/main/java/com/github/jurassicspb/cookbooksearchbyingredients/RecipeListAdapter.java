@@ -68,8 +68,8 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
             sizeSpan = new RelativeSizeSpan(0.9f);
         }
         span.setSpan(styleSpan, 0, recipes.get(position).getName().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        span.setSpan(sizeSpan, recipes.get(position).getName().length()+1, span.length()-recipes.get(position).getCount().length()-matchingIngr.length()-1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        span.setSpan(styleSpan2, span.length()-recipes.get(position).getCount().length(), span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        span.setSpan(sizeSpan, recipes.get(position).getName().length()+1, span.length()-String.valueOf(recipes.get(position).getCount()).length()-matchingIngr.length()-1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        span.setSpan(styleSpan2, span.length()-String.valueOf(recipes.get(position).getCount()).length(), span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         Picasso.with(context)
                 .load(url)
