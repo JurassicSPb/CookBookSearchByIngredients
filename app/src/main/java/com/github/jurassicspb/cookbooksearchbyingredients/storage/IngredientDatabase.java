@@ -199,15 +199,14 @@ public class IngredientDatabase {
         realm.commitTransaction();
     }
 
-    public List<IngredientToBuy> getAllIngrToBuy() {
-        return realm.where(IngredientToBuy.class).findAll();
+    public void copyIngredientToBuyList(List<IngredientToBuy> ingrToBuy) {
+        realm.beginTransaction();
+        realm.copyToRealm(ingrToBuy);
+        realm.commitTransaction();
     }
 
-    public void deleteIngrToBuy(int position) {
-        realm.beginTransaction();
-        RealmResults<IngredientToBuy> results = realm.where(IngredientToBuy.class).findAll();
-        results.deleteFromRealm(position);
-        realm.commitTransaction();
+    public List<IngredientToBuy> getAllIngrToBuy() {
+        return realm.where(IngredientToBuy.class).findAll();
     }
 
     public List<IngredientToBuy> copyIngrToBuyFromRealm() {
@@ -224,7 +223,6 @@ public class IngredientDatabase {
         results.deleteAllFromRealm();
         realm.commitTransaction();
     }
-
 
     public void addChangeListener(RealmChangeListener<Realm> changeListener) {
         realm.addChangeListener(changeListener);

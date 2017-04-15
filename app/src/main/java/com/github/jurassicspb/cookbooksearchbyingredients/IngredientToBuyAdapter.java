@@ -42,8 +42,10 @@ public class IngredientToBuyAdapter extends RecyclerView.Adapter<IngredientToBuy
 
         holder.delete.setOnClickListener(v -> {
             ingrToBuyDB = new IngredientDatabase();
-            ingrToBuyDB.deleteIngrToBuy(holder.getAdapterPosition());
-            ingrsToBuy = ingrToBuyDB.getAllIngrToBuy();
+            List <IngredientToBuy> newIngrToBuy = ingrToBuyDB.copyIngrToBuyFromRealm();
+            newIngrToBuy.remove(holder.getAdapterPosition());
+            ingrToBuyDB.clearIngrToBuy();
+            ingrToBuyDB.copyIngredientToBuyList(newIngrToBuy);
             ingrToBuyDB.close();
             notifyDataSetChanged();
             Toast toast = Toast.makeText(v.getContext(), R.string.removed_successfully, Toast.LENGTH_SHORT);
@@ -63,7 +65,6 @@ public class IngredientToBuyAdapter extends RecyclerView.Adapter<IngredientToBuy
             if (object.getCheckboxState() == 0) {
                 newIngrToBuy.set(holder.getAdapterPosition(), new IngredientToBuy(ingrsToBuy.get(holder.getAdapterPosition()).getName(),
                         ingrsToBuy.get(holder.getAdapterPosition()).getWeight(), ingrsToBuy.get(holder.getAdapterPosition()).getAmount(), 1));
-                ingrToBuyDB.clearIngrToBuy();
             } else {
                 newIngrToBuy.set(holder.getAdapterPosition(), new IngredientToBuy(ingrsToBuy.get(holder.getAdapterPosition()).getName(),
                         ingrsToBuy.get(holder.getAdapterPosition()).getWeight(), ingrsToBuy.get(holder.getAdapterPosition()).getAmount(), 0));

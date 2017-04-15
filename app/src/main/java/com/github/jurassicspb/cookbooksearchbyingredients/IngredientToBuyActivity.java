@@ -172,7 +172,7 @@ public class IngredientToBuyActivity extends AppCompatActivity {
                 }
 
                 ingrsToBuyDB.copyIngredientToBuy(ingredientToBuy);
-                ingredientsToBuy = ingrsToBuyDB.getAllIngrToBuy();
+                performIngredientsToBuy();
                 adapter.notifyDataSetChanged();
                 toast = Toast.makeText(getApplication(), R.string.added_successfully, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
