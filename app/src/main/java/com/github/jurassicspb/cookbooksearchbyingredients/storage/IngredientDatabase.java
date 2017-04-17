@@ -145,9 +145,9 @@ public class IngredientDatabase {
 
     public List<Recipe> getRecipe(ArrayList<String> selected) {
         RealmQuery<Recipe> query = realm.where(Recipe.class);
-        query.contains("ingredient", selected.get(0), Case.INSENSITIVE);
+        query.contains("ingredient", selected.get(0));
         for (int i = 1; i < selected.size(); i++) {
-            query.or().contains("ingredient", selected.get(i), Case.INSENSITIVE);
+            query.or().contains("ingredient", selected.get(i));
         }
         return query.findAll();
     }
