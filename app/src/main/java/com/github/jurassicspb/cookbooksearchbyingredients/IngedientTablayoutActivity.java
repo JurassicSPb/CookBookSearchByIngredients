@@ -59,7 +59,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         setContentView(R.layout.tablayout_with_viewpager);
 
         MyPreferences preferences = new MyPreferences(this);
-//                preferences.clearPrefs();
+//        preferences.clearFlag();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

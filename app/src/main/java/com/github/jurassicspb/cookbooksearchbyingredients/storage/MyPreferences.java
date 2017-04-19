@@ -35,6 +35,10 @@ public class MyPreferences {
         return preferences.getBoolean(KEY_REALM_FLAG, true);
     }
 
+    public void clearFlag() {
+        preferences.edit().remove(KEY_REALM_FLAG).apply();
+    }
+
     public boolean getFlagAlert() {
         return preferences.getBoolean(KEY_FLAG_ALERT, true);
     }
