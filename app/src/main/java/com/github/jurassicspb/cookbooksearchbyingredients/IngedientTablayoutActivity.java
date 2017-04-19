@@ -46,10 +46,6 @@ import java.util.List;
 public class IngedientTablayoutActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private IngredientDatabase ingredientDB;
     private List<CategoryTable> categoryTables;
-    private ArrayList<Categories> bufferCategories;
-    private ArrayList<Ingredient> bufferIngredient;
-    private ArrayList<Recipe> bufferRecipe;
-    private ArrayList<CategoryTable> bufferCategoryTables;
     private DrawerLayout drawer;
     private Intent intent;
 
@@ -126,11 +122,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 //                createCategoryTablesENG();
 //                createRecipes("eng");
 //            }
-            bufferIngredient = null;
-            bufferRecipe = null;
-            bufferCategories = null;
-            bufferCategoryTables = null;
-
             preferences.setFlag(false);
         }
         performCategoryTables();
@@ -241,7 +232,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     }
 
     private void createIngredientsRU() {
-        bufferIngredient = new ArrayList<>();
+        ArrayList<Ingredient> bufferIngredient = new ArrayList<>();
 
         bufferIngredient.add(new Ingredient(1, "белые грибы", R.drawable.beliy, 0, 0));
         bufferIngredient.add(new Ingredient(1, "грибы", R.drawable.mushrooms, 0, 0));
@@ -501,10 +492,12 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(22, "яйцо куриное", R.drawable.eggs, 0, 0));
 
         ingredientDB.copyOrUpdate(bufferIngredient);
+
+        bufferIngredient = null;
     }
 
     private void createCategoryTablesRU() {
-        bufferCategoryTables = new ArrayList<>();
+        ArrayList<CategoryTable> bufferCategoryTables = new ArrayList<>();
 
         bufferCategoryTables.add(new CategoryTable(0, "Все"));
         bufferCategoryTables.add(new CategoryTable(1, "Грибы"));
@@ -531,10 +524,12 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferCategoryTables.add(new CategoryTable(22, "Яйца"));
 
         ingredientDB.copyOrUpdateCategoryTable(bufferCategoryTables);
+
+        bufferCategoryTables = null;
     }
 
     private void createCategoriesRU() {
-        bufferCategories = new ArrayList<>();
+        ArrayList <Categories> bufferCategories = new ArrayList<>();
         bufferCategories.add(new Categories("Блины и оладьи", R.drawable.pancaces));
         bufferCategories.add(new Categories("Блюда для мультиварки", R.drawable.multi));
         bufferCategories.add(new Categories("Блюда на завтрак", R.drawable.zavtrak));
@@ -554,6 +549,8 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferCategories.add(new Categories("Супы", R.drawable.soups));
 
         ingredientDB.copyOrUpdateCategories(bufferCategories);
+
+        bufferCategories = null;
     }
 
     private void performCategoryTables() {
@@ -571,7 +568,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     }
 
     private void createRecipes(String language) {
-        bufferRecipe = new ArrayList<>();
+        ArrayList<Recipe> bufferRecipe = new ArrayList<>();
         AssetManager am = getApplicationContext().getAssets();
         try {
             String fileList[] = am.list(language);
@@ -600,6 +597,8 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             e.printStackTrace();
         }
         ingredientDB.copyOrUpdateRecipe(bufferRecipe);
+
+        bufferRecipe = null;
     }
 
     @Override
