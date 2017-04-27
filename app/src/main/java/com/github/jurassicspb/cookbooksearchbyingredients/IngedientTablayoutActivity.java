@@ -266,6 +266,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(5, "маргарин", R.drawable.margarin, 0, 0));
         bufferIngredient.add(new Ingredient(5, "масло сливочное", R.drawable.maslo_sliv, 0, 0));
         bufferIngredient.add(new Ingredient(5, "молоко", R.drawable.milk, 0, 0));
+        bufferIngredient.add(new Ingredient(5, "молоко сухое", R.drawable.milk_suh, 0, 0));
         bufferIngredient.add(new Ingredient(5, "простокваша", R.drawable.prostokv, 0, 0));
         bufferIngredient.add(new Ingredient(5, "сгущенное молоко", R.drawable.sgusch_moloko, 0, 0));
         bufferIngredient.add(new Ingredient(5, "сливки", R.drawable.slivki, 0, 0));
@@ -280,6 +281,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(7, "мука", R.drawable.muka, 0, 0));
         bufferIngredient.add(new Ingredient(7, "мука овсяная", R.drawable.oves_muka, 0, 0));
         bufferIngredient.add(new Ingredient(7, "мука пшеничная", R.drawable.muka_pshen, 0, 0));
+        bufferIngredient.add(new Ingredient(7, "мука цельнозерновая", R.drawable.muka_pshen, 0, 0));
         bufferIngredient.add(new Ingredient(7, "слоеное тесто", R.drawable.sloenoe_testo, 0, 0));
 
         bufferIngredient.add(new Ingredient(8, "баранина", R.drawable.lamb, 0, 0));
@@ -307,15 +309,19 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(8, "фарш свиной", R.drawable.pork_mince, 0, 0));
 
         bufferIngredient.add(new Ingredient(9, "бульон", R.drawable.buljen, 0, 0));
+        bufferIngredient.add(new Ingredient(9, "бурбон", R.drawable.burbon, 0, 0));
         bufferIngredient.add(new Ingredient(9, "вино белое", R.drawable.vino_bel, 0, 0));
         bufferIngredient.add(new Ingredient(9, "вино красное", R.drawable.vino_red, 0, 0));
+        bufferIngredient.add(new Ingredient(9, "виски", R.drawable.whiskey, 0, 0));
         bufferIngredient.add(new Ingredient(9, "вода", R.drawable.water, 0, 0));
+        bufferIngredient.add(new Ingredient(9, "вода газированная", R.drawable.water_spark, 0, 0));
         bufferIngredient.add(new Ingredient(9, "коньяк", R.drawable.conjak, 0, 0));
         bufferIngredient.add(new Ingredient(9, "кофе", R.drawable.coffee, 0, 0));
         bufferIngredient.add(new Ingredient(9, "ликер", R.drawable.liker, 0, 0));
         bufferIngredient.add(new Ingredient(9, "огуречный рассол", R.drawable.rassol, 0, 0));
         bufferIngredient.add(new Ingredient(9, "пиво светлое", R.drawable.beer_light, 0, 0));
         bufferIngredient.add(new Ingredient(9, "томатный сок", R.drawable.tomat_sok, 0, 0));
+        bufferIngredient.add(new Ingredient(9, "черный чай", R.drawable.black_tea, 0, 0));
         bufferIngredient.add(new Ingredient(9, "яблочный сок", R.drawable.apple_juice, 0, 0));
 
         bufferIngredient.add(new Ingredient(10, "базилик", R.drawable.bazil_fresh, 0, 0));
@@ -330,8 +336,8 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(10, "капуста пекинская", R.drawable.pekin_kap, 0, 0));
         bufferIngredient.add(new Ingredient(10, "картофель", R.drawable.potato, 0, 0));
         bufferIngredient.add(new Ingredient(10, "квашеная капуста", R.drawable.kvash_kap, 0, 0));
+        bufferIngredient.add(new Ingredient(10, "квашеный огурец", R.drawable.ogurec_kvash, 0, 0));
         bufferIngredient.add(new Ingredient(10, "кинза", R.drawable.kinza, 0, 0));
-        bufferIngredient.add(new Ingredient(10, "красный острый перец", R.drawable.krasn_perec, 0, 0));
         bufferIngredient.add(new Ingredient(10, "кукуруза", R.drawable.corn, 0, 0));
         bufferIngredient.add(new Ingredient(10, "кукуруза консервированная", R.drawable.canned_corn, 0, 0));
         bufferIngredient.add(new Ingredient(10, "лук", R.drawable.onion, 0, 0));
@@ -347,6 +353,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(10, "нут", R.drawable.nut, 0, 0));
         bufferIngredient.add(new Ingredient(10, "огурец", R.drawable.cucumber, 0, 0));
         bufferIngredient.add(new Ingredient(10, "оливки", R.drawable.olivki, 0, 0));
+        bufferIngredient.add(new Ingredient(10, "перец чили", R.drawable.krasn_perec, 0, 0));
         bufferIngredient.add(new Ingredient(10, "петрушка", R.drawable.petrushka, 0, 0));
         bufferIngredient.add(new Ingredient(10, "помидор", R.drawable.tomat, 0, 0));
         bufferIngredient.add(new Ingredient(10, "помидоры черри", R.drawable.pomidor_cherry, 0, 0));
@@ -373,8 +380,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(11, "миндаль", R.drawable.mindal, 0, 0));
         bufferIngredient.add(new Ingredient(11, "семечки подсолнечника", R.drawable.semechki_pods, 0, 0));
 
+        bufferIngredient.add(new Ingredient(12, "агар-агар", R.drawable.agar, 0, 0));
+        bufferIngredient.add(new Ingredient(12, "аджика сухая", R.drawable.adjika_suh, 0, 0));
         bufferIngredient.add(new Ingredient(12, "бадьян", R.drawable.badjan, 0, 0));
         bufferIngredient.add(new Ingredient(12, "базилик сушеный", R.drawable.bazilik, 0, 0));
+        bufferIngredient.add(new Ingredient(12, "бальзамический уксус", R.drawable.balsam_uksus, 0, 0));
         bufferIngredient.add(new Ingredient(12, "барбарис", R.drawable.barbaris, 0, 0));
         bufferIngredient.add(new Ingredient(12, "белый молотый перец", R.drawable.perec_bel_mol, 0, 0));
         bufferIngredient.add(new Ingredient(12, "бульонный кубик", R.drawable.kubik, 0, 0));
@@ -384,11 +394,12 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(12, "дрожжи", R.drawable.drozzi, 0, 0));
         bufferIngredient.add(new Ingredient(12, "душистый перец", R.drawable.perec_dush, 0, 0));
         bufferIngredient.add(new Ingredient(12, "желатин", R.drawable.jelatin, 0, 0));
+        bufferIngredient.add(new Ingredient(12, "жидкий дым", R.drawable.liquid_smoke, 0, 0));
+        bufferIngredient.add(new Ingredient(12, "имбирь", R.drawable.imbir_root, 0, 0));
         bufferIngredient.add(new Ingredient(12, "итальянские травы", R.drawable.ital_trav, 0, 0));
         bufferIngredient.add(new Ingredient(12, "кардамон", R.drawable.kardamon, 0, 0));
         bufferIngredient.add(new Ingredient(12, "карри", R.drawable.karri, 0, 0));
         bufferIngredient.add(new Ingredient(12, "кокосовая стружка", R.drawable.kokos_str, 0, 0));
-        bufferIngredient.add(new Ingredient(12, "корень имбиря", R.drawable.imbir_root, 0, 0));
         bufferIngredient.add(new Ingredient(12, "корица", R.drawable.koritsa, 0, 0));
         bufferIngredient.add(new Ingredient(12, "красный молотый перец", R.drawable.perec_mol_kr, 0, 0));
         bufferIngredient.add(new Ingredient(12, "крахмал", R.drawable.krahmal, 0, 0));
@@ -425,6 +436,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(13, "индейка", R.drawable.indi, 0, 0));
         bufferIngredient.add(new Ingredient(13, "куриная грудка", R.drawable.kur_grud, 0, 0));
         bufferIngredient.add(new Ingredient(13, "куриная грудка копченая", R.drawable.grudka_kopch, 0, 0));
+        bufferIngredient.add(new Ingredient(13, "куриная печень", R.drawable.kur_pechen, 0, 0));
         bufferIngredient.add(new Ingredient(13, "куриное бедро", R.drawable.kur_bedro, 0, 0));
         bufferIngredient.add(new Ingredient(13, "куриное филе", R.drawable.chicken_fillet, 0, 0));
         bufferIngredient.add(new Ingredient(13, "куриные ножки", R.drawable.kur_nozki, 0, 0));
@@ -440,14 +452,19 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         bufferIngredient.add(new Ingredient(14, "белая рыба", R.drawable.white_fish, 0, 0));
         bufferIngredient.add(new Ingredient(14, "горбуша", R.drawable.gorbusha, 0, 0));
+        bufferIngredient.add(new Ingredient(14, "окунь", R.drawable.okun, 0, 0));
         bufferIngredient.add(new Ingredient(14, "рыба", R.drawable.fish, 0, 0));
         bufferIngredient.add(new Ingredient(14, "рыбные консервы", R.drawable.rib_kons, 0, 0));
+        bufferIngredient.add(new Ingredient(14, "сазан", R.drawable.sazan, 0, 0));
         bufferIngredient.add(new Ingredient(14, "сельдь", R.drawable.seld, 0, 0));
+        bufferIngredient.add(new Ingredient(14, "семга", R.drawable.semga, 0, 0));
         bufferIngredient.add(new Ingredient(14, "скумбрия", R.drawable.skumbr, 0, 0));
         bufferIngredient.add(new Ingredient(14, "скумбрия консервированная", R.drawable.skumbr_kons, 0, 0));
         bufferIngredient.add(new Ingredient(14, "тилапия", R.drawable.tilapia, 0, 0));
         bufferIngredient.add(new Ingredient(14, "треска", R.drawable.treska, 0, 0));
         bufferIngredient.add(new Ingredient(14, "тунец консервированный", R.drawable.tuna_kons, 0, 0));
+        bufferIngredient.add(new Ingredient(14, "форель", R.drawable.forel, 0, 0));
+        bufferIngredient.add(new Ingredient(14, "хек", R.drawable.hek, 0, 0));
 
         bufferIngredient.add(new Ingredient(15, "ванильный сахар", R.drawable.vanil_sugar, 0, 0));
         bufferIngredient.add(new Ingredient(15, "ванильный сироп", R.drawable.vanil_sirop, 0, 0));
@@ -458,12 +475,13 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(15, "мед", R.drawable.honey, 0, 0));
         bufferIngredient.add(new Ingredient(15, "печенье", R.drawable.cookies, 0, 0));
         bufferIngredient.add(new Ingredient(15, "повидло", R.drawable.povidlo, 0, 0));
+        bufferIngredient.add(new Ingredient(15, "подсластитель", R.drawable.sweetener, 0, 0));
         bufferIngredient.add(new Ingredient(15, "сахар", R.drawable.sugar, 0, 0));
         bufferIngredient.add(new Ingredient(15, "сахар коричневый", R.drawable.sahar_kor, 0, 0));
-        bufferIngredient.add(new Ingredient(15, "сахарозаменитель", R.drawable.sweetener, 0, 0));
         bufferIngredient.add(new Ingredient(15, "сахарная пудра", R.drawable.pudra, 0, 0));
         bufferIngredient.add(new Ingredient(15, "стевия", R.drawable.stevia, 0, 0));
 
+        bufferIngredient.add(new Ingredient(16, "вустерский соус", R.drawable.wourchester, 0, 0));
         bufferIngredient.add(new Ingredient(16, "горчица", R.drawable.gorchiza, 0, 0));
         bufferIngredient.add(new Ingredient(16, "кетчуп", R.drawable.ketchup, 0, 0));
         bufferIngredient.add(new Ingredient(16, "майонез", R.drawable.mayonese, 0, 0));
@@ -478,6 +496,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(17, "финики", R.drawable.finiki, 0, 0));
         bufferIngredient.add(new Ingredient(17, "чернослив", R.drawable.prunes, 0, 0));
 
+        bufferIngredient.add(new Ingredient(18, "брынза", R.drawable.brynza, 0, 0));
         bufferIngredient.add(new Ingredient(18, "моцарелла", R.drawable.mozarella, 0, 0));
         bufferIngredient.add(new Ingredient(18, "пармезан", R.drawable.parmezan, 0, 0));
         bufferIngredient.add(new Ingredient(18, "копченый сыр", R.drawable.kopch_sir, 0, 0));
@@ -495,6 +514,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(19, "киви", R.drawable.qiwi, 0, 0));
         bufferIngredient.add(new Ingredient(19, "лайм", R.drawable.laim, 0, 0));
         bufferIngredient.add(new Ingredient(19, "лимон", R.drawable.lemon, 0, 0));
+        bufferIngredient.add(new Ingredient(19, "персик", R.drawable.peach, 0, 0));
         bufferIngredient.add(new Ingredient(19, "фрукты", R.drawable.frukti, 0, 0));
         bufferIngredient.add(new Ingredient(19, "яблоко", R.drawable.apple, 0, 0));
 
