@@ -36,9 +36,9 @@ public class IngredientToBuyAdapter extends RecyclerView.Adapter<IngredientToBuy
     public void onBindViewHolder(IngredientToBuyAdapter.ViewHolder holder, int position) {
         IngredientToBuy object = ingrsToBuy.get(position);
 
-        holder.name.setText(ingrsToBuy.get(position).getName());
-        holder.weight.setText(ingrsToBuy.get(position).getWeight());
-        holder.count.setText(ingrsToBuy.get(position).getAmount());
+        holder.name.setText(object.getName());
+        holder.weight.setText(object.getWeight());
+        holder.count.setText(object.getAmount());
 
         holder.delete.setOnClickListener(v -> {
             ingrToBuyDB = new IngredientDatabase();
@@ -63,11 +63,11 @@ public class IngredientToBuyAdapter extends RecyclerView.Adapter<IngredientToBuy
             ingrToBuyDB = new IngredientDatabase();
             List<IngredientToBuy> newIngrToBuy = ingrToBuyDB.copyIngrToBuyFromRealm();
             if (object.getCheckboxState() == 0) {
-                newIngrToBuy.set(holder.getAdapterPosition(), new IngredientToBuy(ingrsToBuy.get(holder.getAdapterPosition()).getName(),
-                        ingrsToBuy.get(holder.getAdapterPosition()).getWeight(), ingrsToBuy.get(holder.getAdapterPosition()).getAmount(), 1));
+                newIngrToBuy.set(holder.getAdapterPosition(), new IngredientToBuy(object.getName(),
+                        ingrsToBuy.get(holder.getAdapterPosition()).getWeight(), object.getAmount(), 1));
             } else {
-                newIngrToBuy.set(holder.getAdapterPosition(), new IngredientToBuy(ingrsToBuy.get(holder.getAdapterPosition()).getName(),
-                        ingrsToBuy.get(holder.getAdapterPosition()).getWeight(), ingrsToBuy.get(holder.getAdapterPosition()).getAmount(), 0));
+                newIngrToBuy.set(holder.getAdapterPosition(), new IngredientToBuy(object.getName(),
+                        ingrsToBuy.get(holder.getAdapterPosition()).getWeight(), object.getAmount(), 0));
             }
             ingrToBuyDB.clearIngrToBuy();
             ingrToBuyDB.copyIngredientToBuy(newIngrToBuy);

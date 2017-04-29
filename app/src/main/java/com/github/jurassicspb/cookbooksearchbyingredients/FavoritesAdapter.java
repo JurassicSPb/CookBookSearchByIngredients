@@ -20,13 +20,13 @@ import java.util.List;
  * Created by Мария on 27.12.2016.
  */
 
-public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.ViewHolder>{
+public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.ViewHolder> {
     private List<Favorites> favorites;
     private OnListItemClickListener clickListener;
 
-    public FavoritesAdapter (List <Favorites> favorites, OnListItemClickListener clickListener){
-        this.favorites=favorites;
-        this.clickListener=clickListener;
+    public FavoritesAdapter(List<Favorites> favorites, OnListItemClickListener clickListener) {
+        this.favorites = favorites;
+        this.clickListener = clickListener;
     }
 
     @Override
@@ -37,16 +37,17 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
 
     @Override
     public void onBindViewHolder(FavoritesAdapter.ViewHolder holder, int position) {
-        Context cont =  holder.recipeName.getContext();
+        Context cont = holder.recipeName.getContext();
         String category = cont.getResources().getString(R.string.category);
 
         String url = favorites.get(position).getImage();
         Context context = holder.photoSmall.getContext();
 
-        final SpannableString span = new SpannableString(favorites.get(position).getName() + "\n" + category + " " +
-                favorites.get(position).getCategory());
+        Favorites f = favorites.get(position);
+        final SpannableString span = new SpannableString(f.getName() + "\n" + category + " " +
+                f.getCategory());
         final StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
-        span.setSpan(styleSpan, 0, favorites.get(position).getName().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        span.setSpan(styleSpan, 0, f.getName().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         Picasso.with(context)
                 .load(url)
@@ -64,15 +65,15 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
         return favorites.size();
     }
 
-    public Favorites getRecipe (int position) {
+    public Favorites getRecipe(int position) {
         return favorites.get(position);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView photoSmall;
         TextView recipeName;
 
-        public ViewHolder (View itemView){
+        public ViewHolder(View itemView) {
             super(itemView);
             photoSmall = (ImageView) itemView.findViewById(R.id.photo);
             recipeName = (TextView) itemView.findViewById(R.id.recipe_name);

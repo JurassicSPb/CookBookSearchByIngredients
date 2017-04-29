@@ -103,13 +103,6 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
 
         gridview.setOnItemClickListener((parent, view1, position, id) -> {
 
-//                TextView tv = (TextView) view.findViewById(R.id.textpart);
-//                String sel = tv.getText().toString();
-//                Ingredient item = gita.getItem(position);
-//                String sel = item.getIngredient();
-//                String image = String.valueOf(item.getImage());
-//                long itemId = gita.getItemId(position);
-
             String selectedToString = getString(R.string.selected);
 
             String sel = ingredients.get((int) id).getIngredient();

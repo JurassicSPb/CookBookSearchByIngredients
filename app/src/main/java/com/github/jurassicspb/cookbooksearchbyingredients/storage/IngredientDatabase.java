@@ -152,21 +152,11 @@ public class IngredientDatabase {
         return query.findAll();
     }
 
-    public List<Recipe> copyFromRealmRecipe(List<Recipe> recipes) {
-        realm.beginTransaction();
-        List<Recipe> newRecipe = realm.copyFromRealm(recipes);
-        realm.commitTransaction();
-        return newRecipe;
-    }
 
-    public List<Recipe> copyFromRealmRecipeSorted() {
-        realm.beginTransaction();
+    public List<Recipe> getRecipesSorted() {
         String[] fieldNames = {"category", "name"};
         Sort sort[] = {Sort.ASCENDING, Sort.ASCENDING};
-        RealmResults<Recipe> results = realm.where(Recipe.class).findAllSorted(fieldNames, sort);
-        List<Recipe> newRecipe = realm.copyFromRealm(results);
-        realm.commitTransaction();
-        return newRecipe;
+        return realm.where(Recipe.class).findAllSorted(fieldNames, sort);
     }
 
     public List<Recipe> getRecipesByCategories(String name) {
@@ -175,10 +165,6 @@ public class IngredientDatabase {
         List<Recipe> newRecipe = realm.copyFromRealm(results);
         realm.commitTransaction();
         return newRecipe;
-    }
-
-    public List<Recipe> getAllRecipes() {
-        return realm.where(Recipe.class).findAll();
     }
 
     public void close() {
@@ -227,6 +213,4 @@ public class IngredientDatabase {
     public void addChangeListener(RealmChangeListener<Realm> changeListener) {
         realm.addChangeListener(changeListener);
     }
-
-
 }

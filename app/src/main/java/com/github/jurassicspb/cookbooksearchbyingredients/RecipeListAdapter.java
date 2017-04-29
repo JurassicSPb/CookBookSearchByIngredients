@@ -25,10 +25,10 @@ import java.util.List;
  */
 
 public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.ViewHolder>{
-    private List <Recipe> recipes;
+    private List <RecipeCount> recipes;
     private OnListItemClickListener clickListener;
 
-    public RecipeListAdapter (List <Recipe> recipes, OnListItemClickListener clickListener){
+    public RecipeListAdapter (List <RecipeCount> recipes, OnListItemClickListener clickListener){
         this.recipes=recipes;
         this.clickListener=clickListener;
     }
@@ -53,11 +53,13 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
         String matchingIngr = cont.getResources().getString(R.string.count_of_matching_ingredients);
         String category = cont.getResources().getString(R.string.category);
 
-        String url = recipes.get(position).getImage();
+        String url = recipes.get(position).getRecipe().getImage();
         Context context = holder.photoSmall.getContext();
 
-        final SpannableString span = new SpannableString(recipes.get(position).getName() + "\n" + category + " "+
-                recipes.get(position).getCategory() + "\n" + matchingIngr + " " + recipes.get(position).getCount());
+        RecipeCount r = recipes.get(position);
+
+        final SpannableString span = new SpannableString(r.getRecipe().getName() + "\n" + category + " "+
+                r.getRecipe().getCategory() + "\n" + matchingIngr + " " + r.getCount());
         final StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
         final StyleSpan styleSpan2 = new StyleSpan(Typeface.BOLD);
         final RelativeSizeSpan sizeSpan;
@@ -67,9 +69,9 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
         else {
             sizeSpan = new RelativeSizeSpan(0.9f);
         }
-        span.setSpan(styleSpan, 0, recipes.get(position).getName().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        span.setSpan(sizeSpan, recipes.get(position).getName().length()+1, span.length()-String.valueOf(recipes.get(position).getCount()).length()-matchingIngr.length()-1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        span.setSpan(styleSpan2, span.length()-String.valueOf(recipes.get(position).getCount()).length(), span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        span.setSpan(styleSpan, 0, r.getRecipe().getName().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        span.setSpan(sizeSpan, r.getRecipe().getName().length()+1, span.length()-String.valueOf(r.getCount()).length()-matchingIngr.length()-1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        span.setSpan(styleSpan2, span.length()-String.valueOf(r.getCount()).length(), span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         Picasso.with(context)
                 .load(url)
@@ -87,7 +89,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
         return recipes.size();
     }
 
-    public Recipe getRecipe(int position) {
+    public RecipeCount getRecipe(int position) {
         return recipes.get(position);
     }
 

@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -26,13 +27,13 @@ public class RecipeListActivity extends AppCompatActivity {
     private OnListItemClickListener clickListener = new OnListItemClickListener() {
         @Override
         public void onClick(View v, int position) {
-            int id = adapter.getRecipe(position).getId();
-            String name = adapter.getRecipe(position).getName();
-            String photo = adapter.getRecipe(position).getImage();
-            String ingredients = adapter.getRecipe(position).getIngredient();
-            String description = adapter.getRecipe(position).getDescription();
-            String calories = adapter.getRecipe(position).getCalories();
-            String category = adapter.getRecipe(position).getCategory();
+            int id = adapter.getRecipe(position).getRecipe().getId();
+            String name = adapter.getRecipe(position).getRecipe().getName();
+            String photo = adapter.getRecipe(position).getRecipe().getImage();
+            String ingredients = adapter.getRecipe(position).getRecipe().getIngredient();
+            String description = adapter.getRecipe(position).getRecipe().getDescription();
+            String calories = adapter.getRecipe(position).getRecipe().getCalories();
+            String category = adapter.getRecipe(position).getRecipe().getCategory();
 
             Intent intent = new Intent(RecipeListActivity.this, RecipeDetailActivity.class);
             intent.putExtra("id", id);
@@ -75,27 +76,27 @@ public class RecipeListActivity extends AppCompatActivity {
 
     }
 
-    private List<Recipe> performRecipes() {
+    private List<RecipeCount> performRecipes() {
         List<Recipe> recipes = recipeDB.getRecipe(SelectedIngredient.getSelectedIngredient());
-        List<Recipe> newRecipes = recipeDB.copyFromRealmRecipe(recipes);
+        List<RecipeCount> newRecipes = new ArrayList<>();
         int count;
-        for (int i = 0; i < newRecipes.size(); i++) {
+        for (int i = 0; i < recipes.size(); i++) {
             count = 0;
             for (int k = 0; k < SelectedIngredient.getSelectedIngredient().size(); k++) {
-                if (newRecipes.get(i).getIngredient().contains(SelectedIngredient.getSelectedIngredient().get(k))) {
+                if (recipes.get(i).getIngredient().contains(SelectedIngredient.getSelectedIngredient().get(k))) {
                     count++;
                 }
             }
-            newRecipes.get(i).setCount(count);
+            newRecipes.add(new RecipeCount(count, recipes.get(i)));
         }
         Collections.sort(newRecipes, sortByCountAndCategory());
         return newRecipes;
     }
 
-    public Comparator <Recipe> sortByCountAndCategory() {
-        Comparator<Recipe> comparator = (o1, o2) -> {
+    public Comparator <RecipeCount> sortByCountAndCategory() {
+        Comparator<RecipeCount> comparator = (o1, o2) -> {
             if (o2.getCount()==o1.getCount()) {
-                return o1.getCategory().compareTo(o2.getCategory());
+                return o1.getRecipe().getCategory().compareTo(o2.getRecipe().getCategory());
             } else if (o2.getCount()>o1.getCount()){
                 return 1;
             }

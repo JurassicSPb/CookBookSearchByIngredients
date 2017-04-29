@@ -87,8 +87,8 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
             holder = (ViewHolder) convertView.getTag();
 
         }
-        holder.textView.setText(ingredientAdapter.get(position).getIngredient());
-        holder.imageView.setImageResource(ingredientAdapter.get(position).getImage());
+        holder.textView.setText(object.getIngredient());
+        holder.imageView.setImageResource(object.getImage());
 
         if (object.getState() == 1) {
             holder.textView.setTextColor(ContextCompat.getColor(mContext, R.color.tabLayoutTextColorSelected));
@@ -106,17 +106,15 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
             IngredientDatabase ingrFavoritesDB = new IngredientDatabase();
             if (object.getCheckboxState() == 0) {
                 IngredientFavorites newIngrFav;
-                newIngrFav = new IngredientFavorites(ingredientAdapter.get(position).getIngredient(),
-                        ingredientAdapter.get(position).getImage(), ingredientAdapter.get(position).getState(),
-                        ingredientAdapter.get(position).getCheckboxState());
-
+                newIngrFav = new IngredientFavorites(object.getIngredient(),
+                        object.getImage(), object.getState(), object.getCheckboxState());
                 ingrFavoritesDB.copyOrUpdateIngrFavorites(newIngrFav);
                 object.setCheckboxState(1);
                 Toast toast = Toast.makeText(v.getContext(), R.string.checkbox_add, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
             } else {
-                ingrFavoritesDB.deleteIngrFavoritePosition(ingredientAdapter.get(position).getIngredient());
+                ingrFavoritesDB.deleteIngrFavoritePosition(object.getIngredient());
                 object.setCheckboxState(0);
                 Toast toast = Toast.makeText(v.getContext(), R.string.checkbox_remove, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);

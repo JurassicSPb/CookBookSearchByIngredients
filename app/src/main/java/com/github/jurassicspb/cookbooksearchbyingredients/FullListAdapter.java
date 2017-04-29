@@ -23,12 +23,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FullListAdapter extends RecyclerView.Adapter<FullListAdapter.ViewHolder> implements Filterable{
-    private List<Recipe> recipes;
-    private List<Recipe> recipesFiltered;
+    private List<RecipeFilter> recipes;
+    private List<RecipeFilter> recipesFiltered;
     private ValueFilter valueFilter;
     private OnListItemClickListener clickListener;
 
-    public FullListAdapter (List <Recipe> recipes, OnListItemClickListener clickListener){
+    public FullListAdapter (List <RecipeFilter> recipes, OnListItemClickListener clickListener){
         this.recipes=recipes;
         recipesFiltered=recipes;
         this.clickListener=clickListener;
@@ -48,8 +48,9 @@ public class FullListAdapter extends RecyclerView.Adapter<FullListAdapter.ViewHo
         String url = recipes.get(position).getImage();
         Context context = holder.photoSmall.getContext();
 
-        final SpannableString span = new SpannableString(recipes.get(position).getName() + "\n" + category + " "
-                + recipes.get(position).getCategory());
+        RecipeFilter f = recipes.get(position);
+        final SpannableString span = new SpannableString(f.getName() + "\n" + category + " "
+                + f.getCategory());
         final StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
         span.setSpan(styleSpan, 0, recipes.get(position).getName().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
@@ -70,7 +71,7 @@ public class FullListAdapter extends RecyclerView.Adapter<FullListAdapter.ViewHo
         return recipes.size();
     }
 
-    public Recipe getRecipe (int position) {
+    public RecipeFilter getRecipe (int position) {
         return recipes.get(position);
     }
 
@@ -106,7 +107,7 @@ public class FullListAdapter extends RecyclerView.Adapter<FullListAdapter.ViewHo
         protected FilterResults performFiltering(CharSequence constraint) {
             FilterResults results = new FilterResults();
             if (constraint != null && constraint.length() > 0) {
-                ArrayList<Recipe> filterList = new ArrayList<>();
+                ArrayList<RecipeFilter> filterList = new ArrayList<>();
                 for (int i = 0; i < recipesFiltered.size(); i++) {
                     if (recipesFiltered.get(i).getName().toUpperCase()
                             .contains(constraint.toString().toUpperCase()) ||
@@ -130,7 +131,7 @@ public class FullListAdapter extends RecyclerView.Adapter<FullListAdapter.ViewHo
                 //do nothing
             }
             else {
-                recipes = (ArrayList<Recipe>) results.values;
+                recipes = (ArrayList<RecipeFilter>) results.values;
                 notifyDataSetChanged();
             }
         }

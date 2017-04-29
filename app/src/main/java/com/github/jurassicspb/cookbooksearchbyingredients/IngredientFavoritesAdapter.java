@@ -72,8 +72,8 @@ public class IngredientFavoritesAdapter extends BaseAdapter {
         } else {
             holder = (IngredientFavoritesAdapter.ViewHolder) convertView.getTag();
         }
-        holder.textView.setText(ingrFavoritesAdapter.get(position).getIngredient());
-        holder.imageView.setImageResource(ingrFavoritesAdapter.get(position).getImage());
+        holder.textView.setText(object.getIngredient());
+        holder.imageView.setImageResource(object.getImage());
 
         if (object.getState() == 1) {
             holder.textView.setTextColor(ContextCompat.getColor(mContext, R.color.tabLayoutTextColorSelected));
@@ -85,8 +85,8 @@ public class IngredientFavoritesAdapter extends BaseAdapter {
 
         holder.checkBox.setOnClickListener(v -> {
             IngredientDatabase ingrFavoritesDB = new IngredientDatabase();
-            ingrFavoritesDB.deleteIngrFavoritePosition(ingrFavoritesAdapter.get(position).getIngredient());
-            ingrFavoritesAdapter.remove(ingrFavoritesAdapter.get(position));
+            ingrFavoritesDB.deleteIngrFavoritePosition(object.getIngredient());
+            ingrFavoritesAdapter.remove(object);
             ingrFavoritesDB.close();
             notifyDataSetChanged();
             Toast toast = Toast.makeText(v.getContext(), R.string.checkbox_remove, Toast.LENGTH_SHORT);

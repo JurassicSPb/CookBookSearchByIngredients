@@ -15,6 +15,7 @@ import android.widget.EditText;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,7 +47,6 @@ public class FullListActivity extends AppCompatActivity {
             intent.putExtra("calories", calories);
             intent.putExtra("category", category);
             startActivity(intent);
-
         }
     };
 
@@ -68,7 +68,7 @@ public class FullListActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new FullListAdapter(performRecipes(), clickListener);
+        adapter = new FullListAdapter(performRecipesCopy(), clickListener);
         recyclerView.setAdapter(adapter);
 
         searchEditText = (EditText) findViewById(R.id.search);
@@ -102,28 +102,16 @@ public class FullListActivity extends AppCompatActivity {
         searchClearButton.setOnClickListener(v -> searchEditText.setText(""));
     }
 
-    private List <Recipe> performRecipes() {
-        return recipeDB.copyFromRealmRecipeSorted();
+    private List <RecipeFilter> performRecipesCopy(){
+        List <Recipe> recipes = recipeDB.getRecipesSorted();
+        List <RecipeFilter> newRecipes = new ArrayList<>();
+        for (int i = 0; i < recipes.size(); i++) {
+            Recipe r = recipes.get(i);
+            newRecipes.add(new RecipeFilter(r.getId(), r.getName(), r.getIngredient(),
+                    r.getCategory(), r.getDescription(), r.getCalories(), r.getImage()));
+        }
+        return newRecipes;
     }
-
-    //    private  List<Recipe> createFakeRecipes(){
-//        ArrayList<Recipe> newRecipes = new ArrayList<>();
-//        for (int i = 0; i < 100000; i++) {
-//            newRecipes.add(new Recipe("dwefffffffffffffffffГовядинаfffffffffffwefwefwefwefwefwefwefwefwefwefwefd",
-//                    "ddddfwefwefwefwefwedddddddwadwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwf",
-//                    "dwedwedeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeed",
-//                    "dwwffefwwweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" +
-//                            "eeeeeegeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeewdwdwdwedwdwddddddddd" +
-//                            "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" +
-//                            "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" +
-//                            "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" +
-//                            "dddddddddddddddddddddddddddddddddddddddddweeeeeeeeeeeeeeeeeeeeeeeeefaeerffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff" +
-//                            "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwdwfwfwfwfwfwd",
-//                    "wfwwfwfwfwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwfef",
-//                    "wefffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdwdwfwfwfwfwfw"));
-//        }
-//        return newRecipes;
-//    }
 
     @Override
     protected void onDestroy() {
