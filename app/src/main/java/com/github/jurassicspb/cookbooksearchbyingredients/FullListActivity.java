@@ -57,7 +57,6 @@ public class FullListActivity extends AppCompatActivity {
         setContentView(R.layout.full_list_recyclerview);
 
         recipeDB = new IngredientDatabase();
-        performRecipes();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
