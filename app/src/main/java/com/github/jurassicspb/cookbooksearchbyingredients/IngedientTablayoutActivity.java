@@ -421,10 +421,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(12, "кардамон", R.drawable.kardamon, 0, 0));
         bufferIngredient.add(new Ingredient(12, "карри", R.drawable.karri, 0, 0));
         bufferIngredient.add(new Ingredient(12, "кокосовая стружка", R.drawable.kokos_str, 0, 0));
+        bufferIngredient.add(new Ingredient(12, "кориандр", R.drawable.coriandr, 0, 0));
         bufferIngredient.add(new Ingredient(12, "корица", R.drawable.koritsa, 0, 0));
         bufferIngredient.add(new Ingredient(12, "красный молотый перец", R.drawable.perec_mol_kr, 0, 0));
         bufferIngredient.add(new Ingredient(12, "крахмал", R.drawable.krahmal, 0, 0));
-        bufferIngredient.add(new Ingredient(12, "кунжут", R.drawable.kunzut, 0, 0));
+        bufferIngredient.add(new Ingredient(12, "кунжут ", R.drawable.kunzut, 0, 0));
         bufferIngredient.add(new Ingredient(12, "кумин (зира)", R.drawable.kumin, 0, 0));
         bufferIngredient.add(new Ingredient(12, "лавровый лист", R.drawable.lavr, 0, 0));
         bufferIngredient.add(new Ingredient(12, "лимонная кислота", R.drawable.limon_kisl, 0, 0));
