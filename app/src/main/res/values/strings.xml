@@ -14,6 +14,7 @@
     <string name="drawer_menu_ingr_favorites">Избранные ингредиенты</string>
     <string name="drawer_menu_full_list">Полный список</string>
     <string name="drawer_menu_exit">Выход</string>
+    <string name="drawer_menu_vk">Мы ВКонтакте</string>
     <string name="toast_favorites">Добавлено в Избранные рецепты</string>
     <string name="toast_favorites_remove">Удалено из Избранных рецептов</string>
     <string name="full_list">Полный список рецептов</string>
@@ -31,6 +32,9 @@
     <string name="alert_5">Показывать подсказки при следующем запуске?</string>
     <string name="alert_button_yes">Показывать</string>
     <string name="alert_button_no">Не показывать</string>
+    <string name="alert_6_show">Поставить оценку</string>
+    <string name="alert_6_not_show">Больше не показывать</string>
+    <string name="alert_6_exit">Выход</string>
 
     <!--Таблица мер и весов -->
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/show"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/Black"
+        android:text="@string/alert_6_show"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="200dp"
+        android:alpha="0.92"
+        android:background="@drawable/alert_window"/>
+
+    <Button
+        android:id="@+id/not_show"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:textSize="20sp"
+        android:textColor="@color/Black"
+        android:text="@string/alert_6_not_show"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="268dp"
+        android:alpha="0.92"
+        android:background="@drawable/alert_window"/>
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:textSize="20sp"
+        android:textColor="@color/Black"
+        android:text="@string/alert_6_exit"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="336dp"
+        android:alpha="0.92"
+        android:background="@drawable/alert_window"/>
+
+
+
+</FrameLayout>

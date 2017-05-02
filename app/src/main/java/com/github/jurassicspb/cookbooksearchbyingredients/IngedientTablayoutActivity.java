@@ -2,6 +2,7 @@ package com.github.jurassicspb.cookbooksearchbyingredients;
 
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.custom_dialogs.CustomDialog1;
+import com.github.jurassicspb.cookbooksearchbyingredients.custom_dialogs.CustomDialog6;
 import com.github.jurassicspb.cookbooksearchbyingredients.fragments.FragmentInterface;
 import com.github.jurassicspb.cookbooksearchbyingredients.fragments.IngredientFragment;
 import com.github.jurassicspb.cookbooksearchbyingredients.nav_drawer_extras.CookingTime;
@@ -48,6 +50,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     private List<CategoryTable> categoryTables;
     private DrawerLayout drawer;
     private Intent intent;
+    private MyPreferences preferences;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,7 +61,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         setContentView(R.layout.tablayout_with_viewpager);
 
-        MyPreferences preferences = new MyPreferences(this);
+        preferences = new MyPreferences(this);
 //        preferences.clearFlag();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -175,8 +178,10 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
                 intent = new Intent(IngedientTablayoutActivity.this, ProgressBarActivity.class);
                 startActivity(intent);
             });
-
         } else if (id == R.id.fr3) {
+            if (preferences.getFlagRating()) {
+                new CustomDialog6(this).show();
+            } else
             finish();
         } else if (id == R.id.fr4) {
             intent = new Intent(this, WeightsAndMeasures.class);
@@ -192,6 +197,10 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             startActivity(intent);
         } else if (id == R.id.fr8) {
             intent = new Intent(this, IngredientToBuyActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.fr9) {
+            Uri address = Uri.parse("https://vk.com/club146092602");
+            intent = new Intent(Intent.ACTION_VIEW, address);
             startActivity(intent);
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -668,7 +677,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         assert drawer != null;
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        }
+        else if (preferences.getFlagRating()) {
+            new CustomDialog6(this).show();
+        }
+        else {
             super.onBackPressed();
         }
     }

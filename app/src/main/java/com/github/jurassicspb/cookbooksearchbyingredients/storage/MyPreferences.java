@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 public class MyPreferences {
     private static final String KEY_REALM_FLAG = "key_realm_flag";
     private static final String KEY_FLAG_ALERT = "key_flag_alert";
+    private static final String KEY_FLAG_RATING = "key_flag_rating";
     private static final String KEY_BUFFER_INGR = "ingrBuffer";
     private static final String KEY_BUFFER_IMAGE = "imageBuffer";
     private static final String KEY_BUFFER_FLAG = "flagBuffer";
@@ -31,6 +32,12 @@ public class MyPreferences {
                 .apply();
     }
 
+    public void setFlagRating(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_FLAG_RATING, flag)
+                .apply();
+    }
+
     public boolean getFlag() {
         return preferences.getBoolean(KEY_REALM_FLAG, true);
     }
@@ -43,6 +50,9 @@ public class MyPreferences {
         return preferences.getBoolean(KEY_FLAG_ALERT, true);
     }
 
+    public boolean getFlagRating() {
+        return preferences.getBoolean(KEY_FLAG_RATING, true);
+    }
 
     public void clearPrefs() {
         preferences.edit().clear().apply();

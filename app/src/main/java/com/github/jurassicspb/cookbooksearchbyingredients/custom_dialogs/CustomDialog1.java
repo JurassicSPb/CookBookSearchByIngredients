@@ -3,7 +3,6 @@ package com.github.jurassicspb.cookbooksearchbyingredients.custom_dialogs;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
