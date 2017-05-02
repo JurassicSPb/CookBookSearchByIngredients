@@ -304,6 +304,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(8, "мясо", R.drawable.meat, 0, 0));
         bufferIngredient.add(new Ingredient(8, "мясо копченое", R.drawable.maso_kopch, 0, 0));
         bufferIngredient.add(new Ingredient(8, "охотничьи колбаски", R.drawable.ohot_kolb, 0, 0));
+        bufferIngredient.add(new Ingredient(8, "пельмени", R.drawable.pelmeni, 0, 0));
         bufferIngredient.add(new Ingredient(8, "печень ", R.drawable.liver, 0, 0));
         bufferIngredient.add(new Ingredient(8, "салями", R.drawable.salami, 0, 0));
         bufferIngredient.add(new Ingredient(8, "сарделька", R.drawable.sardelki, 0, 0));
@@ -473,6 +474,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(14, "белая рыба", R.drawable.white_fish, 0, 0));
         bufferIngredient.add(new Ingredient(14, "горбуша", R.drawable.gorbusha, 0, 0));
         bufferIngredient.add(new Ingredient(14, "красная рыба", R.drawable.red_fish, 0, 0));
+        bufferIngredient.add(new Ingredient(14, "лосось", R.drawable.salmon, 0, 0));
         bufferIngredient.add(new Ingredient(14, "окунь", R.drawable.okun, 0, 0));
         bufferIngredient.add(new Ingredient(14, "рыба", R.drawable.fish, 0, 0));
         bufferIngredient.add(new Ingredient(14, "рыбные консервы", R.drawable.rib_kons, 0, 0));
