@@ -69,4 +69,12 @@
         <item name="colorControlActivated">@android:color/holo_green_light</item>
     </style>
 
+    <style name="NavigationViewStylePhones">
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="NavigationViewStyleTablets">
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>
