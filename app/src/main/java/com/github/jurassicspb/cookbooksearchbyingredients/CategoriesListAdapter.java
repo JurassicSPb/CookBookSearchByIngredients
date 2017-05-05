@@ -24,12 +24,12 @@ import java.util.List;
  */
 
 public class CategoriesListAdapter extends RecyclerView.Adapter<CategoriesListAdapter.ViewHolder> implements Filterable {
-    private List<Recipe> recipes;
-    private List<Recipe> recipesFiltered;
+    private List<RecipeFilter> recipes;
+    private List<RecipeFilter> recipesFiltered;
     private ValueFilter valueFilter;
     private OnListItemClickListener clickListener;
 
-    public CategoriesListAdapter (List <Recipe> recipes, OnListItemClickListener clickListener){
+    public CategoriesListAdapter (List <RecipeFilter> recipes, OnListItemClickListener clickListener){
         this.recipes=recipes;
         recipesFiltered=recipes;
         this.clickListener=clickListener;
@@ -68,7 +68,7 @@ public class CategoriesListAdapter extends RecyclerView.Adapter<CategoriesListAd
         return recipes.size();
     }
 
-    public Recipe getRecipe (int position) {
+    public RecipeFilter getRecipe (int position) {
         return recipes.get(position);
     }
 
@@ -104,7 +104,7 @@ public class CategoriesListAdapter extends RecyclerView.Adapter<CategoriesListAd
         protected FilterResults performFiltering(CharSequence constraint) {
             FilterResults results = new FilterResults();
             if (constraint != null && constraint.length() > 0) {
-                ArrayList<Recipe> filterList = new ArrayList<>();
+                ArrayList<RecipeFilter> filterList = new ArrayList<>();
                 for (int i = 0; i < recipesFiltered.size(); i++) {
                     if (recipesFiltered.get(i).getName().toUpperCase()
                             .contains(constraint.toString().toUpperCase())) {
@@ -126,7 +126,7 @@ public class CategoriesListAdapter extends RecyclerView.Adapter<CategoriesListAd
                 //do nothing
             }
             else {
-                recipes = (ArrayList<Recipe>) results.values;
+                recipes = (ArrayList<RecipeFilter>) results.values;
                 notifyDataSetChanged();
             }
         }

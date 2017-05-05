@@ -15,6 +15,7 @@ import android.widget.EditText;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,6 +26,7 @@ public class CategoriesListActivity extends AppCompatActivity {
     private CategoriesListAdapter adapter;
     private IngredientDatabase recipeDB;
     private EditText searchEditText;
+    private String getNames;
     private OnListItemClickListener clickListener = new OnListItemClickListener() {
         @Override
         public void onClick(View v, int position) {
@@ -56,8 +58,7 @@ public class CategoriesListActivity extends AppCompatActivity {
 
         recipeDB = new IngredientDatabase();
         Intent intent = getIntent();
-        String getNames = intent.getStringExtra("name");
-        List<Recipe> recipes = recipeDB.getRecipesByCategories(getNames);
+        getNames = intent.getStringExtra("name");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
@@ -69,7 +70,7 @@ public class CategoriesListActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new CategoriesListAdapter(recipes, clickListener);
+        adapter = new CategoriesListAdapter(performRecipesCopy(), clickListener);
         recyclerView.setAdapter(adapter);
 
         searchEditText = (EditText) findViewById(R.id.search);
@@ -102,6 +103,18 @@ public class CategoriesListActivity extends AppCompatActivity {
 
         searchClearButton.setOnClickListener(v -> searchEditText.setText(""));
     }
+
+    private List <RecipeFilter> performRecipesCopy(){
+        List<Recipe> recipes = recipeDB.getRecipesByCategories(getNames);
+        List <RecipeFilter> newRecipes = new ArrayList<>();
+        for (int i = 0; i < recipes.size(); i++) {
+            Recipe r = recipes.get(i);
+            newRecipes.add(new RecipeFilter(r.getId(), r.getName(), r.getIngredient(),
+                    r.getCategory(), r.getDescription(), r.getCalories(), r.getImage()));
+        }
+        return newRecipes;
+    }
+
 
     @Override
     protected void onDestroy() {

@@ -160,11 +160,7 @@ public class IngredientDatabase {
     }
 
     public List<Recipe> getRecipesByCategories(String name) {
-        realm.beginTransaction();
-        RealmResults<Recipe> results = realm.where(Recipe.class).contains("category", name).findAllSorted("name", Sort.ASCENDING);
-        List<Recipe> newRecipe = realm.copyFromRealm(results);
-        realm.commitTransaction();
-        return newRecipe;
+        return realm.where(Recipe.class).contains("category", name).findAllSorted("name", Sort.ASCENDING);
     }
 
     public void close() {
