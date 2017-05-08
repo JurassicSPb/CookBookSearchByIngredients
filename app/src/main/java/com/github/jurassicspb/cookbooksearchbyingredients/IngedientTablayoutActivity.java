@@ -82,7 +82,9 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 //            toolbarTextView.setMarqueeRepeatLimit(2);
             toolbarTextView.setText(R.string.ingredient_list);
         } catch (NoSuchFieldException e) {
+            e.printStackTrace();
         } catch (IllegalAccessException e) {
+            e.printStackTrace();
         }
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -388,6 +390,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(10, "перец чили", R.drawable.krasn_perec, 0, 0));
         bufferIngredient.add(new Ingredient(10, "петрушка", R.drawable.petrushka, 0, 0));
         bufferIngredient.add(new Ingredient(10, "помидор", R.drawable.tomat, 0, 0));
+        bufferIngredient.add(new Ingredient(10, "помидор консервированный", R.drawable.pomidor_kons, 0, 0));
         bufferIngredient.add(new Ingredient(10, "помидоры черри", R.drawable.pomidor_cherry, 0, 0));
         bufferIngredient.add(new Ingredient(10, "салат", R.drawable.salat, 0, 0));
         bufferIngredient.add(new Ingredient(10, "свекла", R.drawable.beets, 0, 0));

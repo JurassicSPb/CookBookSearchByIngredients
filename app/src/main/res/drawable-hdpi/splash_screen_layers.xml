@@ -18,13 +18,13 @@
         android:bottom="155dp">
         <bitmap
             android:gravity="center"
-            android:src="@drawable/fridge256"/>
+            android:src="@drawable/ezhik_phones"/>
     </item>
     <item
-        android:bottom="30dp">
+        android:bottom="10dp">
         <bitmap
             android:gravity="bottom"
-            android:src="@drawable/splash"/>
+            android:src="@drawable/splash_phones"/>
     </item>
 
 </layer-list>

@@ -15,16 +15,16 @@
     </item>
 
     <item
-        android:bottom="300dp">
+        android:bottom="155dp">
         <bitmap
             android:gravity="center"
-            android:src="@drawable/ezhik_tablets"/>
+            android:src="@drawable/ezhik_phones"/>
     </item>
     <item
-        android:bottom="120dp">
+        android:bottom="30dp">
         <bitmap
             android:gravity="bottom"
-            android:src="@drawable/splash_tablets"/>
+            android:src="@drawable/splash_phones"/>
     </item>
 
 </layer-list>
