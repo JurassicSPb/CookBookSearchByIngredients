@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.text.Spannable;
-import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,8 +44,10 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
         Context context = holder.photoSmall.getContext();
 
         Favorites f = favorites.get(position);
-        final SpannableString span = new SpannableString(f.getName() + "\n" + category + " " +
-                f.getCategory());
+
+        final SpannableStringBuilder span = new SpannableStringBuilder();
+        span.append(f.getName()).append("\n").append(category).append(" ").append(f.getCategory());
+
         final StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
         span.setSpan(styleSpan, 0, f.getName().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 

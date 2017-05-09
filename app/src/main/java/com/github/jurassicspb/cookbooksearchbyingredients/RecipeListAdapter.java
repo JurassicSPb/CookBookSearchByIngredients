@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.text.Spannable;
-import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.util.DisplayMetrics;
@@ -58,8 +58,10 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
 
         RecipeCount r = recipes.get(position);
 
-        final SpannableString span = new SpannableString(r.getRecipe().getName() + "\n" + category + " "+
-                r.getRecipe().getCategory() + "\n" + matchingIngr + " " + r.getCount());
+        final SpannableStringBuilder span = new SpannableStringBuilder();
+        span.append(r.getRecipe().getName()).append("\n").append(category).append(" ")
+                .append(r.getRecipe().getCategory()).append("\n").append(matchingIngr).append(" ").append(String.valueOf(r.getCount()));
+
         final StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
         final StyleSpan styleSpan2 = new StyleSpan(Typeface.BOLD);
         final RelativeSizeSpan sizeSpan;
