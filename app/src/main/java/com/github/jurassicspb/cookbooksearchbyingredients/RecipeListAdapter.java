@@ -64,6 +64,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
 
         final StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
         final StyleSpan styleSpan2 = new StyleSpan(Typeface.BOLD);
+
         final RelativeSizeSpan sizeSpan;
         if (smallestWidth > 600) {
             sizeSpan = new RelativeSizeSpan(1.0f);
