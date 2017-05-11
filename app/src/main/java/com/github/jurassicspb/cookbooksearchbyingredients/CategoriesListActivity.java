@@ -60,18 +60,18 @@ public class CategoriesListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         getNames = intent.getStringExtra("name");
 
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new CategoriesListAdapter(performRecipesCopy(), clickListener);
+        recyclerView.setAdapter(adapter);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
-        getSupportActionBar().setTitle(getNames);
-
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new CategoriesListAdapter(performRecipesCopy(), clickListener);
-        recyclerView.setAdapter(adapter);
+        getSupportActionBar().setTitle(getNames + " (" + performRecipesCopy().size() + ")");
 
         searchEditText = (EditText) findViewById(R.id.search);
         searchEditText.setFocusable(false);
