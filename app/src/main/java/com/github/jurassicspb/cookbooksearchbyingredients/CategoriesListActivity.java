@@ -8,13 +8,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.IngredientDatabase;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,6 +75,22 @@ public class CategoriesListActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
         getSupportActionBar().setTitle(getNames + " (" + performRecipesCopy().size() + ")");
+        try {
+            Field f = toolbar.getClass().getDeclaredField("mTitleTextView");
+            f.setAccessible(true);
+            TextView toolbarTextView = (TextView) f.get(toolbar);
+            toolbarTextView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+            toolbarTextView.setFocusable(true);
+            toolbarTextView.setFocusableInTouchMode(true);
+            toolbarTextView.requestFocus();
+            toolbarTextView.setSingleLine(true);
+            toolbarTextView.setSelected(true);
+            toolbarTextView.setText(getNames + " (" + performRecipesCopy().size() + ")");
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
         searchEditText = (EditText) findViewById(R.id.search);
         searchEditText.setFocusable(false);
