@@ -2,7 +2,6 @@ package com.github.jurassicspb.cookbooksearchbyingredients;
 
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -24,9 +23,9 @@ public class ProgressBarActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        new Handler().postDelayed(this::finish, 800);
+    protected void onPause() {
+        super.onPause();
+        finish();
     }
 
     @Override

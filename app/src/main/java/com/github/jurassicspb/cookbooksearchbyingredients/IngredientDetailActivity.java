@@ -56,12 +56,12 @@ public class IngredientDetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        intent = new Intent(this, RecipeListActivity.class);
+        intent = new Intent(this, ProgressBarActivity.class);
         startActivity(intent);
-        new Handler().post(() -> {
-            intent = new Intent(this, ProgressBarActivity.class);
+        new Handler().postDelayed(() -> {
+            intent = new Intent(this, RecipeListActivity.class);
             startActivity(intent);
-        });
+        }, 800);
 
         return super.onOptionsItemSelected(item);
     }
