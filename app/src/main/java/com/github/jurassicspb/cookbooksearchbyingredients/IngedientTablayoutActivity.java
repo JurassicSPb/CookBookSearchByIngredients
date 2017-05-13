@@ -174,12 +174,12 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             intent = new Intent(IngedientTablayoutActivity.this, FavoritesActivity.class);
             startActivity(intent);
         } else if (id == R.id.fr2) {
-            intent = new Intent(IngedientTablayoutActivity.this, FullListActivity.class);
+            intent = new Intent(IngedientTablayoutActivity.this, ProgressBarActivity.class);
             startActivity(intent);
-            new Handler().post(() -> {
-                intent = new Intent(IngedientTablayoutActivity.this, ProgressBarActivity.class);
+            new Handler().postDelayed(() -> {
+                intent = new Intent(IngedientTablayoutActivity.this, FullListActivity.class);
                 startActivity(intent);
-            });
+            }, 800);
         } else if (id == R.id.fr3) {
             if (preferences.getFlagRating()) {
                 new CustomDialog6(this).show();
