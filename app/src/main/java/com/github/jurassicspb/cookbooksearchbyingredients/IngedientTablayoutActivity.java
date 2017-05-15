@@ -243,10 +243,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(1, "белые грибы", R.drawable.beliy, 0, 0));
         bufferIngredient.add(new Ingredient(1, "грибы", R.drawable.mushrooms, 0, 0));
         bufferIngredient.add(new Ingredient(1, "грибы маринованные", R.drawable.gribi_mar, 0, 0));
+        bufferIngredient.add(new Ingredient(1, "грибы соленые", R.drawable.gribi_sol, 0, 0));
+        bufferIngredient.add(new Ingredient(1, "грибы сушеные", R.drawable.grib_suh, 0, 0));
         bufferIngredient.add(new Ingredient(1, "лисички", R.drawable.lisichki, 0, 0));
         bufferIngredient.add(new Ingredient(1, "опята", R.drawable.opyata, 0, 0));
         bufferIngredient.add(new Ingredient(1, "опята маринованные", R.drawable.opjata_mar, 0, 0));
-        bufferIngredient.add(new Ingredient(1, "сушеные грибы", R.drawable.grib_suh, 0, 0));
         bufferIngredient.add(new Ingredient(1, "шампиньоны", R.drawable.shamp, 0, 0));
         bufferIngredient.add(new Ingredient(1, "шампиньоны консервированные", R.drawable.shamp_kons, 0, 0));
 
@@ -334,6 +335,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(8, "фарш говяжий", R.drawable.beef_mince, 0, 0));
         bufferIngredient.add(new Ingredient(8, "фарш мясной", R.drawable.farsch, 0, 0));
         bufferIngredient.add(new Ingredient(8, "фарш свиной", R.drawable.pork_mince, 0, 0));
+        bufferIngredient.add(new Ingredient(8, "язык", R.drawable.yazik, 0, 0));
 
         bufferIngredient.add(new Ingredient(9, "ананасовый сок", R.drawable.ananas_sok, 0, 0));
         bufferIngredient.add(new Ingredient(9, "апельсиновый сок", R.drawable.orange_juice, 0, 0));
@@ -341,7 +343,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(9, "бурбон", R.drawable.burbon, 0, 0));
         bufferIngredient.add(new Ingredient(9, "вино белое", R.drawable.vino_bel, 0, 0));
         bufferIngredient.add(new Ingredient(9, "вино красное", R.drawable.vino_red, 0, 0));
-        bufferIngredient.add(new Ingredient(9, "виноград", R.drawable.grape, 0, 0));
         bufferIngredient.add(new Ingredient(9, "виноградный сок", R.drawable.grape_juice, 0, 0));
         bufferIngredient.add(new Ingredient(9, "виски", R.drawable.whiskey, 0, 0));
         bufferIngredient.add(new Ingredient(9, "вишневый сок", R.drawable.vishn_sok, 0, 0));
@@ -405,6 +406,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(10, "петрушка", R.drawable.petrushka, 0, 0));
         bufferIngredient.add(new Ingredient(10, "помидор", R.drawable.tomat, 0, 0));
         bufferIngredient.add(new Ingredient(10, "помидоры черри", R.drawable.pomidor_cherry, 0, 0));
+        bufferIngredient.add(new Ingredient(10, "руккола", R.drawable.rukkola, 0, 0));
         bufferIngredient.add(new Ingredient(10, "салат", R.drawable.salat, 0, 0));
         bufferIngredient.add(new Ingredient(10, "свекла", R.drawable.beets, 0, 0));
         bufferIngredient.add(new Ingredient(10, "сельдерей", R.drawable.selderey, 0, 0));
@@ -661,8 +663,9 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(20, "цельнозерновой хлеб", R.drawable.celn_hleb, 0, 0));
         bufferIngredient.add(new Ingredient(20, "хлеб", R.drawable.hleb, 0, 0));
         bufferIngredient.add(new Ingredient(20, "черный хлеб", R.drawable.chern_hleb, 0, 0));
-        bufferIngredient.add(new Ingredient(20, "чипсы", R.drawable.chern_hleb, 0, 0));
+        bufferIngredient.add(new Ingredient(20, "чипсы", R.drawable.chips, 0, 0));
 
+        bufferIngredient.add(new Ingredient(21, "виноград", R.drawable.grape, 0, 0));
         bufferIngredient.add(new Ingredient(21, "вишня", R.drawable.cherry, 0, 0));
         bufferIngredient.add(new Ingredient(21, "голубика", R.drawable.golubika, 0, 0));
         bufferIngredient.add(new Ingredient(21, "ежевика", R.drawable.ezhevika, 0, 0));
