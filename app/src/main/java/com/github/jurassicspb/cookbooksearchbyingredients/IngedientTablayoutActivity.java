@@ -352,6 +352,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(9, "апельсиновый сок", R.drawable.orange_juice, 0, 0));
         bufferIngredient.add(new Ingredient(9, "бульон", R.drawable.buljen, 0, 0));
         bufferIngredient.add(new Ingredient(9, "бурбон", R.drawable.burbon, 0, 0));
+        bufferIngredient.add(new Ingredient(9, "вермут", R.drawable.martini, 0, 0));
         bufferIngredient.add(new Ingredient(9, "вино белое", R.drawable.vino_bel, 0, 0));
         bufferIngredient.add(new Ingredient(9, "вино красное", R.drawable.vino_red, 0, 0));
         bufferIngredient.add(new Ingredient(9, "виноградный сок", R.drawable.grape_juice, 0, 0));
@@ -369,7 +370,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(9, "лед ", R.drawable.ice, 0, 0));
         bufferIngredient.add(new Ingredient(9, "ликер", R.drawable.liker, 0, 0));
         bufferIngredient.add(new Ingredient(9, "лимонный сок", R.drawable.lemon_juice, 0, 0));
-        bufferIngredient.add(new Ingredient(9, "мартини", R.drawable.martini, 0, 0));
         bufferIngredient.add(new Ingredient(9, "огуречный рассол", R.drawable.rassol, 0, 0));
         bufferIngredient.add(new Ingredient(9, "пиво ", R.drawable.beer_light, 0, 0));
         bufferIngredient.add(new Ingredient(9, "ром ", R.drawable.rom, 0, 0));
@@ -408,6 +408,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(10, "лук репчатый", R.drawable.luk_repch, 0, 0));
         bufferIngredient.add(new Ingredient(10, "лук-порей", R.drawable.porej, 0, 0));
         bufferIngredient.add(new Ingredient(10, "лук-шалот", R.drawable.shalot, 0, 0));
+        bufferIngredient.add(new Ingredient(10, "майоран", R.drawable.mayoran, 0, 0));
         bufferIngredient.add(new Ingredient(10, "малосольный огурец", R.drawable.malosol, 0, 0));
         bufferIngredient.add(new Ingredient(10, "маринованный огурец", R.drawable.ogur_mar, 0, 0));
         bufferIngredient.add(new Ingredient(10, "маслины", R.drawable.maslini, 0, 0));
