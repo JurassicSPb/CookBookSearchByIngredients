@@ -13,9 +13,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.github.jurassicspb.cookbooksearchbyingredients.Metrics;
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
-
-import java.util.Locale;
 
 /**
  * Created by Мария on 06.01.2017.
@@ -147,7 +146,11 @@ public class CookingTime extends AppCompatActivity {
         setContentView(R.layout.cooking_time);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+        if (Metrics.smallestWidth()>600) {
+            toolbar.setNavigationIcon(R.drawable.ic_arrow_back_tablets);
+        } else {
+            toolbar.setNavigationIcon(R.drawable.ic_arrow_back_phones);
+        }
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);

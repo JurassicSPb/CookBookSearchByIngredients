@@ -12,6 +12,7 @@ import android.widget.TableRow;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 
+import com.github.jurassicspb.cookbooksearchbyingredients.Metrics;
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
 
 import java.util.Locale;
@@ -231,7 +232,11 @@ public class WeightsAndMeasures extends AppCompatActivity{
         setContentView(R.layout.weights_and_mesures);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+        if (Metrics.smallestWidth()>600) {
+            toolbar.setNavigationIcon(R.drawable.ic_arrow_back_tablets);
+        } else {
+            toolbar.setNavigationIcon(R.drawable.ic_arrow_back_phones);
+        }
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);

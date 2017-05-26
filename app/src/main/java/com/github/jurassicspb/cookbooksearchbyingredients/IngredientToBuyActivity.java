@@ -9,7 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -40,7 +39,11 @@ public class IngredientToBuyActivity extends AppCompatActivity {
         setContentView(R.layout.ingredients_to_buy_recyclerview);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+        if (Metrics.smallestWidth()>600) {
+            toolbar.setNavigationIcon(R.drawable.ic_arrow_back_tablets);
+        } else {
+            toolbar.setNavigationIcon(R.drawable.ic_arrow_back_phones);
+        }
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);

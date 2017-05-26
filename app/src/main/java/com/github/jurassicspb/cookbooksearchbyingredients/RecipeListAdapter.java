@@ -1,14 +1,12 @@
 package com.github.jurassicspb.cookbooksearchbyingredients;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,14 +39,6 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
-        int widthPixels = metrics.widthPixels;
-        int heightPixels = metrics.heightPixels;
-        float scaleFactor = metrics.density;
-        float widthDp = widthPixels / scaleFactor;
-        float heightDp = heightPixels / scaleFactor;
-        float smallestWidth = Math.min(widthDp, heightDp);
-
         Context cont = holder.recipeName.getContext();
         String matchingIngr = cont.getResources().getString(R.string.count_of_matching_ingredients);
         String category = cont.getResources().getString(R.string.category);
@@ -66,7 +56,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
         final StyleSpan styleSpan2 = new StyleSpan(Typeface.BOLD);
 
         final RelativeSizeSpan sizeSpan;
-        if (smallestWidth > 600) {
+        if (Metrics.smallestWidth() > 600) {
             sizeSpan = new RelativeSizeSpan(1.0f);
         }
         else {

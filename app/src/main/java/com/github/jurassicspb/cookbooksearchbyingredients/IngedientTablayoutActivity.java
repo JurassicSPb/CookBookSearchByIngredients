@@ -90,7 +90,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
 
-        pager.setOffscreenPageLimit(8);
+        pager.setOffscreenPageLimit(6);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
@@ -106,8 +106,13 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         for (int i = 0; i < toolbar.getChildCount(); i++) {
             if (toolbar.getChildAt(i) instanceof ImageButton) {
-                toolbar.getChildAt(i).setScaleX(1.3f);
-                toolbar.getChildAt(i).setScaleY(1.3f);
+                if (Metrics.smallestWidth() > 600) {
+                    toolbar.getChildAt(i).setScaleX(1.3f);
+                    toolbar.getChildAt(i).setScaleY(1.3f);
+                } else {
+                    toolbar.getChildAt(i).setScaleX(1.15f);
+                    toolbar.getChildAt(i).setScaleY(1.15f);
+                }
             }
         }
 
@@ -211,7 +216,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_buttons, menu);
+        if (Metrics.smallestWidth() > 600) {
+            getMenuInflater().inflate(R.menu.toolbar_buttons_tablets, menu);
+        } else {
+            getMenuInflater().inflate(R.menu.toolbar_buttons_phones, menu);
+        }
         return true;
     }
 

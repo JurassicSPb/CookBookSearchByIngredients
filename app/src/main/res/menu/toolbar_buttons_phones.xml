@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item
+    android:id="@+id/item1"
+    android:orderInCategory="1"
+    android:title=""
+    android:icon="@drawable/ic_next_button_phones"
+    app:showAsAction="always"/>
+    <item
+        android:id="@+id/item2"
+        android:orderInCategory="0"
+        android:title=""
+        android:icon="@drawable/ic_cancel_phones"
+        app:showAsAction="always" />
+</menu>

@@ -31,7 +31,11 @@ public class IngredientDetailActivity extends AppCompatActivity {
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+        if (Metrics.smallestWidth()>600) {
+            toolbar.setNavigationIcon(R.drawable.ic_arrow_back_tablets);
+        } else {
+            toolbar.setNavigationIcon(R.drawable.ic_arrow_back_phones);
+        }
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -50,7 +54,11 @@ public class IngredientDetailActivity extends AppCompatActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.clear();
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.toolbar_buttons_second_activity, menu);
+        if (Metrics.smallestWidth() > 600) {
+            inflater.inflate(R.menu.toolbar_buttons_second_activity_tablets, menu);
+        } else {
+            inflater.inflate(R.menu.toolbar_buttons_second_activity_phones, menu);
+        }
         return super.onPrepareOptionsMenu(menu);
     }
 
