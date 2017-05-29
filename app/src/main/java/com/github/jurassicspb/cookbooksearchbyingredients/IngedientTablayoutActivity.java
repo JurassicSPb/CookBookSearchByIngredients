@@ -634,6 +634,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(15, "шоколад", R.drawable.chocolate, 0, 0));
         bufferIngredient.add(new Ingredient(15, "шоколадные капли", R.drawable.choc_kapli, 0, 0));
         bufferIngredient.add(new Ingredient(15, "шоколадный сироп", R.drawable.choc_syrup, 0, 0));
+        bufferIngredient.add(new Ingredient(15, "яблочное варенье", R.drawable.yabl_var, 0, 0));
 
         bufferIngredient.add(new Ingredient(16, "васаби", R.drawable.wasabi, 0, 0));
         bufferIngredient.add(new Ingredient(16, "вустерский соус", R.drawable.wourchester, 0, 0));
