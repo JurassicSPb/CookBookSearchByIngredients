@@ -316,13 +316,13 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(6, "крабовые палочки", R.drawable.krab_pal, 0, 0));
         bufferIngredient.add(new Ingredient(6, "креветки", R.drawable.krevetki, 0, 0));
         bufferIngredient.add(new Ingredient(6, "мидии", R.drawable.midii, 0, 0));
+        bufferIngredient.add(new Ingredient(6, "морские гребешки", R.drawable.mor_greb, 0, 0));
 
-        bufferIngredient.add(new Ingredient(7, "мука", R.drawable.muka, 0, 0));
+        bufferIngredient.add(new Ingredient(7, "мука", R.drawable.muka_pshen, 0, 0));
         bufferIngredient.add(new Ingredient(7, "мука гречневая", R.drawable.muka_grech, 0, 0));
         bufferIngredient.add(new Ingredient(7, "мука кокосовая", R.drawable.cocoflour, 0, 0));
         bufferIngredient.add(new Ingredient(7, "мука кукурузная", R.drawable.kukuruz_muka, 0, 0));
         bufferIngredient.add(new Ingredient(7, "мука овсяная", R.drawable.oves_muka, 0, 0));
-        bufferIngredient.add(new Ingredient(7, "мука пшеничная", R.drawable.muka_pshen, 0, 0));
         bufferIngredient.add(new Ingredient(7, "мука рисовая", R.drawable.ris_muka, 0, 0));
         bufferIngredient.add(new Ingredient(7, "мука ржаная", R.drawable.muka_rzh, 0, 0));
         bufferIngredient.add(new Ingredient(7, "мука цельнозерновая", R.drawable.muka_pshen, 0, 0));
@@ -414,10 +414,9 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(10, "консервированный помидор", R.drawable.pomidor_kons, 0, 0));
         bufferIngredient.add(new Ingredient(10, "кукуруза", R.drawable.corn, 0, 0));
         bufferIngredient.add(new Ingredient(10, "кукуруза консервированная", R.drawable.canned_corn, 0, 0));
-        bufferIngredient.add(new Ingredient(10, "лук", R.drawable.onion, 0, 0));
+        bufferIngredient.add(new Ingredient(10, "лук", R.drawable.luk_repch, 0, 0));
         bufferIngredient.add(new Ingredient(10, "лук зеленый", R.drawable.onion_green, 0, 0));
         bufferIngredient.add(new Ingredient(10, "лук красный", R.drawable.onion_red, 0, 0));
-        bufferIngredient.add(new Ingredient(10, "лук репчатый", R.drawable.luk_repch, 0, 0));
         bufferIngredient.add(new Ingredient(10, "лук-порей", R.drawable.porej, 0, 0));
         bufferIngredient.add(new Ingredient(10, "лук-шалот", R.drawable.shalot, 0, 0));
         bufferIngredient.add(new Ingredient(10, "майоран", R.drawable.mayoran, 0, 0));
