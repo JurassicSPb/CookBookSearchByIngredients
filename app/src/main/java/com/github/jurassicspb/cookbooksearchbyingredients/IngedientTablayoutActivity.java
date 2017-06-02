@@ -250,6 +250,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         ArrayList<Ingredient> bufferIngredient = new ArrayList<>();
 
         bufferIngredient.add(new Ingredient(1, "белые грибы", R.drawable.beliy, 0, 0));
+        bufferIngredient.add(new Ingredient(1, "вешенки", R.drawable.veshenki, 0, 0));
         bufferIngredient.add(new Ingredient(1, "грибы", R.drawable.mushrooms, 0, 0));
         bufferIngredient.add(new Ingredient(1, "грибы маринованные", R.drawable.gribi_mar, 0, 0));
         bufferIngredient.add(new Ingredient(1, "грибы соленые", R.drawable.gribi_sol, 0, 0));
