@@ -175,6 +175,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
+        Uri address;
         if (id == R.id.fr1) {
             intent = new Intent(IngedientTablayoutActivity.this, FavoritesActivity.class);
             startActivity(intent);
@@ -206,7 +207,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             intent = new Intent(this, IngredientToBuyActivity.class);
             startActivity(intent);
         } else if (id == R.id.fr9) {
-            Uri address = Uri.parse("https://vk.com/club146092602");
+            address = Uri.parse("https://vk.com/club146092602");
+            intent = new Intent(Intent.ACTION_VIEW, address);
+            startActivity(intent);
+        } else if (id == R.id.fr10) {
+            address = Uri.parse("market://details?id=com.github.jurassicspb.cookbooksearchbyingredientsPRO");
             intent = new Intent(Intent.ACTION_VIEW, address);
             startActivity(intent);
         }

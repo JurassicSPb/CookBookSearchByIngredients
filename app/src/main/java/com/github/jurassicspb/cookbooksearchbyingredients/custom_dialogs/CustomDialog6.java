@@ -2,11 +2,12 @@ package com.github.jurassicspb.cookbooksearchbyingredients.custom_dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.Button;
 
-import com.github.jurassicspb.cookbooksearchbyingredients.IngedientTablayoutActivity;
 import com.github.jurassicspb.cookbooksearchbyingredients.R;
 import com.github.jurassicspb.cookbooksearchbyingredients.storage.MyPreferences;
 
@@ -37,6 +38,9 @@ public class CustomDialog6 extends Dialog{
 
         Button show = (Button) findViewById(R.id.show);
         show.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("market://details?id=com.github.jurassicspb.cookbooksearchbyingredients"));
+            activity.startActivity(intent);
         });
 
         Button notShow = (Button) findViewById(R.id.not_show);

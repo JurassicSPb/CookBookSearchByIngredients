@@ -37,6 +37,10 @@
 
     <group android:id="@+id/grp3">
         <item
+            android:id="@+id/fr10"
+            android:icon="@mipmap/ic_launcher"
+            android:title="@string/drawer_menu_pro" />
+        <item
             android:id="@+id/fr9"
             android:icon="@drawable/ic_vk"
             android:title="@string/drawer_menu_vk" />
