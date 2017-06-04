@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.github.jurassicspb.cookbooksearchbyingredients"
+    package="com.ggl.jr.cookbooksearchbyingredients"
     android:installLocation="auto">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
-        android:name=".App"
+        android:name="com.ggl.jr.cookbooksearchbyingredients.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,62 +16,62 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name=".IngredientDetailActivity">
+        <activity android:name="com.ggl.jr.cookbooksearchbyingredients.IngredientDetailActivity">
 
         </activity>
 
-        <activity android:name=".RecipeListActivity">
+        <activity android:name="com.ggl.jr.cookbooksearchbyingredients.RecipeListActivity">
 
         </activity>
 
-        <activity android:name=".RecipeDetailActivity"
+        <activity android:name="com.ggl.jr.cookbooksearchbyingredients.RecipeDetailActivity"
             android:theme="@style/DetailRecipeTheme">
 
         </activity>
 
-        <activity android:name=".FavoritesActivity">
+        <activity android:name="com.ggl.jr.cookbooksearchbyingredients.FavoritesActivity">
 
         </activity>
 
-        <activity android:name=".FullListActivity">
+        <activity android:name="com.ggl.jr.cookbooksearchbyingredients.FullListActivity">
 
         </activity>
 
-        <activity android:name=".nav_drawer_extras.WeightsAndMeasures">
+        <activity android:name="com.ggl.jr.cookbooksearchbyingredients.nav_drawer_extras.WeightsAndMeasures">
 
         </activity>
 
-        <activity android:name=".nav_drawer_extras.CookingTime">
+        <activity android:name="com.ggl.jr.cookbooksearchbyingredients.nav_drawer_extras.CookingTime">
 
         </activity>
 
-        <activity android:name=".IngedientTablayoutActivity"
+        <activity android:name="com.ggl.jr.cookbooksearchbyingredients.IngedientTablayoutActivity"
             android:configChanges="orientation|screenSize">
         </activity>
 
-        <activity android:name=".ProgressBarActivity"
+        <activity android:name="com.ggl.jr.cookbooksearchbyingredients.ProgressBarActivity"
             android:theme="@style/ProgressBarTheme">
 
         </activity>
 
-        <activity android:name=".CategoriesActivity">
+        <activity android:name="com.ggl.jr.cookbooksearchbyingredients.CategoriesActivity">
 
         </activity>
 
-        <activity android:name=".CategoriesListActivity">
+        <activity android:name="com.ggl.jr.cookbooksearchbyingredients.CategoriesListActivity">
 
         </activity>
 
-        <activity android:name=".IngredientFavoritesActivity">
+        <activity android:name="com.ggl.jr.cookbooksearchbyingredients.IngredientFavoritesActivity">
 
         </activity>
 
-        <activity android:name=".IngredientToBuyActivity"
+        <activity android:name="com.ggl.jr.cookbooksearchbyingredients.IngredientToBuyActivity"
             android:windowSoftInputMode="adjustResize">
 
         </activity>
 
-        <activity android:name=".LoadingScreenActivity"
+        <activity android:name="com.ggl.jr.cookbooksearchbyingredients.LoadingScreenActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
