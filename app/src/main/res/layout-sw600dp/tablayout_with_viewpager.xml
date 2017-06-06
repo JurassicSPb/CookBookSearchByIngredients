@@ -34,10 +34,25 @@
         app:tabSelectedTextColor="@color/tabLayoutTextColorSelected"
         app:tabTextAppearance="@style/MineCustomTabText"
         app:tabIndicatorColor="@color/tabLayoutTextColorSelected" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+                <com.google.android.gms.ads.AdView
+                    xmlns:ads="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/adFragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    ads:adSize="LEADERBOARD"
+                    ads:adUnitId="@string/fragments_add">
+                </com.google.android.gms.ads.AdView>
+            </FrameLayout>
+
         </LinearLayout>
 
         <android.support.design.widget.NavigationView
