@@ -171,7 +171,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         AdView mAdView = (AdView) findViewById(R.id.adFragment);
         AdRequest adRequest = new AdRequest.Builder()
 //                 s3
-//                .addTestDevice("67F276A8D2BC2AF79DDA7E1FD3FCC12D")
+                .addTestDevice("67F276A8D2BC2AF79DDA7E1FD3FCC12D")
 //                 tablet
 //            .addTestDevice("BCCA97?C08B759F6F304C2665B7233097")
 //                 a5

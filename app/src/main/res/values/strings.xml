@@ -75,7 +75,10 @@
     <string name="removed_successfully">Запись удалена</string>
 
     <!--Реклама-->
-    <string name="fragments_add">ca-app-pub-4416823947112112/8223610789</string>
+    <string name="fragments_ad">ca-app-pub-4416823947112112/8223610789</string>
+    <string name="ingr_detail_ad">ca-app-pub-4416823947112112/6422146789</string>
+    <string name="recipelist_ad">ca-app-pub-4416823947112112/2212273187</string>
+    <string name="recipe_detail_ad">ca-app-pub-4416823947112112/9595939188</string>
 
     <!--<string name="app_name">CookBookSearchByIngredients</string>-->
     <!--<string name="search_by_ingredient">Search by ingredient</string>-->

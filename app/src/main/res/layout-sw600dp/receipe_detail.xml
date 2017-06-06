@@ -96,10 +96,20 @@
                 android:paddingLeft="48dp"
                 android:paddingRight="48dp"
                 android:paddingTop="24dp"
+                android:paddingBottom="64dp"
                 android:textSize="19sp" />
-
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        ads:adSize="FULL_BANNER"
+        ads:adUnitId="@string/recipe_detail_ad">
+    </com.google.android.gms.ads.AdView>
 
 </android.support.design.widget.CoordinatorLayout>

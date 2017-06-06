@@ -96,10 +96,23 @@
                 android:fontFamily="sans-serif"
                 tools:text="Test\nTest\nTest\nTest"
                 android:textColor="@android:color/black"
-                android:padding="16dp"
+                android:paddingTop="16dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="54dp"
                 android:textSize="17sp" />
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/recipe_detail_ad">
+    </com.google.android.gms.ads.AdView>
 
 </android.support.design.widget.CoordinatorLayout>

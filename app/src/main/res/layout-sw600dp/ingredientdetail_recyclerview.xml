@@ -19,17 +19,17 @@
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="54dip"
+        android:paddingBottom="64dip"
         android:clipToPadding="false"
         />
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/ingr_detail_ad">
-    </com.google.android.gms.ads.AdView>
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            ads:adSize="FULL_BANNER"
+            ads:adUnitId="@string/ingr_detail_ad">
+        </com.google.android.gms.ads.AdView>
     </FrameLayout>
 </LinearLayout>
