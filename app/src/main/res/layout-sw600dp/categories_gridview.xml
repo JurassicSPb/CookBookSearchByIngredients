@@ -12,6 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <GridView
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
@@ -24,6 +28,18 @@
         android:horizontalSpacing="6dp"
         android:numColumns="auto_fit"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="6dp">
+        android:verticalSpacing="6dp"
+        android:paddingBottom="64dip"
+        android:clipToPadding="false">
     </GridView>
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            ads:adSize="FULL_BANNER"
+            ads:adUnitId="@string/categories_ad">
+        </com.google.android.gms.ads.AdView>
+    </FrameLayout>
 </LinearLayout>

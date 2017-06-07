@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
         ads:adSize="FULL_BANNER"
-        ads:adUnitId="@string/recipelist_ad">
+        ads:adUnitId="@string/recipe_list_ad">
     </com.google.android.gms.ads.AdView>
     </FrameLayout>
 </LinearLayout>

@@ -77,8 +77,15 @@
     <!--Реклама-->
     <string name="fragments_ad">ca-app-pub-4416823947112112/8223610789</string>
     <string name="ingr_detail_ad">ca-app-pub-4416823947112112/6422146789</string>
-    <string name="recipelist_ad">ca-app-pub-4416823947112112/2212273187</string>
+    <string name="recipe_list_ad">ca-app-pub-4416823947112112/2212273187</string>
     <string name="recipe_detail_ad">ca-app-pub-4416823947112112/9595939188</string>
+    <string name="full_list_ad">ca-app-pub-4416823947112112/5274987587</string>
+    <string name="favorite_recipes_ad">ca-app-pub-4416823947112112/3658653581</string>
+    <string name="favorite_ingrs_ad">ca-app-pub-4416823947112112/6612119984</string>
+    <string name="categories_ad">ca-app-pub-4416823947112112/9565586382</string>
+    <string name="categories_list_ad">ca-app-pub-4416823947112112/3519052783</string>
+    <string name="cooking_time_ad">ca-app-pub-4416823947112112/1902718789</string>
+    <string name="weights_measures_ad">ca-app-pub-4416823947112112/9286384788</string>
 
     <!--<string name="app_name">CookBookSearchByIngredients</string>-->
     <!--<string name="search_by_ingredient">Search by ingredient</string>-->

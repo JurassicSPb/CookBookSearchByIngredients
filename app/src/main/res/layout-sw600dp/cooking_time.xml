@@ -77,7 +77,7 @@
                 android:layout_margin="4dp"
                 android:stretchColumns="*"
                 android:shrinkColumns="*"
-                android:paddingBottom="54dp">
+                android:paddingBottom="64dp">
             </TableLayout>
 
         </LinearLayout>
@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
-            ads:adSize="BANNER"
+            ads:adSize="FULL_BANNER"
             ads:adUnitId="@string/cooking_time_ad">
         </com.google.android.gms.ads.AdView>
     </FrameLayout>
