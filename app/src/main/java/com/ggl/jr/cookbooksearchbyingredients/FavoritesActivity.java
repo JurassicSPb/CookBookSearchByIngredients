@@ -73,15 +73,7 @@ public class FavoritesActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         AdView mAdView = (AdView) findViewById(R.id.adFragment);
-        AdRequest adRequest = new AdRequest.Builder()
-//                 s3
-                .addTestDevice("67F276A8D2BC2AF79DDA7E1FD3FCC12D")
-//                 tablet
-//                .addTestDevice("BCCA97?C08B759F6F304C2665B7233097")
-//                 a5
-//                .addTestDevice("E0FC7B9C15DCFF71E2D006CAB7808184")
-//                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .build();
+        AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
     }
 
