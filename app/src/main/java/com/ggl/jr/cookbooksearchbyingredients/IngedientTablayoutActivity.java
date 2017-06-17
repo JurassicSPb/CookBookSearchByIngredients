@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.ggl.jr.cookbooksearchbyingredients.custom_dialogs.CustomDialog1;
 import com.ggl.jr.cookbooksearchbyingredients.custom_dialogs.CustomDialog6;
+import com.ggl.jr.cookbooksearchbyingredients.custom_dialogs.CustomDialog7;
 import com.ggl.jr.cookbooksearchbyingredients.fragments.FragmentInterface;
 import com.ggl.jr.cookbooksearchbyingredients.fragments.IngredientFragment;
 import com.ggl.jr.cookbooksearchbyingredients.nav_drawer_extras.CookingTime;
@@ -248,9 +249,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
                 }
                 break;
             case R.id.item2:
-                intent = new Intent(this, IngedientTablayoutActivity.class);
-                startActivity(intent);
-                finish();
+                new CustomDialog7(this).show();
                 break;
         }
         return super.onOptionsItemSelected(item);

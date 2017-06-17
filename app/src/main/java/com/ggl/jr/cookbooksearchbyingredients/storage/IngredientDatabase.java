@@ -91,13 +91,13 @@ public class IngredientDatabase {
         return realm.where(Favorites.class).findAll();
     }
 
-    public List<Favorites> getFavorite(String fav) {
-        return realm.where(Favorites.class).equalTo("name", fav, Case.INSENSITIVE).findAll();
+    public List<Favorites> getFavorite(Integer id) {
+        return realm.where(Favorites.class).equalTo("id", id).findAll();
     }
 
-    public void deleteFavoritePosition(String name) {
+    public void deleteFavoritePosition(Integer id) {
         realm.beginTransaction();
-        RealmResults<Favorites> results = realm.where(Favorites.class).equalTo("name", name).findAll();
+        RealmResults<Favorites> results = realm.where(Favorites.class).equalTo("id", id).findAll();
         results.deleteAllFromRealm();
         realm.commitTransaction();
     }

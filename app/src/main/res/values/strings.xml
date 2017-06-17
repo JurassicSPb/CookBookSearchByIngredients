@@ -36,6 +36,9 @@
     <string name="alert_6_show">Поставить оценку</string>
     <string name="alert_6_not_show">Больше не показывать</string>
     <string name="alert_6_exit">Выход</string>
+    <string name="alert_7">Сбросить выбор всех ингредиентов?</string>
+    <string name="alert_7_yes">Да</string>
+    <string name="alert_7_no">Нет</string>
 
     <!--Таблица мер и весов -->
 
