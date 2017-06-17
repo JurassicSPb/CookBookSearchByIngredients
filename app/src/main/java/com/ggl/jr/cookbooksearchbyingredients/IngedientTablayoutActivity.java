@@ -123,13 +123,21 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 //            deleteIngredients();
 //            deleteRecipes();
 
-        if (preferences.getFlag()) {
+        if (preferences.getFlagIngrCatV1_1()) {
             createIngredientsRU();
             createCategoryTablesRU();
             createCategoriesRU();
-            createRecipes("rus");
+            preferences.setFlagIngrCatV1_1(false);
+        }
 
+        if (preferences.getFlag()) {
+            createRecipes("rus");
             preferences.setFlag(false);
+        }
+
+        if (preferences.getFlagRecipesV1_1()) {
+            createRecipes("ver1_1");
+            preferences.setFlagRecipesV1_1(false);
         }
 
         performCategoryTables();

@@ -14,6 +14,8 @@ public class MyPreferences {
     private static final String KEY_BUFFER_INGR = "ingrBuffer";
     private static final String KEY_BUFFER_IMAGE = "imageBuffer";
     private static final String KEY_BUFFER_FLAG = "flagBuffer";
+    private static final String KEY_INGR_CAT_V_1_1 = "key_ingr_cat_v_1_1";
+    private static final String KEY_RECIPES_V_1_1 = "key_recipes_v_1_1";
 
     private SharedPreferences preferences;
 
@@ -26,6 +28,7 @@ public class MyPreferences {
                 .putBoolean(KEY_REALM_FLAG, flag)
                 .apply();
     }
+
     public void setFlagAlert(boolean flag) {
         preferences.edit()
                 .putBoolean(KEY_FLAG_ALERT, flag)
@@ -94,5 +97,25 @@ public class MyPreferences {
 
     public void clearBufferedImage() {
         preferences.edit().remove(KEY_BUFFER_IMAGE).apply();
+    }
+
+    public boolean getFlagIngrCatV1_1() {
+        return preferences.getBoolean(KEY_INGR_CAT_V_1_1, true);
+    }
+
+    public boolean getFlagRecipesV1_1() {
+        return preferences.getBoolean(KEY_RECIPES_V_1_1, true);
+    }
+
+    public void setFlagIngrCatV1_1(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_INGR_CAT_V_1_1, flag)
+                .apply();
+    }
+
+    public void setFlagRecipesV1_1(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_RECIPES_V_1_1, flag)
+                .apply();
     }
 }
