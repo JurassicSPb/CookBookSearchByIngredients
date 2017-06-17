@@ -123,14 +123,14 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 //            deleteRecipes();
 
         if (preferences.getFlag()) {
-//            if (Locale.getDefault().getLanguage().equals("ru")) {
             createIngredientsRU();
             createCategoryTablesRU();
             createCategoriesRU();
             createRecipes("rus");
-//            }
+
             preferences.setFlag(false);
         }
+
         performCategoryTables();
 
         List<Ingredient> ingredients;

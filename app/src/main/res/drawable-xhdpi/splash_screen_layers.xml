@@ -21,7 +21,7 @@
             android:src="@drawable/ezhik_phones"/>
     </item>
     <item
-        android:bottom="30dp">
+        android:bottom="60dp">
         <bitmap
             android:gravity="bottom"
             android:src="@drawable/splash_phones"/>
