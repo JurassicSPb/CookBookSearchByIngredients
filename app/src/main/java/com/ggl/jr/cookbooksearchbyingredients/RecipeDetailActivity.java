@@ -125,12 +125,20 @@ public class RecipeDetailActivity extends AppCompatActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.clear();
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.toolbar_buttons_third_activity, menu);
+        if (Metrics.smallestWidth()>600) {
+            inflater.inflate(R.menu.toolbar_buttons_third_activity_tablets, menu);
+        } else{
+            inflater.inflate(R.menu.toolbar_buttons_third_activity_phones, menu);
+        }
 
         MenuItem item = menu.findItem(R.id.item4);
 
         if (favorites.size() == 1) {
-            item.setIcon(R.drawable.ic_favorites_selected);
+            if (Metrics.smallestWidth()>600) {
+                item.setIcon(R.drawable.ic_favorites_selected_tablets);
+            } else {
+                item.setIcon(R.drawable.ic_favorites_selected_phones);
+            }
         }
 
         return super.onPrepareOptionsMenu(menu);
@@ -143,17 +151,31 @@ public class RecipeDetailActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.item4:
                 if (favorites.size() == 0) {
-                    myDrawable = ContextCompat.getDrawable(this, R.drawable.ic_favorites_selected);
-                    item.setIcon(myDrawable);
+                    if (Metrics.smallestWidth()>600) {
+                        myDrawable = ContextCompat.getDrawable(this, R.drawable.ic_favorites_selected_tablets);
+                        item.setIcon(myDrawable);
+                    } else {
+                        myDrawable = ContextCompat.getDrawable(this, R.drawable.ic_favorites_selected_phones);
+                        item.setIcon(myDrawable);
+                    }
+
                     Favorites newFavorites = new Favorites(id, names, ingredients, category, descriptions, calories, image);
                     favoritesDB.copyOrUpdateFavorites(newFavorites);
+
                     toast = Toast.makeText(this, R.string.toast_favorites, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 } else if (favorites.size() == 1) {
                     favoritesDB.deleteFavoritePosition(names);
-                    myDrawable = ContextCompat.getDrawable(this, R.drawable.ic_favourites);
-                    item.setIcon(myDrawable);
+
+                    if (Metrics.smallestWidth()>600) {
+                        myDrawable = ContextCompat.getDrawable(this, R.drawable.ic_favourites_tablets);
+                        item.setIcon(myDrawable);
+                    } else {
+                        myDrawable = ContextCompat.getDrawable(this, R.drawable.ic_favourites_phones);
+                        item.setIcon(myDrawable);
+                    }
+
                     toast = Toast.makeText(this, R.string.toast_favorites_remove, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();

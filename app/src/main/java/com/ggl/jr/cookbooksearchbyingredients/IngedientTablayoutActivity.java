@@ -112,8 +112,8 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
                     toolbar.getChildAt(i).setScaleX(1.3f);
                     toolbar.getChildAt(i).setScaleY(1.3f);
                 } else {
-                    toolbar.getChildAt(i).setScaleX(1.15f);
-                    toolbar.getChildAt(i).setScaleY(1.15f);
+                    toolbar.getChildAt(i).setScaleX(1.115f);
+                    toolbar.getChildAt(i).setScaleY(1.115f);
                 }
             }
         }
