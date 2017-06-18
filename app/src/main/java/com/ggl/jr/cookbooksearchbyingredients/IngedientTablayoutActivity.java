@@ -790,6 +790,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
     private void createCategoriesRU() {
         ArrayList <Categories> bufferCategories = new ArrayList<>();
+        bufferCategories.add(new Categories("Hовое", R.drawable.novoe));
         bufferCategories.add(new Categories("Блины и оладьи", R.drawable.pancaces));
         bufferCategories.add(new Categories("Блюда для мультиварки", R.drawable.multi));
         bufferCategories.add(new Categories("Блюда на завтрак", R.drawable.zavtrak));
