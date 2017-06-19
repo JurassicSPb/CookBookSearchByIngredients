@@ -16,6 +16,7 @@ public class MyPreferences {
     private static final String KEY_BUFFER_FLAG = "flagBuffer";
     private static final String KEY_INGR_CAT_V_1_1 = "key_ingr_cat_v_1_1";
     private static final String KEY_RECIPES_V_1_1 = "key_recipes_v_1_1";
+    private static final String KEY_INGR_FAV_V_1_2 = "key_ingr_fav_v_1_2";
 
     private SharedPreferences preferences;
 
@@ -116,6 +117,16 @@ public class MyPreferences {
     public void setFlagRecipesV1_1(boolean flag) {
         preferences.edit()
                 .putBoolean(KEY_RECIPES_V_1_1, flag)
+                .apply();
+    }
+
+    public boolean getFlagIngrFavV1_2() {
+        return preferences.getBoolean(KEY_INGR_FAV_V_1_2, true);
+    }
+
+    public void setFlagIngrFavV1_2(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_INGR_FAV_V_1_2, flag)
                 .apply();
     }
 }

@@ -11,7 +11,6 @@ import com.ggl.jr.cookbooksearchbyingredients.Recipe;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.realm.Case;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmConfiguration;
@@ -74,6 +73,10 @@ public class IngredientDatabase {
         return newIngrFav;
     }
 
+    public List<IngredientFavorites> getAllIngrFavoritesUnsorted() {
+        return realm.where(IngredientFavorites.class).findAll();
+    }
+
     public void deleteIngrFavoritePosition(String name) {
         realm.beginTransaction();
         RealmResults<IngredientFavorites> results = realm.where(IngredientFavorites.class).equalTo("ingredient", name).findAll();
@@ -130,6 +133,11 @@ public class IngredientDatabase {
     public List<Ingredient> getAll() {
         return realm.where(Ingredient.class).findAllSorted("ingredient", Sort.ASCENDING);
     }
+
+    public List<Ingredient> getAllUnsorted() {
+        return realm.where(Ingredient.class).findAllSorted("ingredient");
+    }
+
 
     public List<CategoryTable> getAllCategoryTables() {
         return realm.where(CategoryTable.class).findAllSorted("num", Sort.ASCENDING);
