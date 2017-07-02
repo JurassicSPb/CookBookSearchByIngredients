@@ -58,9 +58,9 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
         ingrFavoritesDB = new IngredientDatabase();
 
         MyPreferences preferences = new MyPreferences(this);
-        if (preferences.getFlagIngrFavV1_2()) {
+        if (preferences.getFlagIngrFavV1_3()) {
             updateIngredientFavorites();
-            preferences.setFlagIngrFavV1_2(false);
+            preferences.setFlagIngrFavV1_3(false);
         }
 
         performIngrFavorites();
