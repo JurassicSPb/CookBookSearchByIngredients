@@ -282,7 +282,9 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(1, "грибы маринованные", R.drawable.gribi_mar, 0, 0));
         bufferIngredient.add(new Ingredient(1, "грибы соленые", R.drawable.gribi_sol, 0, 0));
         bufferIngredient.add(new Ingredient(1, "грибы сушеные", R.drawable.grib_suh, 0, 0));
+        bufferIngredient.add(new Ingredient(1, "грузди", R.drawable.gruzd, 0, 0));
         bufferIngredient.add(new Ingredient(1, "лисички", R.drawable.lisichki, 0, 0));
+        bufferIngredient.add(new Ingredient(1, "маслята", R.drawable.maslata, 0, 0));
         bufferIngredient.add(new Ingredient(1, "опята", R.drawable.opyata, 0, 0));
         bufferIngredient.add(new Ingredient(1, "опята маринованные", R.drawable.opjata_mar, 0, 0));
         bufferIngredient.add(new Ingredient(1, "шампиньоны", R.drawable.shamp, 0, 0));
@@ -651,6 +653,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(15, "печенье", R.drawable.cookies, 0, 0));
         bufferIngredient.add(new Ingredient(15, "повидло", R.drawable.povidlo, 0, 0));
         bufferIngredient.add(new Ingredient(15, "подсластитель", R.drawable.sweetener, 0, 0));
+        bufferIngredient.add(new Ingredient(15, "попкорн", R.drawable.popkorn, 0, 0));
         bufferIngredient.add(new Ingredient(15, "пряники", R.drawable.praniki, 0, 0));
         bufferIngredient.add(new Ingredient(15, "пудинг", R.drawable.puding, 0, 0));
         bufferIngredient.add(new Ingredient(15, "сахар", R.drawable.sugar, 0, 0));
