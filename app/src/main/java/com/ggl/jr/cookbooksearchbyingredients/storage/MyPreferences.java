@@ -16,9 +16,10 @@ public class MyPreferences {
     private static final String KEY_BUFFER_FLAG = "flagBuffer";
     private static final String KEY_RECIPES_V_1_1 = "key_recipes_v_1_1";
     private static final String KEY_RECIPES_V_1_3 = "key_recipes_v_1_3";
-    private static final String KEY_INGR_AND_CAT_V_1_4 = "key_ingr_and_cat_v_1_4";
-    private static final String KEY_INGR_FAV_V_1_4 = "key_ingr_fav_v_1_4";
     private static final String KEY_RECIPES_V_1_4 = "key_recipes_v_1_4";
+    private static final String KEY_INGR_AND_CAT_V_1_5 = "key_ingr_and_cat_v_1_5";
+    private static final String KEY_INGR_FAV_V_1_5 = "key_ingr_fav_v_1_5";
+    private static final String KEY_RECIPES_V_1_5 = "key_recipes_v_1_5";
 
 
     private SharedPreferences preferences;
@@ -27,26 +28,14 @@ public class MyPreferences {
         preferences = context.getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
     }
 
+    public boolean getFlag() {
+        return preferences.getBoolean(KEY_REALM_FLAG, true);
+    }
+
     public void setFlag(boolean flag) {
         preferences.edit()
                 .putBoolean(KEY_REALM_FLAG, flag)
                 .apply();
-    }
-
-    public void setFlagAlert(boolean flag) {
-        preferences.edit()
-                .putBoolean(KEY_FLAG_ALERT, flag)
-                .apply();
-    }
-
-    public void setFlagRating(boolean flag) {
-        preferences.edit()
-                .putBoolean(KEY_FLAG_RATING, flag)
-                .apply();
-    }
-
-    public boolean getFlag() {
-        return preferences.getBoolean(KEY_REALM_FLAG, true);
     }
 
     public void clearFlag() {
@@ -57,18 +46,24 @@ public class MyPreferences {
         return preferences.getBoolean(KEY_FLAG_ALERT, true);
     }
 
+    public void setFlagAlert(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_FLAG_ALERT, flag)
+                .apply();
+    }
+
     public boolean getFlagRating() {
         return preferences.getBoolean(KEY_FLAG_RATING, true);
     }
 
-    public void clearPrefs() {
-        preferences.edit().clear().apply();
+    public void setFlagRating(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_FLAG_RATING, flag)
+                .apply();
     }
 
-    public void setBufferedIngredients(String ingredients) {
-        preferences.edit()
-                .putString(KEY_BUFFER_INGR, ingredients)
-                .apply();
+    public void clearPrefs() {
+        preferences.edit().clear().apply();
     }
 
     public void setBufferedImage(String images) {
@@ -77,14 +72,14 @@ public class MyPreferences {
                 .apply();
     }
 
-    public void setBufferedFlag(boolean flag) {
-        preferences.edit()
-                .putBoolean(KEY_BUFFER_FLAG, flag)
-                .apply();
-    }
-
     public String getBufferedIngredients() {
         return preferences.getString(KEY_BUFFER_INGR, "");
+    }
+
+    public void setBufferedIngredients(String ingredients) {
+        preferences.edit()
+                .putString(KEY_BUFFER_INGR, ingredients)
+                .apply();
     }
 
     public String getBufferedImages() {
@@ -93,6 +88,12 @@ public class MyPreferences {
 
     public boolean getBufferedFlag() {
         return preferences.getBoolean(KEY_BUFFER_FLAG, true);
+    }
+
+    public void setBufferedFlag(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_BUFFER_FLAG, flag)
+                .apply();
     }
 
     public void clearBufferedIngredients() {
@@ -123,26 +124,6 @@ public class MyPreferences {
                 .apply();
     }
 
-    public boolean getFlagIngrFavV1_4() {
-        return preferences.getBoolean(KEY_INGR_FAV_V_1_4, true);
-    }
-
-    public void setFlagIngrFavV1_4(boolean flag) {
-        preferences.edit()
-                .putBoolean(KEY_INGR_FAV_V_1_4, flag)
-                .apply();
-    }
-
-    public boolean getFlagIngrCatV1_4() {
-        return preferences.getBoolean(KEY_INGR_AND_CAT_V_1_4, true);
-    }
-
-    public void setFlagIngrCatV1_4(boolean flag) {
-        preferences.edit()
-                .putBoolean(KEY_INGR_AND_CAT_V_1_4, flag)
-                .apply();
-    }
-
     public boolean getFlagRecipesV1_4() {
         return preferences.getBoolean(KEY_RECIPES_V_1_4, true);
     }
@@ -150,6 +131,36 @@ public class MyPreferences {
     public void setFlagRecipesV1_4(boolean flag) {
         preferences.edit()
                 .putBoolean(KEY_RECIPES_V_1_4, flag)
+                .apply();
+    }
+
+    public boolean getFlagIngrFavV1_5() {
+        return preferences.getBoolean(KEY_INGR_FAV_V_1_5, true);
+    }
+
+    public void setFlagIngrFavV1_5(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_INGR_FAV_V_1_5, flag)
+                .apply();
+    }
+
+    public boolean getFlagIngrCatV1_5() {
+        return preferences.getBoolean(KEY_INGR_AND_CAT_V_1_5, true);
+    }
+
+    public void setFlagIngrCatV1_5(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_INGR_AND_CAT_V_1_5, flag)
+                .apply();
+    }
+
+    public boolean getFlagRecipesV1_5() {
+        return preferences.getBoolean(KEY_RECIPES_V_1_5, true);
+    }
+
+    public void setFlagRecipesV1_5(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_RECIPES_V_1_5, flag)
                 .apply();
     }
 }

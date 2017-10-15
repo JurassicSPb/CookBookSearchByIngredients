@@ -6,7 +6,7 @@
     <string name="ingredient_list">Список ингредиентов</string>
     <string name="select_one">Выберите хотя бы один ингредиент</string>
     <string name="selected">Выбрано</string>
-    <string name="no_more_than_15">Выберите не более 15 ингредиентов</string>
+    <string name="no_more_than_20">Выберите не более 20 ингредиентов</string>
     <string name="count_of_matching_ingredients">Совпавшие ингредиенты: </string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>

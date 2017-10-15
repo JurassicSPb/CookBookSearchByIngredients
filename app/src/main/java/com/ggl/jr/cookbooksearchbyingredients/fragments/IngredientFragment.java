@@ -111,12 +111,12 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
             int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
 
             if (ingredientPosition == -1) {
-                if (SelectedIngredient.showCount() < 15) {
+                if (SelectedIngredient.showCount() < 20) {
                     SelectedIngredient.addSelectedIngredient(sel, image);
                     SelectedIngredient.showCount();
                     ingredients.get((int) id).setState(1);
-                } else if (SelectedIngredient.showCount() == 15) {
-                    Toast toast = Toast.makeText(getActivity(), R.string.no_more_than_15, Toast.LENGTH_SHORT);
+                } else if (SelectedIngredient.showCount() == 20) {
+                    Toast toast = Toast.makeText(getActivity(), R.string.no_more_than_20, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 }

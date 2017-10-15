@@ -58,9 +58,9 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
         ingrFavoritesDB = new IngredientDatabase();
 
         MyPreferences preferences = new MyPreferences(this);
-        if (preferences.getFlagIngrFavV1_4()) {
+        if (preferences.getFlagIngrFavV1_5()) {
             updateIngredientFavorites();
-            preferences.setFlagIngrFavV1_4(false);
+            preferences.setFlagIngrFavV1_5(false);
         }
 
         performIngrFavorites();
@@ -81,12 +81,12 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
             int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
 
             if (ingredientPosition == -1) {
-                if (SelectedIngredient.showCount() < 15) {
+                if (SelectedIngredient.showCount() < 20) {
                     SelectedIngredient.addSelectedIngredient(sel, image);
                     SelectedIngredient.showCount();
                     ingrFavorites.get((int) id).setState(1);
-                } else if (SelectedIngredient.showCount() == 15) {
-                    Toast toast = Toast.makeText(getApplication(), R.string.no_more_than_15, Toast.LENGTH_SHORT);
+                } else if (SelectedIngredient.showCount() == 20) {
+                    Toast toast = Toast.makeText(getApplication(), R.string.no_more_than_20, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 }
