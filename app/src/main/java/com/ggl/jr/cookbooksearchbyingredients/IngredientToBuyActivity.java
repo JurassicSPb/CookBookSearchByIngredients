@@ -181,7 +181,7 @@ public class IngredientToBuyActivity extends AppCompatActivity {
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
             } else {
-                toast = Toast.makeText(getApplication(), R.string.no_more_than_50, Toast.LENGTH_SHORT);
+                toast = Toast.makeText(getApplication(), R.string.no_more_then_50_records, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
             }

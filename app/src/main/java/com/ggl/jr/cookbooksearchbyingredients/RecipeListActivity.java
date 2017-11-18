@@ -104,7 +104,7 @@ public class RecipeListActivity extends AppCompatActivity {
     }
 
     public Comparator <RecipeCount> sortByCountAndCategory() {
-        Comparator<RecipeCount> comparator = (o1, o2) -> {
+        return (o1, o2) -> {
             if (o2.getCount()==o1.getCount()) {
                 return o1.getRecipe().getCategory().compareTo(o2.getRecipe().getCategory());
             } else if (o2.getCount()>o1.getCount()){
@@ -112,7 +112,6 @@ public class RecipeListActivity extends AppCompatActivity {
             }
             return -1;
         };
-        return comparator;
     }
 
     @Override

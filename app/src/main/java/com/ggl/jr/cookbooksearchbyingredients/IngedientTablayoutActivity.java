@@ -123,11 +123,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 //            deleteIngredients();
 //            deleteRecipes();
 
-        if (preferences.getFlagIngrCatV1_5()) {
+        if (preferences.getFlagIngrCatV1_6()) {
             createIngredientsRU();
             createCategoryTablesRU();
             createCategoriesRU();
-            preferences.setFlagIngrCatV1_5(false);
+            preferences.setFlagIngrCatV1_6(false);
         }
 
         if (preferences.getFlag()) {
@@ -153,6 +153,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         if (preferences.getFlagRecipesV1_5()) {
             createRecipes("ver1_5");
             preferences.setFlagRecipesV1_5(false);
+        }
+
+        if (preferences.getFlagRecipesV1_6()) {
+            createRecipes("ver1_6");
+            preferences.setFlagRecipesV1_6(false);
         }
 
         performCategoryTables();

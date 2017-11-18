@@ -17,9 +17,10 @@ public class MyPreferences {
     private static final String KEY_RECIPES_V_1_1 = "key_recipes_v_1_1";
     private static final String KEY_RECIPES_V_1_3 = "key_recipes_v_1_3";
     private static final String KEY_RECIPES_V_1_4 = "key_recipes_v_1_4";
-    private static final String KEY_INGR_AND_CAT_V_1_5 = "key_ingr_and_cat_v_1_5";
-    private static final String KEY_INGR_FAV_V_1_5 = "key_ingr_fav_v_1_5";
     private static final String KEY_RECIPES_V_1_5 = "key_recipes_v_1_5";
+    private static final String KEY_INGR_AND_CAT_V_1_6 = "key_ingr_and_cat_v_1_6";
+    private static final String KEY_INGR_FAV_V_1_6 = "key_ingr_fav_v_1_6";
+    private static final String KEY_RECIPES_V_1_6 = "key_recipes_v_1_6";
 
 
     private SharedPreferences preferences;
@@ -134,26 +135,6 @@ public class MyPreferences {
                 .apply();
     }
 
-    public boolean getFlagIngrFavV1_5() {
-        return preferences.getBoolean(KEY_INGR_FAV_V_1_5, true);
-    }
-
-    public void setFlagIngrFavV1_5(boolean flag) {
-        preferences.edit()
-                .putBoolean(KEY_INGR_FAV_V_1_5, flag)
-                .apply();
-    }
-
-    public boolean getFlagIngrCatV1_5() {
-        return preferences.getBoolean(KEY_INGR_AND_CAT_V_1_5, true);
-    }
-
-    public void setFlagIngrCatV1_5(boolean flag) {
-        preferences.edit()
-                .putBoolean(KEY_INGR_AND_CAT_V_1_5, flag)
-                .apply();
-    }
-
     public boolean getFlagRecipesV1_5() {
         return preferences.getBoolean(KEY_RECIPES_V_1_5, true);
     }
@@ -163,4 +144,35 @@ public class MyPreferences {
                 .putBoolean(KEY_RECIPES_V_1_5, flag)
                 .apply();
     }
+
+    public boolean getFlagIngrFavV1_6() {
+        return preferences.getBoolean(KEY_INGR_FAV_V_1_6, true);
+    }
+
+    public void setFlagIngrFavV1_6(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_INGR_FAV_V_1_6, flag)
+                .apply();
+    }
+
+    public boolean getFlagIngrCatV1_6() {
+        return preferences.getBoolean(KEY_INGR_AND_CAT_V_1_6, true);
+    }
+
+    public void setFlagIngrCatV1_6(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_INGR_AND_CAT_V_1_6, flag)
+                .apply();
+    }
+
+    public boolean getFlagRecipesV1_6() {
+        return preferences.getBoolean(KEY_RECIPES_V_1_6, true);
+    }
+
+    public void setFlagRecipesV1_6(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_RECIPES_V_1_6, flag)
+                .apply();
+    }
+
 }

@@ -58,9 +58,9 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
         ingrFavoritesDB = new IngredientDatabase();
 
         MyPreferences preferences = new MyPreferences(this);
-        if (preferences.getFlagIngrFavV1_5()) {
+        if (preferences.getFlagIngrFavV1_6()) {
             updateIngredientFavorites();
-            preferences.setFlagIngrFavV1_5(false);
+            preferences.setFlagIngrFavV1_6(false);
         }
 
         performIngrFavorites();
@@ -81,12 +81,12 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
             int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
 
             if (ingredientPosition == -1) {
-                if (SelectedIngredient.showCount() < 20) {
+                if (SelectedIngredient.showCount() < 50) {
                     SelectedIngredient.addSelectedIngredient(sel, image);
                     SelectedIngredient.showCount();
                     ingrFavorites.get((int) id).setState(1);
-                } else if (SelectedIngredient.showCount() == 20) {
-                    Toast toast = Toast.makeText(getApplication(), R.string.no_more_than_20, Toast.LENGTH_SHORT);
+                } else if (SelectedIngredient.showCount() == 50) {
+                    Toast toast = Toast.makeText(getApplication(), R.string.no_more_then_50_ingrs, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 }
@@ -164,18 +164,18 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
     public void setBufferPreferences() {
         MyPreferences preferences = new MyPreferences(this);
 
-        String bufferIngr = "";
-        String bufferImage = "";
+        StringBuilder bufferIngr = new StringBuilder();
+        StringBuilder bufferImage = new StringBuilder();
         for (String s : SelectedIngredient.getSelectedIngredient()) {
-            bufferIngr += s + ",";
+            bufferIngr.append(s).append(",");
         }
         for (String s : SelectedIngredient.getSelectedImage()) {
-            bufferImage += s + ",";
+            bufferImage.append(s).append(",");
         }
-        preferences.setBufferedIngredients(bufferIngr);
-        preferences.setBufferedImage(bufferImage);
+        preferences.setBufferedIngredients(bufferIngr.toString());
+        preferences.setBufferedImage(bufferImage.toString());
 
-        if (bufferIngr.equals("")) {
+        if (bufferIngr.toString().equals("")) {
             preferences.setBufferedFlag(true);
         }
     }
