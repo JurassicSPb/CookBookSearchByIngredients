@@ -134,10 +134,9 @@ public class IngredientDatabase {
         return realm.where(Ingredient.class).findAllSorted("ingredient", Sort.ASCENDING);
     }
 
-    public List<Ingredient> getAllUnsorted() {
-        return realm.where(Ingredient.class).findAllSorted("ingredient");
+    public Ingredient getIngredientByName(String name) {
+        return realm.where(Ingredient.class).equalTo("ingredient", name).findFirst();
     }
-
 
     public List<CategoryTable> getAllCategoryTables() {
         return realm.where(CategoryTable.class).findAllSorted("num", Sort.ASCENDING);
@@ -158,6 +157,10 @@ public class IngredientDatabase {
             query.or().contains("ingredient", selected.get(i));
         }
         return query.findAll();
+    }
+
+    public Recipe getRecipeById(int id) {
+        return realm.where(Recipe.class).equalTo("id", id).findFirst();
     }
 
 

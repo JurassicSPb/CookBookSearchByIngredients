@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.ggl.jr.cookbooksearchbyingredients.storage.IngredientDatabase;
+import com.ggl.jr.cookbooksearchbyingredients.storage.MyPreferences;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -53,10 +54,17 @@ public class FavoritesActivity extends AppCompatActivity {
         setContentView(R.layout.favorites_recyclerview);
 
         recipeDB = new IngredientDatabase();
+
+        MyPreferences preferences = new MyPreferences(this);
+        if (preferences.getFlagRecipesFavV1_7()) {
+            updateFavorites();
+            preferences.setFlagRecipesFavV1_7(false);
+        }
+
         performFavorites();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (Metrics.smallestWidth()>600) {
+        if (Metrics.smallestWidth() > 600) {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_tablets);
         } else {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_phones);
@@ -75,6 +83,19 @@ public class FavoritesActivity extends AppCompatActivity {
         AdView mAdView = (AdView) findViewById(R.id.adFragment);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+    }
+
+    private void updateFavorites() {
+        favorites = recipeDB.getAllFavorites();
+        for (int i = 0; i < favorites.size(); i++) {
+            Recipe recipe = recipeDB.getRecipeById(favorites.get(i).getId());
+            if (recipe != null) {
+                Favorites favorite = new Favorites(recipe.getId(), recipe.getName(),
+                        recipe.getIngredient(), recipe.getCategory(), recipe.getDescription(),
+                        recipe.getCalories(), recipe.getImage());
+                recipeDB.copyOrUpdateFavorites(favorite);
+            }
+        }
     }
 
     @Override
