@@ -17,8 +17,8 @@
             android:layout_height="280dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:contentScrim="@color/colorHeadline"
-            app:collapsedTitleTextAppearance="@style/CollapsedAppBar"
-            app:expandedTitleTextAppearance="@style/ExpandedAppBar">
+            app:collapsedTitleTextAppearance="@style/CollapsedAppBarPhones"
+            app:expandedTitleTextAppearance="@style/ExpandedAppBarPhones">
 
             <ImageView
                 android:id="@+id/large_image"

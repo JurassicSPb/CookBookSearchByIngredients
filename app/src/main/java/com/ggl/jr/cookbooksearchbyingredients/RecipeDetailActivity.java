@@ -69,7 +69,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
 
         names = intent.getStringExtra("name");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (Metrics.smallestWidth()>600) {
+        if (Metrics.smallestWidth() > 600) {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_tablets);
         } else {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_phones);
@@ -125,16 +125,16 @@ public class RecipeDetailActivity extends AppCompatActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.clear();
         MenuInflater inflater = getMenuInflater();
-        if (Metrics.smallestWidth()>600) {
+        if (Metrics.smallestWidth() > 600) {
             inflater.inflate(R.menu.toolbar_buttons_third_activity_tablets, menu);
-        } else{
+        } else {
             inflater.inflate(R.menu.toolbar_buttons_third_activity_phones, menu);
         }
 
         MenuItem item = menu.findItem(R.id.item4);
 
         if (favorites.size() == 1) {
-            if (Metrics.smallestWidth()>600) {
+            if (Metrics.smallestWidth() > 600) {
                 item.setIcon(R.drawable.ic_favorites_selected_tablets);
             } else {
                 item.setIcon(R.drawable.ic_favorites_selected_phones);
@@ -151,7 +151,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.item4:
                 if (favorites.size() == 0) {
-                    if (Metrics.smallestWidth()>600) {
+                    if (Metrics.smallestWidth() > 600) {
                         myDrawable = ContextCompat.getDrawable(this, R.drawable.ic_favorites_selected_tablets);
                         item.setIcon(myDrawable);
                     } else {
@@ -168,7 +168,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
                 } else if (favorites.size() == 1) {
                     favoritesDB.deleteFavoritePosition(id);
 
-                    if (Metrics.smallestWidth()>600) {
+                    if (Metrics.smallestWidth() > 600) {
                         myDrawable = ContextCompat.getDrawable(this, R.drawable.ic_favourites_tablets);
                         item.setIcon(myDrawable);
                     } else {
@@ -180,6 +180,9 @@ public class RecipeDetailActivity extends AppCompatActivity {
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 }
+                break;
+            case R.id.item5:
+
                 break;
         }
         return super.onOptionsItemSelected(item);

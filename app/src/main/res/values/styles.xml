@@ -46,18 +46,32 @@
 
     </style>
 
-    <style name="CollapsedAppBar" parent="android:TextAppearance">
+    <style name="CollapsedAppBarTablets" parent="android:TextAppearance">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/toolbarTextColor</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="ExpandedAppBar" parent="android:TextAppearance">
+    <style name="ExpandedAppBarTablets" parent="android:TextAppearance">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/toolbarTextColor</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">21sp</item>
+    </style>
+
+    <style name="CollapsedAppBarPhones" parent="android:TextAppearance">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/toolbarTextColor</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="ExpandedAppBarPhones" parent="android:TextAppearance">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/toolbarTextColor</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="custom_dialog_theme">
