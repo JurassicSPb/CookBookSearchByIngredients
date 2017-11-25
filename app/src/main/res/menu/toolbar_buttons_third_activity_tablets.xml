@@ -8,4 +8,10 @@
         android:icon="@drawable/ic_favourites_tablets"
         app:showAsAction="always"/>
 
+    <item
+        android:id="@+id/item5"
+        android:title=""
+        android:icon="@drawable/ic_share_tablets"
+        app:showAsAction="always"/>
+
 </menu>
