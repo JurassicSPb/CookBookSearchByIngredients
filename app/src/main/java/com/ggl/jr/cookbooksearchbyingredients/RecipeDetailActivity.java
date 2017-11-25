@@ -184,14 +184,14 @@ public class RecipeDetailActivity extends AppCompatActivity {
             case R.id.item5:
                 Intent sendIntent = new Intent();
                 StringBuilder sendBuilder = new StringBuilder();
-                sendBuilder.append(names).append("\n")
-                        .append(getResources().getString(R.string.divider)).append("\n")
-                        .append(ingredients).append("\n")
-                        .append(getResources().getString(R.string.divider)).append("\n")
-                        .append(calories).append("\n")
-                        .append(getResources().getString(R.string.divider)).append("\n")
-                        .append(descriptions).append("\n")
-                        .append(getResources().getString(R.string.divider)).append("\n")
+                sendBuilder.append(names).append("\n\n")
+                        .append(getResources().getString(R.string.divider)).append("\n\n")
+                        .append(ingredients).append("\n\n")
+                        .append(getResources().getString(R.string.divider)).append("\n\n")
+                        .append(calories).append("\n\n")
+                        .append(getResources().getString(R.string.divider)).append("\n\n")
+                        .append(descriptions).append("\n\n")
+                        .append(getResources().getString(R.string.divider)).append("\n\n")
                         .append(getResources().getString(R.string.more_recipes));
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, sendBuilder.toString());
