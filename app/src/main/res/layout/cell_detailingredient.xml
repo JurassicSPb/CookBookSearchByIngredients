@@ -6,6 +6,15 @@
     android:layout_height="90dp"
     android:background="@color/backgrondTabLayoutActivity">
 
+    <Button
+        android:id="@+id/delete_ingr"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="4dp"
+        android:background="@drawable/ic_delete_ingrs_to_buy"/>
+
     <ImageView
         android:id="@+id/detail_image"
         android:layout_marginTop="3dp"
@@ -14,17 +23,19 @@
         android:layout_height="80dp"
         android:scaleType="centerCrop"
         android:background="@color/searchBorder"
-
         />
+
     <TextView
         android:id="@+id/detail_ingredient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:layout_toLeftOf="@id/delete_ingr"
+        android:layout_marginRight="2dp"
         android:fontFamily="sans-serif"
-        android:textSize="20sp"
+        android:textSize="19sp"
         android:textColor="@android:color/black"
-        tools:text="Ingredient"
+        tools:text="ананас консервированный"
         android:layout_toRightOf="@+id/detail_image"
         android:layout_centerVertical="true"
         />
