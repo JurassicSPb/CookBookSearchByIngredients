@@ -39,6 +39,9 @@
     <string name="alert_7">Сбросить выбор всех ингредиентов?</string>
     <string name="alert_7_yes">Да</string>
     <string name="alert_7_no">Нет</string>
+    <string name="share_recipe">Share a recipe</string>
+    <string name="divider">-------------------------------</string>
+    <string name="more_recipes">Еще больше рецептов в приложении \"Подбери рецепт\" для Android:\nhttps://play.google.com/store/apps/details?id=com.ggl.jr.cookbooksearchbyingredients</string>
 
     <!--Таблица мер и весов -->
 

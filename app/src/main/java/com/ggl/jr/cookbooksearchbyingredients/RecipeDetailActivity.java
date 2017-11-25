@@ -182,7 +182,21 @@ public class RecipeDetailActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.item5:
-
+                Intent sendIntent = new Intent();
+                StringBuilder sendBuilder = new StringBuilder();
+                sendBuilder.append(names).append("\n")
+                        .append(getResources().getString(R.string.divider)).append("\n")
+                        .append(ingredients).append("\n")
+                        .append(getResources().getString(R.string.divider)).append("\n")
+                        .append(calories).append("\n")
+                        .append(getResources().getString(R.string.divider)).append("\n")
+                        .append(descriptions).append("\n")
+                        .append(getResources().getString(R.string.divider)).append("\n")
+                        .append(getResources().getString(R.string.more_recipes));
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, sendBuilder.toString());
+                sendIntent.setType("text/plain");
+                startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.share_recipe)));
                 break;
         }
         return super.onOptionsItemSelected(item);
