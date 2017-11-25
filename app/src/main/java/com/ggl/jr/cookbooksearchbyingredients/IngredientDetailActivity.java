@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.ggl.jr.cookbooksearchbyingredients.storage.MyPreferences;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -19,8 +20,9 @@ import com.google.android.gms.ads.AdView;
  * Created by Мария on 27.11.2016.
  */
 
-public class IngredientDetailActivity extends AppCompatActivity {
+public class IngredientDetailActivity extends AppCompatActivity implements IngredientDetailAdapter.MenuListener{
     private Intent intent;
+    private MenuItem menuItem;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class IngredientDetailActivity extends AppCompatActivity {
 
         IngredientDetailAdapter adapter = new IngredientDetailAdapter();
         recyclerView.setAdapter(adapter);
+        adapter.setMenuListener(this);
 
         AdView mAdView = (AdView) findViewById(R.id.adFragment);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -66,6 +69,7 @@ public class IngredientDetailActivity extends AppCompatActivity {
         } else {
             inflater.inflate(R.menu.toolbar_buttons_second_activity_phones, menu);
         }
+        menuItem = menu.findItem(R.id.item3);
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -89,7 +93,38 @@ public class IngredientDetailActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        setBufferPreferences();
+    }
+
+    public void setBufferPreferences() {
+        MyPreferences preferences = new MyPreferences(this);
+
+        StringBuilder bufferIngr = new StringBuilder();
+        StringBuilder bufferImage = new StringBuilder();
+        for (String s : SelectedIngredient.getSelectedIngredient()) {
+            bufferIngr.append(s).append(",");
+        }
+        for (String s : SelectedIngredient.getSelectedImage()) {
+            bufferImage.append(s).append(",");
+        }
+        preferences.setBufferedIngredients(bufferIngr.toString());
+        preferences.setBufferedImage(bufferImage.toString());
+
+        if (bufferIngr.toString().equals("")) {
+            preferences.setBufferedFlag(true);
+        }
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void setMenuItemVisible(boolean state) {
+        menuItem.setVisible(state);
     }
 }

@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,9 +14,18 @@ import android.widget.TextView;
  */
 
 public class IngredientDetailAdapter extends RecyclerView.Adapter<IngredientDetailAdapter.ViewHolder> {
-    private OnListItemClickListener clickListener;
+    private MenuListener menuListener;
 
-    public IngredientDetailAdapter() {}
+    public interface MenuListener {
+        void setMenuItemVisible(boolean state);
+    }
+
+    public IngredientDetailAdapter() {
+    }
+
+    public void setMenuListener(MenuListener menuListener) {
+        this.menuListener = menuListener;
+    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -27,6 +37,18 @@ public class IngredientDetailAdapter extends RecyclerView.Adapter<IngredientDeta
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.detailIngredient.setText(SelectedIngredient.getSelectedIngredient().get(position));
         holder.detailImage.setImageResource(Integer.valueOf(SelectedIngredient.getSelectedImage().get(position)));
+
+        holder.delete.setOnClickListener(v -> {
+            SelectedIngredient.getSelectedIngredient().remove(holder.getAdapterPosition());
+            SelectedIngredient.getSelectedImage().remove(holder.getAdapterPosition());
+
+            if (SelectedIngredient.getSelectedIngredient().isEmpty()) {
+                menuListener.setMenuItemVisible(false);
+            } else {
+                menuListener.setMenuItemVisible(true);
+            }
+            notifyDataSetChanged();
+        });
     }
 
     @Override
@@ -34,22 +56,18 @@ public class IngredientDetailAdapter extends RecyclerView.Adapter<IngredientDeta
         return SelectedIngredient.getSelectedIngredient().size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView detailIngredient;
         ImageView detailImage;
         View separator;
+        Button delete;
 
         public ViewHolder(View itemView) {
             super(itemView);
             detailImage = (ImageView) itemView.findViewById(R.id.detail_image);
             detailIngredient = (TextView) itemView.findViewById(R.id.detail_ingredient);
             separator = itemView.findViewById(R.id.separator);
-        }
-
-        @Override
-        public void onClick(View v) {
-            clickListener.onClick(v, getAdapterPosition());
+            delete = (Button) itemView.findViewById(R.id.delete_ingr);
         }
     }
-
 }
