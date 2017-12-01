@@ -56,9 +56,9 @@ public class FavoritesActivity extends AppCompatActivity {
         recipeDB = new IngredientDatabase();
 
         MyPreferences preferences = new MyPreferences(this);
-        if (preferences.getFlagRecipesFavV1_7()) {
+        if (preferences.getFlagRecipesFavV1_8()) {
             updateFavorites();
-            preferences.setFlagRecipesFavV1_7(false);
+            preferences.setFlagRecipesFavV1_8(false);
         }
 
         performFavorites();

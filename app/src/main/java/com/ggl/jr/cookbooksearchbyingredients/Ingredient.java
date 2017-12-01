@@ -17,6 +17,7 @@ public class Ingredient extends RealmObject implements Parcelable {
     private int image;
     private int state;
     private int checkboxState;
+    private int stopState;
 
     public Ingredient() {
     }
@@ -69,12 +70,21 @@ public class Ingredient extends RealmObject implements Parcelable {
         this.checkboxState = checkboxState;
     }
 
+    public int getStopState() {
+        return stopState;
+    }
+
+    public void setStopState(int stopState) {
+        this.stopState = stopState;
+    }
+
     private Ingredient(Parcel in) {
         ingredient = in.readString();
         category = in.readInt();
         image = in.readInt();
         state = in.readInt();
         checkboxState = in.readInt();
+        stopState = in.readInt();
     }
 
     public int describeContents() {
@@ -87,7 +97,9 @@ public class Ingredient extends RealmObject implements Parcelable {
         out.writeInt(image);
         out.writeInt(state);
         out.writeInt(checkboxState);
+        out.writeInt(stopState);
     }
+
     public static final Parcelable.Creator<Ingredient> CREATOR = new Parcelable.Creator<Ingredient>() {
         public Ingredient createFromParcel(Parcel in) {
             return new Ingredient(in);

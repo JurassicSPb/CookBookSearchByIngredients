@@ -18,7 +18,6 @@ import android.widget.Toast;
 import com.ggl.jr.cookbooksearchbyingredients.GridviewImageTextAdapter;
 import com.ggl.jr.cookbooksearchbyingredients.IngedientTablayoutActivity;
 import com.ggl.jr.cookbooksearchbyingredients.Ingredient;
-import com.ggl.jr.cookbooksearchbyingredients.IngredientFavorites;
 import com.ggl.jr.cookbooksearchbyingredients.R;
 import com.ggl.jr.cookbooksearchbyingredients.SelectedIngredient;
 import com.ggl.jr.cookbooksearchbyingredients.storage.IngredientDatabase;
@@ -37,7 +36,7 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
     private List<Ingredient> ingredients;
     private EditText searchEditText;
     private GridviewImageTextAdapter gita;
-    private IngredientDatabase ingrFavoritesDB;
+    private IngredientDatabase ingredientsDB;
     private MyPreferences preferences;
 
     @Nullable
@@ -70,7 +69,7 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
             }
         }
 
-        ingrFavoritesDB = new IngredientDatabase();
+        ingredientsDB = new IngredientDatabase();
 
         GridView gridview = (GridView) view.findViewById(R.id.gridview);
 
@@ -108,28 +107,33 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
             String sel = ingredients.get((int) id).getIngredient();
             String image = String.valueOf(ingredients.get((int) id).getImage());
 
-            int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
+            if (ingredientsDB.getIngredientStopByName(sel) == null) {
 
-            if (ingredientPosition == -1) {
-                if (SelectedIngredient.showCount() < 50) {
-                    SelectedIngredient.addSelectedIngredient(sel, image);
-                    SelectedIngredient.showCount();
-                    ingredients.get((int) id).setState(1);
-                } else if (SelectedIngredient.showCount() == 50) {
-                    Toast toast = Toast.makeText(getActivity(), R.string.no_more_then_50_ingrs, Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.show();
+                int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
+
+                if (ingredientPosition == -1) {
+                    if (SelectedIngredient.showCount() < 50) {
+                        SelectedIngredient.addSelectedIngredient(sel, image);
+                        ingredients.get((int) id).setState(1);
+                    } else if (SelectedIngredient.showCount() == 50) {
+                        Toast toast = Toast.makeText(getActivity(), R.string.no_more_then_50_ingrs, Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
+                } else {
+                    SelectedIngredient.removeSelectedIngredient(sel, image);
+                    ingredients.get((int) id).setState(0);
                 }
+                ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(selectedToString + ": " + SelectedIngredient.showCount());
+                if (SelectedIngredient.showCount() == 0) {
+                    ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
+                }
+                gita.notifyDataSetChanged();
             } else {
-                SelectedIngredient.removeSelectedIngredient(sel, image);
-                SelectedIngredient.showCount();
-                ingredients.get((int) id).setState(0);
+                Toast toast = Toast.makeText(getActivity(), R.string.remove_from_stop, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
             }
-            ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(selectedToString + ": " + SelectedIngredient.showCount());
-            if (SelectedIngredient.showCount() == 0) {
-                ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
-            }
-            gita.notifyDataSetChanged();
         });
         return view;
     }
@@ -150,14 +154,12 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
     @Override
     public void fragmentBecameVisible() {
         refreshIngredientState();
-        refreshCheckboxState();
     }
 
     @Override
     public void onResume() {
         super.onResume();
         refreshIngredientState();
-        refreshCheckboxState();
         if (SelectedIngredient.showCount() == 0) {
             ((IngedientTablayoutActivity) getActivity()).getSupportActionBar().setTitle(R.string.ingredient_list);
         } else {
@@ -168,31 +170,25 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
     public void refreshIngredientState() {
         for (int i = 0; i < ingredients.size(); i++) {
             String sel = ingredients.get(i).getIngredient();
-            int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
-            if (ingredientPosition > -1) {
+
+            if (SelectedIngredient.getSelectedIngredient().contains(sel)) {
                 ingredients.get(i).setState(1);
             } else {
                 ingredients.get(i).setState(0);
             }
-        }
-        gita.notifyDataSetChanged();
-    }
 
-    public void refreshCheckboxState() {
-        List<IngredientFavorites> ingredientFavorites = ingrFavoritesDB.getAllIngrFavorites();
-        for (int i = 0; i < ingredients.size(); i++) {
-            if (ingredientFavorites.size() == 0) {
+            if (ingredientsDB.getIngredientFavoriteByName(sel) == null) {
                 ingredients.get(i).setCheckboxState(0);
             } else {
-                for (int j = 0; j < ingredientFavorites.size(); j++) {
-                    if (ingredients.get(i).getIngredient().equals(ingredientFavorites.get(j).getIngredient())) {
-                        ingredients.get(i).setCheckboxState(1);
-                        break;
-                    } else {
-                        ingredients.get(i).setCheckboxState(0);
-                    }
-                }
+                ingredients.get(i).setCheckboxState(1);
             }
+
+            if (ingredientsDB.getIngredientStopByName(sel) == null) {
+                ingredients.get(i).setStopState(0);
+            } else {
+                ingredients.get(i).setStopState(1);
+            }
+
         }
         gita.notifyDataSetChanged();
     }
@@ -207,7 +203,7 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
 
     @Override
     public void onDestroy() {
-        ingrFavoritesDB.close();
+        ingredientsDB.close();
         super.onDestroy();
     }
 }

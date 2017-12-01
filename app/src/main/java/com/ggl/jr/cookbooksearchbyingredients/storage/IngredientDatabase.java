@@ -5,6 +5,7 @@ import com.ggl.jr.cookbooksearchbyingredients.CategoryTable;
 import com.ggl.jr.cookbooksearchbyingredients.Favorites;
 import com.ggl.jr.cookbooksearchbyingredients.Ingredient;
 import com.ggl.jr.cookbooksearchbyingredients.IngredientFavorites;
+import com.ggl.jr.cookbooksearchbyingredients.IngredientStop;
 import com.ggl.jr.cookbooksearchbyingredients.IngredientToBuy;
 import com.ggl.jr.cookbooksearchbyingredients.Recipe;
 
@@ -28,6 +29,8 @@ public class IngredientDatabase {
     public IngredientDatabase() {
         RealmConfiguration configuration = new RealmConfiguration.Builder()
                 .name("ingredient_db")
+                .schemaVersion(1)
+                .migration(new Migration())
                 .build();
 //               Realm.deleteRealm(configuration);
         realm = Realm.getInstance(configuration);
@@ -57,12 +60,10 @@ public class IngredientDatabase {
         realm.commitTransaction();
     }
 
-    public List<IngredientFavorites> getAllIngrFavorites() {
+    public void copyOrUpdateIngrStop(IngredientStop ingredientStop) {
         realm.beginTransaction();
-        RealmResults<IngredientFavorites> results = realm.where(IngredientFavorites.class).findAll();
-        List<IngredientFavorites> newIngrFav = realm.copyFromRealm(results);
+        realm.copyToRealmOrUpdate(ingredientStop);
         realm.commitTransaction();
-        return newIngrFav;
     }
 
     public List<IngredientFavorites> getAllIngrFavoritesSorted() {
@@ -73,14 +74,34 @@ public class IngredientDatabase {
         return newIngrFav;
     }
 
+    public List<IngredientStop> getAllIngrStopSorted() {
+        realm.beginTransaction();
+        RealmResults<IngredientStop> results = realm.where(IngredientStop.class).findAllSorted("ingredient", Sort.ASCENDING);
+        List<IngredientStop> newIngrStop = realm.copyFromRealm(results);
+        realm.commitTransaction();
+        return newIngrStop;
+    }
+
     public List<IngredientFavorites> getAllIngrFavoritesUnsorted() {
         return realm.where(IngredientFavorites.class).findAll();
     }
 
+    public List<IngredientStop> getAllIngrStopUnsorted() {
+        return realm.where(IngredientStop.class).findAll();
+    }
+
+
     public void deleteIngrFavoritePosition(String name) {
         realm.beginTransaction();
-        RealmResults<IngredientFavorites> results = realm.where(IngredientFavorites.class).equalTo("ingredient", name).findAll();
-        results.deleteAllFromRealm();
+        IngredientFavorites results = realm.where(IngredientFavorites.class).equalTo("ingredient", name).findFirst();
+        results.deleteFromRealm();
+        realm.commitTransaction();
+    }
+
+    public void deleteIngrStopPosition(String name) {
+        realm.beginTransaction();
+        IngredientStop results = realm.where(IngredientStop.class).equalTo("ingredient", name).findFirst();
+        results.deleteFromRealm();
         realm.commitTransaction();
     }
 
@@ -100,8 +121,8 @@ public class IngredientDatabase {
 
     public void deleteFavoritePosition(Integer id) {
         realm.beginTransaction();
-        RealmResults<Favorites> results = realm.where(Favorites.class).equalTo("id", id).findAll();
-        results.deleteAllFromRealm();
+        Favorites results = realm.where(Favorites.class).equalTo("id", id).findFirst();
+        results.deleteFromRealm();
         realm.commitTransaction();
     }
 
@@ -138,6 +159,15 @@ public class IngredientDatabase {
         return realm.where(Ingredient.class).equalTo("ingredient", name).findFirst();
     }
 
+    public IngredientFavorites getIngredientFavoriteByName(String name) {
+        return realm.where(IngredientFavorites.class).equalTo("ingredient", name).findFirst();
+    }
+
+    public IngredientStop getIngredientStopByName(String name) {
+        return realm.where(IngredientStop.class).equalTo("ingredient", name).findFirst();
+    }
+
+
     public List<CategoryTable> getAllCategoryTables() {
         return realm.where(CategoryTable.class).findAllSorted("num", Sort.ASCENDING);
     }
@@ -150,11 +180,20 @@ public class IngredientDatabase {
         return realm.where(Ingredient.class).equalTo("category", i).findAllSorted("ingredient", Sort.ASCENDING);
     }
 
-    public List<Recipe> getRecipe(ArrayList<String> selected) {
+    public List<Recipe> getRecipe(List<IngredientStop> forbidden, ArrayList<String> selected) {
         RealmQuery<Recipe> query = realm.where(Recipe.class);
-        query.contains("ingredient", selected.get(0));
+
+        query.beginGroup().contains("ingredient", selected.get(0));
         for (int i = 1; i < selected.size(); i++) {
             query.or().contains("ingredient", selected.get(i));
+        }
+        query.endGroup();
+
+        if (!forbidden.isEmpty()) {
+            query.not().contains("ingredient", forbidden.get(0).getIngredient());
+            for (int i = 1; i < forbidden.size(); i++) {
+                query.not().contains("ingredient", forbidden.get(i).getIngredient());
+            }
         }
         return query.findAll();
     }

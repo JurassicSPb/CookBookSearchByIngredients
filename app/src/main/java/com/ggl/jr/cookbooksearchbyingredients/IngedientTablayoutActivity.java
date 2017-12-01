@@ -120,14 +120,12 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         }
 
         ingredientDB = new IngredientDatabase();
-//            deleteIngredients();
-//            deleteRecipes();
 
-        if (preferences.getFlagIngrCatV1_7()) {
+        if (preferences.getFlagIngrCatV1_8()) {
             createIngredientsRU();
             createCategoryTablesRU();
             createCategoriesRU();
-            preferences.setFlagIngrCatV1_7(false);
+            preferences.setFlagIngrCatV1_8(false);
         }
 
         if (preferences.getFlag()) {
@@ -164,6 +162,12 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             createRecipes("ver1_7");
             preferences.setFlagRecipesV1_7(false);
         }
+
+        if (preferences.getFlagRecipesV1_8()) {
+            createRecipes("ver1_8");
+            preferences.setFlagRecipesV1_8(false);
+        }
+
 
         performCategoryTables();
 
@@ -252,6 +256,9 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         } else if (id == R.id.fr10) {
             address = Uri.parse("market://details?id=com.ggl.jr.cookbooksearchbyingredientsPRO");
             intent = new Intent(Intent.ACTION_VIEW, address);
+            startActivity(intent);
+        } else if (id == R.id.fr11) {
+            intent = new Intent(this, IngredientStopActivity.class);
             startActivity(intent);
         }
         drawer.closeDrawer(GravityCompat.START);

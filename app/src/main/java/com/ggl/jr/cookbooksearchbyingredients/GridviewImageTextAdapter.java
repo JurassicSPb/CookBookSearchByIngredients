@@ -65,6 +65,7 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
         TextView textView;
         ImageView imageView;
         CheckBox checkBox;
+        CheckBox checkBoxStop;
     }
 
     @Override
@@ -82,6 +83,7 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
             holder.textView = (TextView) convertView.findViewById(R.id.textpart);
             holder.imageView = (ImageView) convertView.findViewById(R.id.imagepart);
             holder.checkBox = (CheckBox) convertView.findViewById(R.id.checkbox);
+            holder.checkBoxStop = (CheckBox) convertView.findViewById(R.id.checkbox_stop);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -102,11 +104,16 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
             holder.checkBox.setChecked(false);
         }
 
+        if (object.getStopState() == 1) {
+            holder.checkBoxStop.setChecked(true);
+        } else {
+            holder.checkBoxStop.setChecked(false);
+        }
+
         holder.checkBox.setOnClickListener(v -> {
             IngredientDatabase ingrFavoritesDB = new IngredientDatabase();
             if (object.getCheckboxState() == 0) {
-                IngredientFavorites newIngrFav;
-                newIngrFav = new IngredientFavorites(object.getIngredient(),
+                IngredientFavorites newIngrFav = new IngredientFavorites(object.getIngredient(),
                         object.getImage(), object.getState(), object.getCheckboxState());
                 ingrFavoritesDB.copyOrUpdateIngrFavorites(newIngrFav);
                 object.setCheckboxState(1);
@@ -123,14 +130,41 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
             ingrFavoritesDB.close();
             notifyDataSetChanged();
         });
+
+        holder.checkBoxStop.setOnClickListener(v -> {
+            IngredientDatabase stopIngredientDB = new IngredientDatabase();
+            if (object.getStopState() == 0) {
+                IngredientStop newIngrStop = new IngredientStop(object.getIngredient(),
+                        object.getImage(), object.getStopState());
+                stopIngredientDB.copyOrUpdateIngrStop(newIngrStop);
+                object.setStopState(1);
+                object.setState(0);
+                SelectedIngredient.removeSelectedIngredient(object.getIngredient(), String.valueOf(object.getImage()));
+                if (SelectedIngredient.showCount() == 0) {
+                    ((IngedientTablayoutActivity)mContext).getSupportActionBar().setTitle(R.string.ingredient_list);
+                } else {
+                    ((IngedientTablayoutActivity)mContext).getSupportActionBar().setTitle("Выбрано" + ": " + SelectedIngredient.showCount());
+                }
+                Toast toast = Toast.makeText(v.getContext(), R.string.stop_add, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            } else {
+                stopIngredientDB.deleteIngrStopPosition(object.getIngredient());
+                object.setStopState(0);
+                Toast toast = Toast.makeText(v.getContext(), R.string.stop_remove, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
+            stopIngredientDB.close();
+            notifyDataSetChanged();
+        });
+
         return convertView;
     }
 
     @Override
     public Filter getFilter() {
-
         if (valueFilter == null) {
-
             valueFilter = new ValueFilter();
         }
 

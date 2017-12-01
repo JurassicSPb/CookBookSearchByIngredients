@@ -32,6 +32,7 @@ public class CategoriesListActivity extends AppCompatActivity {
     private IngredientDatabase recipeDB;
     private EditText searchEditText;
     private String getNames;
+    private List<RecipeFilter> newRecipes = new ArrayList<>();
     private OnListItemClickListener clickListener = new OnListItemClickListener() {
         @Override
         public void onClick(View v, int position) {
@@ -71,7 +72,7 @@ public class CategoriesListActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (Metrics.smallestWidth()>600) {
+        if (Metrics.smallestWidth() > 600) {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_tablets);
         } else {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_phones);
@@ -80,7 +81,7 @@ public class CategoriesListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
-        getSupportActionBar().setTitle(getNames + " (" + performRecipesCopy().size() + ")");
+        getSupportActionBar().setTitle(getNames + " (" + newRecipes.size() + ")");
         try {
             Field f = toolbar.getClass().getDeclaredField("mTitleTextView");
             f.setAccessible(true);
@@ -91,7 +92,7 @@ public class CategoriesListActivity extends AppCompatActivity {
             toolbarTextView.requestFocus();
             toolbarTextView.setSingleLine(true);
             toolbarTextView.setSelected(true);
-            toolbarTextView.setText(getNames + " (" + performRecipesCopy().size() + ")");
+            toolbarTextView.setText(getNames + " (" + newRecipes.size() + ")");
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -133,9 +134,8 @@ public class CategoriesListActivity extends AppCompatActivity {
         searchClearButton.setOnClickListener(v -> searchEditText.setText(""));
     }
 
-    private List <RecipeFilter> performRecipesCopy(){
+    private List<RecipeFilter> performRecipesCopy() {
         List<Recipe> recipes = recipeDB.getRecipesByCategories(getNames);
-        List <RecipeFilter> newRecipes = new ArrayList<>();
         for (int i = 0; i < recipes.size(); i++) {
             Recipe r = recipes.get(i);
             newRecipes.add(new RecipeFilter(r.getId(), r.getName(), r.getIngredient(),

@@ -66,6 +66,10 @@
 
         </activity>
 
+        <activity android:name="com.ggl.jr.cookbooksearchbyingredients.IngredientStopActivity" >
+
+        </activity>
+
         <activity android:name="com.ggl.jr.cookbooksearchbyingredients.IngredientToBuyActivity"
             android:windowSoftInputMode="adjustResize">
 

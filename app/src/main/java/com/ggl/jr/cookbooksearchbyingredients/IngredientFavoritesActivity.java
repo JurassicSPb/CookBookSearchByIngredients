@@ -58,9 +58,9 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
         ingrFavoritesDB = new IngredientDatabase();
 
         MyPreferences preferences = new MyPreferences(this);
-        if (preferences.getFlagIngrFavV1_7()) {
+        if (preferences.getFlagIngrFavV1_8()) {
             updateIngredientFavorites();
-            preferences.setFlagIngrFavV1_7(false);
+            preferences.setFlagIngrFavV1_8(false);
         }
 
         performIngrFavorites();
@@ -78,28 +78,33 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
             String sel = ingrFavorites.get((int) id).getIngredient();
             String image = String.valueOf(ingrFavorites.get((int) id).getImage());
 
-            int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
+            if (ingrFavoritesDB.getIngredientStopByName(sel) == null) {
 
-            if (ingredientPosition == -1) {
-                if (SelectedIngredient.showCount() < 50) {
-                    SelectedIngredient.addSelectedIngredient(sel, image);
-                    SelectedIngredient.showCount();
-                    ingrFavorites.get((int) id).setState(1);
-                } else if (SelectedIngredient.showCount() == 50) {
-                    Toast toast = Toast.makeText(getApplication(), R.string.no_more_then_50_ingrs, Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.show();
+                int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
+
+                if (ingredientPosition == -1) {
+                    if (SelectedIngredient.showCount() < 50) {
+                        SelectedIngredient.addSelectedIngredient(sel, image);
+                        ingrFavorites.get((int) id).setState(1);
+                    } else if (SelectedIngredient.showCount() == 50) {
+                        Toast toast = Toast.makeText(getApplication(), R.string.no_more_then_50_ingrs, Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
+                } else {
+                    SelectedIngredient.removeSelectedIngredient(sel, image);
+                    ingrFavorites.get((int) id).setState(0);
                 }
+                getSupportActionBar().setTitle(selectedToString + ": " + SelectedIngredient.showCount());
+                if (SelectedIngredient.showCount() == 0) {
+                    getSupportActionBar().setTitle(R.string.drawer_menu_ingr_favorites);
+                }
+                adapter.notifyDataSetChanged();
             } else {
-                SelectedIngredient.removeSelectedIngredient(sel, image);
-                SelectedIngredient.showCount();
-                ingrFavorites.get((int) id).setState(0);
+                Toast toast = Toast.makeText(getApplication(), R.string.remove_from_stop, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
             }
-            getSupportActionBar().setTitle(selectedToString + ": " + SelectedIngredient.showCount());
-            if (SelectedIngredient.showCount() == 0) {
-                getSupportActionBar().setTitle(R.string.drawer_menu_ingr_favorites);
-            }
-            adapter.notifyDataSetChanged();
         });
     }
 
@@ -121,8 +126,7 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
     public void refreshState() {
         for (int i = 0; i < ingrFavorites.size(); i++) {
             String sel = ingrFavorites.get(i).getIngredient();
-            int ingredientPosition = SelectedIngredient.getSelectedIngredient().indexOf(sel);
-            if (ingredientPosition > -1) {
+            if (SelectedIngredient.getSelectedIngredient().contains(sel)) {
                 ingrFavorites.get(i).setState(1);
             } else {
                 ingrFavorites.get(i).setState(0);
