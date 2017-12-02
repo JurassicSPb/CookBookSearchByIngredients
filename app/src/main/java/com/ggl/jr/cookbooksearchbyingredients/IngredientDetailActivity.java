@@ -45,7 +45,7 @@ public class IngredientDetailActivity extends AppCompatActivity implements Ingre
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
-        getSupportActionBar().setTitle(R.string.selected);
+        getSupportActionBar().setTitle(R.string.selected_ingredients);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
