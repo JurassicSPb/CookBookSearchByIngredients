@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
-import io.realm.RealmChangeListener;
 import io.realm.RealmConfiguration;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
@@ -240,7 +239,7 @@ public class IngredientDatabase {
         }
     }
 
-    public List<IngredientsFromRecipe> getAllIngredientsFromRecipe () {
+    public List<IngredientsFromRecipe> getAllIngredientsFromRecipe() {
         return realm.where(IngredientsFromRecipe.class).findAllSorted("recipeId", Sort.ASCENDING);
     }
 
