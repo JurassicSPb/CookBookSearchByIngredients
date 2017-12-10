@@ -39,7 +39,7 @@ public class IngredientToBuyActivity extends AppCompatActivity {
         setContentView(R.layout.ingredients_to_buy_recyclerview);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (Metrics.smallestWidth()>600) {
+        if (Metrics.smallestWidth() >= 600) {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_tablets);
         } else {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_phones);
@@ -168,7 +168,7 @@ public class IngredientToBuyActivity extends AppCompatActivity {
                         ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy2 + " " + KILOS, "", 0);
                     } else
                         ingredientToBuy = new IngredientToBuy(nameToBuy, weightToBuy2 + " " + KILOS, amountToBuy + " " + PIECES, 0);
-                } else if (amountToBuy != null && amountToBuy.length()>0) {
+                } else if (amountToBuy != null && amountToBuy.length() > 0) {
                     ingredientToBuy = new IngredientToBuy(nameToBuy, "", amountToBuy + " " + PIECES, 0);
                 } else {
                     ingredientToBuy = new IngredientToBuy(nameToBuy, "", "", 0);

@@ -3,6 +3,24 @@
     <dimen name="headline_height">32dp</dimen>
     <!--<dimen name="tabLayout_textsize">30sp</dimen>-->
     <dimen name="toolbar_textsize">20sp</dimen>
+    <dimen name="ingredient_from_recipe">15sp</dimen>
+    <dimen name="ingredient_from_recipe_tablets">18sp</dimen>
+    <dimen name="name_from_recipe">16sp</dimen>
+    <dimen name="name_from_recipe_tablets">19sp</dimen>
+    <dimen name="name_from_recipe_height">40dp</dimen>
+    <dimen name="margin_from_recipe">6dp</dimen>
+    <dimen name="margin_from_recipe_tablets">16dp</dimen>
+    <dimen name="margin_from_recipe_right">59dp</dimen>
+    <dimen name="margin_from_recipe_right_tablets">69dp</dimen>
+    <dimen name="margin_from_recipe_bottom">10dp</dimen>
+    <dimen name="margin_checkbox_from_recipe">10dp</dimen>
+    <dimen name="margin_checkbox_from_recipe_tablets">16dp</dimen>
+    <dimen name="separator_height">2dp</dimen>
+    <dimen name="delete_from_recipe">30dp</dimen>
+    <dimen name="delete_from_recipe_tablets">37dp</dimen>
+    <dimen name="margin_delete_from_recipe_top">4dp</dimen>
+    <dimen name="margin_delete_from_recipe_right">12dp</dimen>
+    <dimen name="margin_delete_from_recipe_right_tablets">14dp</dimen>
 
     <!--Weights and Measures-->
     <dimen name="text_size">16sp</dimen>

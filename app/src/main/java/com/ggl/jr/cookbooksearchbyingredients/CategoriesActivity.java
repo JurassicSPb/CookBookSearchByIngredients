@@ -17,7 +17,7 @@ import java.util.List;
  * Created by Мария on 14.02.2017.
  */
 
-public class CategoriesActivity extends AppCompatActivity{
+public class CategoriesActivity extends AppCompatActivity {
     private IngredientDatabase categoriesDB;
     private List<Categories> categories;
 
@@ -33,7 +33,7 @@ public class CategoriesActivity extends AppCompatActivity{
         performCategories();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (Metrics.smallestWidth()>600) {
+        if (Metrics.smallestWidth() >= 600) {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_tablets);
         } else {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_phones);
@@ -52,14 +52,15 @@ public class CategoriesActivity extends AppCompatActivity{
         mAdView.loadAd(adRequest);
 
         gridview.setOnItemClickListener((parent, view, position, id) -> {
-            String name = categories.get((int)id).getName();
+            String name = categories.get((int) id).getName();
             Intent intent = new Intent(CategoriesActivity.this, CategoriesListActivity.class);
             intent.putExtra("name", name);
             startActivity(intent);
         });
 
     }
-    private void performCategories(){
+
+    private void performCategories() {
         categories = categoriesDB.getAllCategories();
     }
 

@@ -7,9 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 
 import com.ggl.jr.cookbooksearchbyingredients.Metrics;
@@ -24,8 +24,8 @@ import java.util.Locale;
  * Created by Мария on 01.01.2017.
  */
 
-public class WeightsAndMeasures extends AppCompatActivity{
-    private String [][] weightsRUS = new String[][]{
+public class WeightsAndMeasures extends AppCompatActivity {
+    private String[][] weightsRUS = new String[][]{
             {"Абрикос", "", "", "", "", "40"},
             {"Апельсин", "", "", "", "", "140"},
             {"Арахис очищенный", "175", "140", "25", "8", ""},
@@ -133,7 +133,8 @@ public class WeightsAndMeasures extends AppCompatActivity{
             {"Яйцо без скорлупы", "6 шт.", "5 шт.", "", "", "50"},
             {"Яичный порошок", "180", "100", "25", "10", ""},
     };
-//    private String [][] weightsENG = new String[][]{
+
+    //    private String [][] weightsENG = new String[][]{
 //            {"Almond (peeled)", "160", "130", "30", "10", ""},
 //            {"Apple", "", "", "", "", "90"},
 //            {"Apple (dried)", "70", "55", "", "", ""},
@@ -234,7 +235,7 @@ public class WeightsAndMeasures extends AppCompatActivity{
         setContentView(R.layout.weights_and_mesures);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (Metrics.smallestWidth()>600) {
+        if (Metrics.smallestWidth() >= 600) {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_tablets);
         } else {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_phones);
@@ -253,7 +254,7 @@ public class WeightsAndMeasures extends AppCompatActivity{
         mAdView.loadAd(adRequest);
     }
 
-    public void createTitle(){
+    public void createTitle() {
         int margin = getResources().getDimensionPixelSize(R.dimen.margin);
         int padding = getResources().getDimensionPixelSize(R.dimen.padding);
 
@@ -264,9 +265,9 @@ public class WeightsAndMeasures extends AppCompatActivity{
 
         TextView tvTitle1 = new TextView(this);
         TableRow.LayoutParams tvParams1 = new TableRow.LayoutParams();
-        tvParams1.height=getResources().getDimensionPixelSize(R.dimen.tv1_height);
-        tvParams1.width=getResources().getDimensionPixelSize(R.dimen.tv1_width);
-        tvParams1.setMargins(0,0,margin,margin);
+        tvParams1.height = getResources().getDimensionPixelSize(R.dimen.tv1_height);
+        tvParams1.width = getResources().getDimensionPixelSize(R.dimen.tv1_width);
+        tvParams1.setMargins(0, 0, margin, margin);
         tvTitle1.setBackgroundResource(R.color.tabFirstRow);
         tvTitle1.setText(R.string.products);
         tvTitle1.setGravity(Gravity.CENTER);
@@ -276,10 +277,10 @@ public class WeightsAndMeasures extends AppCompatActivity{
 
         TextView tvTitle2 = new TextView(this);
         TableRow.LayoutParams tvParams2 = new TableRow.LayoutParams();
-        tvParams2.height=LayoutParams.MATCH_PARENT;
-        tvParams2.width=LayoutParams.MATCH_PARENT;
-        tvParams2.setMargins(0,0,0,margin);
-        tvParams2.span=5;
+        tvParams2.height = LayoutParams.MATCH_PARENT;
+        tvParams2.width = LayoutParams.MATCH_PARENT;
+        tvParams2.setMargins(0, 0, 0, margin);
+        tvParams2.span = 5;
         tvTitle2.setBackgroundResource(R.color.tabFirstRow);
         tvTitle2.setText(R.string.weight_in_grams);
         tvTitle2.setGravity(Gravity.CENTER);
@@ -293,9 +294,9 @@ public class WeightsAndMeasures extends AppCompatActivity{
 
         TextView tvTitle2_1 = new TextView(this);
         TableRow.LayoutParams tvTitleParams2_1 = new TableRow.LayoutParams();
-        tvTitleParams2_1.height=LayoutParams.MATCH_PARENT;
-        tvTitleParams2_1.width=getResources().getDimensionPixelSize(R.dimen.tv1_width);
-        tvTitleParams2_1.setMargins(0,0,margin,margin);
+        tvTitleParams2_1.height = LayoutParams.MATCH_PARENT;
+        tvTitleParams2_1.width = getResources().getDimensionPixelSize(R.dimen.tv1_width);
+        tvTitleParams2_1.setMargins(0, 0, margin, margin);
         tvTitle2_1.setBackgroundResource(R.color.tabFirstRow);
         rowTitle2.addView(tvTitle2_1, tvTitleParams2_1);
 
@@ -303,7 +304,7 @@ public class WeightsAndMeasures extends AppCompatActivity{
         TableRow.LayoutParams tvTitleParams2_2 = new TableRow.LayoutParams();
         tvTitleParams2_2.height = getResources().getDimensionPixelSize(R.dimen.tv_body_height);
         tvTitleParams2_2.width = getResources().getDimensionPixelSize(R.dimen.tv_body_width);
-        tvTitleParams2_2.setMargins(0,0,margin,margin);
+        tvTitleParams2_2.setMargins(0, 0, margin, margin);
         tvTitle2_2.setBackgroundResource(R.color.tabSecondRow);
         tvTitle2_2.setText(R.string.glass_250_ml);
         tvTitle2_2.setTextColor(Color.BLACK);
@@ -317,7 +318,7 @@ public class WeightsAndMeasures extends AppCompatActivity{
         TableRow.LayoutParams tvTitleParams2_3 = new TableRow.LayoutParams();
         tvTitleParams2_3.height = LayoutParams.MATCH_PARENT;
         tvTitleParams2_3.width = getResources().getDimensionPixelSize(R.dimen.tv_body_width);
-        tvTitleParams2_3.setMargins(0,0,margin,margin);
+        tvTitleParams2_3.setMargins(0, 0, margin, margin);
         tvTitle2_3.setText(R.string.glass_200_ml);
         tvTitle2_3.setTextColor(Color.BLACK);
         tvTitle2_3.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_small));
@@ -347,7 +348,7 @@ public class WeightsAndMeasures extends AppCompatActivity{
         TableRow.LayoutParams tvTitleParams2_6 = new TableRow.LayoutParams();
         tvTitleParams2_6.height = LayoutParams.MATCH_PARENT;
         tvTitleParams2_6.width = getResources().getDimensionPixelSize(R.dimen.tv_body_width);
-        tvTitleParams2_6.setMargins(0,0,0,margin);
+        tvTitleParams2_6.setMargins(0, 0, 0, margin);
         tvTitle2_6.setBackgroundResource(R.color.tabSixthRow);
         tvTitle2_6.setText(R.string.one_piece_in_grams);
         tvTitle2_6.setTextColor(Color.BLACK);
@@ -358,29 +359,29 @@ public class WeightsAndMeasures extends AppCompatActivity{
 
         tabLayout.addView(rowTitle2);
     }
-    public void createBody(){
+
+    public void createBody() {
         TableLayout tabLayout = (TableLayout) findViewById(R.id.tableLayoutPorridge);
         int margin = getResources().getDimensionPixelSize(R.dimen.margin);
         int padding = getResources().getDimensionPixelSize(R.dimen.padding);
 
         int length;
         if (Locale.getDefault().getLanguage().equals("ru")) {
-            length=94;
+            length = 94;
+        } else {
+            length = 92;
         }
-        else{
-            length=92;
-        }
-        for (int i = 0; i<length; i++){
+        for (int i = 0; i < length; i++) {
             TableRow rowBody = new TableRow(this);
             rowBody.setBackgroundResource(R.color.tabDivider);
 
             TextView tvBody1 = new TextView(this);
             TableRow.LayoutParams tvBodyParams1 = new TableRow.LayoutParams();
-            tvBodyParams1.height=LayoutParams.MATCH_PARENT;
-            tvBodyParams1.width=getResources().getDimensionPixelSize(R.dimen.tv1_width);
-            tvBodyParams1.setMargins(0,0,margin,margin);
+            tvBodyParams1.height = LayoutParams.MATCH_PARENT;
+            tvBodyParams1.width = getResources().getDimensionPixelSize(R.dimen.tv1_width);
+            tvBodyParams1.setMargins(0, 0, margin, margin);
 //            if (Locale.getDefault().getLanguage().equals("ru")) {
-                tvBody1.setText(weightsRUS[i][0]);
+            tvBody1.setText(weightsRUS[i][0]);
 //            }
 //            else{
 //                tvBody1.setText(weightsENG[i][0]);
@@ -396,10 +397,10 @@ public class WeightsAndMeasures extends AppCompatActivity{
             TableRow.LayoutParams tvBodyParams2 = new TableRow.LayoutParams();
             tvBodyParams2.height = getResources().getDimensionPixelSize(R.dimen.tv_body_height);
             tvBodyParams2.width = getResources().getDimensionPixelSize(R.dimen.tv_body_width);
-            tvBodyParams2.setMargins(0,0,margin,margin);
+            tvBodyParams2.setMargins(0, 0, margin, margin);
             tvBody2.setBackgroundResource(R.color.tabSecondRow);
 //            if (Locale.getDefault().getLanguage().equals("ru")) {
-                tvBody2.setText(weightsRUS[i][1]);
+            tvBody2.setText(weightsRUS[i][1]);
 //            }
 //            else{
 //                tvBody2.setText(weightsENG[i][1]);
@@ -415,9 +416,9 @@ public class WeightsAndMeasures extends AppCompatActivity{
             TableRow.LayoutParams tvBodyParams3 = new TableRow.LayoutParams();
             tvBodyParams3.height = LayoutParams.MATCH_PARENT;
             tvBodyParams3.width = getResources().getDimensionPixelSize(R.dimen.tv_body_width);
-            tvBodyParams3.setMargins(0,0,margin,margin);
+            tvBodyParams3.setMargins(0, 0, margin, margin);
 //            if (Locale.getDefault().getLanguage().equals("ru")) {
-                tvBody3.setText(weightsRUS[i][2]);
+            tvBody3.setText(weightsRUS[i][2]);
 //            }
 //            else{
 //                tvBody3.setText(weightsENG[i][2]);
@@ -431,7 +432,7 @@ public class WeightsAndMeasures extends AppCompatActivity{
             TextView tvBody4 = new TextView(this);
             tvBody4.setBackgroundResource(R.color.tabFourthRow);
 //            if (Locale.getDefault().getLanguage().equals("ru")) {
-                tvBody4.setText(weightsRUS[i][3]);
+            tvBody4.setText(weightsRUS[i][3]);
 //            }
 //            else{
 //                tvBody4.setText(weightsENG[i][3]);
@@ -445,7 +446,7 @@ public class WeightsAndMeasures extends AppCompatActivity{
             TextView tvBody5 = new TextView(this);
             tvBody5.setBackgroundResource(R.color.tabFifthRow);
 //            if (Locale.getDefault().getLanguage().equals("ru")) {
-                tvBody5.setText(weightsRUS[i][4]);
+            tvBody5.setText(weightsRUS[i][4]);
 //            }
 //            else{
 //                tvBody5.setText(weightsENG[i][4]);
@@ -460,10 +461,10 @@ public class WeightsAndMeasures extends AppCompatActivity{
             TableRow.LayoutParams tvBodyParams6 = new TableRow.LayoutParams();
             tvBodyParams6.height = LayoutParams.MATCH_PARENT;
             tvBodyParams6.width = getResources().getDimensionPixelSize(R.dimen.tv_body_width);
-            tvBodyParams6.setMargins(0,0,0,margin);
+            tvBodyParams6.setMargins(0, 0, 0, margin);
             tvBody6.setBackgroundResource(R.color.tabSixthRow);
 //            if (Locale.getDefault().getLanguage().equals("ru")) {
-                tvBody6.setText(weightsRUS[i][5]);
+            tvBody6.setText(weightsRUS[i][5]);
 //            }
 //            else{
 //                tvBody6.setText(weightsENG[i][5]);

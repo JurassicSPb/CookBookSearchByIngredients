@@ -32,7 +32,7 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
         setContentView(R.layout.ingr_favorites_gridview);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (Metrics.smallestWidth() > 600) {
+        if (Metrics.smallestWidth() >= 600) {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_tablets);
         } else {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_phones);
@@ -58,9 +58,9 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
         ingrFavoritesDB = new IngredientDatabase();
 
         MyPreferences preferences = new MyPreferences(this);
-        if (preferences.getFlagIngrFavV1_8()) {
+        if (preferences.getFlagIngrFavV1_9()) {
             updateIngredientFavorites();
-            preferences.setFlagIngrFavV1_8(false);
+            preferences.setFlagIngrFavV1_9(false);
         }
 
         performIngrFavorites();

@@ -28,7 +28,7 @@ public class IngredientStopActivity extends AppCompatActivity {
         setContentView(R.layout.ingr_stop_gridview);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (Metrics.smallestWidth() > 600) {
+        if (Metrics.smallestWidth() >= 600) {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_tablets);
         } else {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_phones);
@@ -44,9 +44,9 @@ public class IngredientStopActivity extends AppCompatActivity {
         ingredientStopDB = new IngredientDatabase();
 
         MyPreferences preferences = new MyPreferences(this);
-        if (preferences.getFlagStopListV1_8()) {
+        if (preferences.getFlagStopListV1_9()) {
             updateStopList();
-            preferences.setFlagStopListV1_8(false);
+            preferences.setFlagStopListV1_9(false);
         }
 
         ingrStop = ingredientStopDB.getAllIngrStopSorted();

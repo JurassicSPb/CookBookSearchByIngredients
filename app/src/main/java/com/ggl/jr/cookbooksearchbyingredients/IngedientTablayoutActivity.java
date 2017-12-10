@@ -109,7 +109,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         for (int i = 0; i < toolbar.getChildCount(); i++) {
             if (toolbar.getChildAt(i) instanceof ImageButton) {
-                if (Metrics.smallestWidth() > 600) {
+                if (Metrics.smallestWidth() >= 600) {
                     toolbar.getChildAt(i).setScaleX(1.3f);
                     toolbar.getChildAt(i).setScaleY(1.3f);
                 } else {
@@ -121,11 +121,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         ingredientDB = new IngredientDatabase();
 
-        if (preferences.getFlagIngrCatV1_8()) {
+        if (preferences.getFlagIngrCatV1_9()) {
             createIngredientsRU();
             createCategoryTablesRU();
             createCategoriesRU();
-            preferences.setFlagIngrCatV1_8(false);
+            preferences.setFlagIngrCatV1_9(false);
         }
 
         if (preferences.getFlag()) {
@@ -167,6 +167,12 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             createRecipes("ver1_8");
             preferences.setFlagRecipesV1_8(false);
         }
+
+        if (preferences.getFlagRecipesV1_9()) {
+            createRecipes("ver1_9");
+            preferences.setFlagRecipesV1_9(false);
+        }
+
 
 
         performCategoryTables();
@@ -267,7 +273,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (Metrics.smallestWidth() > 600) {
+        if (Metrics.smallestWidth() >= 600) {
             getMenuInflater().inflate(R.menu.toolbar_buttons_tablets, menu);
         } else {
             getMenuInflater().inflate(R.menu.toolbar_buttons_phones, menu);

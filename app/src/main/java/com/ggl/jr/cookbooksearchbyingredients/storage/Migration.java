@@ -3,6 +3,7 @@ package com.ggl.jr.cookbooksearchbyingredients.storage;
 import io.realm.DynamicRealm;
 import io.realm.FieldAttribute;
 import io.realm.RealmMigration;
+import io.realm.RealmObjectSchema;
 import io.realm.RealmSchema;
 
 /**
@@ -24,6 +25,19 @@ public class Migration implements RealmMigration {
 
             schema.get("Ingredient")
                     .addField("stopState", Integer.class, FieldAttribute.REQUIRED);
+
+            oldVersion++;
+        }
+
+        if (oldVersion == 1) {
+            RealmObjectSchema ingredientsFromRecipeSchema = schema.create("IngredientsFromRecipe")
+                    .addField("recipeId", Integer.class, FieldAttribute.REQUIRED)
+                    .addField("name", String.class, FieldAttribute.REQUIRED)
+                    .addField("state", Integer.class, FieldAttribute.REQUIRED);
+
+            schema.get("IngredientToBuy")
+                    .addField("recipeId", Integer.class, FieldAttribute.REQUIRED)
+                    .addRealmListField("ingredients", ingredientsFromRecipeSchema);
 
             oldVersion++;
         }

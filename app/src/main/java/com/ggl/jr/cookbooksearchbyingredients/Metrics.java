@@ -9,7 +9,7 @@ import android.util.DisplayMetrics;
 
 public class Metrics {
 
-    public static float smallestWidth(){
+    public static float smallestWidth() {
         final DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
         int widthPixels = metrics.widthPixels;
         int heightPixels = metrics.heightPixels;

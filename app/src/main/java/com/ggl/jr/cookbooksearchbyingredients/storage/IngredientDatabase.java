@@ -7,6 +7,7 @@ import com.ggl.jr.cookbooksearchbyingredients.Ingredient;
 import com.ggl.jr.cookbooksearchbyingredients.IngredientFavorites;
 import com.ggl.jr.cookbooksearchbyingredients.IngredientStop;
 import com.ggl.jr.cookbooksearchbyingredients.IngredientToBuy;
+import com.ggl.jr.cookbooksearchbyingredients.IngredientsFromRecipe;
 import com.ggl.jr.cookbooksearchbyingredients.Recipe;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class IngredientDatabase {
     public IngredientDatabase() {
         RealmConfiguration configuration = new RealmConfiguration.Builder()
                 .name("ingredient_db")
-                .schemaVersion(1)
+                .schemaVersion(2)
                 .migration(new Migration())
                 .build();
 //               Realm.deleteRealm(configuration);
@@ -231,6 +232,22 @@ public class IngredientDatabase {
         realm.commitTransaction();
     }
 
+    public void copyIngredientToCart(IngredientToBuy ingrToCart, int id) {
+        if (getIngredientToBuyById(id) == null) {
+            realm.beginTransaction();
+            realm.copyToRealm(ingrToCart);
+            realm.commitTransaction();
+        }
+    }
+
+    public List<IngredientsFromRecipe> getAllIngredientsFromRecipe () {
+        return realm.where(IngredientsFromRecipe.class).findAllSorted("recipeId", Sort.ASCENDING);
+    }
+
+    public IngredientToBuy getIngredientToBuyById(int id) {
+        return realm.where(IngredientToBuy.class).equalTo("recipeId", id).findFirst();
+    }
+
     public void copyIngredientToBuyList(List<IngredientToBuy> ingrToBuy) {
         realm.beginTransaction();
         realm.copyToRealm(ingrToBuy);
@@ -256,7 +273,10 @@ public class IngredientDatabase {
         realm.commitTransaction();
     }
 
-    public void addChangeListener(RealmChangeListener<Realm> changeListener) {
-        realm.addChangeListener(changeListener);
+    public void clearAllIngredientsFromRecipeById(int recipeId) {
+        realm.beginTransaction();
+        RealmResults<IngredientsFromRecipe> results = realm.where(IngredientsFromRecipe.class).equalTo("recipeId", recipeId).findAll();
+        results.deleteAllFromRealm();
+        realm.commitTransaction();
     }
 }

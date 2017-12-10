@@ -61,7 +61,7 @@ public class FullListActivity extends AppCompatActivity {
         recipeDB = new IngredientDatabase();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (Metrics.smallestWidth()>600) {
+        if (Metrics.smallestWidth() >= 600) {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_tablets);
         } else {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_phones);
@@ -112,9 +112,9 @@ public class FullListActivity extends AppCompatActivity {
         searchClearButton.setOnClickListener(v -> searchEditText.setText(""));
     }
 
-    private List <RecipeFilter> performRecipesCopy(){
-        List <Recipe> recipes = recipeDB.getRecipesSorted();
-        List <RecipeFilter> newRecipes = new ArrayList<>();
+    private List<RecipeFilter> performRecipesCopy() {
+        List<Recipe> recipes = recipeDB.getRecipesSorted();
+        List<RecipeFilter> newRecipes = new ArrayList<>();
         for (int i = 0; i < recipes.size(); i++) {
             Recipe r = recipes.get(i);
             newRecipes.add(new RecipeFilter(r.getId(), r.getName(), r.getIngredient(),

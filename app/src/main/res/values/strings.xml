@@ -20,6 +20,7 @@
     <string name="drawer_menu_pro">PRO версия без рекламы</string>
     <string name="toast_favorites">Добавлено в избранные рецепты</string>
     <string name="toast_favorites_remove">Удалено из избранных рецептов</string>
+    <string name="toast_shopping_cart">Добавлено в список покупок</string>
     <string name="full_list">Полный список рецептов</string>
     <string name="recipe_list">Список рецептов</string>
     <string name="weights">Таблица мер и весов</string>

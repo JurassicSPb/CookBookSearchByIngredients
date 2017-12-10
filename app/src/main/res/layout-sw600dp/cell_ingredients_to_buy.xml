@@ -8,24 +8,24 @@
 
     <Button
         android:id="@+id/delete"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
         android:layout_gravity="right"
-        android:layout_marginRight="12dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/ic_delete_ingrs_to_buy"/>
 
     <TextView
         android:id="@+id/weight"
         tools:text="Weight gr."
         android:layout_width="140dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="6dp"
         android:layout_height="40dp"
         android:padding="6dp"
         android:textColor="@android:color/black"
         android:fontFamily="sans-serif"
-        android:textSize="19sp"/>
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/count"
@@ -38,12 +38,12 @@
         android:padding="6dp"
         android:textColor="@android:color/black"
         android:fontFamily="sans-serif"
-        android:textSize="19sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/name"
         tools:text="Nam00000000fffff0000e"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginRight="69dp"
         android:layout_marginTop="47dp"
         android:layout_width="match_parent"
@@ -53,7 +53,7 @@
         android:padding="6dp"
         android:textColor="@android:color/black"
         android:fontFamily="sans-serif"
-        android:textSize="19sp"/>
+        android:textSize="18sp"/>
 
     <CheckBox
         android:id="@+id/checkbox"
@@ -65,8 +65,8 @@
         android:layout_marginTop="55dp"
         android:layout_gravity="right"
         android:focusableInTouchMode="false"
-        android:scaleX="1.6"
-        android:scaleY="1.6"/>
+        android:scaleX="1.4"
+        android:scaleY="1.4"/>
 
     <View
         android:id="@+id/separator"

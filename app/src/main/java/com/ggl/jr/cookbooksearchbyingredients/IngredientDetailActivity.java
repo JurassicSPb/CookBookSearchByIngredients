@@ -20,7 +20,7 @@ import com.google.android.gms.ads.AdView;
  * Created by Мария on 27.11.2016.
  */
 
-public class IngredientDetailActivity extends AppCompatActivity implements IngredientDetailAdapter.MenuListener{
+public class IngredientDetailActivity extends AppCompatActivity implements IngredientDetailAdapter.MenuListener {
     private Intent intent;
     private MenuItem menuItem;
 
@@ -36,7 +36,7 @@ public class IngredientDetailActivity extends AppCompatActivity implements Ingre
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (Metrics.smallestWidth()>600) {
+        if (Metrics.smallestWidth() >= 600) {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_tablets);
         } else {
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_phones);
@@ -64,7 +64,7 @@ public class IngredientDetailActivity extends AppCompatActivity implements Ingre
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.clear();
         MenuInflater inflater = getMenuInflater();
-        if (Metrics.smallestWidth() > 600) {
+        if (Metrics.smallestWidth() >= 600) {
             inflater.inflate(R.menu.toolbar_buttons_second_activity_tablets, menu);
         } else {
             inflater.inflate(R.menu.toolbar_buttons_second_activity_phones, menu);
