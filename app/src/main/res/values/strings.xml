@@ -14,7 +14,7 @@
     <string name="drawer_menu_favorites">Избранные рецепты</string>
     <string name="drawer_menu_ingr_favorites">Избранные ингредиенты</string>
     <string name="drawer_menu_stop_list">Стоп-лист</string>
-    <string name="drawer_menu_full_list">Полный список</string>
+    <string name="drawer_menu_full_list">Полный список рецептов</string>
     <string name="drawer_menu_exit">Выход</string>
     <string name="drawer_menu_vk">Мы ВКонтакте</string>
     <string name="drawer_menu_pro">PRO версия без рекламы</string>

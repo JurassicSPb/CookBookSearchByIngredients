@@ -30,11 +30,13 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
     private List<Ingredient> ingredientAdapter;
     private List<Ingredient> ingredientAdapterFiltered;
     private ValueFilter valueFilter;
+    private IngredientDatabase ingredientsDB;
 
-    public GridviewImageTextAdapter(Context c, List<Ingredient> ingredientAdapter) {
+    public GridviewImageTextAdapter(Context c, List<Ingredient> ingredientAdapter, IngredientDatabase ingredientsDB) {
         mContext = c;
         this.ingredientAdapter = ingredientAdapter;
         ingredientAdapterFiltered = ingredientAdapter;
+        this.ingredientsDB = ingredientsDB;
     }
 
     @Override
@@ -111,51 +113,47 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
         }
 
         holder.checkBox.setOnClickListener(v -> {
-            IngredientDatabase ingrFavoritesDB = new IngredientDatabase();
             if (object.getCheckboxState() == 0) {
                 IngredientFavorites newIngrFav = new IngredientFavorites(object.getIngredient(),
                         object.getImage(), object.getState(), object.getCheckboxState());
-                ingrFavoritesDB.copyOrUpdateIngrFavorites(newIngrFav);
+                ingredientsDB.copyOrUpdateIngrFavorites(newIngrFav);
                 object.setCheckboxState(1);
                 Toast toast = Toast.makeText(v.getContext(), R.string.checkbox_add, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
             } else {
-                ingrFavoritesDB.deleteIngrFavoritePosition(object.getIngredient());
+                ingredientsDB.deleteIngrFavoritePosition(object.getIngredient());
                 object.setCheckboxState(0);
                 Toast toast = Toast.makeText(v.getContext(), R.string.checkbox_remove, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
             }
-            ingrFavoritesDB.close();
             notifyDataSetChanged();
         });
 
         holder.checkBoxStop.setOnClickListener(v -> {
-            IngredientDatabase stopIngredientDB = new IngredientDatabase();
             if (object.getStopState() == 0) {
                 IngredientStop newIngrStop = new IngredientStop(object.getIngredient(),
                         object.getImage(), object.getStopState());
-                stopIngredientDB.copyOrUpdateIngrStop(newIngrStop);
+                ingredientsDB.copyOrUpdateIngrStop(newIngrStop);
                 object.setStopState(1);
                 object.setState(0);
                 SelectedIngredient.removeSelectedIngredient(object.getIngredient(), String.valueOf(object.getImage()));
                 if (SelectedIngredient.showCount() == 0) {
-                    ((IngedientTablayoutActivity)mContext).getSupportActionBar().setTitle(R.string.ingredient_list);
+                    ((IngedientTablayoutActivity) mContext).getSupportActionBar().setTitle(R.string.ingredient_list);
                 } else {
-                    ((IngedientTablayoutActivity)mContext).getSupportActionBar().setTitle("Выбрано" + ": " + SelectedIngredient.showCount());
+                    ((IngedientTablayoutActivity) mContext).getSupportActionBar().setTitle("Выбрано" + ": " + SelectedIngredient.showCount());
                 }
                 Toast toast = Toast.makeText(v.getContext(), R.string.stop_add, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
             } else {
-                stopIngredientDB.deleteIngrStopPosition(object.getIngredient());
+                ingredientsDB.deleteIngrStopPosition(object.getIngredient());
                 object.setStopState(0);
                 Toast toast = Toast.makeText(v.getContext(), R.string.stop_remove, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
             }
-            stopIngredientDB.close();
             notifyDataSetChanged();
         });
 

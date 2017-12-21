@@ -73,7 +73,7 @@ public class IngredientFragment extends Fragment implements FragmentInterface {
 
         GridView gridview = (GridView) view.findViewById(R.id.gridview);
 
-        gita = new GridviewImageTextAdapter(getActivity(), getIngrbycategory());
+        gita = new GridviewImageTextAdapter(getActivity(), getIngrbycategory(), ingredientsDB);
 
         gridview.setAdapter(gita);
 

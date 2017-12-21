@@ -34,8 +34,9 @@ public class IngredientToBuyAdapter extends RecyclerView.Adapter<IngredientToBuy
     private IngredientDatabase ingrToBuyDB;
     private Context context;
 
-    public IngredientToBuyAdapter(List<IngredientToBuy> ingrsToBuy) {
+    public IngredientToBuyAdapter(List<IngredientToBuy> ingrsToBuy, IngredientDatabase ingrToBuyDB) {
         this.ingrsToBuy = ingrsToBuy;
+        this.ingrToBuyDB = ingrToBuyDB;
     }
 
     @Override
@@ -99,12 +100,10 @@ public class IngredientToBuyAdapter extends RecyclerView.Adapter<IngredientToBuy
             count.setText(object.getAmount());
 
             delete.setOnClickListener(v -> {
-                ingrToBuyDB = new IngredientDatabase();
                 List<IngredientToBuy> newIngrToBuy = ingrToBuyDB.copyIngrToBuyFromRealm();
                 newIngrToBuy.remove(getAdapterPosition());
                 ingrToBuyDB.clearIngrToBuy();
                 ingrToBuyDB.copyIngredientToBuyList(newIngrToBuy);
-                ingrToBuyDB.close();
                 notifyDataSetChanged();
                 Toast toast = Toast.makeText(v.getContext(), R.string.removed_successfully, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
@@ -124,7 +123,6 @@ public class IngredientToBuyAdapter extends RecyclerView.Adapter<IngredientToBuy
             }
 
             checkBox.setOnClickListener(v -> {
-                ingrToBuyDB = new IngredientDatabase();
                 List<IngredientToBuy> newIngrToBuy = ingrToBuyDB.copyIngrToBuyFromRealm();
                 if (object.getCheckboxState() == 0) {
                     newIngrToBuy.set(getAdapterPosition(), new IngredientToBuy(object.getName(),
@@ -135,7 +133,6 @@ public class IngredientToBuyAdapter extends RecyclerView.Adapter<IngredientToBuy
                 }
                 ingrToBuyDB.clearIngrToBuy();
                 ingrToBuyDB.copyIngredientToBuy(newIngrToBuy);
-                ingrToBuyDB.close();
                 newIngrToBuy = null;
                 notifyDataSetChanged();
             });
@@ -200,7 +197,6 @@ public class IngredientToBuyAdapter extends RecyclerView.Adapter<IngredientToBuy
             }
 
             delete.setOnClickListener(v -> {
-                ingrToBuyDB = new IngredientDatabase();
                 if (object.getRecipeId() > 0) {
                     ingrToBuyDB.clearAllIngredientsFromRecipeById(object.getRecipeId());
                 }
@@ -208,7 +204,6 @@ public class IngredientToBuyAdapter extends RecyclerView.Adapter<IngredientToBuy
                 newIngrToBuy.remove(getAdapterPosition());
                 ingrToBuyDB.clearIngrToBuy();
                 ingrToBuyDB.copyIngredientToBuyList(newIngrToBuy);
-                ingrToBuyDB.close();
                 notifyDataSetChanged();
                 Toast toast = Toast.makeText(v.getContext(), R.string.removed_successfully, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
@@ -265,7 +260,6 @@ public class IngredientToBuyAdapter extends RecyclerView.Adapter<IngredientToBuy
 
                 int finalI = i;
                 ingredientState.setOnClickListener(v -> {
-                    ingrToBuyDB = new IngredientDatabase();
                     RealmList<IngredientsFromRecipe> newIngrsFromRecipe = new RealmList<>();
                     newIngrsFromRecipe.addAll(object.getIngredients());
 
@@ -283,7 +277,6 @@ public class IngredientToBuyAdapter extends RecyclerView.Adapter<IngredientToBuy
                     newIngrToBuy.set(getAdapterPosition(), new IngredientToBuy(object.getName(), object.getRecipeId(), newIngrsFromRecipe));
                     ingrToBuyDB.clearIngrToBuy();
                     ingrToBuyDB.copyIngredientToBuy(newIngrToBuy);
-                    ingrToBuyDB.close();
                     newIngrToBuy = null;
                     notifyDataSetChanged();
                 });

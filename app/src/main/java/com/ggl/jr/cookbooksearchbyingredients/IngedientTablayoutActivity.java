@@ -121,11 +121,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         ingredientDB = new IngredientDatabase();
 
-        if (preferences.getFlagIngrCatV1_9()) {
+        if (preferences.getFlagIngrCatV2_0()) {
             createIngredientsRU();
             createCategoryTablesRU();
             createCategoriesRU();
-            preferences.setFlagIngrCatV1_9(false);
+            preferences.setFlagIngrCatV2_0(false);
         }
 
         if (preferences.getFlag()) {
@@ -173,7 +173,10 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             preferences.setFlagRecipesV1_9(false);
         }
 
-
+        if (preferences.getFlagRecipesV2_0()) {
+            createRecipes("ver2_0");
+            preferences.setFlagRecipesV2_0(false);
+        }
 
         performCategoryTables();
 
@@ -239,7 +242,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             if (preferences.getFlagRating()) {
                 new CustomDialog6(this).show();
             } else
-            finish();
+                finish();
         } else if (id == R.id.fr4) {
             intent = new Intent(this, WeightsAndMeasures.class);
             startActivity(intent);
@@ -852,7 +855,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     }
 
     private void createCategoriesRU() {
-        ArrayList <Categories> bufferCategories = new ArrayList<>();
+        ArrayList<Categories> bufferCategories = new ArrayList<>();
         bufferCategories.add(new Categories("Hовое", R.drawable.novoe));
         bufferCategories.add(new Categories("Блины и оладьи", R.drawable.pancaces));
         bufferCategories.add(new Categories("Блюда для мультиварки", R.drawable.multi));
@@ -901,7 +904,6 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
                 int size = is.available();
                 byte[] buffer = new byte[size];
                 is.read(buffer);
-                is.close();
                 String json = new String(buffer, "UTF-8");
                 try {
                     JSONObject obj = new JSONObject(json);
@@ -915,6 +917,8 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
                     bufferRecipe.add(new Recipe(id, name, ingredients, category, description, calories, image));
                 } catch (JSONException e) {
                     e.printStackTrace();
+                } finally {
+                    is.close();
                 }
             }
         } catch (IOException e) {
@@ -930,11 +934,9 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         assert drawer != null;
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }
-        else if (preferences.getFlagRating()) {
+        } else if (preferences.getFlagRating()) {
             new CustomDialog6(this).show();
-        }
-        else {
+        } else {
             super.onBackPressed();
         }
     }

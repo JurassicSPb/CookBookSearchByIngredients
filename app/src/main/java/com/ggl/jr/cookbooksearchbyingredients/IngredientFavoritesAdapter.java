@@ -24,10 +24,13 @@ import java.util.List;
 public class IngredientFavoritesAdapter extends BaseAdapter {
     private Context mContext;
     private List<IngredientFavorites> ingrFavoritesAdapter;
+    private IngredientDatabase ingrFavoritesDB;
 
-    public IngredientFavoritesAdapter(Context mContext, List<IngredientFavorites> ingrFavoritesAdapter) {
+    public IngredientFavoritesAdapter(Context mContext, List<IngredientFavorites> ingrFavoritesAdapter,
+                                      IngredientDatabase ingrFavoritesDB) {
         this.mContext = mContext;
         this.ingrFavoritesAdapter = ingrFavoritesAdapter;
+        this.ingrFavoritesDB = ingrFavoritesDB;
     }
 
     @Override
@@ -84,10 +87,8 @@ public class IngredientFavoritesAdapter extends BaseAdapter {
         holder.checkBox.setChecked(true);
 
         holder.checkBox.setOnClickListener(v -> {
-            IngredientDatabase ingrFavoritesDB = new IngredientDatabase();
             ingrFavoritesDB.deleteIngrFavoritePosition(object.getIngredient());
             ingrFavoritesAdapter.remove(object);
-            ingrFavoritesDB.close();
             notifyDataSetChanged();
             Toast toast = Toast.makeText(v.getContext(), R.string.checkbox_remove, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);

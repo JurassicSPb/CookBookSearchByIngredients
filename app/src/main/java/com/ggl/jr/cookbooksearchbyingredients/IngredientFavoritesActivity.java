@@ -58,14 +58,14 @@ public class IngredientFavoritesActivity extends AppCompatActivity {
         ingrFavoritesDB = new IngredientDatabase();
 
         MyPreferences preferences = new MyPreferences(this);
-        if (preferences.getFlagIngrFavV1_9()) {
+        if (preferences.getFlagIngrFavV2_0()) {
             updateIngredientFavorites();
-            preferences.setFlagIngrFavV1_9(false);
+            preferences.setFlagIngrFavV2_0(false);
         }
 
         performIngrFavorites();
 
-        adapter = new IngredientFavoritesAdapter(this, ingrFavorites);
+        adapter = new IngredientFavoritesAdapter(this, ingrFavorites, ingrFavoritesDB);
         gridview.setAdapter(adapter);
 
         AdView mAdView = (AdView) findViewById(R.id.adFragment);

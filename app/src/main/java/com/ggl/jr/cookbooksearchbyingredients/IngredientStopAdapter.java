@@ -22,10 +22,13 @@ import java.util.List;
 public class IngredientStopAdapter extends BaseAdapter {
     private Context mContext;
     private List<IngredientStop> ingrStopAdapter;
+    private IngredientDatabase ingredientStopDB;
 
-    public IngredientStopAdapter(Context mContext, List<IngredientStop> ingrStopAdapter) {
+    public IngredientStopAdapter(Context mContext, List<IngredientStop> ingrStopAdapter,
+                                 IngredientDatabase ingredientStopDB) {
         this.mContext = mContext;
         this.ingrStopAdapter = ingrStopAdapter;
+        this.ingredientStopDB = ingredientStopDB;
     }
 
 
@@ -74,10 +77,8 @@ public class IngredientStopAdapter extends BaseAdapter {
 
 
         holder.stopCheckbox.setOnClickListener(v -> {
-            IngredientDatabase ingrStopDB = new IngredientDatabase();
-            ingrStopDB.deleteIngrStopPosition(object.getIngredient());
+            ingredientStopDB.deleteIngrStopPosition(object.getIngredient());
             ingrStopAdapter.remove(object);
-            ingrStopDB.close();
             notifyDataSetChanged();
             Toast toast = Toast.makeText(v.getContext(), R.string.stop_remove, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);

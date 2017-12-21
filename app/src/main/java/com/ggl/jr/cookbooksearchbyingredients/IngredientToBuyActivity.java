@@ -56,7 +56,7 @@ public class IngredientToBuyActivity extends AppCompatActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        IngredientToBuyAdapter adapter = new IngredientToBuyAdapter(ingredientsToBuy);
+        IngredientToBuyAdapter adapter = new IngredientToBuyAdapter(ingredientsToBuy, ingrsToBuyDB);
         recyclerView.setAdapter(adapter);
 
         EditText name = (EditText) findViewById(R.id.edit_name);
