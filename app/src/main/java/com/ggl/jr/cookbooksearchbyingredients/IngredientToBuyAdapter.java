@@ -23,8 +23,6 @@ import com.ggl.jr.cookbooksearchbyingredients.storage.IngredientDatabase;
 
 import java.util.List;
 
-import io.realm.RealmList;
-
 /**
  * Created by Мария on 08.04.2017.
  */
@@ -123,17 +121,11 @@ public class IngredientToBuyAdapter extends RecyclerView.Adapter<IngredientToBuy
             }
 
             checkBox.setOnClickListener(v -> {
-                List<IngredientToBuy> newIngrToBuy = ingrToBuyDB.copyIngrToBuyFromRealm();
                 if (object.getCheckboxState() == 0) {
-                    newIngrToBuy.set(getAdapterPosition(), new IngredientToBuy(object.getName(),
-                            ingrsToBuy.get(getAdapterPosition()).getWeight(), object.getAmount(), 1));
+                    ingrToBuyDB.updateIngredientToBuy(object, 1);
                 } else {
-                    newIngrToBuy.set(getAdapterPosition(), new IngredientToBuy(object.getName(),
-                            ingrsToBuy.get(getAdapterPosition()).getWeight(), object.getAmount(), 0));
+                    ingrToBuyDB.updateIngredientToBuy(object, 0);
                 }
-                ingrToBuyDB.clearIngrToBuy();
-                ingrToBuyDB.copyIngredientToBuy(newIngrToBuy);
-                newIngrToBuy = null;
                 notifyDataSetChanged();
             });
         }
@@ -260,24 +252,13 @@ public class IngredientToBuyAdapter extends RecyclerView.Adapter<IngredientToBuy
 
                 int finalI = i;
                 ingredientState.setOnClickListener(v -> {
-                    RealmList<IngredientsFromRecipe> newIngrsFromRecipe = new RealmList<>();
-                    newIngrsFromRecipe.addAll(object.getIngredients());
-
-                    List<IngredientToBuy> newIngrToBuy = ingrToBuyDB.copyIngrToBuyFromRealm();
-                    IngredientsFromRecipe newIngredientFromRecipe;
                     if (ingredient.getState() == 0) {
-                        newIngredientFromRecipe = new IngredientsFromRecipe(ingredient.getRecipeId(),
-                                ingredient.getName(), 1);
-                        newIngrsFromRecipe.set(finalI, newIngredientFromRecipe);
+                        ingrToBuyDB.updateIngredientFromRecipe(ingredient, 1);
+                        ingrToBuyDB.updateIngredientsFromRecipe(object.getIngredients(), ingredient, finalI);
                     } else {
-                        newIngredientFromRecipe = new IngredientsFromRecipe(ingredient.getRecipeId(),
-                                ingredient.getName(), 0);
-                        newIngrsFromRecipe.set(finalI, newIngredientFromRecipe);
+                        ingrToBuyDB.updateIngredientFromRecipe(ingredient, 0);
+                        ingrToBuyDB.updateIngredientsFromRecipe(object.getIngredients(), ingredient, finalI);
                     }
-                    newIngrToBuy.set(getAdapterPosition(), new IngredientToBuy(object.getName(), object.getRecipeId(), newIngrsFromRecipe));
-                    ingrToBuyDB.clearIngrToBuy();
-                    ingrToBuyDB.copyIngredientToBuy(newIngrToBuy);
-                    newIngrToBuy = null;
                     notifyDataSetChanged();
                 });
             }

@@ -15,6 +15,7 @@ import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmList;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
 import io.realm.Sort;
@@ -219,12 +220,6 @@ public class IngredientDatabase {
         }
     }
 
-    public void copyIngredientToBuy(List<IngredientToBuy> ingrToBuy) {
-        realm.beginTransaction();
-        realm.copyToRealm(ingrToBuy);
-        realm.commitTransaction();
-    }
-
     public void copyIngredientToBuy(IngredientToBuy ingrToBuy) {
         realm.beginTransaction();
         realm.copyToRealm(ingrToBuy);
@@ -237,10 +232,6 @@ public class IngredientDatabase {
             realm.copyToRealm(ingrToCart);
             realm.commitTransaction();
         }
-    }
-
-    public List<IngredientsFromRecipe> getAllIngredientsFromRecipe() {
-        return realm.where(IngredientsFromRecipe.class).findAllSorted("recipeId", Sort.ASCENDING);
     }
 
     public IngredientToBuy getIngredientToBuyById(int id) {
@@ -276,6 +267,25 @@ public class IngredientDatabase {
         realm.beginTransaction();
         RealmResults<IngredientsFromRecipe> results = realm.where(IngredientsFromRecipe.class).equalTo("recipeId", recipeId).findAll();
         results.deleteAllFromRealm();
+        realm.commitTransaction();
+    }
+
+    public void updateIngredientsFromRecipe(RealmList<IngredientsFromRecipe> ingredientsFromRecipes,
+                                            IngredientsFromRecipe newIngredient, int position) {
+        realm.beginTransaction();
+        ingredientsFromRecipes.set(position, newIngredient);
+        realm.commitTransaction();
+    }
+
+    public void updateIngredientFromRecipe(IngredientsFromRecipe ingredientsFromRecipe, int state) {
+        realm.beginTransaction();
+        ingredientsFromRecipe.setState(state);
+        realm.commitTransaction();
+    }
+
+    public void updateIngredientToBuy(IngredientToBuy ingredientToBuy, int state) {
+        realm.beginTransaction();
+        ingredientToBuy.setCheckboxState(state);
         realm.commitTransaction();
     }
 }
