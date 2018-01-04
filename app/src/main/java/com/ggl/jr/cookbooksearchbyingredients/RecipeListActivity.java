@@ -1,14 +1,17 @@
 package com.ggl.jr.cookbooksearchbyingredients;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.ggl.jr.cookbooksearchbyingredients.storage.IngredientDatabase;
@@ -19,6 +22,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 
 /**
@@ -26,19 +31,22 @@ import java.util.List;
  */
 
 public class RecipeListActivity extends AppCompatActivity {
+    private RecyclerView recyclerView;
+    private ProgressBar progressBar;
+    private AdView mAdView;
     private RecipeListAdapter adapter;
-    private IngredientDatabase recipeDB;
     private List<RecipeCount> newRecipes = new ArrayList<>();
+    private Executor executor = Executors.newSingleThreadExecutor();
     private OnListItemClickListener clickListener = new OnListItemClickListener() {
         @Override
         public void onClick(View v, int position) {
-            int id = adapter.getRecipe(position).getRecipe().getId();
-            String name = adapter.getRecipe(position).getRecipe().getName();
-            String photo = adapter.getRecipe(position).getRecipe().getImage();
-            String ingredients = adapter.getRecipe(position).getRecipe().getIngredient();
-            String description = adapter.getRecipe(position).getRecipe().getDescription();
-            String calories = adapter.getRecipe(position).getRecipe().getCalories();
-            String category = adapter.getRecipe(position).getRecipe().getCategory();
+            int id = adapter.getRecipe(position).getId();
+            String name = adapter.getRecipe(position).getName();
+            String photo = adapter.getRecipe(position).getImage();
+            String ingredients = adapter.getRecipe(position).getIngredient();
+            String description = adapter.getRecipe(position).getDescription();
+            String calories = adapter.getRecipe(position).getCalories();
+            String category = adapter.getRecipe(position).getCategory();
 
             Intent intent = new Intent(RecipeListActivity.this, RecipeDetailActivity.class);
             intent.putExtra("id", id);
@@ -51,6 +59,21 @@ public class RecipeListActivity extends AppCompatActivity {
             startActivity(intent);
         }
     };
+    private OnDataReadyCallback callback = () -> runOnUiThread(() -> {
+        adapter = new RecipeListAdapter(newRecipes, clickListener);
+        recyclerView.setAdapter(adapter);
+
+        progressBar.setVisibility(View.GONE);
+
+        if (newRecipes.isEmpty()) {
+            Toast toast = Toast.makeText(getApplication(), R.string.recipe_list_empty, Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+    });
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,8 +85,6 @@ public class RecipeListActivity extends AppCompatActivity {
             SelectedIngredient.copyAllIngr(savedInstanceState.getStringArrayList("ingr"));
             SelectedIngredient.copyAllImage(savedInstanceState.getStringArrayList("image"));
         }
-
-        recipeDB = new IngredientDatabase();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (Metrics.smallestWidth() >= 600) {
@@ -77,23 +98,21 @@ public class RecipeListActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
         getSupportActionBar().setTitle(R.string.recipe_list);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        progressBar.setVisibility(android.widget.ProgressBar.VISIBLE);
+        progressBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(this, R.color.progressBar), PorterDuff.Mode.SRC_ATOP);
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new RecipeListAdapter(performRecipes(), clickListener);
-        recyclerView.setAdapter(adapter);
 
-        AdView mAdView = (AdView) findViewById(R.id.adFragment);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView = (AdView) findViewById(R.id.adFragment);
 
-        if (newRecipes.isEmpty()) {
-            Toast toast = Toast.makeText(getApplication(), R.string.recipe_list_empty, Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.CENTER, 0, 0);
-            toast.show();
-        }
+        executor.execute(this::performRecipes);
     }
 
-    private List<RecipeCount> performRecipes() {
+    private void performRecipes() {
+        IngredientDatabase recipeDB = new IngredientDatabase();
+
         List<Recipe> recipes = recipeDB.getRecipe(recipeDB.getAllIngrStopUnsorted(), SelectedIngredient.getSelectedIngredient());
         int count;
         for (int i = 0; i < recipes.size(); i++) {
@@ -103,16 +122,21 @@ public class RecipeListActivity extends AppCompatActivity {
                     count++;
                 }
             }
-            newRecipes.add(new RecipeCount(count, recipes.get(i)));
+            Recipe r = recipes.get(i);
+            newRecipes.add(new RecipeCount(count, r.getId(), r.getName(), r.getIngredient(), r.getCategory(),
+                    r.getDescription(), r.getImage(), r.getCalories()));
         }
         Collections.sort(newRecipes, sortByCountAndCategory());
-        return newRecipes;
+
+        recipeDB.close();
+
+        callback.callBackCall();
     }
 
     public Comparator<RecipeCount> sortByCountAndCategory() {
         return (o1, o2) -> {
             if (o2.getCount() == o1.getCount()) {
-                return o1.getRecipe().getCategory().compareTo(o2.getRecipe().getCategory());
+                return o1.getCategory().compareTo(o2.getCategory());
             } else if (o2.getCount() > o1.getCount()) {
                 return 1;
             }
@@ -125,11 +149,5 @@ public class RecipeListActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putStringArrayList("ingr", SelectedIngredient.getSelectedIngredient());
         outState.putStringArrayList("image", SelectedIngredient.getSelectedImage());
-    }
-
-    @Override
-    protected void onDestroy() {
-        recipeDB.close();
-        super.onDestroy();
     }
 }
