@@ -111,25 +111,32 @@ public class RecipeListActivity extends AppCompatActivity {
     }
 
     private void performRecipes() {
-        IngredientDatabase recipeDB = new IngredientDatabase();
+        IngredientDatabase recipeDB = null;
 
-        List<Recipe> recipes = recipeDB.getRecipe(recipeDB.getAllIngrStopUnsorted(), SelectedIngredient.getSelectedIngredient());
-        int count;
-        for (int i = 0; i < recipes.size(); i++) {
-            count = 0;
-            for (int k = 0; k < SelectedIngredient.getSelectedIngredient().size(); k++) {
-                if (recipes.get(i).getIngredient().contains(SelectedIngredient.getSelectedIngredient().get(k))) {
-                    count++;
+        try {
+            recipeDB = new IngredientDatabase();
+
+            List<Recipe> recipes = recipeDB.getRecipe(recipeDB.getAllIngrStopUnsorted(), SelectedIngredient.getSelectedIngredient());
+            int count;
+            for (int i = 0; i < recipes.size(); i++) {
+                count = 0;
+                for (int k = 0; k < SelectedIngredient.getSelectedIngredient().size(); k++) {
+                    if (recipes.get(i).getIngredient().contains(SelectedIngredient.getSelectedIngredient().get(k))) {
+                        count++;
+                    }
                 }
+                Recipe r = recipes.get(i);
+                newRecipes.add(new RecipeCount(count, r.getId(), r.getName(), r.getIngredient(), r.getCategory(),
+                        r.getDescription(), r.getImage(), r.getCalories()));
             }
-            Recipe r = recipes.get(i);
-            newRecipes.add(new RecipeCount(count, r.getId(), r.getName(), r.getIngredient(), r.getCategory(),
-                    r.getDescription(), r.getImage(), r.getCalories()));
+            Collections.sort(newRecipes, sortByCountAndCategory());
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (recipeDB != null) {
+                recipeDB.close();
+            }
         }
-        Collections.sort(newRecipes, sortByCountAndCategory());
-
-        recipeDB.close();
-
         callback.callBackCall();
     }
 

@@ -94,7 +94,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
 
-        pager.setOffscreenPageLimit(10);
+        pager.setOffscreenPageLimit(8);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
@@ -449,7 +449,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(9, "водка", R.drawable.vodka, 0, 0));
         bufferIngredient.add(new Ingredient(9, "гранатовый сок", R.drawable.granat_sok, 0, 0));
         bufferIngredient.add(new Ingredient(9, "грейпфрутовый сок", R.drawable.gfruit_juice, 0, 0));
-        bufferIngredient.add(new Ingredient(9, "джин", R.drawable.djin, 0, 0));
+        bufferIngredient.add(new Ingredient(9, "джин ", R.drawable.djin, 0, 0));
         bufferIngredient.add(new Ingredient(9, "зеленый чай", R.drawable.zel_chai, 0, 0));
         bufferIngredient.add(new Ingredient(9, "квас ", R.drawable.kvas, 0, 0));
         bufferIngredient.add(new Ingredient(9, "компот", R.drawable.compot, 0, 0));
@@ -670,6 +670,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(14, "рыбные консервы", R.drawable.rib_kons, 0, 0));
         bufferIngredient.add(new Ingredient(14, "сазан", R.drawable.sazan, 0, 0));
         bufferIngredient.add(new Ingredient(14, "сайра консервированная", R.drawable.sayra_kons, 0, 0));
+        bufferIngredient.add(new Ingredient(14, "салака", R.drawable.salaka, 0, 0));
         bufferIngredient.add(new Ingredient(14, "сардина консервированная", R.drawable.sardina_kons, 0, 0));
         bufferIngredient.add(new Ingredient(14, "сельдь", R.drawable.seld, 0, 0));
         bufferIngredient.add(new Ingredient(14, "семга", R.drawable.semga, 0, 0));
@@ -739,6 +740,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(16, "соус табаско", R.drawable.tabasko, 0, 0));
         bufferIngredient.add(new Ingredient(16, "соевый соус", R.drawable.soev_sous, 0, 0));
         bufferIngredient.add(new Ingredient(16, "томатная паста", R.drawable.tomat_pasta, 0, 0));
+        bufferIngredient.add(new Ingredient(16, "томатный соус", R.drawable.tomat_sous, 0, 0));
         bufferIngredient.add(new Ingredient(16, "тхина", R.drawable.thina, 0, 0));
 
         bufferIngredient.add(new Ingredient(17, "изюм", R.drawable.izum, 0, 0));
