@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
@@ -36,7 +36,7 @@ public class RecipeListActivity extends AppCompatActivity {
     private AdView mAdView;
     private RecipeListAdapter adapter;
     private List<RecipeCount> newRecipes = new ArrayList<>();
-    private Executor executor = Executors.newSingleThreadExecutor();
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
     private OnListItemClickListener clickListener = new OnListItemClickListener() {
         @Override
         public void onClick(View v, int position) {
@@ -156,5 +156,13 @@ public class RecipeListActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putStringArrayList("ingr", SelectedIngredient.getSelectedIngredient());
         outState.putStringArrayList("image", SelectedIngredient.getSelectedImage());
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (!executor.isShutdown()) {
+            executor.shutdown();
+        }
+        super.onDestroy();
     }
 }

@@ -27,6 +27,7 @@ public class FullListAdapter extends RecyclerView.Adapter<FullListAdapter.ViewHo
     private List<RecipeFilter> recipesFiltered;
     private ValueFilter valueFilter;
     private OnListItemClickListener clickListener;
+    private final StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
 
     public FullListAdapter (List <RecipeFilter> recipes, OnListItemClickListener clickListener){
         this.recipes=recipes;
@@ -53,7 +54,6 @@ public class FullListAdapter extends RecyclerView.Adapter<FullListAdapter.ViewHo
         final SpannableStringBuilder span = new SpannableStringBuilder();
         span.append(f.getName()).append("\n").append(category).append(" ").append(f.getCategory());
 
-        final StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
         span.setSpan(styleSpan, 0, recipes.get(position).getName().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         Picasso.with(context)

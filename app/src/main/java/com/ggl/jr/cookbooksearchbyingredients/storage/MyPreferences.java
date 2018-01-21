@@ -23,11 +23,14 @@ public class MyPreferences {
     private static final String KEY_RECIPES_V_1_8 = "key_recipes_v_1_8";
     private static final String KEY_RECIPES_V_1_9 = "key_recipes_v_1_9";
     private static final String KEY_RECIPES_V_2_0 = "key_recipes_v_2_0";
-    private static final String KEY_INGR_AND_CAT_V_2_1 = "key_ingr_and_cat_v_2_1";
-    private static final String KEY_INGR_FAV_V_2_1 = "key_ingr_fav_v_2_1";
-    private static final String KEY_RECIPES_FAV_V_2_1 = "key_recipes_fav_v_2_1";
-    private static final String KEY_STOP_LIST_V_2_1 = "key_recipes_stop_v_2_1";
     private static final String KEY_RECIPES_V_2_1 = "key_recipes_v_2_1";
+
+    private static final String KEY_INGR_AND_CAT_V_2_2 = "key_ingr_and_cat_v_2_2";
+    private static final String KEY_INGR_FAV_V_2_2 = "key_ingr_fav_v_2_2";
+    private static final String KEY_RECIPES_FAV_V_2_2 = "key_recipes_fav_v_2_2";
+    private static final String KEY_STOP_LIST_V_2_2 = "key_recipes_stop_v_2_2";
+    private static final String KEY_RECIPES_V_2_2 = "key_recipes_v_2_2";
+
 
     private SharedPreferences preferences;
 
@@ -201,46 +204,6 @@ public class MyPreferences {
                 .apply();
     }
 
-    public boolean getFlagIngrFavV2_1() {
-        return preferences.getBoolean(KEY_INGR_FAV_V_2_1, true);
-    }
-
-    public void setFlagIngrFavV2_1(boolean flag) {
-        preferences.edit()
-                .putBoolean(KEY_INGR_FAV_V_2_1, flag)
-                .apply();
-    }
-
-    public boolean getFlagIngrCatV2_1() {
-        return preferences.getBoolean(KEY_INGR_AND_CAT_V_2_1, true);
-    }
-
-    public void setFlagIngrCatV2_1(boolean flag) {
-        preferences.edit()
-                .putBoolean(KEY_INGR_AND_CAT_V_2_1, flag)
-                .apply();
-    }
-
-    public boolean getFlagStopListV2_1() {
-        return preferences.getBoolean(KEY_STOP_LIST_V_2_1, true);
-    }
-
-    public void setFlagStopListV2_1(boolean flag) {
-        preferences.edit()
-                .putBoolean(KEY_STOP_LIST_V_2_1, flag)
-                .apply();
-    }
-
-    public boolean getFlagRecipesFavV2_1() {
-        return preferences.getBoolean(KEY_RECIPES_FAV_V_2_1, true);
-    }
-
-    public void setFlagRecipesFavV2_1(boolean flag) {
-        preferences.edit()
-                .putBoolean(KEY_RECIPES_FAV_V_2_1, flag)
-                .apply();
-    }
-
     public boolean getFlagRecipesV2_1() {
         return preferences.getBoolean(KEY_RECIPES_V_2_1, true);
     }
@@ -251,4 +214,53 @@ public class MyPreferences {
                 .apply();
     }
 
+    public boolean getFlagIngrFavV2_2() {
+        return preferences.getBoolean(KEY_INGR_FAV_V_2_2, true);
+    }
+
+    public void setFlagIngrFavV2_2(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_INGR_FAV_V_2_2, flag)
+                .apply();
+    }
+
+    public boolean getFlagIngrCatV2_2() {
+        return preferences.getBoolean(KEY_INGR_AND_CAT_V_2_2, true);
+    }
+
+    public void setFlagIngrCatV2_2(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_INGR_AND_CAT_V_2_2, flag)
+                .apply();
+    }
+
+    public boolean getFlagStopListV2_2() {
+        return preferences.getBoolean(KEY_STOP_LIST_V_2_2, true);
+    }
+
+    public void setFlagStopListV2_2(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_STOP_LIST_V_2_2, flag)
+                .apply();
+    }
+
+    public boolean getFlagRecipesFavV2_2() {
+        return preferences.getBoolean(KEY_RECIPES_FAV_V_2_2, true);
+    }
+
+    public void setFlagRecipesFavV2_2(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_RECIPES_FAV_V_2_2, flag)
+                .apply();
+    }
+
+    public boolean getFlagRecipesV2_2() {
+        return preferences.getBoolean(KEY_RECIPES_V_2_2, true);
+    }
+
+    public void setFlagRecipesV2_2(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_RECIPES_V_2_2, flag)
+                .apply();
+    }
 }

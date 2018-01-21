@@ -23,6 +23,7 @@ import java.util.List;
 public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.ViewHolder> {
     private List<Favorites> favorites;
     private OnListItemClickListener clickListener;
+    private final StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
 
     public FavoritesAdapter(List<Favorites> favorites, OnListItemClickListener clickListener) {
         this.favorites = favorites;
@@ -48,7 +49,6 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
         final SpannableStringBuilder span = new SpannableStringBuilder();
         span.append(f.getName()).append("\n").append(category).append(" ").append(f.getCategory());
 
-        final StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
         span.setSpan(styleSpan, 0, f.getName().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         Picasso.with(context)

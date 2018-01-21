@@ -25,6 +25,9 @@ import java.util.List;
 public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.ViewHolder> {
     private List<RecipeCount> recipes;
     private OnListItemClickListener clickListener;
+    private final StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
+    private final StyleSpan styleSpan2 = new StyleSpan(Typeface.BOLD);
+    private final RelativeSizeSpan sizeSpan = setSizeSpan();
 
     public RecipeListAdapter(List<RecipeCount> recipes, OnListItemClickListener clickListener) {
         this.recipes = recipes;
@@ -49,18 +52,10 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
         RecipeCount r = recipes.get(position);
 
         final SpannableStringBuilder span = new SpannableStringBuilder();
+
         span.append(r.getName()).append("\n").append(category).append(" ")
                 .append(r.getCategory()).append("\n").append(matchingIngr).append(" ").append(String.valueOf(r.getCount()));
 
-        final StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
-        final StyleSpan styleSpan2 = new StyleSpan(Typeface.BOLD);
-
-        final RelativeSizeSpan sizeSpan;
-        if (Metrics.smallestWidth() >= 600) {
-            sizeSpan = new RelativeSizeSpan(1.0f);
-        } else {
-            sizeSpan = new RelativeSizeSpan(0.9f);
-        }
         span.setSpan(styleSpan, 0, r.getName().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         span.setSpan(sizeSpan, r.getName().length() + 1, span.length() - String.valueOf(r.getCount()).length() - matchingIngr.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         span.setSpan(styleSpan2, span.length() - String.valueOf(r.getCount()).length(), span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -83,6 +78,14 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
 
     public RecipeCount getRecipe(int position) {
         return recipes.get(position);
+    }
+
+    private RelativeSizeSpan setSizeSpan() {
+        if (Metrics.smallestWidth() >= 600) {
+            return new RelativeSizeSpan(1.0f);
+        } else {
+            return new RelativeSizeSpan(0.9f);
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

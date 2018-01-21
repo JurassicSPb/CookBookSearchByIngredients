@@ -94,7 +94,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
 
-        pager.setOffscreenPageLimit(8);
+        pager.setOffscreenPageLimit(5);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
@@ -122,11 +122,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         ingredientDB = new IngredientDatabase();
 
-        if (preferences.getFlagIngrCatV2_1()) {
+        if (preferences.getFlagIngrCatV2_2()) {
             createIngredientsRU();
             createCategoryTablesRU();
             createCategoriesRU();
-            preferences.setFlagIngrCatV2_1(false);
+            preferences.setFlagIngrCatV2_2(false);
         }
 
         if (preferences.getFlag()) {
@@ -182,6 +182,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         if (preferences.getFlagRecipesV2_1()) {
             createRecipes("ver2_1");
             preferences.setFlagRecipesV2_1(false);
+        }
+
+        if (preferences.getFlagRecipesV2_2()) {
+            createRecipes("ver2_2");
+            preferences.setFlagRecipesV2_2(false);
         }
 
         performCategoryTables();
