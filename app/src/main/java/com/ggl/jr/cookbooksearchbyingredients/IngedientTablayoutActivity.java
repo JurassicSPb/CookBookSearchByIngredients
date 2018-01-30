@@ -60,67 +60,10 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SelectedIngredient.getSelectedIngredient().clear();
-        SelectedIngredient.getSelectedImage().clear();
-
-        setContentView(R.layout.tablayout_with_viewpager);
-
         preferences = new MyPreferences(this);
 //        preferences.clearFlag();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle(R.string.ingredient_list);
-        try {
-            Field f = toolbar.getClass().getDeclaredField("mTitleTextView");
-            f.setAccessible(true);
-            TextView toolbarTextView = (TextView) f.get(toolbar);
-            toolbarTextView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-            toolbarTextView.setFocusable(true);
-            toolbarTextView.setFocusableInTouchMode(true);
-            toolbarTextView.requestFocus();
-            toolbarTextView.setSingleLine(true);
-            toolbarTextView.setSelected(true);
-//            toolbarTextView.setMarqueeRepeatLimit(2);
-            toolbarTextView.setText(R.string.ingredient_list);
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        ViewPager pager = (ViewPager) findViewById(R.id.pager);
-
-        pager.setOffscreenPageLimit(6);
-
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-
-        drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        assert navigationView != null;
-        navigationView.setItemIconTintList(null);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        for (int i = 0; i < toolbar.getChildCount(); i++) {
-            if (toolbar.getChildAt(i) instanceof ImageButton) {
-                if (Metrics.smallestWidth() >= 600) {
-                    toolbar.getChildAt(i).setScaleX(1.3f);
-                    toolbar.getChildAt(i).setScaleY(1.3f);
-                } else {
-                    toolbar.getChildAt(i).setScaleX(1.115f);
-                    toolbar.getChildAt(i).setScaleY(1.115f);
-                }
-            }
-        }
-
-        ingredientDB = new IngredientDatabase();
+        ingredientDB = new IngredientDatabase(getApplicationContext());
 
         if (preferences.getFlagIngrCatV2_2()) {
             createIngredientsRU();
@@ -187,6 +130,63 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         if (preferences.getFlagRecipesV2_2()) {
             createRecipes("ver2_2");
             preferences.setFlagRecipesV2_2(false);
+        }
+
+        SelectedIngredient.getSelectedIngredient().clear();
+        SelectedIngredient.getSelectedImage().clear();
+
+        setContentView(R.layout.tablayout_with_viewpager);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setTitle(R.string.ingredient_list);
+        try {
+            Field f = toolbar.getClass().getDeclaredField("mTitleTextView");
+            f.setAccessible(true);
+            TextView toolbarTextView = (TextView) f.get(toolbar);
+            toolbarTextView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+            toolbarTextView.setFocusable(true);
+            toolbarTextView.setFocusableInTouchMode(true);
+            toolbarTextView.requestFocus();
+            toolbarTextView.setSingleLine(true);
+            toolbarTextView.setSelected(true);
+//            toolbarTextView.setMarqueeRepeatLimit(2);
+            toolbarTextView.setText(R.string.ingredient_list);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        ViewPager pager = (ViewPager) findViewById(R.id.pager);
+
+        pager.setOffscreenPageLimit(6);
+
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+        drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        assert navigationView != null;
+        navigationView.setItemIconTintList(null);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        for (int i = 0; i < toolbar.getChildCount(); i++) {
+            if (toolbar.getChildAt(i) instanceof ImageButton) {
+                if (Metrics.smallestWidth() >= 600) {
+                    toolbar.getChildAt(i).setScaleX(1.3f);
+                    toolbar.getChildAt(i).setScaleY(1.3f);
+                } else {
+                    toolbar.getChildAt(i).setScaleX(1.115f);
+                    toolbar.getChildAt(i).setScaleY(1.115f);
+                }
+            }
         }
 
         performCategoryTables();

@@ -130,8 +130,6 @@ public class RecipeListActivity extends AppCompatActivity {
                         r.getDescription(), r.getImage(), r.getCalories()));
             }
             Collections.sort(newRecipes, sortByCountAndCategory());
-        } catch (Exception e) {
-            e.printStackTrace();
         } finally {
             if (recipeDB != null) {
                 recipeDB.close();
