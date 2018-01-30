@@ -65,72 +65,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         ingredientDB = new IngredientDatabase(getApplicationContext());
 
-        if (preferences.getFlagIngrCatV2_2()) {
-            createIngredientsRU();
-            createCategoryTablesRU();
-            createCategoriesRU();
-            preferences.setFlagIngrCatV2_2(false);
-        }
-
-        if (preferences.getFlag()) {
-            createRecipes("rus");
-            preferences.setFlag(false);
-        }
-
-        if (preferences.getFlagRecipesV1_1()) {
-            createRecipes("ver1_1");
-            preferences.setFlagRecipesV1_1(false);
-        }
-
-        if (preferences.getFlagRecipesV1_3()) {
-            createRecipes("ver1_3");
-            preferences.setFlagRecipesV1_3(false);
-        }
-
-        if (preferences.getFlagRecipesV1_4()) {
-            createRecipes("ver1_4");
-            preferences.setFlagRecipesV1_4(false);
-        }
-
-        if (preferences.getFlagRecipesV1_5()) {
-            createRecipes("ver1_5");
-            preferences.setFlagRecipesV1_5(false);
-        }
-
-        if (preferences.getFlagRecipesV1_6()) {
-            createRecipes("ver1_6");
-            preferences.setFlagRecipesV1_6(false);
-        }
-
-        if (preferences.getFlagRecipesV1_7()) {
-            createRecipes("ver1_7");
-            preferences.setFlagRecipesV1_7(false);
-        }
-
-        if (preferences.getFlagRecipesV1_8()) {
-            createRecipes("ver1_8");
-            preferences.setFlagRecipesV1_8(false);
-        }
-
-        if (preferences.getFlagRecipesV1_9()) {
-            createRecipes("ver1_9");
-            preferences.setFlagRecipesV1_9(false);
-        }
-
-        if (preferences.getFlagRecipesV2_0()) {
-            createRecipes("ver2_0");
-            preferences.setFlagRecipesV2_0(false);
-        }
-
-        if (preferences.getFlagRecipesV2_1()) {
-            createRecipes("ver2_1");
-            preferences.setFlagRecipesV2_1(false);
-        }
-
-        if (preferences.getFlagRecipesV2_2()) {
-            createRecipes("ver2_2");
-            preferences.setFlagRecipesV2_2(false);
-        }
+        initData();
 
         SelectedIngredient.getSelectedIngredient().clear();
         SelectedIngredient.getSelectedImage().clear();
@@ -232,6 +167,80 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         if (preferences.getFlagAlert()) {
             new CustomDialog1(this).show();
+        }
+    }
+
+    private void initData() {
+        if (preferences.getFlagIngrCatV2_2()) {
+            createIngredientsRU();
+            createCategoryTablesRU();
+            createCategoriesRU();
+            preferences.setFlagIngrCatV2_2(false);
+        }
+
+        if (preferences.getFlag()) {
+            createRecipes("rus");
+            preferences.setFlag(false);
+        }
+
+        if (preferences.getFlagRecipesV1_1()) {
+            createRecipes("ver1_1");
+            preferences.setFlagRecipesV1_1(false);
+        }
+
+        if (preferences.getFlagRecipesV1_3()) {
+            createRecipes("ver1_3");
+            preferences.setFlagRecipesV1_3(false);
+        }
+
+        if (preferences.getFlagRecipesV1_4()) {
+            createRecipes("ver1_4");
+            preferences.setFlagRecipesV1_4(false);
+        }
+
+        if (preferences.getFlagRecipesV1_5()) {
+            createRecipes("ver1_5");
+            preferences.setFlagRecipesV1_5(false);
+        }
+
+        if (preferences.getFlagRecipesV1_6()) {
+            createRecipes("ver1_6");
+            preferences.setFlagRecipesV1_6(false);
+        }
+
+        if (preferences.getFlagRecipesV1_7()) {
+            createRecipes("ver1_7");
+            preferences.setFlagRecipesV1_7(false);
+        }
+
+        if (preferences.getFlagRecipesV1_8()) {
+            createRecipes("ver1_8");
+            preferences.setFlagRecipesV1_8(false);
+        }
+
+        if (preferences.getFlagRecipesV1_9()) {
+            createRecipes("ver1_9");
+            preferences.setFlagRecipesV1_9(false);
+        }
+
+        if (preferences.getFlagRecipesV2_0()) {
+            createRecipes("ver2_0");
+            preferences.setFlagRecipesV2_0(false);
+        }
+
+        if (preferences.getFlagRecipesV2_1()) {
+            createRecipes("ver2_1");
+            preferences.setFlagRecipesV2_1(false);
+        }
+
+        if (preferences.getFlagRecipesV2_2()) {
+            createRecipes("ver2_2");
+            preferences.setFlagRecipesV2_2(false);
+        }
+
+        if (preferences.getFlagRecipesV2_3()) {
+            createRecipes("ver2_3");
+            preferences.setFlagRecipesV2_3(false);
         }
     }
 

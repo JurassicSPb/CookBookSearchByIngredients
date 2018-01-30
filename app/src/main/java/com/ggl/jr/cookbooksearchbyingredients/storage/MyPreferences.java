@@ -31,6 +31,7 @@ public class MyPreferences {
     private static final String KEY_STOP_LIST_V_2_2 = "key_recipes_stop_v_2_2";
     private static final String KEY_RECIPES_V_2_2 = "key_recipes_v_2_2";
 
+    private static final String KEY_RECIPES_V_2_3 = "key_recipes_v_2_3";
 
     private SharedPreferences preferences;
 
@@ -261,6 +262,16 @@ public class MyPreferences {
     public void setFlagRecipesV2_2(boolean flag) {
         preferences.edit()
                 .putBoolean(KEY_RECIPES_V_2_2, flag)
+                .apply();
+    }
+
+    public boolean getFlagRecipesV2_3() {
+        return preferences.getBoolean(KEY_RECIPES_V_2_3, true);
+    }
+
+    public void setFlagRecipesV2_3(boolean flag) {
+        preferences.edit()
+                .putBoolean(KEY_RECIPES_V_2_3, flag)
                 .apply();
     }
 }
