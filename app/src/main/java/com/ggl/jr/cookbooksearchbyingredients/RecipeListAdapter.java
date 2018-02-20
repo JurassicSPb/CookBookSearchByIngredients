@@ -149,14 +149,15 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             if (results.count == 0) {
+                recipes = new ArrayList<>();
                 Toast toast = Toast.makeText(context, R.string.no_recipes_by_category, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
             }
             else {
                 recipes = (ArrayList<RecipeCount>) results.values;
-                notifyDataSetChanged();
             }
+            notifyDataSetChanged();
         }
     }
 }
