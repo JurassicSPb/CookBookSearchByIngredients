@@ -7,14 +7,19 @@ import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,16 +27,21 @@ import java.util.List;
  * Created by Мария on 07.12.2016.
  */
 
-public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.ViewHolder> {
+public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.ViewHolder> implements Filterable {
+    private Context context;
     private List<RecipeCount> recipes;
+    private List<RecipeCount> originalRecipes;
+    private RecipeListAdapter.ValueFilter valueFilter;
     private OnListItemClickListener clickListener;
     private final StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
     private final StyleSpan styleSpan2 = new StyleSpan(Typeface.BOLD);
     private final RelativeSizeSpan sizeSpan = setSizeSpan();
 
-    public RecipeListAdapter(List<RecipeCount> recipes, OnListItemClickListener clickListener) {
+    public RecipeListAdapter(List<RecipeCount> recipes, OnListItemClickListener clickListener, Context context) {
         this.recipes = recipes;
+        originalRecipes = recipes;
         this.clickListener = clickListener;
+        this.context = context;
     }
 
     @Override
@@ -102,6 +112,51 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
         @Override
         public void onClick(View v) {
             clickListener.onClick(v, getAdapterPosition());
+        }
+    }
+
+    @Override
+    public Filter getFilter() {
+        if (valueFilter == null) {
+
+            valueFilter = new RecipeListAdapter.ValueFilter();
+        }
+
+        return valueFilter;
+    }
+
+    private class ValueFilter extends Filter {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults results = new FilterResults();
+            if (constraint != null && constraint.length() > 0) {
+                ArrayList<RecipeCount> filterList = new ArrayList<>();
+                for (int i = 0; i < originalRecipes.size(); i++) {
+                    if (originalRecipes.get(i).getCategory().toUpperCase()
+                            .contains(constraint.toString().toUpperCase())) {
+                        filterList.add(originalRecipes.get(i));
+                    }
+                }
+                results.count = filterList.size();
+                results.values = filterList;
+            } else {
+                results.count = originalRecipes.size();
+                results.values = originalRecipes;
+            }
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            if (results.count == 0) {
+                Toast toast = Toast.makeText(context, R.string.no_recipes_by_category, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
+            else {
+                recipes = (ArrayList<RecipeCount>) results.values;
+                notifyDataSetChanged();
+            }
         }
     }
 }

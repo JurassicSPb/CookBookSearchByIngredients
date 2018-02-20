@@ -50,8 +50,28 @@
     <string name="divider">--------------------------------------</string>
     <string name="more_recipes">Еще больше рецептов в приложении \"Подбери рецепт\" для Android:\nhttps://play.google.com/store/apps/details?id=com.ggl.jr.cookbooksearchbyingredients</string>
 
-    <!--Таблица мер и весов -->
+    <!--категории фильтра-->
+    <string name="no_recipes_by_category">Рецепты по категории не найдены</string>
+    <string name="all">Все</string>
+    <string name="main_courses">Вторые блюда</string>
+    <string name="pancakes">Блины и оладьи</string>
+    <string name="multicooker">Блюда для мультиварки</string>
+    <string name="breakfast">Блюда на завтрак</string>
+    <string name="garnishes">Гарниры</string>
+    <string name="desserts">Десерты</string>
+    <string name="preparations">Заготовки</string>
+    <string name="snacks">Закуски</string>
+    <string name="healthy_food">Здоровое питание</string>
+    <string name="porridges">Каши</string>
+    <string name="drinks">Напитки</string>
+    <string name="unsweetened_pastry">Несладкая выпечка</string>
+    <string name="fish_seefood">Рыба и морепродукты</string>
+    <string name="salads">Салаты</string>
+    <string name="sweet_pastry">Сладкая выпечка</string>
+    <string name="sauces">Соусы</string>
+    <string name="soups">Супы</string>
 
+    <!--Таблица мер и весов -->
     <string name="products">Продукты</string>
     <string name="weight_in_grams">Вес продуктов в граммах</string>
     <string name="glass_250_ml">Стакан 250 мл.</string>

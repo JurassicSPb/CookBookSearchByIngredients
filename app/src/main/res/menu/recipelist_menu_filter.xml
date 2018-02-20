@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/filter_item"
+        android:icon="@drawable/ic_filter"
+        android:orderInCategory="1"
+        android:title=""
+        android:visible="false"
+        app:showAsAction="always">
+        <menu>
+            <group
+                android:id="@+id/filter_submenu_group"
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/submenu_item_1"
+                    android:title="@string/all"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/submenu_item_2"
+                    android:title="@string/pancakes"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/submenu_item_3"
+                    android:title="@string/multicooker"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/submenu_item_4"
+                    android:title="@string/breakfast"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/submenu_item_5"
+                    android:title="@string/main_courses"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/submenu_item_6"
+                    android:title="@string/garnishes"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/submenu_item_7"
+                    android:title="@string/desserts"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/submenu_item_8"
+                    android:title="@string/preparations"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/submenu_item_9"
+                    android:title="@string/snacks"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/submenu_item_10"
+                    android:title="@string/healthy_food"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/submenu_item_11"
+                    android:title="@string/drinks"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/submenu_item_12"
+                    android:title="@string/unsweetened_pastry"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/submenu_item_13"
+                    android:title="@string/fish_seefood"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/submenu_item_14"
+                    android:title="@string/salads"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/submenu_item_15"
+                    android:title="@string/sweet_pastry"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/submenu_item_16"
+                    android:title="@string/sauces"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/submenu_item_17"
+                    android:title="@string/soups"
+                    app:showAsAction="never" />
+            </group>
+        </menu>
+    </item>
+</menu>
