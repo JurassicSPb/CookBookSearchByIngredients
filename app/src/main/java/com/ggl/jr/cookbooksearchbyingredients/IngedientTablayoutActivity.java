@@ -171,11 +171,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     }
 
     private void initData() {
-        if (preferences.getFlagIngrCatV2_4()) {
+        if (preferences.getFlagIngrCatV2_5()) {
             createIngredientsRU();
             createCategoryTablesRU();
             createCategoriesRU();
-            preferences.setFlagIngrCatV2_4(false);
+            preferences.setFlagIngrCatV2_5(false);
         }
 
         if (preferences.getFlag()) {
@@ -246,6 +246,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         if (preferences.getFlagRecipesV2_4()) {
             createRecipes("ver2_4");
             preferences.setFlagRecipesV2_4(false);
+        }
+
+        if (preferences.getFlagRecipesV2_5()) {
+            createRecipes("ver2_5");
+            preferences.setFlagRecipesV2_5(false);
         }
     }
 

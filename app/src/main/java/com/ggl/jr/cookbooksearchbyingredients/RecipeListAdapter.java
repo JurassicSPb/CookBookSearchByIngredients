@@ -132,8 +132,8 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
             if (constraint != null && constraint.length() > 0) {
                 ArrayList<RecipeCount> filterList = new ArrayList<>();
                 for (int i = 0; i < originalRecipes.size(); i++) {
-                    if (originalRecipes.get(i).getCategory().toUpperCase()
-                            .contains(constraint.toString().toUpperCase())) {
+                    if (originalRecipes.get(i).getCategory()
+                            .contains(constraint.toString())) {
                         filterList.add(originalRecipes.get(i));
                     }
                 }
@@ -153,8 +153,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
                 Toast toast = Toast.makeText(context, R.string.no_recipes_by_category, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
-            }
-            else {
+            } else {
                 recipes = (ArrayList<RecipeCount>) results.values;
             }
             notifyDataSetChanged();
