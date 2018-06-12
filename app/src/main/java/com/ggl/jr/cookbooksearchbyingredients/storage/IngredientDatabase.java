@@ -167,6 +167,16 @@ public class IngredientDatabase {
         realm.commitTransaction();
     }
 
+    public void deleteIngredientByName(String name) {
+        Ingredient results = realm.where(Ingredient.class).equalTo("ingredient", name).findFirst();
+
+        if (results != null) {
+            realm.beginTransaction();
+            results.deleteFromRealm();
+            realm.commitTransaction();
+        }
+    }
+
     public List<Ingredient> getAll() {
         return realm.where(Ingredient.class).findAllSorted("ingredient", Sort.ASCENDING);
     }

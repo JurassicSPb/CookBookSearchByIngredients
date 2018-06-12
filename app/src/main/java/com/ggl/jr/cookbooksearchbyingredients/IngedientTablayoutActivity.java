@@ -254,6 +254,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         }
 
         if (preferences.getFlagRecipesV2_6()) {
+            ingredientDB.deleteIngredientByName("икра красная");
             createRecipes("ver2_6");
             preferences.setFlagRecipesV2_6(false);
         }
@@ -413,7 +414,7 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
         bufferIngredient.add(new Ingredient(5, "творожная масса", R.drawable.tvorozh_mass, 0, 0));
 
         bufferIngredient.add(new Ingredient(6, "водоросли", R.drawable.vodorosli, 0, 0));
-        bufferIngredient.add(new Ingredient(6, "икра красная", R.drawable.red_caviar, 0, 0));
+        bufferIngredient.add(new Ingredient(6, "икра рыбная", R.drawable.caviar, 0, 0));
         bufferIngredient.add(new Ingredient(6, "кальмар", R.drawable.kalmar, 0, 0));
         bufferIngredient.add(new Ingredient(6, "крабовое мясо", R.drawable.krab_meat, 0, 0));
         bufferIngredient.add(new Ingredient(6, "крабовые палочки", R.drawable.krab_pal, 0, 0));
