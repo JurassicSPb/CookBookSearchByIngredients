@@ -255,6 +255,8 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
 
         if (preferences.getFlagRecipesV2_6()) {
             ingredientDB.deleteIngredientByName("икра красная");
+            ingredientDB.deleteIngredientFavoritesByName("икра красная");
+            ingredientDB.deleteIngredientStopByName("икра красная");
             createRecipes("ver2_6");
             preferences.setFlagRecipesV2_6(false);
         }

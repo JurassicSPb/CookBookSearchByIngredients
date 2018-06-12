@@ -177,6 +177,26 @@ public class IngredientDatabase {
         }
     }
 
+    public void deleteIngredientFavoritesByName(String name) {
+        IngredientFavorites results = realm.where(IngredientFavorites.class).equalTo("ingredient", name).findFirst();
+
+        if (results != null) {
+            realm.beginTransaction();
+            results.deleteFromRealm();
+            realm.commitTransaction();
+        }
+    }
+
+    public void deleteIngredientStopByName(String name) {
+        IngredientStop results = realm.where(IngredientStop.class).equalTo("ingredient", name).findFirst();
+
+        if (results != null) {
+            realm.beginTransaction();
+            results.deleteFromRealm();
+            realm.commitTransaction();
+        }
+    }
+
     public List<Ingredient> getAll() {
         return realm.where(Ingredient.class).findAllSorted("ingredient", Sort.ASCENDING);
     }
