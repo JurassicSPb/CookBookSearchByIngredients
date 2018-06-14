@@ -1,6 +1,7 @@
 package com.ggl.jr.cookbooksearchbyingredients;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,7 +73,12 @@ public class IngredientStopAdapter extends BaseAdapter {
             holder = (IngredientStopAdapter.ViewHolder) convertView.getTag();
         }
         holder.textView.setText(object.getIngredient());
-        holder.imageView.setImageResource(object.getImage());
+        try {
+            holder.imageView.setImageResource(object.getImage());
+        } catch (Resources.NotFoundException e) {
+            holder.imageView.setImageResource(R.drawable.ic_res_not_found);
+        }
+
         holder.stopCheckbox.setChecked(true);
 
 

@@ -1,5 +1,6 @@
 package com.ggl.jr.cookbooksearchbyingredients;
 
+import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +37,11 @@ public class IngredientDetailAdapter extends RecyclerView.Adapter<IngredientDeta
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.detailIngredient.setText(SelectedIngredient.getSelectedIngredient().get(position));
-        holder.detailImage.setImageResource(Integer.valueOf(SelectedIngredient.getSelectedImage().get(position)));
+        try {
+            holder.detailImage.setImageResource(Integer.valueOf(SelectedIngredient.getSelectedImage().get(position)));
+        } catch (Resources.NotFoundException e) {
+            holder.detailImage.setImageResource(R.drawable.ic_res_not_found);
+        }
 
         holder.delete.setOnClickListener(v -> {
             SelectedIngredient.getSelectedIngredient().remove(holder.getAdapterPosition());

@@ -1,6 +1,7 @@
 package com.ggl.jr.cookbooksearchbyingredients;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
@@ -89,10 +90,13 @@ public class GridviewImageTextAdapter extends BaseAdapter implements Filterable 
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
-
         }
         holder.textView.setText(object.getIngredient());
-        holder.imageView.setImageResource(object.getImage());
+        try {
+            holder.imageView.setImageResource(object.getImage());
+        } catch (Resources.NotFoundException e) {
+            holder.imageView.setImageResource(R.drawable.ic_res_not_found);
+        }
 
         if (object.getState() == 1) {
             holder.textView.setTextColor(ContextCompat.getColor(mContext, R.color.tabLayoutTextColorSelected));
