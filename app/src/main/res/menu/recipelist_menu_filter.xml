@@ -53,6 +53,10 @@
                     android:title="@string/healthy_food"
                     app:showAsAction="never" />
                 <item
+                    android:id="@+id/submenu_item_18"
+                    android:title="@string/porridges"
+                    app:showAsAction="never" />
+                <item
                     android:id="@+id/submenu_item_11"
                     android:title="@string/drinks"
                     app:showAsAction="never" />

@@ -177,6 +177,9 @@ public class IngredientToBuyActivity extends AppCompatActivity {
                 ingrsToBuyDB.copyIngredientToBuy(ingredientToBuy);
                 performIngredientsToBuy();
                 adapter.notifyDataSetChanged();
+                if (adapter.getItemCount() > 0) {
+                    recyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);
+                }
                 toast = Toast.makeText(getApplication(), R.string.added_successfully, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
