@@ -92,13 +92,10 @@ class ImageHelper private constructor() {
         var inSampleSize = 1
 
         if (height > reqSideSize || width > reqSideSize) {
+            val heightRatio = Math.round(height.toFloat() / reqSideSize.toFloat())
+            val widthRatio = Math.round(width.toFloat() / reqSideSize.toFloat())
 
-            val halfHeight: Int = height / 2
-            val halfWidth: Int = width / 2
-
-            while (halfHeight / inSampleSize >= reqSideSize || halfWidth / inSampleSize >= reqSideSize) {
-                inSampleSize *= 2
-            }
+            inSampleSize = Math.max(heightRatio, widthRatio)
         }
 
         return inSampleSize
