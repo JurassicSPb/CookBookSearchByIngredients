@@ -120,6 +120,7 @@
     <string name="categories_list_ad">ca-app-pub-4416823947112112/3519052783</string>
     <string name="cooking_time_ad">ca-app-pub-4416823947112112/1902718789</string>
     <string name="weights_measures_ad">ca-app-pub-4416823947112112/9286384788</string>
+    <string name="user_recipe_list_ad">ca-app-pub-4416823947112112/5793657787</string>
 
     <!--Свои рецепты-->
     <string name="user_recipe_hint">Введите текст</string>

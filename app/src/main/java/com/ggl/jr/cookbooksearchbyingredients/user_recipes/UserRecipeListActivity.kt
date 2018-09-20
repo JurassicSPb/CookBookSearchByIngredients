@@ -11,10 +11,12 @@ import com.ggl.jr.cookbooksearchbyingredients.R
 import com.ggl.jr.cookbooksearchbyingredients.helper.DialogHelper
 import com.ggl.jr.cookbooksearchbyingredients.helper.ImageHelper
 import com.ggl.jr.cookbooksearchbyingredients.storage.IngredientDatabase
+import com.google.android.gms.ads.AdRequest
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.Job
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
+import kotlinx.android.synthetic.main.user_recipe_list.user_recipe_list_adview as adView
 import kotlinx.android.synthetic.main.user_recipe_list.user_recipe_recyclerview as recycler
 import kotlinx.android.synthetic.main.user_recipe_list.user_repice_toolbar as toolbar
 
@@ -68,6 +70,8 @@ class UserRecipeListActivity :
                 userRecipes = database.allUserRecipes
             }
         }
+
+        adView.loadAd(AdRequest.Builder().build())
     }
 
     override fun onItemClicked(item: UserRecipe) {
