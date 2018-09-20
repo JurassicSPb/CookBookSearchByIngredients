@@ -95,7 +95,7 @@
     <string name="fry_up">Жарение кусками</string>
     <string name="stewing">Тушение кусками</string>
 
-        <!--Список покупок-->
+    <!--Список покупок-->
     <string name="shopping_list">Список покупок</string>
     <string name="hint_name">Название</string>
     <string name="weight_hint">Вес гр.</string>
@@ -120,6 +120,25 @@
     <string name="categories_list_ad">ca-app-pub-4416823947112112/3519052783</string>
     <string name="cooking_time_ad">ca-app-pub-4416823947112112/1902718789</string>
     <string name="weights_measures_ad">ca-app-pub-4416823947112112/9286384788</string>
+
+    <!--Свои рецепты-->
+    <string name="user_recipe_hint">Введите текст</string>
+    <string name="user_recipe_name">Название рецепта</string>
+    <string name="user_recipe_ingredients">Ингредиенты</string>
+    <string name="user_recipe_description">Приготовление</string>
+    <string name="user_recipe_add_photo">Добавить фотографию</string>
+    <string name="fill_all_fields">Заполните все поля</string>
+    <string name="choose_another_image_format">Выберите другой формат изображения</string>
+    <string name="alert_grant_permission">Требуется доступ к мультимедиа файлам</string>
+    <string name="alert_open_settings">Открыть настройки приложения для предоставления доступа к мультимедиа</string>
+    <string name="alert_delte_recipe">Удалить рецепт?</string>
+    <string name="alert_yes">Разрешить</string>
+    <string name="alert_no">Отклонить</string>
+    <string name="drawer_menu_user_recipes">Мои рецепты</string>
+    <string name="add_user_recipe">Добавить рецепт</string>
+    <string name="user_recipe_view_mode">Режим просмотра</string>
+    <string name="user_recipe_edit_mode">Режим редактирования</string>
+    <string name="user_recipe_view_mode_edit">Для редактирования выйдите из режима просмотра и нажмите на иконку с карандашом</string>
 
     <!--<string name="app_name">CookBookSearchByIngredients</string>-->
     <!--<string name="search_by_ingredient">Search by ingredient</string>-->

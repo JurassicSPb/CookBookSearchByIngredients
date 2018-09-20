@@ -3,6 +3,7 @@
     <dimen name="headline_height">32dp</dimen>
     <!--<dimen name="tabLayout_textsize">30sp</dimen>-->
     <dimen name="toolbar_textsize">20sp</dimen>
+    <dimen name="toolbar_textsize_smaller">18sp</dimen>
     <dimen name="ingredient_from_recipe">15sp</dimen>
     <dimen name="ingredient_from_recipe_tablets">18sp</dimen>
     <dimen name="name_from_recipe">16sp</dimen>

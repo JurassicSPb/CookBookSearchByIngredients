@@ -11,6 +11,7 @@ import com.ggl.jr.cookbooksearchbyingredients.IngredientStop;
 import com.ggl.jr.cookbooksearchbyingredients.IngredientToBuy;
 import com.ggl.jr.cookbooksearchbyingredients.IngredientsFromRecipe;
 import com.ggl.jr.cookbooksearchbyingredients.Recipe;
+import com.ggl.jr.cookbooksearchbyingredients.user_recipes.UserRecipe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,7 @@ public class IngredientDatabase {
     private void init() {
         RealmConfiguration configuration = new RealmConfiguration.Builder()
                 .name("ingredient_db")
-                .schemaVersion(2)
+                .schemaVersion(3)
                 .migration(new Migration())
                 .build();
 //               Realm.deleteRealm(configuration);
@@ -220,6 +221,35 @@ public class IngredientDatabase {
 
     public List<Categories> getAllCategories() {
         return realm.where(Categories.class).findAllSorted("name", Sort.ASCENDING);
+    }
+
+    public List<UserRecipe> getAllUserRecipes() {
+        return realm.where(UserRecipe.class).findAll();
+    }
+
+    public void copyOrUpdateUserRecipe(UserRecipe userRecipe) {
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(userRecipe);
+        realm.commitTransaction();
+    }
+
+    public long findNextUserRecipeId() {
+        Number num = realm.where(UserRecipe.class).max("id");
+        if (num == null) {
+            return 1;
+        } else {
+            return num.longValue() + 1;
+        }
+    }
+
+    public void deleteUserRecipeById(long id) {
+        final UserRecipe userRecipe = realm.where(UserRecipe.class).equalTo("id", id).findFirst();
+
+        if (userRecipe != null) {
+            realm.beginTransaction();
+            userRecipe.deleteFromRealm();
+            realm.commitTransaction();
+        }
     }
 
     public List<Ingredient> getCategory(int i) {

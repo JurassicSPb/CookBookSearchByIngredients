@@ -41,6 +41,17 @@ public class Migration implements RealmMigration {
 
             oldVersion++;
         }
+
+        if (oldVersion == 2) {
+            schema.create("UserRecipe")
+                    .addField("id", Long.class, FieldAttribute.PRIMARY_KEY)
+                    .addField("name", String.class, FieldAttribute.REQUIRED)
+                    .addField("ingredients", String.class, FieldAttribute.REQUIRED)
+                    .addField("description", String.class, FieldAttribute.REQUIRED)
+                    .addField("image", String.class, FieldAttribute.REQUIRED);
+
+            oldVersion++;
+        }
     }
 
     @Override

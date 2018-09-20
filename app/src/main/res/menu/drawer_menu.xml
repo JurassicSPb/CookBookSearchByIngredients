@@ -18,6 +18,10 @@
             android:icon="@drawable/ic_full_list"
             android:title="@string/drawer_menu_full_list" />
         <item
+            android:id="@+id/fr12"
+            android:icon="@drawable/ic_user_recipes"
+            android:title="@string/drawer_menu_user_recipes" />
+        <item
             android:id="@+id/fr11"
             android:icon="@drawable/ic_block_selected"
             android:title="@string/drawer_menu_stop_list" />
