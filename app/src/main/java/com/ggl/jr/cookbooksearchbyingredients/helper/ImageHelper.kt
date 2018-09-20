@@ -42,11 +42,11 @@ class ImageHelper private constructor() {
         var fOut: FileOutputStream? = null
         try {
             fOut = FileOutputStream(file)
-            resized?.compress(Bitmap.CompressFormat.JPEG, 75, fOut)
+            resized?.compress(Bitmap.CompressFormat.JPEG, 70, fOut)
             fOut.flush()
             MediaScannerConnection.scanFile(context, arrayOf(filePath), arrayOf("image/jpg"), null)
         } catch (e: Exception) {
-
+            e.printStackTrace()
         } finally {
             fOut?.close()
         }
