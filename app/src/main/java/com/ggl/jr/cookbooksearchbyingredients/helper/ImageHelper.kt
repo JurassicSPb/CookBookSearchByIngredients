@@ -69,21 +69,39 @@ class ImageHelper private constructor() {
             val picturePath = cursor.getString(columnIndex)
             cursor.close()
 
-            val resource = BitmapFactory.decodeFile(picturePath) ?: return null
-            val originalWidth = resource.width.toFloat()
-            val originalHeight = resource.height.toFloat()
+            BitmapFactory.Options().apply {
+                inJustDecodeBounds = true
 
-            val currentMaxSideSize = Math.max(originalWidth, originalHeight)
+                BitmapFactory.decodeFile(picturePath, this)
 
-            val scale = Math.min(1000 / currentMaxSideSize, 1f)
+                inSampleSize = calculateInSampleSize(this, 1000)
 
-            resized = Bitmap.createScaledBitmap(resource, (originalWidth * scale).toInt(), (originalHeight * scale).toInt(), true)
-            if (resource !== resized) resource.recycle()
+                inJustDecodeBounds = false
+
+                resized = BitmapFactory.decodeFile(picturePath, this) ?: return null
+            }
         } else {
             errorCallback?.onImageLoadedError()
         }
 
         return resized
+    }
+
+    private fun calculateInSampleSize(options: BitmapFactory.Options, reqSideSize: Int): Int {
+        val (height: Int, width: Int) = options.run { outHeight to outWidth }
+        var inSampleSize = 1
+
+        if (height > reqSideSize || width > reqSideSize) {
+
+            val halfHeight: Int = height / 2
+            val halfWidth: Int = width / 2
+
+            while (halfHeight / inSampleSize >= reqSideSize || halfWidth / inSampleSize >= reqSideSize) {
+                inSampleSize *= 2
+            }
+        }
+
+        return inSampleSize
     }
 
     fun loadImageFromStorage(context: Context, filePath: String, imageView: ImageView) {
