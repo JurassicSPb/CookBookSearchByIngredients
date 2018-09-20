@@ -74,7 +74,7 @@ class ImageHelper private constructor() {
 
                 BitmapFactory.decodeFile(picturePath, this)
 
-                inSampleSize = calculateInSampleSize(this, 1000)
+                inSampleSize = calculateInSampleSize(this, REQ_SIDE_SIZE)
 
                 inJustDecodeBounds = false
 
@@ -91,11 +91,11 @@ class ImageHelper private constructor() {
         val (height: Int, width: Int) = options.run { outHeight to outWidth }
         var inSampleSize = 1
 
-        if (height > reqSideSize || width > reqSideSize) {
-            val heightRatio = Math.round(height.toFloat() / reqSideSize.toFloat())
-            val widthRatio = Math.round(width.toFloat() / reqSideSize.toFloat())
+        val heightCoef = height.toDouble() / reqSideSize.toDouble()
+        val widthCoef = width.toDouble() / reqSideSize.toDouble()
 
-            inSampleSize = Math.max(heightRatio, widthRatio)
+        if (heightCoef >= MAX_COEF || widthCoef >= MAX_COEF) {
+            inSampleSize = Math.ceil(Math.max(heightCoef, widthCoef)).toInt()
         }
 
         return inSampleSize
@@ -135,5 +135,7 @@ class ImageHelper private constructor() {
 
     companion object {
         val instance: ImageHelper by lazy { Holder.INSTANCE }
+        private const val MAX_COEF = 1.25
+        private const val REQ_SIDE_SIZE = 1000
     }
 }
