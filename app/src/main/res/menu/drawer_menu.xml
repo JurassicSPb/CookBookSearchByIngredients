@@ -43,7 +43,7 @@
             android:title="@string/cooking_time" />
         <item
             android:id="@+id/fr13"
-            android:icon="@drawable/ic_timer_ticker_vector_cyan"
+            android:icon="@drawable/ic_timer_ticker_cyan"
             android:title="@string/timer" />
     </group>
 

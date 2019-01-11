@@ -59,7 +59,7 @@ class NotificationHelper private constructor() {
     }
 
     private fun createCommonBuilderSettings(context: Context, builder: NotificationCompat.Builder) {
-        builder.setSmallIcon(R.drawable.ic_timer_ticker_vector_cyan)
+        builder.setSmallIcon(R.drawable.ic_timer_ticker_cyan)
                 .setColor(ContextCompat.getColor(context, R.color.timerColor))
                 .setContentText(CONTENT_TEXT)
     }
