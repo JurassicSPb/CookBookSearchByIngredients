@@ -105,4 +105,11 @@
 
     </style>
 
+    <style name="MyTimePickerDialogStyle" parent="@style/ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="colorControlActivated">@color/pickerColorControlActivated</item>
+        <item name="colorAccent">@color/pickerTextColorAccent</item>
+        <item name="android:textColorPrimary">@color/pickerTextColorPrimary</item>
+        <item name="android:textColorSecondary">@color/pickerTextColorSecondary</item>
+    </style>
+
 </resources>

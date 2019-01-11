@@ -36,6 +36,13 @@
     <color name="tabTitlePorridge">#FFECB3</color>
     <color name="tabSecondRowPorridge">#FFF8E1</color>
 
+    <!--Timer-->
+    <color name="pickerTextColorSecondary">#f44336</color>
+    <color name="pickerTextColorPrimary">#43a047</color>
+    <color name="pickerTextColorAccent">#b71c1c</color>
+    <color name="pickerColorControlActivated">#ffd600</color>
+    <color name="timerColor">#008577</color>
+
     <!--Custom Colors-->
     <color name="White">#FFFFFF</color>
     <color name="Ivory">#FFFFF0</color>

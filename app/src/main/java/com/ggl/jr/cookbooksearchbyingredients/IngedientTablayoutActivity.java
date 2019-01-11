@@ -33,6 +33,7 @@ import com.ggl.jr.cookbooksearchbyingredients.nav_drawer_extras.WeightsAndMeasur
 import com.ggl.jr.cookbooksearchbyingredients.storage.IngredientDatabase;
 import com.ggl.jr.cookbooksearchbyingredients.storage.MyPreferences;
 import com.ggl.jr.cookbooksearchbyingredients.user_recipes.UserRecipeListActivity;
+import com.ggl.jr.cookbooksearchbyingredients.timer.TimerActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -315,6 +316,9 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
             startActivity(intent);
         } else if (id == R.id.fr12){
             intent = new Intent(this, UserRecipeListActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.fr13){
+            intent = new Intent(this, TimerActivity.class);
             startActivity(intent);
         }
         drawer.closeDrawer(GravityCompat.START);

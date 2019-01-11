@@ -41,6 +41,10 @@
             android:id="@+id/fr5"
             android:icon="@drawable/ic_timer"
             android:title="@string/cooking_time" />
+        <item
+            android:id="@+id/fr13"
+            android:icon="@drawable/ic_timer_ticker_vector_cyan"
+            android:title="@string/timer" />
     </group>
 
     <group android:id="@+id/grp3">

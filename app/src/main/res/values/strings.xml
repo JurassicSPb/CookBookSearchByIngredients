@@ -140,6 +140,10 @@
     <string name="user_recipe_view_mode">Режим просмотра, для редактирования нажмите назад, а затем на иконку с карандашом</string>
     <string name="user_recipe_edit_mode">Режим редактирования</string>
 
+    <!--Таймер-->
+    <string name="set_timer">Выставить время таймера</string>
+    <string name="timer">Таймер</string>
+
     <!--<string name="app_name">CookBookSearchByIngredients</string>-->
     <!--<string name="search_by_ingredient">Search by ingredient</string>-->
     <!--<string name="search_by_name">Search by name or category</string>-->

@@ -12,10 +12,8 @@ import com.ggl.jr.cookbooksearchbyingredients.helper.DialogHelper
 import com.ggl.jr.cookbooksearchbyingredients.helper.ImageHelper
 import com.ggl.jr.cookbooksearchbyingredients.storage.IngredientDatabase
 import com.google.android.gms.ads.AdRequest
-import kotlinx.coroutines.experimental.CommonPool
-import kotlinx.coroutines.experimental.Job
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
 import kotlinx.android.synthetic.main.user_recipe_list.user_recipe_list_adview as adView
 import kotlinx.android.synthetic.main.user_recipe_list.user_recipe_recyclerview as recycler
 import kotlinx.android.synthetic.main.user_recipe_list.user_repice_toolbar as toolbar
@@ -25,13 +23,15 @@ class UserRecipeListActivity :
         UserRecipeListAdapter.ItemClickListener,
         UserRecipeListAdapter.DeleteClickListener,
         UserRecipeListAdapter.EditClickListener,
-        DialogHelper.DeleteCallback {
-
+        DialogHelper.DeleteCallback,
+        CoroutineScope {
     lateinit var database: IngredientDatabase
-    lateinit var dialogHelper: DialogHelper
-    lateinit var imageHelper: ImageHelper
-    lateinit var userRecipeAdapter: UserRecipeListAdapter
-    private val deleteImage = Job()
+    private lateinit var dialogHelper: DialogHelper
+    private lateinit var imageHelper: ImageHelper
+    private lateinit var userRecipeAdapter: UserRecipeListAdapter
+    private val job = Job()
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +45,7 @@ class UserRecipeListActivity :
         }
 
         setSupportActionBar(toolbar)
-        toolbar.setNavigationOnClickListener { _ -> onBackPressed() }
+        toolbar.setNavigationOnClickListener { onBackPressed() }
 
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
@@ -97,11 +97,11 @@ class UserRecipeListActivity :
     }
 
     override fun onDeletePositiveButtonClicked(itemId: Long, filePath: String) {
-        launch(UI, parent = deleteImage) {
+        launch {
             database.deleteUserRecipeById(itemId)
             userRecipeAdapter.notifyDataSetChanged()
 
-            launch(CommonPool, parent = deleteImage) {
+            withContext(Dispatchers.Default) {
                 imageHelper.deleteFile(filePath)
             }
         }
@@ -128,7 +128,7 @@ class UserRecipeListActivity :
     }
 
     override fun onDestroy() {
-        deleteImage.cancel()
+        job.cancel()
         database.close()
         dialogHelper.deleteCallback = null
 

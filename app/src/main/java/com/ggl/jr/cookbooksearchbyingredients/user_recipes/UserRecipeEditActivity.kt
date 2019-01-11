@@ -3,6 +3,7 @@ package com.ggl.jr.cookbooksearchbyingredients.user_recipes
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
@@ -23,10 +24,8 @@ import com.ggl.jr.cookbooksearchbyingredients.helper.DialogHelper.Companion.ACTI
 import com.ggl.jr.cookbooksearchbyingredients.helper.DialogHelper.Companion.ACTION_PERMISSION_REQUEST
 import com.ggl.jr.cookbooksearchbyingredients.helper.ImageHelper
 import com.ggl.jr.cookbooksearchbyingredients.storage.IngredientDatabase
-import kotlinx.coroutines.experimental.CommonPool
-import kotlinx.coroutines.experimental.Job
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
 import kotlinx.android.synthetic.main.user_recipe_edit.add_photo_container as addPhotoContainer
 import kotlinx.android.synthetic.main.user_recipe_edit.add_photo_icon as addPhotoIcon
 import kotlinx.android.synthetic.main.user_recipe_edit.add_photo_main as addPhotoMainImage
@@ -40,9 +39,9 @@ class UserRecipeEditActivity :
         AppCompatActivity(),
         DialogHelper.PermissionCallback,
         ImageHelper.ImageLoadedFromPicassoCallback,
-        ImageHelper.ErrorCallback {
-    private val loadImage = Job()
-    private val saveImage = Job()
+        ImageHelper.ErrorCallback,
+        CoroutineScope {
+    private val job = Job()
     private lateinit var database: IngredientDatabase
     private lateinit var dialogHelper: DialogHelper
     private lateinit var imageHelper: ImageHelper
@@ -56,6 +55,8 @@ class UserRecipeEditActivity :
     private var menuItem: MenuItem? = null
     private var workFinished = true
     private var openGalleryIntent: Intent? = null
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -162,38 +163,36 @@ class UserRecipeEditActivity :
             return false
         }
 
-        launch(CommonPool, parent = saveImage) {
-            launch(UI, parent = saveImage) {
-                item.isVisible = false
-            }
+        launch {
+            item.isVisible = false
 
-            try {
-                database = IngredientDatabase()
+            withContext(Dispatchers.Default) {
+                try {
+                    database = IngredientDatabase()
 
-                val userRecipe = UserRecipe().apply {
-                    id = if (idFromIntent == DEFAULT_ID) database.findNextUserRecipeId() else idFromIntent
-                    name = userRecipeName.text.toString()
-                    ingredients = userRecipeIngredients.text.toString()
-                    description = userRecipeDescription.text.toString()
+                    val userRecipe = UserRecipe().apply {
+                        id = if (idFromIntent == DEFAULT_ID) database.findNextUserRecipeId() else idFromIntent
+                        name = userRecipeName.text.toString()
+                        ingredients = userRecipeIngredients.text.toString()
+                        description = userRecipeDescription.text.toString()
+                    }
+
+                    val resized = imageHelper.resized
+                    if (resized != null && !resized.isRecycled) {
+                        imageHelper.writeToFile(this@UserRecipeEditActivity)
+                        userRecipe.image = imageHelper.filePath ?: DEFAULT_STRING_FIELD
+                        imageHelper.deleteFile(imageFromIntent)
+                    } else {
+                        userRecipe.image = imageFromIntent
+                    }
+                    database.copyOrUpdateUserRecipe(userRecipe)
+                } finally {
+                    database.close()
                 }
-
-                val resized = imageHelper.resized
-                if (resized != null && !resized.isRecycled) {
-                    imageHelper.writeToFile(this@UserRecipeEditActivity)
-                    userRecipe.image = imageHelper.filePath ?: DEFAULT_STRING_FIELD
-                    imageHelper.deleteFile(imageFromIntent)
-                } else {
-                    userRecipe.image = imageFromIntent
-                }
-                database.copyOrUpdateUserRecipe(userRecipe)
-            } finally {
-                database.close()
             }
 
-            launch(UI, parent = saveImage) {
-                imageHelper.clear()
-                finish()
-            }
+            imageHelper.clear()
+            finish()
         }
 
         return super.onOptionsItemSelected(item)
@@ -227,7 +226,7 @@ class UserRecipeEditActivity :
     }
 
     override fun onImageLoadedError() {
-        launch(UI, parent = loadImage) {
+        launch {
             Toast.makeText(this@UserRecipeEditActivity, R.string.choose_another_image_format, Toast.LENGTH_SHORT).show()
         }
     }
@@ -251,23 +250,21 @@ class UserRecipeEditActivity :
 
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null && data.data != null) {
 
-            launch(CommonPool, parent = loadImage) {
+            launch {
+                menuItem?.isVisible = false
+                workFinished = false
 
-                launch(UI, parent = loadImage) {
-                    menuItem?.isVisible = false
-                    workFinished = false
+                val resized: Bitmap? = withContext(Dispatchers.Default) {
+                    imageHelper.getScaledImage(data.data, this@UserRecipeEditActivity)
                 }
 
-                val resized = imageHelper.getScaledImage(data.data, this@UserRecipeEditActivity)
-
-                launch(UI, parent = loadImage) {
-                    if (resized != null && !resized.isRecycled) {
-                        addPhotoMainImage.setImageBitmap(resized)
-                        hideAddPhotoElements()
-                    }
-                    menuItem?.isVisible = true
-                    workFinished = true
+                if (resized != null && !resized.isRecycled) {
+                    addPhotoMainImage.setImageBitmap(resized)
+                    hideAddPhotoElements()
                 }
+
+                menuItem?.isVisible = true
+                workFinished = true
             }
         }
     }
@@ -278,8 +275,7 @@ class UserRecipeEditActivity :
     }
 
     override fun onDestroy() {
-        loadImage.cancel()
-        saveImage.cancel()
+        job.cancel()
         dialogHelper.permissionCallback = null
         imageHelper.imageLoadedFromPicasso = null
         imageHelper.errorCallback = null
