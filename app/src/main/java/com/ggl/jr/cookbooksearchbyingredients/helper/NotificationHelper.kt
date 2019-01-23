@@ -21,6 +21,7 @@ class NotificationHelper private constructor() {
     private var manager: NotificationManager? = null
     private var builder: NotificationCompat.Builder? = null
     private var finishedBuilder: NotificationCompat.Builder? = null
+    var ringtone: Ringtone? = null
 
     fun createNotificationManager(context: Context) {
         manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager

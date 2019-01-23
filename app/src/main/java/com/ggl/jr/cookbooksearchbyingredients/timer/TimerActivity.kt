@@ -2,7 +2,6 @@ package com.ggl.jr.cookbooksearchbyingredients.timer
 
 import android.content.Intent
 import android.content.IntentFilter
-import android.media.Ringtone
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
@@ -12,22 +11,16 @@ import com.ggl.jr.cookbooksearchbyingredients.Metrics
 import com.ggl.jr.cookbooksearchbyingredients.R
 import com.ggl.jr.cookbooksearchbyingredients.extensions.isClickableAndFocusable
 import com.ggl.jr.cookbooksearchbyingredients.helper.NotificationHelper
-import kotlinx.android.synthetic.main.activity_timer.start_timer as startTimer
-import kotlinx.android.synthetic.main.activity_timer.stop_timer as stopTimer
-import kotlinx.android.synthetic.main.activity_timer.pause_timer as pauseTimer
-import kotlinx.android.synthetic.main.activity_timer.timer_text as timerText
-import kotlinx.android.synthetic.main.activity_timer.progress_countdown as progressCountdown
-import kotlinx.android.synthetic.main.activity_timer.timer_toolbar as toolbar
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.asCoroutineDispatcher
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 import kotlin.coroutines.CoroutineContext
+import kotlinx.android.synthetic.main.activity_timer.pause_timer as pauseTimer
+import kotlinx.android.synthetic.main.activity_timer.progress_countdown as progressCountdown
+import kotlinx.android.synthetic.main.activity_timer.start_timer as startTimer
+import kotlinx.android.synthetic.main.activity_timer.stop_timer as stopTimer
+import kotlinx.android.synthetic.main.activity_timer.timer_text as timerText
+import kotlinx.android.synthetic.main.activity_timer.timer_toolbar as toolbar
 
 
 class TimerActivity :
@@ -51,10 +44,8 @@ class TimerActivity :
     private var millisLeft = DEFAULT_TIME
     private var initialTime = DEFAULT_TIME
     private lateinit var timerBroadcastReceiver: TimerBroadcast
-    private var ringtone: Ringtone? = null
     private var initialTimeSet = false
     private var progressPercentage = 0
-    private var restored = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -119,10 +110,10 @@ class TimerActivity :
             setOnClickListener {
                 needToStop = true
                 it.isClickableAndFocusable(false)
-                startTimer.isClickableAndFocusable(true)
+                startTimer.isClickableAndFocusable(false)
                 pauseTimer.isClickableAndFocusable(false)
 
-                ringtone?.stop()
+                notificationHelper.ringtone?.stop()
 
                 cancelJob()
 
@@ -130,12 +121,17 @@ class TimerActivity :
             }
         }
 
-        startTimer.isClickableAndFocusable(false)
-        pauseTimer.isClickableAndFocusable(false)
-        stopTimer.isClickableAndFocusable(false)
-
         formatUtils = FormatUtils.instance
         notificationHelper = NotificationHelper.instance
+
+        startTimer.isClickableAndFocusable(false)
+        pauseTimer.isClickableAndFocusable(false)
+        stopTimer.isClickableAndFocusable(ringtonePlaying())
+    }
+
+    private fun ringtonePlaying(): Boolean {
+        val ringtone = notificationHelper.ringtone
+        return ringtone != null && ringtone.isPlaying
     }
 
     private fun runTimer() = launch(coroutineContext + job) {
@@ -170,8 +166,8 @@ class TimerActivity :
                     resetProgressBar()
                 }
                 pauseTimer.isClickableAndFocusable(false)
-                ringtone = notificationHelper.getRingtone(this@TimerActivity)
-                ringtone?.play()
+                notificationHelper.ringtone = notificationHelper.getRingtone(this@TimerActivity)
+                notificationHelper.ringtone?.play()
                 break
             }
         }
@@ -199,18 +195,31 @@ class TimerActivity :
 
     override fun onRestoreInstanceState(state: Bundle?) {
         super.onRestoreInstanceState(state)
-        progressCountdown.max = state?.getInt(MAX_PROGRESS_KEY) ?: DEFAULT_PROGRESS
         millisLeft = state?.getLong(MILLIS_LEFT_KEY) ?: DEFAULT_TIME
         if (millisLeft != DEFAULT_TIME) {
             startOrPauseTimer(state?.getBoolean(PAUSE_KEY) ?: false)
         }
-        restored = true
+        initialTimeSet = state?.getBoolean(INITIAL_TIME_SET_KEY) ?: false
+        if (initialTimeSet) {
+            timerText.text = state?.getCharSequence(INITIAL_TIME_RESULT_KEY) ?: DEFAULT_RESULT
+            initialTime = state?.getLong(INITIAL_TIME_KEY) ?: DEFAULT_TIME
+            if (initialTime != DEFAULT_TIME) {
+                progressCountdown.max = initialTime.toInt()
+                startTimer.isClickableAndFocusable(true)
+                stopTimer.isClickableAndFocusable(true)
+            }
+
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) = with(outState) {
         super.onSaveInstanceState(this)
-        putInt(MAX_PROGRESS_KEY, progressCountdown.max)
-        putLong(MILLIS_LEFT_KEY, millisLeft)
+        if (initialTimeSet) {
+            putBoolean(INITIAL_TIME_SET_KEY, initialTimeSet)
+            putCharSequence(INITIAL_TIME_RESULT_KEY, timerText.text)
+            putLong(INITIAL_TIME_KEY, initialTime)
+        }
+
         putBoolean(PAUSE_KEY, needToPause)
     }
 
@@ -239,7 +248,6 @@ class TimerActivity :
 
     override fun onTimeSet(hourOfDay: Int, minute: Int, seconds: Int) {
 
-        stopTimer.isClickableAndFocusable(true)
         stopTimer.performClick()
 
         if (hourOfDay + minute + seconds > DEFAULT_TIME) {
@@ -253,6 +261,9 @@ class TimerActivity :
             progressCountdown.max = initialTime.toInt()
 
             initialTimeSet = true
+
+            stopTimer.isClickableAndFocusable(true)
+            startTimer.isClickableAndFocusable(true)
         }
     }
 
@@ -273,13 +284,11 @@ class TimerActivity :
             return
         }
 
-        if (millisLeft != DEFAULT_TIME && !restored) {
+        if (millisLeft != DEFAULT_TIME) {
             this.millisLeft = millisLeft
             progressCountdown.max = maxProgress
             startOrPauseTimer(onPause)
         }
-
-        restored = false
     }
 
     private fun startOrPauseTimer(onPause: Boolean) {
@@ -330,5 +339,8 @@ class TimerActivity :
         private const val DEFAULT_PROGRESS = 100
         private const val MAX_PROGRESS_KEY = "maxProgressKey"
         private const val PAUSE_KEY = "pauseKey"
+        private const val INITIAL_TIME_KEY = "initialTimeKey"
+        private const val INITIAL_TIME_RESULT_KEY = "initialTimeResultKey"
+        private const val INITIAL_TIME_SET_KEY = "initialTimeSetKey"
     }
 }
