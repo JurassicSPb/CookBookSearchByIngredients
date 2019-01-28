@@ -121,6 +121,10 @@ class TimerActivity :
             }
         }
 
+        timerText.setOnClickListener {
+            showTimerPickerFragment()
+        }
+
         formatUtils = FormatUtils.instance
         notificationHelper = NotificationHelper.instance
 
@@ -306,12 +310,16 @@ class TimerActivity :
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item?.itemId == R.id.set_timer) {
-            TimePickerFragment().apply {
-                timerPickerCallback = this@TimerActivity
-            }.show(supportFragmentManager, SET_TIME)
+            showTimerPickerFragment()
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showTimerPickerFragment() {
+        TimePickerFragment().apply {
+            timerPickerCallback = this@TimerActivity
+        }.show(supportFragmentManager, SET_TIME)
     }
 
     private fun cancelJob() {

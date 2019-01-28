@@ -143,6 +143,7 @@
     <!--Таймер-->
     <string name="set_timer">Выставить время таймера</string>
     <string name="timer">Таймер</string>
+    <string name="default_time">00:00:00</string>
 
     <!--<string name="app_name">CookBookSearchByIngredients</string>-->
     <!--<string name="search_by_ingredient">Search by ingredient</string>-->

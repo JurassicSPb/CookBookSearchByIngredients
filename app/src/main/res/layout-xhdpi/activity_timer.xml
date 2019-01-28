@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".timer.TimerActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/timer_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:title="Выставить время таймера"
+        app:titleTextAppearance="@style/Toolbar.TitleTextSmaller" />
+
+    <TextView
+        android:id="@+id/timer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="72dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/default_time"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/black"
+        android:textSize="55sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/timer_toolbar" />
+
+
+    <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+        android:id="@+id/progress_countdown"
+        style="@style/Widget.MaterialProgressBar.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="75dp"
+        android:minWidth="320dp"
+        android:minHeight="320dp"
+        android:progress="100"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/timer_toolbar"
+        app:mpb_progressTint="@color/colorPrimary" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/start_timer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginBottom="48dp"
+        android:padding="6dp"
+        app:backgroundTint="@android:color/holo_green_light"
+        app:elevation="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_play_arrow_vector" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/pause_timer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="48dp"
+        android:padding="6dp"
+        app:backgroundTint="@android:color/holo_orange_light"
+        app:elevation="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/stop_timer"
+        app:layout_constraintStart_toEndOf="@id/start_timer"
+        app:srcCompat="@drawable/ic_pause_vector" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/stop_timer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginBottom="48dp"
+        android:padding="6dp"
+        app:backgroundTint="@android:color/holo_red_light"
+        app:elevation="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_stop_vector" />
+
+</android.support.constraint.ConstraintLayout>
