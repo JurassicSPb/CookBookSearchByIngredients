@@ -77,6 +77,7 @@ class TimerActivity :
             setOnClickListener {
                 it.isClickableAndFocusable(false)
                 startTimer.isClickableAndFocusable(true)
+                stopTimer.isClickableAndFocusable(true)
                 cancelJob()
                 needToStop = false
                 needToPause = true
@@ -131,6 +132,8 @@ class TimerActivity :
         startTimer.isClickableAndFocusable(false)
         pauseTimer.isClickableAndFocusable(false)
         stopTimer.isClickableAndFocusable(ringtonePlaying())
+
+        resetProgressBar()
     }
 
     private fun ringtonePlaying(): Boolean {

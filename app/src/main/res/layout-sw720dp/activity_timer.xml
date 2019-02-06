@@ -38,7 +38,7 @@
         android:layout_marginBottom="75dp"
         android:minWidth="500dp"
         android:minHeight="500dp"
-        android:progress="100"
+        android:progress="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
