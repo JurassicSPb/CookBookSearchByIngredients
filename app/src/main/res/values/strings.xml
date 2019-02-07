@@ -141,7 +141,7 @@
     <string name="user_recipe_edit_mode">Режим редактирования</string>
 
     <!--Таймер-->
-    <string name="set_timer">Выставить время таймера</string>
+    <string name="set_timer">Установить время таймера</string>
     <string name="timer">Таймер</string>
     <string name="default_time">00:00:00</string>
 
