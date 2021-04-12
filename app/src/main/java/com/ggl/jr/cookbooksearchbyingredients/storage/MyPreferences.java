@@ -34,9 +34,9 @@ public class MyPreferences {
     private static final String KEY_RECIPES_FAV_V_2_8 = "key_recipes_fav_v_2_8";
     private static final String KEY_RECIPES_V_2_8 = "key_recipes_v_2_8";
 
-    private static final String KEY_INGR_AND_CAT_V_2_85 = "key_ingr_and_cat_v_2_85";
-    private static final String KEY_INGR_FAV_V_2_85 = "key_ingr_fav_v_2_85";
-    private static final String KEY_STOP_LIST_V_2_85 = "key_recipes_stop_v_2_85";
+    private static final String KEY_INGR_AND_CAT_V_2_9 = "key_ingr_and_cat_v_2_9";
+    private static final String KEY_INGR_FAV_V_2_9 = "key_ingr_fav_v_2_9";
+    private static final String KEY_STOP_LIST_V_2_9 = "key_recipes_stop_v_2_9";
 
     private SharedPreferences preferences;
 
@@ -290,33 +290,33 @@ public class MyPreferences {
                 .apply();
     }
 
-    public boolean getFlagIngrFavV2_85() {
-        return preferences.getBoolean(KEY_INGR_FAV_V_2_85, true);
+    public boolean getFlagIngrFavV2_9() {
+        return preferences.getBoolean(KEY_INGR_FAV_V_2_9, true);
     }
 
-    public void setFlagIngrFavV2_85(boolean flag) {
+    public void setFlagIngrFavV2_9(boolean flag) {
         preferences.edit()
-                .putBoolean(KEY_INGR_FAV_V_2_85, flag)
+                .putBoolean(KEY_INGR_FAV_V_2_9, flag)
                 .apply();
     }
 
-    public boolean getFlagIngrCatV2_85() {
-        return preferences.getBoolean(KEY_INGR_AND_CAT_V_2_85, true);
+    public boolean getFlagIngrCatV2_9() {
+        return preferences.getBoolean(KEY_INGR_AND_CAT_V_2_9, true);
     }
 
-    public void setFlagIngrCatV2_85(boolean flag) {
+    public void setFlagIngrCatV2_9(boolean flag) {
         preferences.edit()
-                .putBoolean(KEY_INGR_AND_CAT_V_2_85, flag)
+                .putBoolean(KEY_INGR_AND_CAT_V_2_9, flag)
                 .apply();
     }
 
-    public boolean getFlagStopListV2_85() {
-        return preferences.getBoolean(KEY_STOP_LIST_V_2_85, true);
+    public boolean getFlagStopListV2_9() {
+        return preferences.getBoolean(KEY_STOP_LIST_V_2_9, true);
     }
 
-    public void setFlagStopListV2_85(boolean flag) {
+    public void setFlagStopListV2_9(boolean flag) {
         preferences.edit()
-                .putBoolean(KEY_STOP_LIST_V_2_85, flag)
+                .putBoolean(KEY_STOP_LIST_V_2_9, flag)
                 .apply();
     }
 

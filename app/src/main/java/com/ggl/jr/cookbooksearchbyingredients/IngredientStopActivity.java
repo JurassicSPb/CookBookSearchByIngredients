@@ -45,9 +45,9 @@ public class IngredientStopActivity extends AppCompatActivity {
         ingredientStopDB = new IngredientDatabase();
 
         MyPreferences preferences = new MyPreferences(this);
-        if (preferences.getFlagStopListV2_85()) {
+        if (preferences.getFlagStopListV2_9()) {
             updateStopList();
-            preferences.setFlagStopListV2_85(false);
+            preferences.setFlagStopListV2_9(false);
         }
 
         ingrStop = ingredientStopDB.getAllIngrStopSorted();

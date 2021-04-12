@@ -174,11 +174,11 @@ public class IngedientTablayoutActivity extends AppCompatActivity implements Nav
     }
 
     private void initData() {
-        if (preferences.getFlagIngrCatV2_85()) {
+        if (preferences.getFlagIngrCatV2_9()) {
             createIngredientsRU();
             createCategoryTablesRU();
             createCategoriesRU();
-            preferences.setFlagIngrCatV2_85(false);
+            preferences.setFlagIngrCatV2_9(false);
         }
 
         if (preferences.getFlag()) {
