@@ -1,12 +1,13 @@
 package com.ggl.jr.cookbooksearchbyingredients;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.widget.GridView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.ggl.jr.cookbooksearchbyingredients.storage.IngredientDatabase;
 import com.ggl.jr.cookbooksearchbyingredients.storage.MyPreferences;

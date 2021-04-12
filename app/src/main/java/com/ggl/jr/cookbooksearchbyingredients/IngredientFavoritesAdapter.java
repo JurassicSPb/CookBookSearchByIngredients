@@ -3,7 +3,6 @@ package com.ggl.jr.cookbooksearchbyingredients;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +12,8 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
 
 import com.ggl.jr.cookbooksearchbyingredients.storage.IngredientDatabase;
 

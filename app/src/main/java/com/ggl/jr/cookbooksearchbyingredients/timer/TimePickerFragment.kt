@@ -3,7 +3,7 @@ package com.ggl.jr.cookbooksearchbyingredients.timer
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
+import androidx.fragment.app.DialogFragment
 
 import com.ggl.jr.cookbooksearchbyingredients.R
 import com.ikovac.timepickerwithseconds.MyTimePickerDialog

@@ -3,10 +3,10 @@ package com.ggl.jr.cookbooksearchbyingredients.timer
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import com.ggl.jr.cookbooksearchbyingredients.Metrics
 import com.ggl.jr.cookbooksearchbyingredients.R
 import com.ggl.jr.cookbooksearchbyingredients.extensions.isClickableAndFocusable

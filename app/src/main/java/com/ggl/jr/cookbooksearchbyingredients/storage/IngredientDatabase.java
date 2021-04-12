@@ -85,7 +85,7 @@ public class IngredientDatabase {
 
     public List<IngredientFavorites> getAllIngrFavoritesSorted() {
         realm.beginTransaction();
-        RealmResults<IngredientFavorites> results = realm.where(IngredientFavorites.class).findAllSorted("ingredient", Sort.ASCENDING);
+        RealmResults<IngredientFavorites> results = realm.where(IngredientFavorites.class).sort("ingredient", Sort.ASCENDING).findAll();
         List<IngredientFavorites> newIngrFav = realm.copyFromRealm(results);
         realm.commitTransaction();
         return newIngrFav;
@@ -93,7 +93,7 @@ public class IngredientDatabase {
 
     public List<IngredientStop> getAllIngrStopSorted() {
         realm.beginTransaction();
-        RealmResults<IngredientStop> results = realm.where(IngredientStop.class).findAllSorted("ingredient", Sort.ASCENDING);
+        RealmResults<IngredientStop> results = realm.where(IngredientStop.class).sort("ingredient", Sort.ASCENDING).findAll();
         List<IngredientStop> newIngrStop = realm.copyFromRealm(results);
         realm.commitTransaction();
         return newIngrStop;
@@ -199,7 +199,7 @@ public class IngredientDatabase {
     }
 
     public List<Ingredient> getAll() {
-        return realm.where(Ingredient.class).findAllSorted("ingredient", Sort.ASCENDING);
+        return realm.where(Ingredient.class).sort("ingredient", Sort.ASCENDING).findAll();
     }
 
     public Ingredient getIngredientByName(String name) {
@@ -216,11 +216,11 @@ public class IngredientDatabase {
 
 
     public List<CategoryTable> getAllCategoryTables() {
-        return realm.where(CategoryTable.class).findAllSorted("num", Sort.ASCENDING);
+        return realm.where(CategoryTable.class).sort("num", Sort.ASCENDING).findAll();
     }
 
     public List<Categories> getAllCategories() {
-        return realm.where(Categories.class).findAllSorted("name", Sort.ASCENDING);
+        return realm.where(Categories.class).sort("name", Sort.ASCENDING).findAll();
     }
 
     public List<UserRecipe> getAllUserRecipes() {
@@ -253,7 +253,7 @@ public class IngredientDatabase {
     }
 
     public List<Ingredient> getCategory(int i) {
-        return realm.where(Ingredient.class).equalTo("category", i).findAllSorted("ingredient", Sort.ASCENDING);
+        return realm.where(Ingredient.class).equalTo("category", i).sort("ingredient", Sort.ASCENDING).findAll();
     }
 
     public List<Recipe> getRecipe(List<IngredientStop> forbidden, ArrayList<String> selected) {
@@ -282,11 +282,11 @@ public class IngredientDatabase {
     public List<Recipe> getRecipesSorted() {
         String[] fieldNames = {"category", "name"};
         Sort sort[] = {Sort.ASCENDING, Sort.ASCENDING};
-        return realm.where(Recipe.class).findAllSorted(fieldNames, sort);
+        return realm.where(Recipe.class).sort(fieldNames, sort).findAll();
     }
 
     public List<Recipe> getRecipesByCategories(String name) {
-        return realm.where(Recipe.class).contains("category", name).findAllSorted("name", Sort.ASCENDING);
+        return realm.where(Recipe.class).contains("category", name).sort("name", Sort.ASCENDING).findAll();
     }
 
     public void close() {

@@ -9,7 +9,7 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/user_recipe_edit_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/user_edit_content_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -183,6 +183,6 @@
                 android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@id/user_recipe_ingredients" />
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </LinearLayout>

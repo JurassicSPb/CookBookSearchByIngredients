@@ -7,13 +7,13 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.ggl.jr.cookbooksearchbyingredients.Metrics
 import com.ggl.jr.cookbooksearchbyingredients.R
 import com.ggl.jr.cookbooksearchbyingredients.extensions.isClickableAndFocusable
@@ -246,25 +246,26 @@ class UserRecipeEditActivity :
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         openGalleryIntent = data
+        data?.data?.let { uri ->
+            if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+                launch {
+                    menuItem?.isVisible = false
+                    workFinished = false
 
-        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null && data.data != null) {
+                    val resized: Bitmap? = withContext(Dispatchers.Default) {
+                        imageHelper.getScaledImage(uri, this@UserRecipeEditActivity)
+                    }
 
-            launch {
-                menuItem?.isVisible = false
-                workFinished = false
+                    if (resized != null && !resized.isRecycled) {
+                        addPhotoMainImage.setImageBitmap(resized)
+                        hideAddPhotoElements()
+                    }
 
-                val resized: Bitmap? = withContext(Dispatchers.Default) {
-                    imageHelper.getScaledImage(data.data, this@UserRecipeEditActivity)
+                    menuItem?.isVisible = true
+                    workFinished = true
                 }
-
-                if (resized != null && !resized.isRecycled) {
-                    addPhotoMainImage.setImageBitmap(resized)
-                    hideAddPhotoElements()
-                }
-
-                menuItem?.isVisible = true
-                workFinished = true
             }
         }
     }

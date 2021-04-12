@@ -2,10 +2,10 @@ package com.ggl.jr.cookbooksearchbyingredients.user_recipes
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ggl.jr.cookbooksearchbyingredients.Metrics
 import com.ggl.jr.cookbooksearchbyingredients.R
 import com.ggl.jr.cookbooksearchbyingredients.helper.DialogHelper

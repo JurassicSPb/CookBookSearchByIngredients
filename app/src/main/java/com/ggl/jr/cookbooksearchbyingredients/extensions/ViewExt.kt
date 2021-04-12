@@ -1,10 +1,10 @@
 package com.ggl.jr.cookbooksearchbyingredients.extensions
 
-import android.support.annotation.StringRes
-import android.support.v7.widget.Toolbar
 import android.text.TextUtils
 import android.view.View
 import android.widget.TextView
+import androidx.annotation.StringRes
+import androidx.appcompat.widget.Toolbar
 
 fun View.isClickableAndFocusable(state: Boolean) {
     isClickable = state
